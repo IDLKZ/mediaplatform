@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function (){
     return view('welcome');
 });
-
+Route::get('/logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect(\route('login'));
+});
 
 //Start Authorization
 Route::group(["middlerware" => "guest"],function (){

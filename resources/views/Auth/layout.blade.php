@@ -9,6 +9,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <script src="https://use.fontawesome.com/542408d0a0.js"></script>
     <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/toastr.css">
 
 </head>
 
@@ -24,6 +25,8 @@
 <script src="/js/admin.js"></script>
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! $validator->selector('#my-form')  !!}
+<script src="/js/toastr.js"></script>
+{!! Toastr::message() !!}
 </body>
 </html>
 
