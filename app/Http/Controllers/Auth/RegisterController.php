@@ -12,6 +12,7 @@ class RegisterController extends Controller
 {
     public function register()
     {
+
         $validator = JsValidator::make( [
             'name'=> 'required',
             'email' => 'required|email|unique:users',

@@ -15,7 +15,7 @@
 {{--                                <a href="#" class="btn btn-just-icon">--}}
 {{--                                    <i class="fa fa-twitter"></i>--}}
 {{--                                </a>--}}
-                                <a href="#" class="btn btn-just-icon">
+                                <a href="{{route("sign-in-google")}}" class="btn btn-just-icon">
                                     <i class="fa fa-google-plus"></i>
                                 </a>
                             </div>
@@ -24,7 +24,7 @@
                         <p class="help-block">Вводите свои данные:</p>
                         <div class="content">
                             <div class="form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Ваше имя">
+                                <input type="text" name="name" value="{{session()->pull("name")}}" class="form-control" placeholder="Ваше имя">
                             </div>
                             <div class="form-group text-left">
                                 <label for="role">Кто вы?</label>
@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control underline-input" placeholder="Почта">
+                                <input type="email" name="email" value="{{session()->pull("email")}}" class="form-control underline-input"  placeholder="Почта">
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" placeholder="Пароль..." class="form-control" />

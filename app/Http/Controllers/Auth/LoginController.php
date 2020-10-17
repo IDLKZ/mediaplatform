@@ -7,6 +7,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use MongoDB\Driver\Session;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 
@@ -54,7 +55,10 @@ class LoginController extends Controller
             return redirect(route('main'));
         }
         else{
-            Toastr::warning('Оставьте заявку','Уппс...');
+            $name = $user_verifaction->getName(); $email = $user_verifaction->getEmail();
+            \session()->put("name",$name);
+            \session()->put("email",$email);
+            Toastr::info('Давайте создадим Вам учетную запись!','Оставляем заявку!');
             return redirect(route("register"));
         }
 
