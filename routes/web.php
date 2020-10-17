@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\CourseController;
+use App\Http\Controllers\Teacher\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,9 @@ Route::group(["middleware"=>"auth"],function(){
     Route::group(['prefix' => 'teacher',"middleware"=>"teacher"], function (){
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource("/course",CourseController::class);
+        Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
+        Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
+        Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
     });
 //End TeacherBlade
 

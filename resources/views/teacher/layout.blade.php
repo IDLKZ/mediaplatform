@@ -17,7 +17,7 @@
 <body id="falcon" class="main_Wrapper">
 <div id="wrap" class="animsition">
     <!-- HEADER Content -->
-        @include('student.header')
+        @include('teacher.header')
     <!--/ HEADER Content  -->
     <div id="controls">
         @include('teacher.left_sidebar')

@@ -247,16 +247,16 @@
             </li>
             <li class="dropdown nav-profile">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="/images/profile-photo.jpg" alt="" class="0 size-30x30"> </a>
+                    <img src="{{\Illuminate\Support\Facades\Auth::user()->img}}" alt="Ava" class="0 size-30x30"> </a>
                 <ul class="dropdown-menu pull-right" role="menu">
                     <li>
                         <div class="user-info">
                             <div class="user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
-                            <div class="user-position online">Студент</div>
+                            <div class="user-position online">Спикер</div>
                         </div>
                     </li>
                     <li>
-                        <a href="{{route('userProfile')}}" role="button" tabindex="0">
+                        <a href="{{route('teacherProfile')}}" role="button" tabindex="0">
                             {{--                                <span class="label label-success pull-right">80%</span>--}}
                             <i class="fa fa-user"></i>Мой профиль</a>
                     </li>
@@ -266,7 +266,7 @@
                             <i class="fa fa-check"></i>Мои курсы</a>
                     </li>
                     <li>
-                        <a role="button" tabindex="0">
+                        <a href="{{route('teacherProfileSettings')}}" role="button" tabindex="0">
                             <i class="fa fa-cog"></i>Настройки</a>
                     </li>
                     <li class="divider"></li>
