@@ -56,6 +56,7 @@ class CourseController extends Controller
         $this->validate($request, [
             'title'=> 'required|max:255',
             'subtitle'=> 'required|max:500',
+            "description"=>"required",
             "requirement"=>"required|max:255",
             'img' => 'sometimes|image|max:2000',
         ]);
@@ -102,6 +103,7 @@ class CourseController extends Controller
             'title'=> 'required|max:255',
             'subtitle'=> 'required|max:500',
             "requirement"=>"required",
+            "description"=>"required",
             'img' => 'sometimes|image|max:10000',
         ]);
         $course = Course::where(["alias"=>$alias,"author_id"=>Auth::user()->id])->first();
@@ -132,6 +134,7 @@ class CourseController extends Controller
                 'title'=> 'required|max:255',
                 'subtitle'=> 'required|max:500',
                 "requirement"=>"required|max:255",
+                "description"=>"required",
                 'img' => 'sometimes|image|max:2000',
             ]);
             if(Course::updateData($request,$course)){

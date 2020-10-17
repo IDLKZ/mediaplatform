@@ -26,7 +26,7 @@ class CreateCoursesTable extends Migration
             $table->string("subtitle",500);
             $table->text("description");
             $table->json("advantage")->nullable();
-            $table->json("requirement")->nullable();
+            $table->text("requirement")->nullable();
             $table->boolean("status")->default(false);
             $table->string("alias");
             $table->timestamps();
