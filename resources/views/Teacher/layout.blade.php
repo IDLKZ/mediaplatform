@@ -315,8 +315,8 @@
     </div>
     <!--/ HEADER Content  -->
     <div id="controls">
-        @include('Admin.left_sidebar')
-        @include('Admin.right_sidebar')
+        @include('Teacher.left_sidebar')
+        @include('Teacher.right_sidebar')
     </div>
     <!-- CONTENT -->
     <section id="content">

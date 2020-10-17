@@ -1,6 +1,6 @@
-@extends('Admin.layout')
+@extends('Teacher.layout')
 @section('content')
     <!-- bradcome -->
-    <h1>Nobody is perfect, but TIMA!</h1>
+    <h1>Nobody is perfect, but TIMA for teacher!</h1>
 
 @endsection
