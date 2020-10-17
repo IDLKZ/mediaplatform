@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\Student\UserController;
 use App\Http\Controllers\Teacher\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -23,7 +24,7 @@ Route::get('/', function (){
 Route::get('/logout', function () {
     \Illuminate\Support\Facades\Auth::logout();
     return redirect(\route('login'));
-});
+})->name('logout');
 
 //Start Authorization
 Route::group(["middlerware" => "guest"],function (){
@@ -64,7 +65,8 @@ Route::group(['prefix' => 'teacher'], function (){
 
 
 //Start StudentBlade
-//Route::group(['prefix' => 'student'], function (){
-//    Route::get('/', [HomeController::class, 'index'])->name('main');
-//});
+Route::group(['prefix' => 'student'], function (){
+    Route::get('/', [UserController::class, 'index'])->name('user');
+    Route::get('/profile', [UserController::class, 'profile'])->name('userProfile');
+});
 //End StudentBlade

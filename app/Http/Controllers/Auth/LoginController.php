@@ -29,8 +29,21 @@ class LoginController extends Controller
         );
         $credentials = $request->only(['email', 'password']);
         if (Auth::attempt($credentials)) {
-            Toastr::success('Вход успешно выполнен','Добро пожаловать!');
-            return redirect(route('main'));
+            if (Auth::user()->role_id == 1) {
+                Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+                return redirect(route('main'));
+            }
+            if (Auth::user()->role_id == 2 && Auth::user()->status == 1) {
+                Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+                return redirect(route('home'));
+            }
+            if (Auth::user()->role_id == 3 && Auth::user()->status == 1) {
+                Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+                return redirect(route('user'));
+            } else {
+                Toastr::warning('Вы не зарегистрированы в системе или вас еще не одобрили!','Уппс...');
+                return redirect(route('login'));
+            }
         }
         else{
             Toastr::error('Неверные данные','Уппс...');
