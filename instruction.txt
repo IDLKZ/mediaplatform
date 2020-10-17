@@ -1,0 +1,5 @@
+php artisan migrate --path=/database/migrations/2020_10_17_034617_create_roles_table.php
+php artisan migrate
+php artisan db:seed --class=RoleSeeder
+php artisan db:seed --class=LanguageSeeder
+php artisan db:seed --class=UserSeeder
