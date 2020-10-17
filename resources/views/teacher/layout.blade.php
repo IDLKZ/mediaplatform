@@ -37,7 +37,9 @@
 <script src="/js/select2.min.js"></script>
 <script src="/js/myscript.js"></script>
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-{{--{!! $validator->selector('#my-form')  !!}--}}
+@if (isset($validator))
+    {!! $validator->selector('#my-form')  !!}
+@endif
 {!! Toastr::message() !!}
 </body>
 </html>

@@ -7,42 +7,56 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>НОВЫЙ</strong> ВИДЕОКУРС</h3>
+                        <strong>ИЗМЕНИТЬ</strong> ВИДЕОКУРС</h3>
                 </div>
+
                 <div class="boxs-body">
-                    <form id="my-form" action="{{route("course.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
+                    <form id="my-form" method="post" action="{{route('course.update',$course->alias)}}" enctype="multipart/form-data" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
+                        @method('DELETE')
+                        <input name="_method" type="hidden" value="PUT">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Наименование курса</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="Наименование курса" maxlength="255" data-parsley-trigger="change" required>
+                                <input name="title" type="text" class="form-control" placeholder="Наименование курса" maxlength="255" data-parsley-trigger="change" required value="{{$course->title}}">
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Подзаголовок курса</label>
                             <div class="col-sm-9">
-                                <input name="subtitle" type="text" class="form-control" placeholder="Подзаголовок курса" maxlength="500" data-parsley-trigger="change" required>
+                                <input name="subtitle" type="text" class="form-control" placeholder="Наименование курса" maxlength="500" data-parsley-trigger="change" required value="{{$course->subtitle}}">
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Описание курса</label>
                             <div class="col-sm-9">
-                                <textarea name="description" id="editor"></textarea>
+                                <textarea name="description" id="editor">
+                                    {!! $course->description !!}
+                                </textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Преимущества курса</label>
                             <div class="col-sm-9">
-                                <select name="advantage[]" multiple class="select2 form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;"></select>
+                                <select name="advantage[]" multiple class="select2 form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
+                                    @if (count($course->advantage))
+                                            @foreach($course->advantage as $advantage)
+                                                <option value="{{$advantage}}">
+                                                    {{$advantage}}
+                                                </option>
+                                            @endforeach
+                                    @endif
+
+                                </select>
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Требования</label>
                             <div class="col-sm-9">
-                                <input name="requirement" type="text" class="form-control" placeholder="Требования курса" maxlength="500" data-parsley-trigger="change" required>
+                                <input name="requirement" type="text" class="form-control" placeholder="Наименование курса" maxlength="500" data-parsley-trigger="change" required value="{{$course->requirement}}">
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
@@ -51,8 +65,8 @@
                             <div class="col-sm-9">
                                 <select name="language_id" class="form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     @foreach($languages as $language)
-                                <option value="{{$language->id}}">{{$language->title}}</option>
-                                        @endforeach
+                                        <option value="{{$language->id}}">{{$language->title}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -76,7 +90,7 @@
                             </div>
                         </div>
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Сохранить</button>
+                            <button type="submit" class="btn btn-raised btn-default">Изменить</button>
                         </div>
                     </form>
                 </div>

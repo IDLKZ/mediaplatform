@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Faker\Provider\Image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -35,18 +36,27 @@ class Course extends Model
     ];
 
     public static function saveData($request){
-        $user = new self();
+        $course = new self();
         $fill = $request->all();
         $teacher = Auth::user();
         $fill["status"] = $request->has("status") ? 1 : 0;
         $fill["author_id"] = $teacher->id;
         $fill["img"] = FileDownloader::saveFile("/upload/course/",$request,"img");
-        $user->fill($fill);
-        return $user->save();
+        $course->fill($fill);
+        return $course->save();
+    }
+    public static function updateData($request,$course){
+        $update = $request->all();
+        $update["img"] = FileDownloader::saveFile("/upload/course/",$request,"img",$course->img);
+        $course->update($update);
+        return $course->save();
     }
 
     public function author(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,"author_id","id");
+    }
+    public function language(){
+        return $this->belongsTo(Language::class,"language_id","id");
     }
 
 

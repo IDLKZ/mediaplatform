@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\FileDownloader;
 use App\Models\Language;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class CourseController extends Controller
@@ -19,7 +22,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where(["author_id"=>Auth::user()->id])->paginate(15);
+        $courses = Course::where(["author_id"=>Auth::user()->id])->paginate(8);
         return  view("teacher.course.index",compact("courses"));
 
     }
@@ -34,6 +37,7 @@ class CourseController extends Controller
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
             'subtitle'=> 'required|max:500',
+            "requirement"=>"required",
             'img' => 'sometimes|image|max:10000',
         ]);
         $languages = Language::all();
@@ -49,10 +53,11 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'title'=> 'required|max:255',
             'subtitle'=> 'required|max:500',
-            'img' => 'sometimes|image|max:10000',
+            "requirement"=>"required|max:255",
+            'img' => 'sometimes|image|max:2000',
         ]);
         if(Course::saveData($request)){
             Toastr::success('Курс был успешно создан','Успешно создан курс!');
@@ -71,9 +76,18 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($alias)
     {
-        //
+        $course = Course::where(["alias"=>$alias,"author_id"=>Auth::user()->id])->first();
+        if($course){
+            $course->load(["language","author"]);
+            return  view("teacher.course.show",compact("course"));
+        }
+        else{
+            Toastr::warning('Видеокурс не найден!','Упс!');
+            return  redirect()->back();
+        }
+
     }
 
     /**
@@ -82,9 +96,24 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($alias)
     {
-        //
+        $validator = JsValidator::make( [
+            'title'=> 'required|max:255',
+            'subtitle'=> 'required|max:500',
+            "requirement"=>"required",
+            'img' => 'sometimes|image|max:10000',
+        ]);
+        $course = Course::where(["alias"=>$alias,"author_id"=>Auth::user()->id])->first();
+        if($course){
+            $course->load(["language","author"]);
+            $languages = Language::all();
+            return  view("teacher.course.edit",compact("course","languages","validator"));
+        }
+        else{
+            Toastr::warning('Видеокурс не найден!','Упс!');
+            return  redirect()->back();
+        }
     }
 
     /**
@@ -94,9 +123,33 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $alias)
     {
-        //
+
+        $course = Course::where(["alias"=>$alias,"author_id"=>Auth::user()->id])->first();
+        if($course){
+            $this->validate($request, [
+                'title'=> 'required|max:255',
+                'subtitle'=> 'required|max:500',
+                "requirement"=>"required|max:255",
+                'img' => 'sometimes|image|max:2000',
+            ]);
+            if(Course::updateData($request,$course)){
+                Toastr::success('Курс был успешно изменен','Успешно изменен курс!');
+                return redirect()->back();
+            }
+            else{
+                Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
+                return redirect()->back();
+            }
+        }
+        else{
+            Toastr::warning('Видеокурс не найден!','Упс!');
+            return  redirect(route("course.index"));
+        }
+
+
+
     }
 
     /**
@@ -105,8 +158,19 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($alias)
     {
-        //
+        $course = Course::where(["alias"=>$alias,"author_id"=>Auth::user()->id])->first();
+        if($course){
+           Storage::delete($course->img);
+           $course->delete();
+            Toastr::success('Курс был успешно удален','Успешно удален курс!');
+            return redirect()->back();
+
+        }
+        else{
+            Toastr::warning('Видеокурс не найден!','Упс!');
+            return  redirect(route("course.index"));
+        }
     }
 }
