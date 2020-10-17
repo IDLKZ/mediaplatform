@@ -65,7 +65,15 @@ class LoginController extends Controller
         if($user){
             Auth::login($user,1);
             Toastr::success('Вход успешно выполнен','Добро пожаловать!');
-            return redirect(route('main'));
+            switch ($user->role_id){
+                case 1:
+                    return redirect(route('main'));
+                case 2:
+                    return redirect(route('home'));
+                case 3:
+                    return redirect(route('user'));
+            }
+
         }
         else{
             $name = $user_verifaction->getName(); $email = $user_verifaction->getEmail();

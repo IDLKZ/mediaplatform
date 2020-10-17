@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\Language;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class CourseController extends Controller
 {
@@ -24,7 +28,13 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view("Teacher.Course.create");
+        $validator = JsValidator::make( [
+            'title'=> 'required|max:255',
+            'subtitle'=> 'required|max:500',
+            'img' => 'sometimes|image|max:10000',
+        ]);
+        $languages = Language::all();
+        return view("Teacher.Course.create",compact("languages","validator"));
     }
 
     /**
@@ -35,7 +45,21 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = $this->validate($request, [
+            'title'=> 'required|max:255',
+            'subtitle'=> 'required|max:500',
+            'img' => 'sometimes|image|max:10000',
+        ]);
+        if(Course::saveData($request)){
+            Toastr::success('Курс был успешно создан','Успешно создан курс!');
+            return redirect()->back();
+        }
+        else{
+            Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
+            return redirect()->back();
+        }
+
     }
 
     /**

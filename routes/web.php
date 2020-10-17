@@ -44,29 +44,33 @@ Route::group(["middlerware" => "guest"],function (){
 
 //End Authorization
 
+Route::group(["middleware"=>"auth"],function(){
 
-//Start AdminBlade
-Route::group(['prefix' => 'admin'], function (){
-    Route::get('/', [MainController::class, 'index'])->name('main');
-});
+
+    //Start AdminBlade
+    Route::group(['prefix' => 'admin',"middleware"=>"admin"], function (){
+        Route::get('/', [MainController::class, 'index'])->name('main');
+    });
 //End AdminBlade
 
 
 
 
 //Start TeacherBlade
-Route::group(['prefix' => 'teacher'], function (){
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::resource("/course",CourseController::class);
-});
+    Route::group(['prefix' => 'teacher',"middleware"=>"teacher"], function (){
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::resource("/course",CourseController::class);
+    });
 //End TeacherBlade
 
 
 
 
 //Start StudentBlade
-Route::group(['prefix' => 'student'], function (){
-    Route::get('/', [UserController::class, 'index'])->name('user');
-    Route::get('/profile', [UserController::class, 'profile'])->name('userProfile');
-});
+    Route::group(['prefix' => 'student',"middleware"=>"student"], function (){
+        Route::get('/', [UserController::class, 'index'])->name('user');
+        Route::get('/profile', [UserController::class, 'profile'])->name('userProfile');
+    });
 //End StudentBlade
+});
+
