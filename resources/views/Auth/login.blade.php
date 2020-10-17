@@ -41,11 +41,11 @@
     <footer class="footer mt-20">
         <div class="container">
             <div class="col-lg-12 text-center">
-                <a href="signup.html" class="text-uppercase text-white">Create an account</a>
-                <div class="copyright text-white mt-20"> &copy; 2017, made with
-                    <i class="fa fa-heart heart"></i> by
-                    <a href="http://thememakker.com/" target="_blank">Theme Makker</a>
-                </div>
+{{--                <a href="signup.html" class="text-uppercase text-white">Create an account</a>--}}
+{{--                <div class="copyright text-white mt-20"> &copy; 2017, made with--}}
+{{--                    <i class="fa fa-heart heart"></i> by--}}
+{{--                    <a href="http://thememakker.com/" target="_blank">Theme Makker</a>--}}
+{{--                </div>--}}
             </div>
         </div>
     </footer>
