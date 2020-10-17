@@ -22,6 +22,8 @@
 <!--/ Application Content -->
 <!--  Vendor JavaScripts -->
 <script src="/js/admin.js"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! $validator->selector('#my-form')  !!}
 </body>
 </html>
 

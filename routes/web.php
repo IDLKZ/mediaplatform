@@ -21,8 +21,9 @@ Route::get('/', function (){
 
 
 //Start Authorization
-Route::group(["middlerware"=>"guest"],function (){
+Route::group(["middlerware" => "guest"],function (){
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    Route::post('/send-user-data', [RegisterController::class, 'store']);
     Route::get('/login', [LoginController::class,"login"])->name("login");
 });
 
@@ -35,3 +36,21 @@ Route::group(['prefix' => 'admin'], function (){
     Route::get('/', [MainController::class, 'index'])->name('main');
 });
 //End AdminBlade
+
+
+
+
+//Start TeacherBlade
+Route::group(['prefix' => 'teacher'], function (){
+    Route::get('/', [MainController::class, 'index'])->name('main');
+});
+//End TeacherBlade
+
+
+
+
+//Start StudentBlade
+//Route::group(['prefix' => 'student'], function (){
+//    Route::get('/', [MainController::class, 'index'])->name('main');
+//});
+//End StudentBlade
