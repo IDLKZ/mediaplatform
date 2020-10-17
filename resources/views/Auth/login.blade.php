@@ -4,39 +4,35 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
                 <div class="card card-signup">
-                    <form class="form">
+                    <form id="my-form" class="form" method="post" action="{{route("sign-in")}}">
+                        @csrf
                         <div class="header header-primary text-center">
-                            <h4>Sign in</h4>
+                            <h4>Вход в кабинет</h4>
                             <div class="social-line">
-                                <a href="javascript:void(0);" class="btn btn-just-icon">
-                                    <i class="fa fa-facebook-square"></i>
-                                </a>
-                                <a  href="javascript:void(0);" class="btn btn-just-icon">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="javascript:void(0);" class="btn btn-just-icon">
+                                <a href="{{route("sign-in-google")}}" class="btn btn-just-icon">
                                     <i class="fa fa-google-plus"></i>
                                 </a>
                             </div>
                         </div>
-                        <h3 class="mt-0">Falcon</h3>
-                        <p class="help-block">Or Be Classical</p>
+                        <h3 class="mt-0">Jastar Ortalygy</h3>
+                        <p class="help-block">Видеокурсы доступные всем</p>
                         <div class="content">
                             <div class="form-group">
-                                <input type="email" class="form-control underline-input" placeholder="Enter Your Email">
+                                <input name="email"  type="email" class="form-control underline-input" placeholder="Ваша почта">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password..." class="form-control underline-input">
+                                <input name="password" type="password" placeholder="Пароль..." class="form-control underline-input">
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="optionsCheckboxes"> Remember me</label>
+                                    <input type="checkbox" name="optionsCheckboxes"> Запомнить меня</label>
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a href="index.html" class="btn btn-info btn-raised">Login</a>
+                            <button type="submit" class="btn btn-info btn-raised">Вход</button>
                         </div>
-                        <a href="forgotpass.html" class="btn btn-wd">Forgot Password?</a>
+                        <a href="forgotpass.html" class="btn btn-wd">Забыли пароль?</a>
+                        <a href="{{route("register")}}" class="btn btn-wd">Зарегистрироваться</a>
                     </form>
                 </div>
             </div>

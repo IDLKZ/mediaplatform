@@ -25,6 +25,14 @@ Route::group(["middlerware" => "guest"],function (){
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
     Route::post('/send-user-data', [RegisterController::class, 'store']);
     Route::get('/login', [LoginController::class,"login"])->name("login");
+    Route::post('/sign-in', [LoginController::class,"signIn"])->name("sign-in");
+
+    //Google Login
+    Route::get('/sign-in-google', [LoginController::class,"googleLogin"])->name("sign-in-google");
+    Route::get('/google-callback', [LoginController::class,"googleCallback"])->name("callback-google");
+
+
+
 });
 
 
