@@ -8,7 +8,7 @@
                         <ul id="navigation">
 {{--                            Главная--}}
                             <li class="active open">
-                                <a href="index.html">
+                                <a href="{{route('user')}}">
                                     <i class="fa fa-dashboard"></i>
                                     <span>Главная</span>
                                 </a>

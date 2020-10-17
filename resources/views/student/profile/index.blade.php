@@ -10,7 +10,7 @@
                             <img src="/images/profile-photo.jpg" alt="">
                         </div>
                         <h4 class="mb-0"><strong>{{\Illuminate\Support\Facades\Auth::user()->name}}</strong></h4>
-                        <span class="text-muted">Ui UX Designer</span>
+                        <span class="text-muted">Студент</span>
                         <div class="mt-10">
                             <button class="btn btn-raised bg-blush btn-sm">Follow</button>
                             <button class="btn btn-raised bg-green btn-sm">Message</button>
@@ -40,25 +40,25 @@
                             <li>
                                 <a href="mail-inbox.html" class="">
                                     <i class="fa fa-inbox"></i>
-                                    <p>My Inbox</p>
+                                    <p>Почта</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="gallery.html" class="">
                                     <i class="fa fa-photo"></i>
-                                    <p>Gallery</p>
+                                    <p>Мои курсы</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-paperclip"></i>
-                                    <p>Collections</p>
+                                    <p>Мои файлы</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-tasks "></i>
-                                    <p>Tasks</p>
+                                    <p>Задание</p>
                                 </a>
                             </li>
                         </ul>
@@ -80,27 +80,10 @@
                             </a>
                             <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
                                 <li>
-                                    <a role="button" tabindex="0" class="boxs-toggle">
-                                                    <span class="minimize">
-                                                        <i class="fa fa-angle-down"></i>&nbsp;&nbsp;&nbsp;Minimize</span>
-                                        <span class="expand">
-                                                        <i class="fa fa-angle-up"></i>&nbsp;&nbsp;&nbsp;Expand</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a role="button" tabindex="0" class="boxs-refresh">
-                                        <i class="fa fa-refresh"></i> Refresh </a>
-                                </li>
-                                <li>
                                     <a role="button" tabindex="0" class="boxs-fullscreen">
-                                        <i class="fa fa-expand"></i> Fullscreen </a>
+                                        <i class="fa fa-expand"></i> Полный экран </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="remove">
-                            <a role="button" tabindex="0" class="boxs-close">
-                                <i class="fa fa-times"></i>
-                            </a>
                         </li>
                     </ul>
                 </div>

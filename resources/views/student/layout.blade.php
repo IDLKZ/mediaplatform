@@ -12,7 +12,6 @@
     <script src="https://use.fontawesome.com/542408d0a0.js"></script>
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/toastr.css">
-    <link rel="stylesheet" href="/css/select2.min.css">
 </head>
 <body id="falcon" class="main_Wrapper">
 <div id="wrap" class="animsition">
@@ -31,9 +30,8 @@
 
 <script src="js/admin.js"></script>
 <script src="/js/toastr.js"></script>
-<script src="/js/ckeditor.js"></script>
-<script src="/js/select2.min.js"></script>
-<script src="/js/myscript.js"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\UpdateProfile', '#my-form')  !!}
 {!! Toastr::message() !!}
 </body>
 </html>

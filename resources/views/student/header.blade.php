@@ -247,7 +247,7 @@
             </li>
             <li class="dropdown nav-profile">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="/images/profile-photo.jpg" alt="" class="0 size-30x30"> </a>
+                    <img src="{{\Illuminate\Support\Facades\Auth::user()->img}}" alt="Ava" class="0 size-30x30"> </a>
                 <ul class="dropdown-menu pull-right" role="menu">
                     <li>
                         <div class="user-info">
@@ -266,7 +266,7 @@
                             <i class="fa fa-check"></i>Мои курсы</a>
                     </li>
                     <li>
-                        <a role="button" tabindex="0">
+                        <a href="{{route('userProfileSettings')}}" role="button" tabindex="0">
                             <i class="fa fa-cog"></i>Настройки</a>
                     </li>
                     <li class="divider"></li>
