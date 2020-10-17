@@ -49,9 +49,9 @@ Route::group(['prefix' => 'admin'], function (){
 
 
 //Start TeacherBlade
-Route::group(['prefix' => 'teacher'], function (){
-    Route::get('/', [MainController::class, 'index'])->name('main');
-});
+//Route::group(['prefix' => 'teacher'], function (){
+//    Route::get('/', [MainController::class, 'index'])->name('main');
+//});
 //End TeacherBlade
 
 

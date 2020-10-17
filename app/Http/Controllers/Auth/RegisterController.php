@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use App\Models\User;
+use Brian2694\Toastr\Facades\Toastr;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class RegisterController extends Controller
     {
         $validator = JsValidator::make( [
             'name'=> 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6'
         ]);
         return view('Auth.register', compact('validator'));
@@ -23,7 +24,7 @@ class RegisterController extends Controller
     {
         $this->validate($request, [
             'name'=> 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6'
         ]);
         $role_id = $request->get('role') == 'teacher' ? 2 : 3;
@@ -34,8 +35,8 @@ class RegisterController extends Controller
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password'))
         ]);
-
-        return redirect(route('main'));
+        Toastr::success('Ваша заявка успешно принята!','Success');
+        return redirect('/');
 
     }
 
