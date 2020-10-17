@@ -20,7 +20,11 @@ Route::get('/', function (){
 
 
 //Start Authorization
-Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::group(["middlerware"=>"guest"],function (){
+    Route::get('/register', [LoginController::class, 'register'])->name('register');
+    Route::get('/login', [LoginController::class,"login"])->name("login");
+});
+
 
 //End Authorization
 
