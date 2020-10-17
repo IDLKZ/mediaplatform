@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -27,16 +28,19 @@ class LoginController extends Controller
         );
         $credentials = $request->only(['email', 'password']);
         if (Auth::attempt($credentials)) {
-            ;
+            Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+            return redirect(route('main'));
         }
         else{
-            dd("smth went wrong");
+            Toastr::error('Неверные данные','Уппс...');
+            return redirect()->back();
         }
 
     }
 
 
     public function googleLogin(){
+
 
         return Socialite::driver("google")->stateless()->redirect();
     }
@@ -46,14 +50,13 @@ class LoginController extends Controller
         $user = User::where(["email"=>$user_verifaction->getEmail()])->first();
         if($user){
             Auth::login($user,1);
-            dd(Auth::check());
+            Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+            return redirect(route('main'));
         }
         else{
+            Toastr::warning('Оставьте заявку','Уппс...');
             return redirect(route("register"));
         }
-
-
-
 
     }
 
