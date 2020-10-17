@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +18,15 @@ Route::get('/', function (){
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function (){
-    Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('main');
-});
 
+//Start Authorization
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+
+//End Authorization
+
+
+//Start AdminBlade
+Route::group(['prefix' => 'admin'], function (){
+    Route::get('/', [MainController::class, 'index'])->name('main');
+});
+//End AdminBlade
