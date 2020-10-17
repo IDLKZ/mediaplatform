@@ -43,7 +43,10 @@ class Course extends Model
         $fill["img"] = FileDownloader::saveFile("/upload/course/",$request,"img");
         $user->fill($fill);
         return $user->save();
+    }
 
+    public function author(){
+        return $this->belongsTo(User::class);
     }
 
 

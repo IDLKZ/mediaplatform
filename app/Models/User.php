@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+
+    //Adding foreign Tables
+    public function courses(){
+        return $this->hasMany(Course::class,"author_id","id");
+    }
+
+
 }

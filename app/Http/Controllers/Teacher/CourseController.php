@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Language;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class CourseController extends Controller
@@ -18,6 +19,8 @@ class CourseController extends Controller
      */
     public function index()
     {
+        $courses = Course::where(["author_id"=>Auth::user()->id])->paginate(15);
+        return  view("teacher.course.index",compact("courses"));
 
     }
 
@@ -34,7 +37,7 @@ class CourseController extends Controller
             'img' => 'sometimes|image|max:10000',
         ]);
         $languages = Language::all();
-        return view("Teacher.Course.create",compact("languages","validator"));
+        return view("teacher.course.create",compact("languages","validator"));
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('Teacher.layout')
+@extends('teacher.layout')
 @section('content')
     <!-- bradcome -->
     <div class="row">

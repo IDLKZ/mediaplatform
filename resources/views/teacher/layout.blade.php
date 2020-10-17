@@ -20,8 +20,8 @@
         @include('student.header')
     <!--/ HEADER Content  -->
     <div id="controls">
-        @include('Teacher.left_sidebar')
-        @include('Teacher.right_sidebar')
+        @include('teacher.left_sidebar')
+        @include('teacher.right_sidebar')
     </div>
     <!-- CONTENT -->
     <section id="content">

@@ -28,7 +28,7 @@
                                             <i class="fa fa-plus-circle"></i>Новый видеокурс</a>
                                     </li>
                                     <li>
-                                        <a href="ui-general.html">
+                                        <a href="{{route("course.index")}}">
                                             <i class="fa fa-angle-right"></i>Список видеокурсов</a>
                                     </li>
 
