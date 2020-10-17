@@ -252,7 +252,7 @@
                     <li>
                         <div class="user-info">
                             <div class="user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
-                            <div class="user-position online">Спикер</div>
+                            <div class="user-position online">Студент</div>
                         </div>
                     </li>
                     <li>
