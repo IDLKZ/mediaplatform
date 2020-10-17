@@ -5,6 +5,7 @@ use App\Http\Controllers\Teacher\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Teacher\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin'], function (){
 //Start TeacherBlade
 Route::group(['prefix' => 'teacher'], function (){
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::resource("/course",CourseController::class);
 });
 //End TeacherBlade
 

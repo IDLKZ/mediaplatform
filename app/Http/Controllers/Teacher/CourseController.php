@@ -14,7 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +24,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view("Teacher.Course.create");
     }
 
     /**

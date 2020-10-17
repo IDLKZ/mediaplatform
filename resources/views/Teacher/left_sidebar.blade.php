@@ -24,6 +24,10 @@
                                 </a>
                                 <ul>
                                     <li>
+                                        <a href="{{route("course.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новый видеокурс</a>
+                                    </li>
+                                    <li>
                                         <a href="ui-general.html">
                                             <i class="fa fa-angle-right"></i>Список видеокурсов</a>
                                     </li>
