@@ -64,15 +64,22 @@ class LoginController extends Controller
         $user = User::where(["email"=>$user_verifaction->getEmail()])->first();
         if($user){
             Auth::login($user,1);
-            Toastr::success('Вход успешно выполнен','Добро пожаловать!');
-            switch ($user->role_id){
-                case 1:
-                    return redirect(route('main'));
-                case 2:
-                    return redirect(route('home'));
-                case 3:
-                    return redirect(route('user'));
+            if ($user->role_id == 1) {
+                Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+                return redirect(route('main'));
             }
+            if ($user->role_id == 2 && $user->status == 1) {
+                Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+                return redirect(route('home'));
+            }
+            if ($user->role_id == 3 && $user->status == 1) {
+                Toastr::success('Вход успешно выполнен','Добро пожаловать!');
+                return redirect(route('user'));
+            } else {
+                Toastr::warning('Вы не зарегистрированы в системе или вас еще не одобрили!','Уппс...');
+                return redirect(route('login'));
+            }
+
 
         }
         else{
