@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+Route::get('/', function (){
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin'], function (){
+    Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('main');
+});
+
