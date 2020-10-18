@@ -1,4 +1,4 @@
-@extends('student.layout')
+@extends('teacher.layout')
 @section('content')
     <div class="page page-forms-common">
         <div class="row">

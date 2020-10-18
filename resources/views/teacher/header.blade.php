@@ -261,9 +261,9 @@
                             <i class="fa fa-user"></i>Мой профиль</a>
                     </li>
                     <li>
-                        <a role="button" tabindex="0">
-                            <span class="label label-info pull-right">0</span>
-                            <i class="fa fa-check"></i>Мои курсы</a>
+                        <a role="button" tabindex="0" href="{{route('teacherSubscribers')}}">
+                            <span class="label label-info pull-right">{{$subscribers}}</span>
+                            <i class="fa fa-check"></i>Заявки</a>
                     </li>
                     <li>
                         <a href="{{route('teacherProfileSettings')}}" role="button" tabindex="0">

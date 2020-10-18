@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscriber;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -33,6 +34,27 @@ class TeacherController extends Controller
         User::updateProfile($request);
         Toastr::success('Ваши личные данные обновлены!','Успешно!');
         return redirect()->back();
+    }
 
+    public function subscribers()
+    {
+        $subscribers = Subscriber::with('user')->orderBy('status', 'asc')->get();
+        return view('teacher.subscriber.index', compact('subscribers'));
+    }
+
+    public function accessSubscriber($id)
+    {
+        $subscribe = Subscriber::find($id);
+        $subscribe->status = true;
+        $subscribe->save();
+        Toastr::success('Вы приняли участника!','Успешно!');
+        return redirect()->back();
+    }
+
+    public function deleteSubscriber($id)
+    {
+        Subscriber::find($id)->delete();
+        Toastr::info('Успешно удален!','Success!');
+        return redirect()->back();
     }
 }

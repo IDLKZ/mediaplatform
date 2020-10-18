@@ -266,7 +266,12 @@
                             <i class="fa fa-check"></i>Мои курсы</a>
                     </li>
                     <li>
-                        <a href="{{route('teacherProfileSettings')}}" role="button" tabindex="0">
+                        <a role="button" tabindex="0">
+                            <span class="label label-warning pull-right">{{$subscribers}}</span>
+                            <i class="fa fa-question"></i>Мои запросы</a>
+                    </li>
+                    <li>
+                        <a href="{{route('userProfileSettings')}}" role="button" tabindex="0">
                             <i class="fa fa-cog"></i>Настройки</a>
                     </li>
                     <li class="divider"></li>

@@ -63,7 +63,9 @@ class User extends Authenticatable
     public static function updateProfile($data)
     {
         $user = User::find(Auth::user()->id);
-        $user->uploadImage($data->file('avatar', 'avatar'));
+        if ($data->hasFile('avatar')) {
+            $user->uploadImage($data->file('avatar', 'avatar'));
+        }
         $user->name = $data->get('name');
         $user->password = bcrypt($data->get('password'));
         $user->save();

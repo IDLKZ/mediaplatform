@@ -61,9 +61,17 @@ Route::group(["middleware"=>"auth"],function(){
     Route::group(['prefix' => 'teacher',"middleware"=>"teacher"], function (){
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource("/course",CourseController::class);
+        //Start Profile
         Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
         Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
         Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
+        //End Profile
+
+        //Start Subscribers
+        Route::get('/subscribers', [TeacherController::class, 'subscribers'])->name('teacherSubscribers');
+        Route::get('/access-subscriber/{id}', [TeacherController::class, 'accessSubscriber'])->name('accessSubscriber');
+        Route::post('/delete-subscriber/{id}', [TeacherController::class, 'deleteSubscriber'])->name('deleteSubscriber');
+        //End Subscribers
     });
 //End TeacherBlade
 
@@ -73,9 +81,16 @@ Route::group(["middleware"=>"auth"],function(){
 //Start StudentBlade
     Route::group(['prefix' => 'student',"middleware"=>"student"], function (){
         Route::get('/', [UserController::class, 'index'])->name('user');
+        //Start Profile
         Route::get('/profile', [UserController::class, 'profile'])->name('userProfile');
         Route::get('/profile-settings', [UserController::class, 'settings'])->name('userProfileSettings');
         Route::post('/update-profile-settings', [UserController::class, 'updateSetting'])->name('userProfileSettingsUpdate');
+        //End Profile
+
+        //Start SendSubscribe
+        Route::get('/send-subscribe/{alias}', [UserController::class, 'subscribe'])->name('sendSubscribe');
+        //End SendSubscribe
+
     });
 //End StudentBlade
 });
