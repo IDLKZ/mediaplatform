@@ -266,7 +266,7 @@
                             <i class="fa fa-check"></i>Мои курсы</a>
                     </li>
                     <li>
-                        <a role="button" tabindex="0">
+                        <a role="button" tabindex="0" href="{{route('userRequests')}}">
                             <span class="label label-warning pull-right">{{$subscribers}}</span>
                             <i class="fa fa-question"></i>Мои запросы</a>
                     </li>

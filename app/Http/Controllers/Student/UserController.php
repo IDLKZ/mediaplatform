@@ -71,4 +71,17 @@ class UserController extends Controller
         }
         return view('student.course.single-course', compact('course', 'link'));
     }
+
+    public function requestSubscribe()
+    {
+        $subscribers = Subscriber::with(['author', 'course'])->where('status', false)->get();
+        return view('student.subscribe.index', compact('subscribers'));
+    }
+
+    public function cancelRequest($id)
+    {
+        Subscriber::find($id)->delete();
+        Toastr::info('Успешно отменен!','Success!');
+        return redirect()->back();
+    }
 }

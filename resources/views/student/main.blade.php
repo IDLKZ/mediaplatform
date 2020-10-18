@@ -32,7 +32,7 @@
                             </div>
                             <div class="pw_content">
                                 <div class="pw_header">
-                                    <h6><a href="{{route('singleCourse', $course->alias)}}">{{$course->title}}</a></h6>
+                                    <h6><a href="{{route('userSingleCourse', $course->alias)}}">{{$course->title}}</a></h6>
                                     <small class="text-muted">{{$course->author->name}}  |  Последнее обновление: {{\Illuminate\Support\Carbon::parse($course->updated_at)->diffForHumans()}}</small>
                                 </div>
                                 <div class="pw_meta">

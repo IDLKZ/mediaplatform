@@ -93,7 +93,9 @@ Route::group(["middleware"=>"auth"],function(){
         //End SendSubscribe
 
         //Start Courses
-        Route::get('/single-course/{alias}', [UserController::class, 'singleCourse'])->name('singleCourse');
+        Route::get('/single-course/{alias}', [UserController::class, 'singleCourse'])->name('userSingleCourse');
+        Route::get('/my-requests', [UserController::class, 'requestSubscribe'])->name('userRequests');
+        Route::post('/cancel-my-request/{id}', [UserController::class, 'cancelRequest'])->name('userCancelRequest');
         //End Courses
     });
 //End StudentBlade
