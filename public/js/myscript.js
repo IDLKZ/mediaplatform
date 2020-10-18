@@ -15,4 +15,6 @@ $(document).ready(function () {
             }
         },
     });
+
+    $(".dropzoneVideo").dropzone({ url: "/file/post" });
 })

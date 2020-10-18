@@ -36,6 +36,27 @@
                             </li>
 
 {{--                            Видеокурсы--}}
+                            {{--                            Видео--}}
+
+                            <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-film "></i>
+                                    <span>Видео</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route("video.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новое видео</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("video.index")}}">
+                                            <i class="fa fa-angle-right"></i>Список видео</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            {{--                            Видео--}}
 
 
 

@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\CourseController;
 use App\Http\Controllers\Teacher\TeacherController;
-
+use \App\Http\Controllers\Teacher\VideoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +61,7 @@ Route::group(["middleware"=>"auth"],function(){
     Route::group(['prefix' => 'teacher',"middleware"=>"teacher"], function (){
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource("/course",CourseController::class);
+        Route::resource("/video",VideoController::class);
         //Start Profile
         Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
         Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');

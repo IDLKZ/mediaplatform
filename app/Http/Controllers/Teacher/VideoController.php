@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
@@ -24,7 +26,8 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        $courses = Course::where(["author_id"=>Auth::user()->id])->get();
+        return  view("teacher.video.create",compact("courses"));
     }
 
     /**
