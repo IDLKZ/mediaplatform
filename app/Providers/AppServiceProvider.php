@@ -31,5 +31,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('student.header', function($view){
             $view->with('subscribers', Subscriber::where(['user_id' => Auth::id(), 'status' => false])->count());
         });
+        view()->composer('student.header', function($view){
+            $view->with('courses', Subscriber::where(['user_id' => Auth::id(), 'status' => true])->count());
+        });
     }
 }

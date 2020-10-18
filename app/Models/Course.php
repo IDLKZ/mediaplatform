@@ -35,6 +35,7 @@ class Course extends Model
         "status"=>"integer"
     ];
 
+
     public static function saveData($request){
         $course = new self();
         $fill = $request->all();
@@ -47,6 +48,7 @@ class Course extends Model
     }
     public static function updateData($request,$course){
         $update = $request->all();
+        $update["status"] = $request->has("status") ? 1 : 0;
         $update["img"] = FileDownloader::saveFile("/upload/course/",$request,"img",$course->img);
         $course->update($update);
         return $course->save();

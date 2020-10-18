@@ -62,7 +62,7 @@ class CourseController extends Controller
         ]);
         if(Course::saveData($request)){
             Toastr::success('Курс был успешно создан','Успешно создан курс!');
-            return redirect()->back();
+            return redirect(route('course.index'));
         }
         else{
             Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
@@ -139,7 +139,7 @@ class CourseController extends Controller
             ]);
             if(Course::updateData($request,$course)){
                 Toastr::success('Курс был успешно изменен','Успешно изменен курс!');
-                return redirect()->back();
+                return redirect(route('course.index'));
             }
             else{
                 Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');

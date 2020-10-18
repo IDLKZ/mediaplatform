@@ -262,7 +262,7 @@
                     </li>
                     <li>
                         <a role="button" tabindex="0">
-                            <span class="label label-info pull-right">0</span>
+                            <span class="label label-info pull-right">{{$courses}}</span>
                             <i class="fa fa-check"></i>Мои курсы</a>
                     </li>
                     <li>

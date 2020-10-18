@@ -92,6 +92,9 @@ Route::group(["middleware"=>"auth"],function(){
         Route::get('/send-subscribe/{alias}', [UserController::class, 'subscribe'])->name('sendSubscribe');
         //End SendSubscribe
 
+        //Start Courses
+        Route::get('/single-course/{alias}', [UserController::class, 'singleCourse'])->name('singleCourse');
+        //End Courses
     });
 //End StudentBlade
 });

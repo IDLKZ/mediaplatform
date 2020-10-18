@@ -55,4 +55,20 @@ class UserController extends Controller
         Toastr::success('Ваша заявка отправлена!','Успешно!');
         return redirect()->back();
     }
+
+    public function singleCourse($alias)
+    {
+        $course = Course::with('author')->where('alias', $alias)->first();
+        $subscribe = Subscriber::where(['course_id' => $course->id, 'user_id' => Auth::id()])->first();
+        if ($subscribe) {
+            $link['link'] = $subscribe->status ? 'javascript:void(0)' : route('sendSubscribe', $course->alias);
+            $link['color'] = $subscribe->status ? 'success' : 'info';
+            $link['text'] = $subscribe->status ? 'Подписан' : 'Подписаться';
+        } else {
+            $link['link'] = route('sendSubscribe', $course->alias);
+            $link['color'] = 'info';
+            $link['text'] = 'Подписаться';
+        }
+        return view('student.course.single-course', compact('course', 'link'));
+    }
 }
