@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="/css/jquery.mn-file.css">
+    @yield('css')
 </head>
 <body id="falcon" class="main_Wrapper">
 <div id="wrap" class="animsition">
@@ -33,6 +34,7 @@
 <script src="js/admin.js"></script>
 <script src="/js/toastr.js"></script>
 <script src="/js/jquery.mn-file.js"></script>
+@yield('js')
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\UpdateProfile', '#my-form')  !!}
 {!! Toastr::message() !!}
@@ -48,6 +50,7 @@
         previewSupportedExt : ['png', 'jpeg', 'jpg', 'gif']
     });
 </script>
+
 </body>
 </html>
 
