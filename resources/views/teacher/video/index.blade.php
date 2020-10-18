@@ -30,19 +30,33 @@
                                         <span class="label label-{{$video->available ? 'success' : 'warning'}} label-pill">{{$video->available ? 'Превью' : 'Не превью'}}</span>
                                     </td>
                                     <td colspan="2">
-                                        <a href="{{route("video.show",$video->alias)}}" class="mr-2 ml-2 btn btn btn-raised btn-info btn-sm">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a  href="{{route("video.edit",$video->alias)}}" class="mr-2 ml-2 btn btn-raised btn-warning btn-sm">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <form  method="post" action="{{route('video.destroy',$video->alias)}}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button onclick="return confirm('Вы уверены')"  href="index.html" class="mr-2 ml-2 btn btn-raised btn-danger btn-sm">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </form>
+                                        <div class="dropdown">
+                                            <a href="#" class="btn btn-simple dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <div class="ripple-container"></div></a>
+                                            <ul class="dropdown-menu pull-right">
+
+                                                    <li>
+                                                        <a href="{{route("video.show",$video->alias)}}">
+                                                            Просмотреть
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a  href="{{route("video.edit",$video->alias)}}">
+                                                            Редактировать
+                                                        </a>
+                                                    </li>
+
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <form action="{{route('video.destroy',$video->alias)}}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">Удалить</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </td>
                                     </tr>
                                 @endforeach
