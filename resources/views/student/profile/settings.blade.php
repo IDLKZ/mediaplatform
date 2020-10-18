@@ -37,13 +37,11 @@
                             </div>
                             <div class="form-group is-empty">
                                 <label class="col-sm-2 control-label">Аватар</label>
-                                <div class="col-sm-10">
-                                <span class="btn btn-raised btn-success fileinput-button">
-												<i class="glyphicon glyphicon-plus"></i>
-												<span>Аватар</span>
-												<input type="file" name="avatar" >
-								</span>
+                                <div class="customFile">
+                                    <span class="selectedFile">No file selected</span>
+                                    <input type="file" name="avatar">
                                 </div>
+                                <img style="margin-left: 40px; margin-top: 10px;" class="preview" src="{{\Illuminate\Support\Facades\Auth::user()->img}}" width="150" height="150"/>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
