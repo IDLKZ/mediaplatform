@@ -60,6 +60,10 @@ class User extends Authenticatable
         return $this->hasMany(Course::class,"author_id","id");
     }
 
+    public function videos(){
+        return $this->hasManyThrough(Course::class,Video::class,"author_id","course_id");
+    }
+
     public static function updateProfile($data)
     {
         $user = User::find(Auth::user()->id);

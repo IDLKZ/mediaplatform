@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="/css/select2.min.css">
-    <link rel="stylesheet" href="/css/dropzone.min.css">
+
 
 
 </head>
@@ -38,7 +38,7 @@
 <script src="/js/toastr.js"></script>
 <script src="/js/ckeditor.js"></script>
 <script src="/js/select2.min.js"></script>
-<script src="/js/dropzone.min.js"></script>
+
 <script src="/js/myscript.js"></script>
 
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>

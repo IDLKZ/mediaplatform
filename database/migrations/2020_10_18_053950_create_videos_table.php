@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->foreignId("course_id");
             $table->foreign("course_id")->references("id")->on("courses")->cascadeOnDelete();
             $table->integer("available")->default(0);
+            $table->string("video_url");
             $table->integer("count");
             $table->string("title");
             $table->text('description')->nullable();

@@ -36,6 +36,10 @@ class Course extends Model
     ];
 
 
+
+
+
+
     public static function saveData($request){
         $course = new self();
         $fill = $request->all();
@@ -61,6 +65,9 @@ class Course extends Model
         return $this->belongsTo(Language::class,"language_id","id");
     }
 
+    public function videos(){
+        return $this->hasMany(Video::class,"course_id","id");
+    }
 
 
 
