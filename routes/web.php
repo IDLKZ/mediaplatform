@@ -77,7 +77,7 @@ Route::group(["middleware"=>"auth"],function(){
 //End TeacherBlade
 
 
-
+Route::get("/getvideo/{id}",[VideoController::class,"watch"])->name("watch");
 
 //Start StudentBlade
     Route::group(['prefix' => 'student',"middleware"=>"student"], function (){

@@ -51,6 +51,22 @@ class Video extends Model
         $video->fill($fill);
         return($video->save());
     }
+    public static function updateData($request,$video){
+        $fill = $request->all();
+        $fill["available"] = $request->has("available") ? 1 :0;
+        if($request->hasFile("video_url")){
+            $file = $request->file("video_url");
+            if(Storage::disk("videos")->exists($video->video_url)){
+                Storage::disk("videos")->delete($video->video_url);
+            }
+            $name = Str::random(10) . "." . $file->getClientOriginalExtension();
+            Storage::disk("videos")->putFileAs("/upload/videos/", $file,$name);
+            $fill["video_url"] = "/upload/videos/".$name;
+        }
+
+        $video->update($fill);
+        return($video->save());
+    }
 
 
 

@@ -96,6 +96,22 @@
                     </div>
                 </div>
             </section>
+            <section class="boxs">
+                <div class="boxs-header">
+                    <h3 class="custom-font hb-blush">
+                        <strong>Видеокурсы</strong> </h3>
+
+                </div>
+                <div class="boxs-body">
+                    <ul class="tabs-menu">
+                        @foreach($course->videos as $video)
+                        <li class="{{$loop->index%2 == 0 ? "active" : ""}}">
+                            <a href="#">{{$video->count.".".$video->title}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </section>
 
         </div>
 

@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
 
     public function videos(){
-        return $this->hasManyThrough(Course::class,Video::class,"author_id","course_id");
+        return $this->hasManyThrough(Video::class,Course::class,"author_id","course_id","id");
     }
 
     public static function updateProfile($data)
