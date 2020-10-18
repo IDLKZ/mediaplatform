@@ -55,6 +55,23 @@
 
                                 </ul>
                             </li>
+                            <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-book"></i>
+                                    <span>Материалы</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route("material.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новый материал</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("material.index")}}">
+                                            <i class="fa fa-angle-right"></i>Список Материалов</a>
+                                    </li>
+
+                                </ul>
+                            </li>
 
                             {{--                            Видео--}}
 

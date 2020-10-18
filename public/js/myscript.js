@@ -15,6 +15,13 @@ $(document).ready(function () {
             }
         },
     });
+    $(".select-multi").select2({
+        "language": {
+            "noResults": function(){
+                return "Введите преиущество и нажмите Enter";
+            }
+        },
+    });
 
 
 })

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\CourseController;
 use App\Http\Controllers\Teacher\TeacherController;
 use \App\Http\Controllers\Teacher\VideoController;
+use \App\Http\Controllers\Teacher\MaterialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +63,7 @@ Route::group(["middleware"=>"auth"],function(){
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource("/course",CourseController::class);
         Route::resource("/video",VideoController::class);
+        Route::resource("/material",MaterialController::class);
         //Start Profile
         Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
         Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
@@ -72,12 +74,14 @@ Route::group(["middleware"=>"auth"],function(){
         Route::get('/subscribers', [TeacherController::class, 'subscribers'])->name('teacherSubscribers');
         Route::get('/access-subscriber/{id}', [TeacherController::class, 'accessSubscriber'])->name('accessSubscriber');
         Route::post('/delete-subscriber/{id}', [TeacherController::class, 'deleteSubscriber'])->name('deleteSubscriber');
+
         //End Subscribers
     });
 //End TeacherBlade
 
 
 Route::get("/getvideo/{id}",[VideoController::class,"watch"])->name("watch");
+Route::get("/getdocument/{id}",[MaterialController::class,"download"])->name("material");
 
 //Start StudentBlade
     Route::group(['prefix' => 'student',"middleware"=>"student"], function (){

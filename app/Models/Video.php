@@ -38,6 +38,10 @@ class Video extends Model
         return $this->belongsTo(Course::class,"course_id","id");
     }
 
+    public function materials(){
+        return $this->hasMany(Materials::class,"video_id","id");
+    }
+
 
 
     public static function saveData($request){

@@ -44,6 +44,30 @@
                                         </div>
                                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
                                             <div class="panel-body">
+                                                <ul class="media-list feeds_widget m-0">
+                                                    @foreach($video->materials as $material)
+                                                    <li class="media">
+                                                        <div class="media-img">
+                                                           <i class="fa fa-info-circle"></i>
+                                                            @if ($material->file)
+                                                                <a href="{{route("material",$material->id)}}" download><i class="fa fa-download"></i></a>
+                                                            @endif
+
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="media-heading">{{$material->title}} <small class="pull-right text-muted">{{$material->type}}</small></div>
+                                                           @if ($material->links)
+                                                                @foreach($material->links as $link)
+                                                                    <a href="{{$link}}" target="_blank">Ссылка</a>
+                                                                @endforeach
+                                                           @endif
+
+                                                        </div>
+                                                    </li>
+                                                    @endforeach
+
+
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>

@@ -59,10 +59,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Course::class,"author_id","id");
     }
+    public function materials()
+    {
+        return $this->hasMany(Materials::class,"author_id","id");
+    }
+
 
     public function videos(){
         return $this->hasManyThrough(Video::class,Course::class,"author_id","course_id","id");
     }
+
 
     public static function updateProfile($data)
     {

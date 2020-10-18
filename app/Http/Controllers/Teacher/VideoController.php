@@ -81,7 +81,7 @@ class VideoController extends Controller
         $video = Video::where("alias",$alias)->first();
         $file = File::get(storage_path("videos/".$video->video_url));
         if($video){
-            $video->load(["course"]);
+            $video->load(["course","materials"]);
 
             return  view("teacher.video.show",compact("video","file"));
         }
@@ -187,7 +187,6 @@ class VideoController extends Controller
                 'Content-Disposition' => 'inline; filename="index.php'
             ]);
             return \response( file_get_contents($filename), 200,)->header( 'Content-type', 'video/mp4',);
-
 
     }
 }

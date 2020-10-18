@@ -12,9 +12,8 @@
 
                 <div class="boxs-body">
                     <form id="my-form" method="post" action="{{route('course.update',$course->alias)}}" enctype="multipart/form-data" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
-                        @csrf
-                        @method('DELETE')
-                        <input name="_method" type="hidden" value="PUT">
+                        <input type="hidden" name="_method" value="PUT">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Наименование курса</label>
                             <div class="col-sm-9">

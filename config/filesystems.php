@@ -51,6 +51,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('videos'),
         ],
+        'materials' => [
+            'driver' => 'local',
+            'root' => storage_path('materials'),
+        ],
 
 
         'public' => [
