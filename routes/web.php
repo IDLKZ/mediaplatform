@@ -10,6 +10,10 @@ use App\Http\Controllers\Teacher\CourseController;
 use App\Http\Controllers\Teacher\TeacherController;
 use \App\Http\Controllers\Teacher\VideoController;
 use \App\Http\Controllers\Teacher\MaterialController;
+use App\Http\Controllers\Teacher\QuizController;
+use App\Http\Controllers\Teacher\QuestionController;
+use App\Http\Controllers\Teacher\ReviewController;
+use App\Http\Controllers\Teacher\ReviewQuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +25,7 @@ use \App\Http\Controllers\Teacher\MaterialController;
 |
 */
 Route::get('/', function (){
-    return view('welcome');
+    return redirect("login");
 });
 Route::get('/logout', function () {
     \Illuminate\Support\Facades\Auth::logout();
@@ -64,6 +68,10 @@ Route::group(["middleware"=>"auth"],function(){
         Route::resource("/course",CourseController::class);
         Route::resource("/video",VideoController::class);
         Route::resource("/material",MaterialController::class);
+        Route::resource("/quiz",QuizController::class);
+        Route::resource("/question",QuestionController::class);
+        Route::resource("/review",ReviewController::class);
+        Route::resource("/review-question",ReviewQuestionController::class);
         //Start Profile
         Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
         Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');

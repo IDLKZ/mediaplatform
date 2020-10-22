@@ -14,7 +14,7 @@
                                 </a>
                             </div>
                         </div>
-                        <h3 class="mt-0">Jastar Ortalygy</h3>
+                        <h3 class="mt-0">JasQalam</h3>
                         <p class="help-block">Видеокурсы доступные всем</p>
                         <div class="content">
                             <div class="form-group">

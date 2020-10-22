@@ -63,7 +63,7 @@ class MaterialController extends Controller
             return redirect()->back();
         }
         else{
-            Toastr::success("Кажись, что-то пошло не так","Упс...");
+            Toastr::warning("Кажись, что-то пошло не так","Упс...");
             return redirect()->back();
         }
     }
@@ -129,7 +129,7 @@ class MaterialController extends Controller
                 return redirect()->back();
             }
             else{
-                Toastr::success("Кажись, что-то пошло не так","Упс...");
+                Toastr::warning("Кажись, что-то пошло не так","Упс...");
                 return redirect()->back();
             }
         }
