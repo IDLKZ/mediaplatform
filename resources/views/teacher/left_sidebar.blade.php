@@ -73,6 +73,49 @@
                                 </ul>
                             </li>
 
+                            <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-question"></i>
+                                    <span>База тестов</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route("quiz.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новый Тест</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("quiz.index")}}">
+                                            <i class="fa fa-angle-right"></i>Список Тестов</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("question.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новый Вопрос</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("question.index")}}">
+                                            <i class="fa fa-angle-right"></i>Список Вопросов</a>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <a href="{{route("review.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новый Опрос</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("review.index")}}">
+                                            <i class="fa fa-angle-right"></i>Список Опросов</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("review-question.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новый Вопрос</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("review-question.index")}}">
+                                            <i class="fa fa-angle-right"></i>Список Вопросов</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
                             {{--                            Видео--}}
 
 
