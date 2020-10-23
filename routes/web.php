@@ -30,7 +30,7 @@ Route::get('/clear-cache', function () {
     return 'DONE';
 });
 Route::get('/', function (){
-    return redirect("login");
+    abort(404);
 });
 Route::get('/logout', function () {
     \Illuminate\Support\Facades\Auth::logout();
