@@ -5,6 +5,7 @@ use App\Http\Controllers\Student\UserController;
 use App\Http\Controllers\Teacher\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\CourseController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -24,6 +25,10 @@ use App\Http\Controllers\Teacher\ReviewQuestionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/clear-cache', function () {
+    $exitCode = Artisan::call('cache:clear');
+    return 'DONE';
+});
 Route::get('/', function (){
     return redirect("login");
 });
