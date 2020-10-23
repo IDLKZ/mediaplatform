@@ -65,11 +65,17 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Видео курса</label>
                             <div class="col-sm-9">
-                                <span class="btn btn-raised btn-success fileinput-button">
+                                <span class="btn btn-raised btn-success">
 												<i class="glyphicon glyphicon-plus"></i>
 												<span>Видео</span>
-												<input type="file" name="video_url" >
+												<input type="file" name="video_url" id="uploadVideoFile" accept="video/*">
 								</span>
+                                <div id="videoSourceWrapper">
+                                    <video style="width: 100%;" controls>
+                                        <source id="videoSource"/>
+                                    </video>
+                                    <div id="uploadVideoProgressBar" style="height: 5px; width: 1%; background: #2781e9; margin-top: -5px;"></div>
+                                </div>
                             </div>
                         </div>
 
