@@ -35,7 +35,17 @@ class Course extends Model
         "status"=>"integer"
     ];
 
-
+    //1.Ссылки на таблицы бд
+    public function author(){
+        return $this->belongsTo(User::class,"author_id","id");
+    }
+    public function language(){
+        return $this->belongsTo(Language::class,"language_id","id");
+    }
+    //2. Есть в видео
+    public function videos(){
+        return $this->hasMany(Video::class,"course_id","id");
+    }
 
 
 
@@ -58,16 +68,6 @@ class Course extends Model
         return $course->save();
     }
 
-    public function author(){
-        return $this->belongsTo(User::class,"author_id","id");
-    }
-    public function language(){
-        return $this->belongsTo(Language::class,"language_id","id");
-    }
-
-    public function videos(){
-        return $this->hasMany(Video::class,"course_id","id");
-    }
 
 
 

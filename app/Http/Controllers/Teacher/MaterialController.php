@@ -21,7 +21,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::id());
+        $user = Auth::user();
         $materials = $user->materials;
         return  view("teacher.material.index",compact("materials"));
     }
