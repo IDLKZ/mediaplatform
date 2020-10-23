@@ -147,7 +147,7 @@ class ReviewQuestionController extends Controller
         if($review_question){
             $review_question->delete();
                 Toastr::success("Успешно удален вопрос","Отлично!");
-                return redirect("review-question.index");
+                return redirect()->back();
 
 
         }

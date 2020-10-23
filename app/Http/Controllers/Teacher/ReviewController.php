@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use App\Models\Review;
+use App\Models\ReviewQuestion;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,7 +69,14 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        //
+        $review_questions = ReviewQuestion::where("review_id",$id)->get();
+        if(count($review_questions)){
+            return view("teacher.review.show",compact("review_questions"));
+        }
+        else{
+            Toastr::warning("Вопрос не найден","Упс...");
+            return redirect()->back();
+        }
     }
 
     /**
