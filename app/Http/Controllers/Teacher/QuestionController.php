@@ -25,7 +25,7 @@ class QuestionController extends Controller
         }
         else{
             Toastr::warning("Вопросы не найдены","Упс...");
-            return  redirect("question.index");
+            return  redirect(route("question.index"));
         }
 
     }
@@ -53,7 +53,7 @@ class QuestionController extends Controller
         }
         else{
             Toastr::warning("Сначала создайте тест","Упс....");
-            return  redirect("question.index");
+            return  redirect(route("question.index"));
         }
 
     }
@@ -77,11 +77,11 @@ class QuestionController extends Controller
         ]);
         if(Question::saveData($request->all())){
             Toastr::success("Успешно создан вопрос","Отлично!");
-            return redirect("question.index");
+            return redirect(route("question.index"));
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
-            return redirect("question.index");
+            return redirect(route("question.index"));
         }
     }
 
@@ -101,7 +101,7 @@ class QuestionController extends Controller
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
-            return  redirect("question.index");
+            return  redirect(route("question.index"));
         }
     }
 
@@ -129,7 +129,7 @@ class QuestionController extends Controller
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
-            return  redirect("question.index");
+            return  redirect(route("question.index"));
         }
     }
 
@@ -156,17 +156,17 @@ class QuestionController extends Controller
             ]);
             if(Question::updateData($request->all(),$question)){
                 Toastr::success("Успешно обновлен вопрос","Отлично!");
-                return redirect("question.index");
+                return redirect(route("question.index"));
             }
             else{
                 Toastr::warning("Что-то пошло не так","Упс...");
-                return redirect("question.index");
+                return redirect(route("question.index"));
             }
 
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
-            return  redirect("question.index");
+            return  redirect(route("question.index"));
         }
 
     }
@@ -183,11 +183,11 @@ class QuestionController extends Controller
         if($question){
             $question->delete();
             Toastr::success("Успешно удален вопрос","Отлично");
-            return  redirect("question.index");
+            return  redirect(route("question.index"));
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
-            return  redirect("question.index");
+            return  redirect(route("question.index"));
         }
     }
 }

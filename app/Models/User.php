@@ -54,7 +54,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //Adding foreign Tables
+    //Adding foreign Tables and Relations
+    //#1 Видеокурсы, Материалы, Опросы, Тесты
     public function courses()
     {
         return $this->hasMany(Course::class,"author_id","id");
@@ -63,7 +64,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Materials::class,"author_id","id");
     }
-
+    public function reviews(){
+        return $this->hasMany(Review::class,"author_id","id");
+    }
+    public function quiz(){
+        return $this->hasMany(Quiz::class, "author_id","id");
+    }
+    //#1 Через многие видео, вопросы к тестам, вопросы к опросам
     public function videos(){
         return $this->hasManyThrough(Video::class,Course::class,"author_id","course_id","id");
     }
@@ -74,13 +81,9 @@ class User extends Authenticatable
         return $this->hasManyThrough(ReviewQuestion::class,Review::class,"author_id","review_id","id");
     }
 
-    public function quiz(){
-        return $this->hasMany(Quiz::class, "author_id","id");
-    }
 
-    public function reviews(){
-        return $this->hasMany(Review::class,"author_id","id");
-    }
+
+
 
 
     public static function updateProfile($data)

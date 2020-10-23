@@ -33,11 +33,11 @@ class Video extends Model
 
     protected $fillable = ["course_id","available","first","count","video_url","title","description","alias"];
 
-
+    //1.Родительский элемент
     public function course(){
         return $this->belongsTo(Course::class,"course_id","id");
     }
-
+    //2.Дочерний элемент
     public function materials(){
         return $this->hasMany(Materials::class,"video_id","id");
     }

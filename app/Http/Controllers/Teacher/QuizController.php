@@ -66,7 +66,7 @@ class QuizController extends Controller
     public function show($id)
     {
 
-        $quiz = Quiz::find($id);
+        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
 
         if($quiz){
             $quiz = $quiz->load("questions");
@@ -86,7 +86,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        $quiz = Quiz::find($id);
+        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
         if($quiz){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
@@ -111,7 +111,7 @@ class QuizController extends Controller
         $this->validate($request, [
             'title'=> 'required|max:255',
         ]);
-        $quiz = Quiz::find($id);
+        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
         if($quiz){
             if(Quiz::updateData($request->all(),$quiz)){
                 Toastr::success("Успешно обновлен тест","Отлично!");
@@ -136,7 +136,7 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        $quiz = Quiz::find($id);
+        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
         if($quiz){
            $quiz->delete();
             Toastr::success("Успешно удален тест","Отлично!");
