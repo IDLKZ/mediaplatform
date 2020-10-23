@@ -25,7 +25,8 @@ use App\Http\Controllers\Teacher\ReviewQuestionController;
 |
 */
 Route::get('/', function (){
-    return redirect("login");
+    return abort(404);
+//    return redirect("login");
 });
 Route::get('/logout', function () {
     \Illuminate\Support\Facades\Auth::logout();
