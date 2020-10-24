@@ -64,7 +64,7 @@
                             <div class="col-sm-9">
                                 <div class="customFile">
                                     <span class="selectedFile">Не выбрано</span>
-                                    <input type="file" name="file">
+                                    <input type="file" id="file" name="file">
                                 </div>
                             </div>
                         </div>

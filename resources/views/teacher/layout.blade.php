@@ -17,10 +17,12 @@
     <link rel="stylesheet" href="/css/jquery.mn-file.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" />
 
-
-
-
 </head>
+<style>
+    .progress { position:relative; width:100%; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
+    .bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
+    .percent { position:absolute; display:inline-block; top:3px; left:48%; }
+</style>
 <body id="falcon" class="main_Wrapper">
 <div id="wrap" class="animsition">
     <!-- HEADER Content -->
@@ -40,6 +42,7 @@
 
 <script src="js/admin.js"></script>
 <script src="/js/toastr.js"></script>
+<script src="/js/jquery.form.js"></script>
 <script src="/js/ckeditor.js"></script>
 <script src="/js/select2.min.js"></script>
 <script src="/js/jquery.mn-file.js"></script>
@@ -59,6 +62,7 @@
         controlMsg : 'Выберите файл',
     });
 </script>
+<script src="/js/uploadajax.js"></script>
 </body>
 </html>
 
