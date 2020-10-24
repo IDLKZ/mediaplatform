@@ -15,6 +15,8 @@ use App\Http\Controllers\Teacher\QuizController;
 use App\Http\Controllers\Teacher\QuestionController;
 use App\Http\Controllers\Teacher\ReviewController;
 use App\Http\Controllers\Teacher\ReviewQuestionController;
+use App\Http\Controllers\Teacher\ExaminationController;
+use App\Http\Controllers\Teacher\AjaxController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,18 +80,22 @@ Route::group(["middleware"=>"auth"],function(){
         Route::resource("/question",QuestionController::class);
         Route::resource("/review",ReviewController::class);
         Route::resource("/review-question",ReviewQuestionController::class);
+        Route::resource("/examination",ExaminationController::class);
         //Start Profile
         Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
         Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
         Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
         //End Profile
-
         //Start Subscribers
         Route::get('/subscribers', [TeacherController::class, 'subscribers'])->name('teacherSubscribers');
         Route::get('/access-subscriber/{id}', [TeacherController::class, 'accessSubscriber'])->name('accessSubscriber');
         Route::post('/delete-subscriber/{id}', [TeacherController::class, 'deleteSubscriber'])->name('deleteSubscriber');
-
         //End Subscribers
+
+        //only Ajax Query
+        Route::post("/ajax/videos",[AjaxController::class,"getVideo"]);
+
+
     });
 //End TeacherBlade
 

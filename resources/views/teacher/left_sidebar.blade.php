@@ -115,6 +115,24 @@
 
                                 </ul>
                             </li>
+                            <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-question"></i>
+                                    <span>Экзамены</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route("examination.create")}}">
+                                            <i class="fa fa-plus-circle"></i>Новый Экзамен</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("examination.index")}}">
+                                            <i class="fa fa-angle-right"></i>Список Экзаменов</a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
 
                             {{--                            Видео--}}
 

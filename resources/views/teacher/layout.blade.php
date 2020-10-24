@@ -8,11 +8,13 @@
     <link rel="icon" type="image/ico" href="/images/favicon.ico" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- vendor css files -->
     <script src="https://use.fontawesome.com/542408d0a0.js"></script>
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="/css/select2.min.css">
+
 
 
 
@@ -40,6 +42,7 @@
 <script src="/js/select2.min.js"></script>
 
 <script src="/js/myscript.js"></script>
+<script src="/js/ajax.js"></script>
 
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 @if (isset($validator))
