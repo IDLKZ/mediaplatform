@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/admin.css">
     <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="/css/select2.min.css">
+    <link rel="stylesheet" href="/css/jquery.mn-file.css">
 
 
 
@@ -40,7 +41,7 @@
 <script src="/js/toastr.js"></script>
 <script src="/js/ckeditor.js"></script>
 <script src="/js/select2.min.js"></script>
-
+<script src="/js/jquery.mn-file.js"></script>
 <script src="/js/myscript.js"></script>
 <script src="/js/ajax.js"></script>
 
@@ -49,6 +50,14 @@
     {!! $validator->selector('#my-form')  !!}
 @endif
 {!! Toastr::message() !!}
+<script>
+    $("[type=file]").mnFileInput({
+        // left, right or button
+        display: 'left',
+        // button text
+        controlMsg : 'Выберите файл',
+    });
+</script>
 </body>
 </html>
 

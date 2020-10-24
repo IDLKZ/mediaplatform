@@ -62,11 +62,10 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Материалы к видео</label>
                             <div class="col-sm-9">
-                                <span class="btn btn-raised btn-success fileinput-button">
-												<i class="glyphicon glyphicon-plus"></i>
-												<span>Файл</span>
-												<input type="file" name="file" >
-								</span>
+                                <div class="customFile">
+                                    <span class="selectedFile">Не выбрано</span>
+                                    <input type="file" name="file">
+                                </div>
                             </div>
                         </div>
 
