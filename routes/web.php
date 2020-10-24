@@ -17,6 +17,7 @@ use App\Http\Controllers\Teacher\ReviewController;
 use App\Http\Controllers\Teacher\ReviewQuestionController;
 use App\Http\Controllers\Teacher\ExaminationController;
 use App\Http\Controllers\Teacher\AjaxController;
+use App\Http\Controllers\Teacher\SubscriberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,6 +88,10 @@ Route::group(["middleware"=>"auth"],function(){
         Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
         //End Profile
         //Start Subscribers
+        Route::get("/confirmed-subscribers",[SubscriberController::class,"confirmed"])->name("confirmed_subscribers");
+        Route::get("/unconfirmed-subscribers",[SubscriberController::class,"unconfirmed"])->name("unconfirmed_subscribers");
+        Route::get("/getAccessVideo/{id}",[SubscriberController::class,"getAccessVideo"])->name("getAccessVideo");
+        Route::post("/saveAccessVideo",[SubscriberController::class,"saveAccessVideo"])->name("saveAccessVideo");
         Route::get('/subscribers', [TeacherController::class, 'subscribers'])->name('teacherSubscribers');
         Route::get('/access-subscriber/{id}', [TeacherController::class, 'accessSubscriber'])->name('accessSubscriber');
         Route::post('/delete-subscriber/{id}', [TeacherController::class, 'deleteSubscriber'])->name('deleteSubscriber');
@@ -94,6 +99,7 @@ Route::group(["middleware"=>"auth"],function(){
 
         //only Ajax Query
         Route::post("/ajax/videos",[AjaxController::class,"getVideo"]);
+        Route::post("/ajax/getType",[AjaxController::class,"getType"]);
 
 
     });

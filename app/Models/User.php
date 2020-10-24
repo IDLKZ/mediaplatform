@@ -70,6 +70,9 @@ class User extends Authenticatable
     public function quiz(){
         return $this->hasMany(Quiz::class, "author_id","id");
     }
+    public function examinations(){
+        return $this->hasMany(Examination::class,"author_id","id");
+    }
     //#1 Через многие видео, вопросы к тестам, вопросы к опросам
     public function videos(){
         return $this->hasManyThrough(Video::class,Course::class,"author_id","course_id","id");

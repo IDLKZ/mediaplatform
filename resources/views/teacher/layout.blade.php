@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="/css/select2.min.css">
     <link rel="stylesheet" href="/css/jquery.mn-file.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" />
 
 
 

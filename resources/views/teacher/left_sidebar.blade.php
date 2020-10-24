@@ -16,7 +16,23 @@
 {{--                            Главная--}}
 
 {{--                            Видеокурсы--}}
+                            <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-users"></i>
+                                    <span>Мои слушатели</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route("confirmed_subscribers")}}">
+                                            <i class="fa fa-user"></i>Подтвержденные слушатели</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("unconfirmed_subscribers")}}">
+                                            <i class="icon-ghost"></i>Неподтвержденные слушатели</a>
+                                    </li>
 
+                                </ul>
+                            </li>
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-video-camera"></i>
@@ -117,7 +133,7 @@
                             </li>
                             <li>
                                 <a role="button" tabindex="0">
-                                    <i class="fa fa-question"></i>
+                                    <i class="fa fa-check-square-o"></i>
                                     <span>Экзамены</span>
                                 </a>
                                 <ul>
