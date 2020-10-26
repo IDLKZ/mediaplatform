@@ -50,6 +50,31 @@ class Examination extends Model
         return $examination->save();
     }
 
+    public static function getQuestions($id,$number){
+        $data = false;
+        $questions = Question::where("quiz_id",$id)->get()->toArray();
+        if (count($questions)>0) {
+            $rand_keys = array_rand($questions, $number);
+            foreach ($rand_keys as $key){
+                $data[$key]["id"] = $questions[$key]["id"];
+                $data[$key]["question"] = $questions[$key]["question"];
+                $data[$key]["answer"] = $questions[$key][$questions[$key]["answer"]];
+                $data[$key]["questions"][] = $questions[$key]["A"];
+                $data[$key]["questions"][] = $questions[$key]["B"];
+                $data[$key]["questions"][] = $questions[$key]["C"];
+                $data[$key]["questions"][] = $questions[$key]["D"];
+                $data[$key]["questions"][] = $questions[$key]["E"];
+            }
+            foreach ($data as $k=> $d){
+                shuffle($data[$k]["questions"]);
+            }
+
+
+        }
+        return $data;
+
+    }
+
 
 
 }

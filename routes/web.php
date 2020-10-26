@@ -18,6 +18,7 @@ use App\Http\Controllers\Teacher\ReviewQuestionController;
 use App\Http\Controllers\Teacher\ExaminationController;
 use App\Http\Controllers\Teacher\AjaxController;
 use App\Http\Controllers\Teacher\SubscriberController;
+use App\Http\Controllers\Teacher\ResultController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,9 +80,12 @@ Route::group(["middleware"=>"auth"],function(){
         Route::resource("/material",MaterialController::class);
         Route::resource("/quiz",QuizController::class);
         Route::resource("/question",QuestionController::class);
+        Route::get("/question-excel-create",[QuestionController::class,"questionExcelCreate"])->name("question.excel-create");
+        Route::post("/question-excel-load",[QuestionController::class,"questionExcelSave"])->name("question.excel-store");
         Route::resource("/review",ReviewController::class);
         Route::resource("/review-question",ReviewQuestionController::class);
         Route::resource("/examination",ExaminationController::class);
+
         //Start Profile
         Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
         Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
@@ -96,6 +100,13 @@ Route::group(["middleware"=>"auth"],function(){
         Route::get('/access-subscriber/{id}', [TeacherController::class, 'accessSubscriber'])->name('accessSubscriber');
         Route::post('/delete-subscriber/{id}', [TeacherController::class, 'deleteSubscriber'])->name('deleteSubscriber');
         //End Subscribers
+
+        //Check Student Result
+        Route::get("/checked-result",[ResultController::class,"checkedResult"])->name("teacher.checkedResult");
+        Route::get("/unchecked-result",[ResultController::class,"uncheckedResult"])->name("teacher.uncheckedResult");
+        Route::get("/show-result/{id}",[ResultController::class,"showResult"])->name("teacher.showResult");
+
+        //
 
         //only Ajax Query
         Route::post("/ajax/videos",[AjaxController::class,"getVideo"]);
@@ -117,7 +128,15 @@ Route::get("/getdocument/{id}",[MaterialController::class,"download"])->name("ma
         Route::get('/profile-settings', [UserController::class, 'settings'])->name('userProfileSettings');
         Route::post('/update-profile-settings', [UserController::class, 'updateSetting'])->name('userProfileSettingsUpdate');
         //End Profile
+        //Course
+        Route::get("/my-course",[UserController::class,"myCourse"])->name("student.course");
+        Route::get("/show-course/{alias}",[UserController::class,"showCourse"])->name("student.course.show");
+        Route::get("/show-video/{alias}",[UserController::class,"showVideo"])->name("student.video.show");
+        Route::get("/passExam/{alias}",[UserController::class,"passExam"])->name("student.passExam");
+        Route::post("/checkExam",[UserController::class,"checkExam"])->name("student.checkExam");
+        Route::post("/checkReview",[UserController::class,"checkReview"])->name("student.checkReview");
 
+        //
         //Start SendSubscribe
         Route::get('/send-subscribe/{alias}', [UserController::class, 'subscribe'])->name('sendSubscribe');
         //End SendSubscribe

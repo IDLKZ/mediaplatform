@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Examination;
+use App\Models\Result;
+use App\Models\ReviewQuestion;
 use App\Models\Subscriber;
 use App\Models\User;
+use App\Models\UserVideo;
+use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
-
+use App\Models\Question;
 class UserController extends Controller
 {
     public function index()
@@ -81,7 +86,105 @@ class UserController extends Controller
     public function cancelRequest($id)
     {
         Subscriber::find($id)->delete();
-        Toastr::info('Успешно отменен!','Success!');
+        Toastr::success('Успешно отменен!','Success!');
         return redirect()->back();
     }
+
+
+    public function myCourse()
+    {
+        $subscribers = Auth::user()->subscribers()->where("status",1)->get();
+        if(count($subscribers)>0){
+            return view("student.course.my-course",compact("subscribers"));
+        }
+        else{
+            Toastr::warning('У вас еще нет подтвержденных курсов!','Упс...!');
+            return redirect()->back();
+        }
+    }
+
+    public function showCourse($alias){
+        $course = Course::where("alias",$alias)->first();
+        $subscribe = Auth::user()->subscribers()->where(["course_id"=>$course->id,"status"=>1])->first();
+      if($subscribe){
+          $video_ids = $subscribe->uservideo()->pluck("video_id")->toArray();
+          return view("student.course.course-show",compact("course","subscribe","video_ids"));
+      }
+      else{
+          Toastr::warning('У вас еще нет прав для этого курса!','Упс...!');
+          return redirect(route("student.course"));
+      }
+    }
+
+    public function showVideo($alias){
+        $video = Video::where("alias",$alias)->first();
+        if($video){
+         $video_access  =   UserVideo::where(["video_id"=>$video->id,"student_id"=>Auth::id()])->first();
+            if($video_access){
+                return  view("student.video.show",compact("video"));
+            }
+            else{
+                Toastr::warning("У вас нет доступа к видео!","Упс");
+                return redirect()->back();
+            }
+        }
+        else{
+                Toastr::warning("Видео не найдено!","Упс");
+                return redirect()->back();
+        }
+    }
+
+    public function passExam($alias){
+        $video = Video::where("alias",$alias)->first();
+        $result = Result::where(["video_id"=>$video->id,"student_id"=>Auth::id()])->first();
+       if($video && !$result){
+            if($video->examination->quiz_id){
+                $data = Examination::getQuestions($video->examination->quiz_id,10);
+                return view("student.examination.quiz",compact("data","video"));
+
+            }
+            if($video->examination->review_id){
+                $data = ReviewQuestion::where("review_id",$video->examination->review_id)->get();
+                return  view("student.examination.review",compact("data","video"));
+           }
+
+       }
+       else{
+           Toastr::warning("Вы сдали экзамен!","Упс");
+           return redirect()->back();
+       }
+    }
+
+    public function checkExam(Request $request){
+        $this->validate($request,
+            [
+                "examination_id"=>"required", "student_id"=>"required", "author_id"=>"required",
+                "course_id"=>"required", "video_id"=>"required",
+                "answer"=>"required", "right"=>"required", "question"=>"required"
+            ]
+        );
+
+        $data = Result::prepareData($request->all());
+        if(Result::saveResult($data)){
+            Toastr::success("Ваш результат отправлен на проверку учителя","Отлично!");
+            return redirect(route("userProfile"));
+        }
+        else{
+            Toastr::warning("Упс, что-то пошло не так","Упс....");
+            return redirect(route("userProfile"));
+        }
+
+    }
+
+    public function checkReview(Request $request){
+        if(Result::saveResult($request->all())){
+            Toastr::success("Ваш результат отправлен на проверку учителя","Отлично!");
+            return redirect(route("userProfile"));
+        }
+        else{
+            Toastr::warning("Упс, что-то пошло не так","Упс....");
+            return redirect(route("userProfile"));
+        }
+    }
+
 }

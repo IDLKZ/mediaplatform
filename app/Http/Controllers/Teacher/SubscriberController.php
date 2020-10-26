@@ -29,6 +29,7 @@ class SubscriberController extends Controller
         if($subscriber){
             $validator = JsValidator::make( [
                 'subscribe_id'=>"required",
+                'student_id'=>'required',
                 'video_id'=> 'required',
             ]);
             $videos = $subscriber->videos;
@@ -45,6 +46,7 @@ class SubscriberController extends Controller
     public function saveAccessVideo(Request $request){
         $this->validate($request,[
             'subscribe_id'=>"required",
+            'student_id'=>'required',
             'video_id'=> 'required',
         ]);
         $uservideo = UserVideo::where(["subscribe_id"=>$request->get("subscribe_id"),"video_id"=>$request->get("video_id")])->first();

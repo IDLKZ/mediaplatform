@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Imports\QuestionsImport;
 use App\Models\Question;
 use App\Models\Quiz;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class QuestionController extends Controller
@@ -190,4 +192,37 @@ class QuestionController extends Controller
             return  redirect(route("question.index"));
         }
     }
+
+    public function questionExcelCreate(){
+        $quizzes = Auth::user()->quiz;
+        if(count($quizzes)>0){
+            $validator = JsValidator::make( [
+                "quiz_id"=>"required",
+                "file"=>"required|file|mimes:xls,xlsx|max:1024"
+            ]);
+            return view("teacher.question.excel",compact("quizzes","validator"));
+        }
+        else {
+            Toastr::warning("Создайте тему вопроса","Упс...");
+            return  redirect(route("question.index"));
+        }
+    }
+
+    public function questionExcelSave(Request  $request){
+        $this->validate($request, [
+            "quiz_id"=>"required",
+            "file"=>"required|file|mimes:xls,xlsx|max:1024"
+        ]);
+        if(Excel::import(new QuestionsImport($request->get("quiz_id")), $request->file("file"))){
+            Toastr::success("Успешно выполнен импорт тестов Excel!","Отлично!");
+            return redirect()->back();
+        }
+        else{
+            Toastr::warning("Что-то пошло не так","Упс....");
+            return redirect()->back();
+        }
+
+    }
+
+
 }

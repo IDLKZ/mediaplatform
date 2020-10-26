@@ -29,5 +29,9 @@ class Subscriber extends Model
         return $this->hasMany(Video::class,"course_id","course_id");
     }
 
+    public function uservideo(){
+        return $this->hasMany(UserVideo::class,"subscribe_id","id");
+    }
+
 
 }

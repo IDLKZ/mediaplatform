@@ -63,11 +63,11 @@ class ReviewQuestionController extends Controller
         ]);
         if(ReviewQuestion::saveData($request->all())){
             Toastr::success("Успешно создан вопрос","Отлично!");
-            return redirect("review-question.index");
+            return redirect(route("review-question.index"));;
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
-            return redirect("review-question.index");
+            return redirect(route("review-question.index"));;
         }
     }
 

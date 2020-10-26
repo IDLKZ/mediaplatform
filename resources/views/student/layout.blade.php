@@ -34,6 +34,8 @@
 <script src="js/admin.js"></script>
 <script src="/js/toastr.js"></script>
 <script src="/js/jquery.mn-file.js"></script>
+<script src="/js/ckeditor.js"></script>
+<script src="/js/student.js"></script>
 @yield('js')
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\UpdateProfile', '#my-form')  !!}

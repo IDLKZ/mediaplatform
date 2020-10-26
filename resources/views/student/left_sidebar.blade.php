@@ -20,16 +20,33 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-video-camera"></i>
-                                    <span>Видеокурсы</span>
+                                    <span>Мои Видеокурсы</span>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{route("course.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый видеокурс</a>
+                                        <a href="{{route("student.course")}}">
+                                            <i class="fa fa-plus-circle"></i>Мои видеокурсы</a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <i class="fa fa-angle-right"></i>Список видеокурсов</a>
+                                            <i class="fa fa-angle-right"></i>Неподтвержденные видеокурсы</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-check-circle"></i>
+                                    <span>Мои Результаты</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route("student.course")}}">
+                                            <i class="fa fa-plus-circle"></i>Проверенные</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-angle-right"></i>Непроверенные</a>
                                     </li>
 
                                 </ul>

@@ -33,19 +33,20 @@
 
                                 </ul>
                             </li>
+
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-video-camera"></i>
-                                    <span>Видеокурсы</span>
+                                    <span>Задания</span>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{route("course.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый видеокурс</a>
+                                        <a href="{{route("teacher.checkedResult")}}">
+                                            <i class="fa fa-plus-circle"></i>Проверенные задания</a>
                                     </li>
                                     <li>
-                                        <a href="{{route("course.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список видеокурсов</a>
+                                        <a href="{{route("teacher.uncheckedResult")}}">
+                                            <i class="fa fa-angle-right"></i>Непроверенные задания</a>
                                     </li>
 
                                 </ul>
@@ -110,6 +111,10 @@
                                     <li>
                                         <a href="{{route("question.index")}}">
                                             <i class="fa fa-angle-right"></i>Список Вопросов</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("question.excel-create")}}">
+                                            <i class="fa fa-angle-right"></i>Загрузить Вопросы</a>
                                     </li>
                                     <hr>
                                     <li>

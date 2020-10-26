@@ -73,6 +73,18 @@ class User extends Authenticatable
     public function examinations(){
         return $this->hasMany(Examination::class,"author_id","id");
     }
+    public function subscribers(){
+        return $this->hasMany(Subscriber::class,"user_id","id");
+    }
+    public function uservideo(){
+        return $this->hasMany(UserVideo::class,"student_id","id");
+    }
+
+    public function results(){
+        return $this->hasMany(Result::class,"author_id","id");
+
+    }
+
     //#1 Через многие видео, вопросы к тестам, вопросы к опросам
     public function videos(){
         return $this->hasManyThrough(Video::class,Course::class,"author_id","course_id","id");
@@ -83,6 +95,9 @@ class User extends Authenticatable
     public function review_questions(){
         return $this->hasManyThrough(ReviewQuestion::class,Review::class,"author_id","review_id","id");
     }
+
+
+
 
 
 

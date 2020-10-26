@@ -41,6 +41,10 @@ class Video extends Model
     public function materials(){
         return $this->hasMany(Materials::class,"video_id","id");
     }
+    public function examination(){
+        return $this->hasOne(Examination::class,"video_id","id");
+    }
+
 
 
 

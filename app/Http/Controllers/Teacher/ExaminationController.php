@@ -62,14 +62,23 @@ class ExaminationController extends Controller
             "video_id"=>"required",
             'file' => 'sometimes|file|max:2048',
         ]);
-        if(Examination::saveData($request->all())){
-            Toastr::success('Экзамен был успешно создан','Успешно создан курс!');
-            return redirect(route('examination.index'));
+            $examination = Examination::where(["course_id"=>$request->get("course_id"),"video_id"=>$request->get("video_id"),"author_id"=>Auth::id()])->first();
+        if(!$examination){
+            if(Examination::saveData($request->all())){
+                Toastr::success('Экзамен был успешно создан','Успешно создан курс!');
+                return redirect(route('examination.index'));
+            }
+            else{
+                Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
+                return redirect()->back();
+            }
         }
         else{
-            Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
-            return redirect()->back();
+            Toastr::warning('Вы уже добавили экзамен на данное видео!','Упс!');
+            return  redirect()->back();
         }
+
+
     }
 
     /**
@@ -161,7 +170,7 @@ class ExaminationController extends Controller
             return redirect(route("examination.index"));
         }
 
-
-
     }
+
+
 }

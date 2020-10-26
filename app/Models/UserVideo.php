@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserVideo extends Model
 {
     use HasFactory;
-    protected $fillable =["subscribe_id","video_id","total","status"];
+    protected $fillable =["subscribe_id","video_id","student_id","total","status"];
 
 
     public function subscribe(){
