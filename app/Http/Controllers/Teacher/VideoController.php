@@ -11,7 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use phpDocumentor\Reflection\Types\True_;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
+use Vimeo\Vimeo;
 
 class VideoController extends Controller
 {
@@ -53,20 +55,25 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
+//        $client = new Vimeo("daf00b9883f453e45f237ddcc9fe1209ae19e364", "vBPQsKuSiKAo2kK3ZOZBGC2zYZ4GmBxs1HhzdC0d7HWCk3d6Y5j+e7DzdgtpTXH7JwUPeIVueEosjaZ23pozbUeZeJo4v8nbtpegzOoGMMfpJSjMDjEqMsR9IiIAo3PI", "XXXXXXXXXXfea9");
+//        $uri = $client->upload($request->file('video_url'), [
+//            "name" => "Untitled",
+//            "description" => "The description goes here."
+//        ]);
+//
+//        dd($uri);
         $this->validate($request, [
             'title'=> 'required|max:255',
-            'video_url'=> 'required|mimes:mp4,mov,ogg,qt|max:500000',
+            'video_url'=> 'required|mimes:mp4,mov,ogg,qt|max:50000000',
             "count"=>"required|integer",
             "description"=>"required",
         ]);
-        if(Video::saveData($request)){
-            Toastr::success("Успешно добавлено видео","Ура!");
-            return redirect()->back();
+        if (Video::saveData($request)) {
+            return true;
+        } else {
+            return false;
         }
-        else{
-            Toastr::success("Кажись, что-то пошло не так","Упс...");
-            return redirect()->back();
-        }
+
     }
 
     /**
