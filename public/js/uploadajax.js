@@ -8,7 +8,7 @@ $.ajaxSetup({
     var bar = $('.bar');
     var percent = $('.percent');
     var status = $('#status');
-    $('#my-form').ajaxForm({
+    $('#my-form2').ajaxForm({
         beforeSend: function() {
             status.empty();
             var percentVal = '0%';
