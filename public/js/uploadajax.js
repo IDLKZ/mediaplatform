@@ -8,7 +8,7 @@ $.ajaxSetup({
     var bar = $('.bar');
     var percent = $('.percent');
     var status = $('#status');
-    $('#my-form2').ajaxForm({
+    $('.uploadAjax').ajaxForm({
         beforeSend: function() {
             status.empty();
             var percentVal = '0%';
@@ -26,8 +26,9 @@ $.ajaxSetup({
             bar.width(percentVal)
             percent.html(percentVal);
             status.html('<span class="alert alert-success">Видео успешно добавлено!</span>');
-            setTimeout(function (){
-                window.location.href = 'http://mediaportal.kz/teacher/video';
+            setTimeout(function (xhr){
+                console.log(xhr.responseText)
+                // window.location.href = 'http://mediaportal.kz/teacher/video';
             }, 1000);
         },
         complete: function(xhr) {

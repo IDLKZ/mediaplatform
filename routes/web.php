@@ -34,8 +34,8 @@ Route::get('/clear-cache', function () {
     return 'DONE';
 });
 Route::get('/', function (){
-    return abort(404);
-//    return redirect("login");
+
+    return redirect("login");
 });
 Route::get('/logout', function () {
     \Illuminate\Support\Facades\Auth::logout();
@@ -118,7 +118,6 @@ Route::group(["middleware"=>"auth"],function(){
 //End TeacherBlade
 
 
-Route::get("/getvideo/{id}",[VideoController::class,"watch"])->name("watch");
 Route::get("/getdocument/{id}",[MaterialController::class,"download"])->name("material");
 
 //Start StudentBlade

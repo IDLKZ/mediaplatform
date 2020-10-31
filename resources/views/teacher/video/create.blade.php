@@ -11,7 +11,7 @@
                 </div>
                 <div class="boxs-body">
 
-                    <form id="my-form" action="{{route("video.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
+                    <form id="my-form" action="{{route("video.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal uploadAjax" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Курс</label>

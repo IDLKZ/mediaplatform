@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Merujan99\LaravelVideoEmbed\Facades\LaravelVideoEmbed;
 
 class Video extends Model
 {
     use HasFactory;
-
 
     use Sluggable;
 
@@ -58,14 +58,10 @@ class Video extends Model
 
 
 
-    public static function saveData($request){
+    public static function saveData($request, $response){
         $video = new self();
         $fill = $request->all();
-        $file = $request->file("video_url");
-        $fill["available"] = $request->has("available") ? 1 :0;
-        $name = Str::random(10) . "." . $file->getClientOriginalExtension();
-        Storage::disk("videos")->putFileAs("/upload/videos/", $file,$name);
-        $fill["video_url"] = "/upload/videos/".$name;
+        $fill["video_url"] = $response['body']['link'];
         $video->fill($fill);
         return($video->save());
     }
@@ -86,7 +82,26 @@ class Video extends Model
         return($video->save());
     }
 
+    public function watch($url)
+    {
+        $whitelist = ['Vimeo'];
+        $params = [
+            'autoplay' => 1,
+            'loop' => 1,
+            'download' => false
+        ];
 
+//Optional attributes for embed container
+        $attributes = [
+            'type' => null,
+            'class' => 'iframe-class',
+            'data-html5-parameter' => true,
+            'width' => '100%',
+            'height' => '500',
+            'download' => false
+        ];
+        return LaravelVideoEmbed::parse($url, $whitelist, $params, $attributes);
+    }
 
 
 }

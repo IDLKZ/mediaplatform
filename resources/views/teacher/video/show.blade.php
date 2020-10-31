@@ -11,9 +11,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 mb-5">
-                        <video controls autoplay="false" height="500px" width="100%">
-                            <source src="{{ route('watch', $video->id) }}" >
-                        </video>
+                        {!! $file !!}
                     </div>
                     <div class="col-md-12">
                         <section class="boxs">
