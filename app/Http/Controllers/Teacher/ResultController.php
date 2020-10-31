@@ -12,7 +12,7 @@ class ResultController extends Controller
 {
 
     public function checkedResult(){
-        $results = Auth::user()->results()->where("checked",1)->get();
+        $results = Auth::user()->results()->where("checked",1)->paginate(15);
         if(count($results)>0){
             return view("teacher.result.checked",compact("results"));
         }
@@ -24,7 +24,7 @@ class ResultController extends Controller
     }
 
     public function uncheckedResult(){
-        $results = Auth::user()->results()->where("checked",0)->get();
+        $results = Auth::user()->results()->where("checked",0)->paginate(15);
         if(count($results)>0){
             return view("teacher.result.checked",compact("results"));
         }

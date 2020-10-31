@@ -90,7 +90,7 @@ class ReviewQuestionController extends Controller
      */
     public function edit($id)
     {
-        $review_question = ReviewQuestion::find($id);
+        $review_question = Auth::user()->review_questions()->find($id);
         $reviews = Auth::user()->reviews;
         if($review_question){
             $validator = JsValidator::make( [
@@ -114,7 +114,7 @@ class ReviewQuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $review_question = ReviewQuestion::find($id);
+        $review_question =  Auth::user()->review_questions()->find($id);
         if($review_question){
             $this->validate($request, [
                 "review_id"=>"required",
@@ -143,7 +143,7 @@ class ReviewQuestionController extends Controller
      */
     public function destroy($id)
     {
-        $review_question = ReviewQuestion::find($id);
+        $review_question =  Auth::user()->review_questions()->find($id);
         if($review_question){
             $review_question->delete();
                 Toastr::success("Успешно удален вопрос","Отлично!");

@@ -21,7 +21,16 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = Review::where("author_id",Auth::id())->paginate(15);
-        return  view("teacher.review.index",compact("reviews"));
+        if(!$reviews->isEmpty())
+        {
+            return  view("teacher.review.index",compact("reviews"));
+        }
+        else
+        {
+            Toastr::warning("У вас нет созданного опроса","Упс..");
+            return redirect(route("review.create"));
+        }
+
 
 
 
@@ -69,7 +78,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        $review_questions = ReviewQuestion::where("review_id",$id)->get();
+        $review_questions = Auth::user()->reviews()->reviewquestion;
         if(count($review_questions)){
             return view("teacher.review.show",compact("review_questions"));
         }
@@ -87,7 +96,7 @@ class ReviewController extends Controller
      */
     public function edit($id)
     {
-        $review = Review::find($id);
+        $review = Auth::user()->reviews()->find($id);
         if($review){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
@@ -109,7 +118,7 @@ class ReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $review = Review::find($id);
+        $review = Auth::user()->reviews()->find($id);
         if($review){
             $this->validate($request, [
                 'title'=> 'required|max:255',
@@ -137,7 +146,7 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        $review = Review::find($id);
+        $review = Auth::user()->reviews()->find($id);
         if($review){
            $review->delete();
            Toastr::success("Успешно удален опрос","Отлично!");

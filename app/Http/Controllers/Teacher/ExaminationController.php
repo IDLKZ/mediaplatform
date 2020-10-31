@@ -19,8 +19,8 @@ class ExaminationController extends Controller
      */
     public function index()
     {
-        $examinations = Auth::user()->examinations;
-        if(count($examinations)>0){
+        $examinations = Auth::user()->examinations()->paginate(15);
+        if(!$examinations->isEmpty()){
             return  view("teacher.examination.index",compact("examinations"));
         }
         else{
@@ -39,12 +39,18 @@ class ExaminationController extends Controller
     {
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
-            "course_id"=>"required",
-            "video_id"=>"required",
+            "course_id"=>"required|exists:courses,id",
+            "video_id"=>"required|exists:videos,id",
             'file' => 'sometimes|file|max:2048',
         ]);
         $courses = Auth::user()->courses;
-        return  view("teacher.examination.create",compact("courses","validator"));
+        if(!$courses->isEmpty()){
+            return  view("teacher.examination.create",compact("courses","validator"));
+        }
+        else{
+            Toastr::warning("Сначала создайте видеокурс", "Упс...");
+            return  redirect(route("course.create"));
+        }
     }
 
     /**
@@ -55,13 +61,14 @@ class ExaminationController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'title'=> 'required|max:255',
-            "course_id"=>"required",
-            "video_id"=>"required",
+            "course_id"=>"required|exists:courses,id",
+            "video_id"=>"required|exists:videos,id",
             'file' => 'sometimes|file|max:2048',
         ]);
-            $examination = Examination::where(["course_id"=>$request->get("course_id"),"video_id"=>$request->get("video_id"),"author_id"=>Auth::id()])->first();
+            $examination = Auth::user()->examinations()->where(["course_id"=>$request->get("course_id"),"video_id"=>$request->get("video_id")])->first();
         if(!$examination){
             if(Examination::saveData($request->all())){
                 Toastr::success('Экзамен был успешно создан','Успешно создан курс!');
@@ -99,7 +106,7 @@ class ExaminationController extends Controller
      */
     public function edit($id)
     {
-        $examination = Examination::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        $examination = Auth::user()->examinations()->find($id);
         if($examination){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
@@ -125,7 +132,7 @@ class ExaminationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $examination = Examination::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        $examination = Auth::user()->examinations()->find($id);
         if($examination){
             $this->validate($request, [
                 'title'=> 'required|max:255',
@@ -158,7 +165,7 @@ class ExaminationController extends Controller
      */
     public function destroy($id)
     {
-        $examination = Examination::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        $examination = Auth::user()->examinations()->find($id);
         if($examination){
             $examination->delete();
             Toastr::success('Успешно удален экзамен!','Отлично!');

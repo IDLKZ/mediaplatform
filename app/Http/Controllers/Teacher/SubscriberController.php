@@ -15,17 +15,28 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 class SubscriberController extends Controller
 {
     public function confirmed(){
-        $subscribers = Subscriber::where(["author_id"=>Auth::id(),"status"=>1])->get();
-        return view("teacher.subscriber.index",compact("subscribers"));
+        $subscribers = Auth::user()->author_subscribers()->where("status",1)->paginate(15);
+        if(!$subscribers->isEmpty()){
+            return view("teacher.subscriber.index",compact("subscribers"));
+        }
+        else{
+            return  redirect()->back();
+        }
+
     }
 
     public function unconfirmed(){
-        $subscribers = Subscriber::where(["author_id"=>Auth::id(),"status"=>0])->get();
-        return view("teacher.subscriber.index",compact("subscribers"));
+        $subscribers = Auth::user()->author_subscribers()->where("status",0)->paginate(15);
+        if(!$subscribers->isEmpty()){
+            return view("teacher.subscriber.index",compact("subscribers"));
+        }
+        else{
+            return  redirect()->back();
+        }
     }
 
     public function getAccessVideo($id){
-        $subscriber = Subscriber::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        $subscriber = Auth::user()->author_subscribers()->find($id);
         if($subscriber){
             $validator = JsValidator::make( [
                 'subscribe_id'=>"required",
@@ -33,7 +44,7 @@ class SubscriberController extends Controller
                 'video_id'=> 'required',
             ]);
             $videos = $subscriber->videos;
-            return view("teacher.subscriber.video",compact("videos","subscriber"));
+            return view("teacher.subscriber.video",compact("videos","subscriber","validator"));
         }
         else{
             Toastr::warning("Ничего не найдено","Упс...");

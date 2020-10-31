@@ -121,7 +121,9 @@ class UserController extends Controller
         if($video){
          $video_access  =   UserVideo::where(["video_id"=>$video->id,"student_id"=>Auth::id()])->first();
             if($video_access){
-                return  view("student.video.show",compact("video"));
+                $video->load(["course","materials"]);
+                $file = $video->watch($video->video_url);
+                return  view("student.video.show",compact("video","file"));
             }
             else{
                 Toastr::warning("У вас нет доступа к видео!","Упс");
@@ -138,15 +140,22 @@ class UserController extends Controller
         $video = Video::where("alias",$alias)->first();
         $result = Result::where(["video_id"=>$video->id,"student_id"=>Auth::id()])->first();
        if($video && !$result){
-            if($video->examination->quiz_id){
-                $data = Examination::getQuestions($video->examination->quiz_id,10);
-                return view("student.examination.quiz",compact("data","video"));
+          if($video->examination){
+              if($video->examination->quiz_id){
+                  $data = Examination::getQuestions($video->examination->quiz_id,10);
+                  return view("student.examination.quiz",compact("data","video"));
 
-            }
-            if($video->examination->review_id){
-                $data = ReviewQuestion::where("review_id",$video->examination->review_id)->get();
-                return  view("student.examination.review",compact("data","video"));
-           }
+              }
+              if($video->examination->review_id){
+                  $data = ReviewQuestion::where("review_id",$video->examination->review_id)->get();
+                  return  view("student.examination.review",compact("data","video"));
+              }
+          }
+          else{
+              Toastr::warning("Автор не задал опроса или теста после видеоурока","Упс...");
+              return  redirect()->back();
+          }
+
 
        }
        else{
@@ -185,6 +194,41 @@ class UserController extends Controller
             Toastr::warning("Упс, что-то пошло не так","Упс....");
             return redirect(route("userProfile"));
         }
+    }
+
+    public function checkedResult(){
+        $results = Auth::user()->results_student()->where("checked",1)->paginate(15);
+        if (!$results->isEmpty()) {
+            return view("student.result.index",compact("results"));
+        }
+        else{
+            Toastr::warning("Увы у вас нет проверенных работ","Упс....");
+            return redirect()->back();
+        }
+    }
+
+    public function uncheckedResult(){
+       $results = Auth::user()->results_student()->where("checked",0)->paginate(15);
+        if (!$results->isEmpty()) {
+            return view("student.result.index",compact("results"));
+        }
+        else{
+            Toastr::warning("Увы у вас нет проверенных работ","Упс....");
+            return redirect()->back();
+        }
+    }
+
+    public function showResult($id){
+        $result = Auth::user()->results_student()->find($id);
+        if($result){
+            return view("student.result.show",compact("result"));
+        }
+        else{
+            Toastr::warning("Не найден результат видео","Упс....");
+            return redirect()->back();
+        }
+
+
     }
 
 }

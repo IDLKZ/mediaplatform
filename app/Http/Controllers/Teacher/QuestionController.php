@@ -39,9 +39,9 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $quizzes = $user->quiz;
-        if(count($quizzes)){
+
+        $quizzes = Auth::user()->quiz;
+        if(!$quizzes->isEmpty()){
             $validator = JsValidator::make( [
                 'question'=> 'required',
                 'A'=> 'required|max:255',
@@ -55,7 +55,7 @@ class QuestionController extends Controller
         }
         else{
             Toastr::warning("Сначала создайте тест","Упс....");
-            return  redirect(route("question.index"));
+            return  redirect(route("quiz.create"));
         }
 
     }
@@ -79,7 +79,7 @@ class QuestionController extends Controller
         ]);
         if(Question::saveData($request->all())){
             Toastr::success("Успешно создан вопрос","Отлично!");
-            return redirect(route("question.index"));
+            return redirect(route("question.create"));
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
@@ -115,7 +115,8 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        $question = Question::find($id);
+
+        $question = Auth::user()->questions()->find($id);
         $quizzes = Auth::user()->quiz;
         if($question){
             $validator = JsValidator::make( [
@@ -145,7 +146,7 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
 
-        $question = Question::find($id);
+        $question = Auth::user()->questions()->find($id);
         if($question){
             $this->validate($request, [
                 'question'=> 'required',
@@ -181,7 +182,7 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        $question = Question::find($id);
+        $question = Auth::user()->questions()->find($id);
         if($question){
             $question->delete();
             Toastr::success("Успешно удален вопрос","Отлично");

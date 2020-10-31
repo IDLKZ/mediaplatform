@@ -41,11 +41,11 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{route("student.course")}}">
+                                        <a href="{{route("student.checkedResult")}}">
                                             <i class="fa fa-plus-circle"></i>Проверенные</a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{route("student.uncheckedResult")}}">
                                             <i class="fa fa-angle-right"></i>Непроверенные</a>
                                     </li>
 

@@ -136,6 +136,11 @@ Route::get("/getdocument/{id}",[MaterialController::class,"download"])->name("ma
         Route::post("/checkExam",[UserController::class,"checkExam"])->name("student.checkExam");
         Route::post("/checkReview",[UserController::class,"checkReview"])->name("student.checkReview");
 
+        //Result
+        Route::get("/checked-result",[UserController::class,"checkedResult"])->name("student.checkedResult");
+        Route::get("/unchecked-result",[UserController::class,"uncheckedResult"])->name("student.uncheckedResult");
+        Route::get("/show-result/{id}",[UserController::class,"showResult"])->name("student.showResult");
+
         //
         //Start SendSubscribe
         Route::get('/send-subscribe/{alias}', [UserController::class, 'subscribe'])->name('sendSubscribe');

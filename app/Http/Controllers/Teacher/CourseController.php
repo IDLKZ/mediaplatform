@@ -128,7 +128,7 @@ class CourseController extends Controller
     public function update(Request $request, $alias)
     {
 
-        $course = Course::where(["alias"=>$alias,"author_id"=>Auth::user()->id])->first();
+        $course = Auth::user()->courses()->where("alias",$alias)->first();
         if($course){
             $this->validate($request, [
                 'title'=> 'required|max:255',
@@ -163,7 +163,7 @@ class CourseController extends Controller
      */
     public function destroy($alias)
     {
-        $course = Course::where(["alias"=>$alias,"author_id"=>Auth::user()->id])->first();
+        $course = Auth::user()->courses()->where("alias",$alias)->first();
         if($course){
            Storage::delete($course->img);
            $course->delete();

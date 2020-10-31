@@ -21,14 +21,13 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $materials = $user->materials()->where("id",23)->paginate(15);
+        $materials = Auth::user()->materials()->paginate(15);
         if (!$materials->isEmpty()) {
             return  view("teacher.material.index",compact("materials"));
         }
         else{
             Toastr::warning("Материалов еще нет!","Упс....");
-            return  redirect()->back();
+            return  redirect(route("material.create"));
         }
 
     }
@@ -52,7 +51,7 @@ class MaterialController extends Controller
         }
         else{
             Toastr::warning("Вы еще не создали видео","Упс...");
-            return  redirect()->back();
+            return  redirect(route("video.create"));
         }
 
     }
@@ -77,7 +76,7 @@ class MaterialController extends Controller
         }
         else{
             Toastr::warning("Кажись, что-то пошло не так","Упс...");
-            return redirect()->back();
+            return redirect(route("material.create"));
         }
     }
 
@@ -101,8 +100,8 @@ class MaterialController extends Controller
     public function edit($id)
     {
         $videos = Auth::user()->videos;
-        $material = Materials::find($id);
-        if($material && $videos){
+        $material = Auth::user()->materials()->find($id);
+        if($material && !$videos->isEmpty()){
             $validator = JsValidator::make( [
                 "video_id"=>"required",
                 'title'=> 'required|max:255',
@@ -113,7 +112,7 @@ class MaterialController extends Controller
         }
         else{
             Toastr::warning('Материал не найден!','Упс!');
-            return  redirect()->back();
+            return  redirect(route("material.create"));
         }
 
     }
@@ -128,7 +127,7 @@ class MaterialController extends Controller
     public function update(Request $request, $id)
     {
 
-        $material = Materials::find($id);
+        $material = Auth::user()->materials()->find($id);
         if($material){
             $this->validate($request, [
                 "video_id"=>"required",
@@ -160,7 +159,7 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        $material = Materials::find($id);
+        $material = Auth::user()->materials()->find($id);
         if($material){
             if(Storage::disk("materials")->exists($material->file)){
              Storage::disk("materials")->delete($material->file);
@@ -179,8 +178,6 @@ class MaterialController extends Controller
 
         $material = Materials::find($id);
         return response()->download(storage_path('/materials/' . $material->file));
-
-
 
     }
 }

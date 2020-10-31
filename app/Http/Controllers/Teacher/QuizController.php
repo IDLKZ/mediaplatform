@@ -19,8 +19,14 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::where("author_id",Auth::id())->with("author")->get();
-        return  view("teacher.quiz.index",compact("quizzes"));
+        $quizzes = Auth::user()->quiz()->paginate(15);
+        if(!$quizzes->isEmpty()){
+            return  view("teacher.quiz.index",compact("quizzes"));
+        }
+        else{
+            Toastr::warning("Тест еще не создан", "Упс");
+            return  redirect(route("quiz.create"));
+        }
     }
 
     /**
@@ -66,7 +72,7 @@ class QuizController extends Controller
     public function show($id)
     {
 
-        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
+        $quiz =Auth::user()->quiz()->find($id);
 
         if($quiz){
             $quiz = $quiz->load("questions");
@@ -86,7 +92,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
+        $quiz =Auth::user()->quiz()->find($id);
         if($quiz){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
@@ -111,7 +117,7 @@ class QuizController extends Controller
         $this->validate($request, [
             'title'=> 'required|max:255',
         ]);
-        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
+        $quiz =Auth::user()->quiz()->find($id);
         if($quiz){
             if(Quiz::updateData($request->all(),$quiz)){
                 Toastr::success("Успешно обновлен тест","Отлично!");
@@ -136,7 +142,7 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        $quiz = Quiz::where(["id"=>$id, "author_id"=>Auth::id()])->first();
+        $quiz =Auth::user()->quiz()->find($id);
         if($quiz){
            $quiz->delete();
             Toastr::success("Успешно удален тест","Отлично!");
