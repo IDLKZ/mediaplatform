@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Middleware\LocaleMiddleware;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teacher\CourseController;
 use App\Http\Controllers\Teacher\TeacherController;

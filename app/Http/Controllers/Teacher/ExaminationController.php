@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Examination;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
@@ -19,6 +20,7 @@ class ExaminationController extends Controller
      */
     public function index()
     {
+
         $examinations = Auth::user()->examinations()->paginate(15);
         if(!$examinations->isEmpty()){
             return  view("teacher.examination.index",compact("examinations"));
@@ -37,6 +39,7 @@ class ExaminationController extends Controller
      */
     public function create()
     {
+
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
             "course_id"=>"required|exists:courses,id",
