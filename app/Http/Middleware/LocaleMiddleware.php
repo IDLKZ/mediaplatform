@@ -37,6 +37,7 @@ class LocaleMiddleware
         $locale = self::getLocale();
         if($locale) App::setLocale($locale);
         //если метки нет - устанавливаем основной язык $mainLanguage
+
         else App::setLocale(self::$mainLanguage);
         return $next($request); //пропускаем дальше - передаем в следующий посредник
     }
