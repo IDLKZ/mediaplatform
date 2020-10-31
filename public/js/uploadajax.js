@@ -3,11 +3,13 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
 (function() {
 
     var bar = $('.bar');
     var percent = $('.percent');
     var status = $('#status');
+    var route = $('#route');
     $('.uploadAjax').ajaxForm({
         beforeSend: function() {
             status.empty();
@@ -19,6 +21,8 @@ $.ajaxSetup({
             var percentVal = percentComplete + '%';
             bar.width(percentVal)
             percent.html(percentVal);
+            $('#btn-submit').attr('disabled', 'disabled');
+            $('#ajax-gif').css('display', 'block');
             //console.log(percentVal, position, total);
         },
         success: function() {
@@ -26,13 +30,13 @@ $.ajaxSetup({
             bar.width(percentVal)
             percent.html(percentVal);
             status.html('<span class="alert alert-success">Видео успешно добавлено!</span>');
+            $('#ajax-gif').fadeOut();
             setTimeout(function (xhr){
-                console.log(xhr.responseText)
-                // window.location.href = 'http://mediaportal.kz/teacher/video';
+                // console.log(xhr.responseText)
+                window.location.href = route[0].firstChild.data;
             }, 1000);
         },
         complete: function(xhr) {
-
             // status.html(xhr.responseText);
 
         }

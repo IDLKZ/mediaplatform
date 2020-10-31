@@ -9,10 +9,7 @@ use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use phpDocumentor\Reflection\Types\True_;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 use Vimeo\Laravel\Facades\Vimeo;
 
@@ -42,11 +39,12 @@ class VideoController extends Controller
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
             'video_url'=> 'required|mime:mp4,mov,ogg,qt|max:500000',
-            "count"=>"required|integer",
+            "count"=>"required|integer|max:255",
             "description"=>"required",
         ]);
+        $route = route('video.index');
         $courses = Course::where(["author_id"=>Auth::user()->id])->get();
-        return  view("teacher.video.create",compact("courses","validator"));
+        return  view("teacher.video.create",compact("courses","validator", 'route'));
     }
 
     /**
@@ -60,22 +58,18 @@ class VideoController extends Controller
         $this->validate($request, [
             'title'=> 'required|max:255',
             'video_url'=> 'required|mimes:mp4,mov,ogg,qt|max:50000000',
-            "count"=>"required|integer",
+            "count"=>"required|integer|max:255",
             "description"=>"required",
         ]);
+
         $client = Vimeo::connection('main');
         $file_name = $request->file('video_url');
         $uri = $client->upload($file_name, [
-            "name" => $request->get('title').Str::random(7),
+            "name" => $request->get('title').'-'.Str::random(7),
             "description" => $request->get('description')
         ]);
-
         $response = $client->request($uri . '?fields=link');
-        if (Video::saveData($request, $response)) {
-            return true;
-        } else {
-            return false;
-        }
+        Video::saveData($request, $response);
 
     }
 

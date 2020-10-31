@@ -10,7 +10,7 @@
                         <strong>НОВОЕ</strong> ВИДЕО</h3>
                 </div>
                 <div class="boxs-body">
-
+                <span id="route" style="display: none">{{$route}}</span>
                     <form id="my-form" action="{{route("video.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal uploadAjax" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
                         <div class="form-group">
@@ -69,12 +69,15 @@
                                     <div class="percent">0%</div >
                                 </div>
                                 <div id="status"></div>
+                                <div>
+                                    <span><img id="ajax-gif" src="/images/upload-ajax.gif" style="display: none;width: 50px;height: 50px;"></span>
+                                </div>
                             </div>
                         </div>
 
-
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Сохранить</button>
+
+                            <button type="submit" id="btn-submit" class="btn btn-raised btn-default">Сохранить</button>
                             <button type="reset" class="btn btn-raised btn-danger">Очистить поля</button>
                         </div>
                     </form>
