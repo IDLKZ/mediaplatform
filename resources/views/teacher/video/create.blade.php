@@ -36,12 +36,7 @@
                                 <textarea name="description" id="editor"></textarea>
                             </div>
                         </div>
-{{--                        <div class="form-group">--}}
-{{--                            <label class="col-sm-3 control-label">Ссылка на видео (Если есть)</label>--}}
-{{--                            <div class="col-sm-9">--}}
-{{--                                <input name="video_url" type="url" class="form-control" placeholder="Ссылка на видео" maxlength="255" data-parsley-trigger="change" required>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Номер видео</label>

@@ -38,11 +38,21 @@ class Video extends Model
         return $this->belongsTo(Course::class,"course_id","id");
     }
     //2.Дочерний элемент
+    //Материалы
     public function materials(){
         return $this->hasMany(Materials::class,"video_id","id");
     }
+    //Экзамены
     public function examination(){
         return $this->hasOne(Examination::class,"video_id","id");
+    }
+    //Результаты
+    public function results(){
+        return $this->hasMany(Result::class,"video_id","id");
+    }
+    //Пользователь Видео
+    public function uservideo(){
+        return $this->hasMany(UserVideo::class,"video_id","id");
     }
 
 

@@ -24,12 +24,12 @@ class AjaxController extends Controller
     public function getType(Request $request){
         switch ($request->get("type")){
             case "test":
-                $data["data"] = Quiz::where("author_id",Auth::id())->get();
+                $data["data"] =  Auth::user()->quiz()->has('questions', '>' , 10)->get();
                 $data['type'] = "quiz_id";
 
                 return response()->json($data);
             case "review":
-                $data["data"] = Review::where("author_id",Auth::id())->get();
+                $data["data"] = Auth::user()->reviews()->has("reviewquestion",">",1)->get();
                 $data['type'] = "review_id";
                 return response()->json($data);
             default:

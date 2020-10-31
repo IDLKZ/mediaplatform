@@ -22,8 +22,15 @@ class MaterialController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $materials = $user->materials;
-        return  view("teacher.material.index",compact("materials"));
+        $materials = $user->materials()->where("id",23)->paginate(15);
+        if (!$materials->isEmpty()) {
+            return  view("teacher.material.index",compact("materials"));
+        }
+        else{
+            Toastr::warning("Материалов еще нет!","Упс....");
+            return  redirect()->back();
+        }
+
     }
 
     /**
@@ -39,9 +46,15 @@ class MaterialController extends Controller
             'file'=> 'sometimes|file|max:5000',
             "type"=>"required",
         ]);
-        $user = User::find(Auth::id());
-        $videos = $user->videos;
-        return  view("teacher.material.create",compact("videos","validator"));
+        $videos = Auth::user()->videos;
+        if(!$videos->isEmpty()){
+            return  view("teacher.material.create",compact("videos","validator"));
+        }
+        else{
+            Toastr::warning("Вы еще не создали видео","Упс...");
+            return  redirect()->back();
+        }
+
     }
 
     /**
@@ -76,7 +89,7 @@ class MaterialController extends Controller
      */
     public function show($id)
     {
-
+        return  abort(404);
     }
 
     /**
@@ -87,8 +100,7 @@ class MaterialController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find(Auth::id());
-        $videos = $user->videos;
+        $videos = Auth::user()->videos;
         $material = Materials::find($id);
         if($material && $videos){
             $validator = JsValidator::make( [

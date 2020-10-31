@@ -105,6 +105,7 @@ Route::group(["middleware"=>"auth"],function(){
         Route::get("/checked-result",[ResultController::class,"checkedResult"])->name("teacher.checkedResult");
         Route::get("/unchecked-result",[ResultController::class,"uncheckedResult"])->name("teacher.uncheckedResult");
         Route::get("/show-result/{id}",[ResultController::class,"showResult"])->name("teacher.showResult");
+        Route::post("/check-result",[ResultController::class,"checkResult"])->name("teacher.checkResult");
 
         //
 

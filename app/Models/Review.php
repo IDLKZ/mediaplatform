@@ -16,6 +16,9 @@ class Review extends Model
     public function author(){
         return $this->belongsTo(User::class,"author_id","id");
     }
+    public function reviewquestion(){
+        return $this->hasMany(ReviewQuestion::class,"review_id","id");
+    }
 
 
     public static function saveData($request){

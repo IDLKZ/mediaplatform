@@ -58,6 +58,11 @@ class Result extends Model
         return $result->save();
     }
 
+    public static function updateResult($data,$result){
+        $result->update($data);
+        return $result->save();
+    }
+
 
 
 

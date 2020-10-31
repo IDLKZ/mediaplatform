@@ -33,10 +33,27 @@
 
                                 </ul>
                             </li>
-
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-video-camera"></i>
+                                    <span>Видеокурсы</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route("course.create")}}">
+                                            <i class="fa fa-user"></i>Новый видеокурс</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("course.index")}}">
+                                            <i class="icon-ghost"></i>Список видеокурсов</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-check-circle"></i>
                                     <span>Задания</span>
                                 </a>
                                 <ul>

@@ -36,17 +36,32 @@ class Course extends Model
     ];
 
     //1.Ссылки на таблицы бд
+    //Автор
     public function author(){
         return $this->belongsTo(User::class,"author_id","id");
     }
+    //Язык
     public function language(){
         return $this->belongsTo(Language::class,"language_id","id");
     }
+
+
     //2. Есть в видео
     public function videos(){
         return $this->hasMany(Video::class,"course_id","id");
     }
-
+    //Подписки
+    public function subscribers(){
+        return $this->hasMany(Subscriber::class,"course_id","id");
+    }
+    //Экзамены
+    public function examinations(){
+        return $this->hasMany(Examination::class,"course_id","id");
+    }
+    //Результаты
+    public function results(){
+        return $this->hasMany(Result::class,"course_id","id");
+    }
 
 
 

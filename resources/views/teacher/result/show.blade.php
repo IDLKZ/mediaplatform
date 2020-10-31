@@ -19,7 +19,7 @@
                     </div>
                 @endif
                 <div class="boxs-body">
-                    <form id="my-form" action="{{route("material.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
+                    <form id="my-form" action="{{route("teacher.checkResult")}}" method="post" enctype="multipart/form-data" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
 
                         <div class="form-group">
@@ -77,7 +77,7 @@
                                     <strong>Результаты </strong></h3>
                             </div>
                             <div class="boxs-body p-0">
-                                <table class="table table-condensed">
+                                <table class="table table-condensed table-bordered table-responsive">
                                     <thead>
                                     <tr>
                                         <th>№</th>
@@ -119,10 +119,40 @@
                                 </table>
                             </div>
                         </section>
+                        <div class="boxs-header">
+                            <h3 class="custom-font hb-blush">
+                                <strong>Ваша оценка</strong></h3>
+                        </div>
+                        <hr class="line-dashed full-witdh-line" />
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ваш комментарий </label>
+                            <div class="col-sm-9">
+                                <textarea name="teacher_comments" id="editor">
+                                    {{$result->teacher_comments}}
+                                </textarea>
+                            </div>
+                        </div>
+                        <input hidden value="{{$result->id}}" name="id">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Ваш комментарий </label>
+                            <div class="col-sm-9">
+                                <input name="result" value="{{$result->result}}" type="number" min="0" max="10" class="form-control" placeholder="Ваш рейтинг" data-parsley-trigger="change" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Курс</label>
+                            <div class="col-sm-9">
+                                <select name="status" class="form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
+                                    <option value="1">Успешно сдал!</option>
+                                    <option value="-1">Пересдача!</option>
+
+                                </select>
+                            </div>
+                        </div>
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Сохранить</button>
+                            <button type="submit" class="btn btn-raised btn-default">Проверено!</button>
                         </div>
                     </form>
                 </div>

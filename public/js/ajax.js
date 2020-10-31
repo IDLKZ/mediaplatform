@@ -1,12 +1,60 @@
 $(document).ready(function () {
     //URLS
     let url = {
+        "teacher_exam":"/teacher/examination",
       "teacher_video":"/teacher/ajax/videos",
         "teacher_type":"/teacher/ajax/getType"
     };
 
+    //Init Teacher Examination
+    if(window.location.href.indexOf(url["teacher_exam"]) != -1){
+        if($("#courses").val()){
+            $.ajax({
+                type: "POST",
+                url: url["teacher_video"],
+                data: {"_token":$('meta[name="csrf-token"]').attr('content'),"course_id":$("#courses").val()},
+                success: function (response) {
+                    if(response.length > 0){
+                        for (let i=0;i<response.length; i++){
+                            if($("#video_select").val() != response[i]["id"]){
+                                $("#video_select").append($("<option></option>")
+                                    .attr("value", response[i]["id"])
+                                    .text(response[i]["title"]));
+                            }
 
+                        }
 
+                    }
+                },
+                error:function(error){console.log(error)},
+                dataType: "json"
+            });
+        }
+       if($("#exam_type").val()){
+           $.ajax({
+               type: "POST",
+               url: url["teacher_type"],
+               data: {"_token":$('meta[name="csrf-token"]').attr('content'),"type":$("#exam_type").val()},
+               success: function (response) {
+                   let data = response.data;
+                   if(response["data"].length > 0){
+                       $("#examination_select").attr("name",response.type);
+                       for (let i=0;i<data.length; i++){
+                           if($("#examination_select").val() != response[i]["id"]) {
+                               $("#examination_select").append($("<option></option>")
+                                   .attr("value", data[i]["id"])
+                                   .text(data[i]["title"]));
+                           }
+                       }
+
+                   }
+               },
+               error:function(error){console.log(error)},
+               dataType: "json"
+           });
+       }
+    }
+    //End of Init
     //Teacher Ajax
    $("#courses").on("change",function () {
         $("#video_select").empty().append("<option>Не выбрано</option>")

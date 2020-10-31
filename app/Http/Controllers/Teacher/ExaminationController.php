@@ -42,7 +42,6 @@ class ExaminationController extends Controller
             "course_id"=>"required",
             "video_id"=>"required",
             'file' => 'sometimes|file|max:2048',
-
         ]);
         $courses = Auth::user()->courses;
         return  view("teacher.examination.create",compact("courses","validator"));
