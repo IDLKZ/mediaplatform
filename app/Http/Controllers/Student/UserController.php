@@ -27,7 +27,9 @@ class UserController extends Controller
 
     public function profile()
     {
-        return view('student.profile.index');
+        $courses = Subscriber::where(['user_id' => Auth::id(), 'status' => 1])->with(['author', 'course'])->paginate(10);
+
+        return view('student.profile.index', compact('courses'));
     }
 
     public function settings()

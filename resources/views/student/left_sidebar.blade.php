@@ -16,24 +16,6 @@
 {{--                            Главная--}}
 
 {{--                            Видеокурсы--}}
-
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-video-camera"></i>
-                                    <span>Мои Видеокурсы</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("student.course")}}">
-                                            <i class="fa fa-plus-circle"></i>Мои видеокурсы</a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <i class="fa fa-angle-right"></i>Неподтвержденные видеокурсы</a>
-                                    </li>
-
-                                </ul>
-                            </li>
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-check-circle"></i>

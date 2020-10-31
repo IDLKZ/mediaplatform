@@ -7,7 +7,7 @@
                 <div class="profile-header">
                     <div class="profile_info">
                         <div class="profile-image">
-                            <img src="/images/profile-photo.jpg" alt="">
+                            <img src="{{\Illuminate\Support\Facades\Auth::user()->img}}" height="120" width="120">
                         </div>
                         <h4 class="mb-0"><strong>{{\Illuminate\Support\Facades\Auth::user()->name}}</strong></h4>
                         <span class="text-muted">Студент</span>
@@ -71,7 +71,7 @@
             <section class="boxs progress-report">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-green">
-                        <strong>Project </strong>Progress</h3>
+                        <strong>Прогресс </strong>в учебе</h3>
                     <ul class="controls">
                         <li class="dropdown">
                             <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown">
@@ -92,47 +92,30 @@
                         <table class="table table-custom" id="project-progress">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Project</th>
-                                <th>Priority</th>
-                                <th>Status</th>
-                                <th class="text-right no-sort">Chart</th>
+                                <th>№</th>
+                                <th>Курс</th>
+                                <th>Прогресс</th>
+                                <th class="text-right no-sort">Действие</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($courses as $course)
                             <tr>
-                                <td>1</td>
-                                <td>Graphic layout for client</td>
+                                <td>{{$loop->iteration}}</td>
                                 <td>
-                                    <small class="text-danger">High Priority</small>
+                                    <small class="text-danger">{{$course->course->title}}</small>
                                 </td>
                                 <td>
-                                    <div class="progress-xxs not-rounded mb-0 inline-block progress" style="width: 150px; margin-right: 5px">
-                                        <div class="progress-bar progress-bar-greensea" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" style="width: 42%;"></div>
+                                    <div class="progress-xxs not-rounded mb-0 inline-block progress" style="width: 150px; margin-right: 5px; height: 15px;border-radius: 15px">
+                                        <div class="progress-bar progress-bar-greensea" role="progressbar" aria-valuenow="{{$course->course->videos->count() != 0 ? (count($course->course->results)/$course->course->videos->count())*100 : 0}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$course->course->videos->count() != 0 ? (count($course->course->results)/$course->course->videos->count())*100 : 0}}%;"></div>
                                     </div>
-                                    <small>42%</small>
+                                    <small>{{$course->course->videos->count() != 0 ? intval((count($course->course->results)/$course->course->videos->count())*100) : 0}}%</small>
                                 </td>
                                 <td class="text-right">
-
+                                    <a href="{{route('student.course.show', $course->course->alias)}}"><button class="btn btn-info btn-raised">Продолжить</button></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Make website responsive</td>
-                                <td>
-                                    <small class="text-success">Low Priority</small>
-                                </td>
-                                <td>
-                                    <div class="progress-xxs not-rounded mb-0 inline-block progress" style="width: 150px; margin-right: 5px">
-                                        <div class="progress-bar progress-bar-greensea" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
-                                    </div>
-                                    <small>89%</small>
-                                </td>
-                                <td class="text-right">
-
-                                </td>
-                            </tr>
-
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
