@@ -16,11 +16,11 @@ class CreateSubscribersTable extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
             $table->foreignId("course_id");
-            $table->foreign("course_id")->references("id")->on("courses")->cascadeOnDelete();
+            $table->foreign("course_id")->references("id")->on("courses")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("author_id");
-            $table->foreign("author_id")->references("id")->on("users")->cascadeOnDelete();
+            $table->foreign("author_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("user_id");
-            $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete();
+            $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('status');
             $table->timestamps();
         });

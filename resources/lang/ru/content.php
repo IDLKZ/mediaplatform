@@ -5,8 +5,10 @@ return [
     'request' => 'Заявки',
     'listeners' => 'Слушатели',
     'course_title' => 'Наименование курса',
-    'sentTime' => 'время отправки запроса',
-    'sentTime' => 'Одобрен',
+    'sendTime' => 'Время отправки запроса',
+    'approved' => 'Одобрен',
+    'denied' => 'Одобрен',
+
 
 
     //buttons

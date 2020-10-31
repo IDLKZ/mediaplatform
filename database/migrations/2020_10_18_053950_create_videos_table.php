@@ -16,7 +16,7 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->foreignId("course_id");
-            $table->foreign("course_id")->references("id")->on("courses")->cascadeOnDelete();
+            $table->foreign("course_id")->references("id")->on("courses")->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer("available")->default(0);
             $table->string("video_url");
             $table->integer("count");

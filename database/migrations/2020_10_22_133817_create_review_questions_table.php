@@ -16,7 +16,7 @@ class CreateReviewQuestionsTable extends Migration
         Schema::create('review_questions', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->foreignId("review_id");
-            $table->foreign("review_id")->references("id")->on("reviews")->cascadeOnDelete();
+            $table->foreign("review_id")->references("id")->on("reviews")->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('question');
             $table->string("file")->nullable();
             $table->timestamps();

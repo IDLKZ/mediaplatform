@@ -17,9 +17,9 @@ class CreateMaterialsTable extends Migration
             $table->bigIncrements("id");
 
             $table->foreignId("video_id");
-            $table->foreign("video_id")->references("id")->on("videos")->cascadeOnDelete();
+            $table->foreign("video_id")->references("id")->on("videos")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("author_id");
-            $table->foreign("author_id")->references("id")->on("users")->cascadeOnDelete();
+            $table->foreign("author_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->string("file")->nullable();
             $table->string("title");
             $table->string("type");

@@ -16,7 +16,7 @@ class CreateQuestiobsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId("quiz_id");
-            $table->foreign("quiz_id")->references("id")->on("quizzes")->cascadeOnDelete();
+            $table->foreign("quiz_id")->references("id")->on("quizzes")->cascadeOnDelete()->cascadeOnUpdate();
             $table->text("question");
             $table->json('images')->nullable();
             $table->string("A");

@@ -17,9 +17,9 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements("id");
             //Foreign key
             $table->foreignId("author_id");
-            $table->foreign("author_id")->references("id")->on("users")->cascadeOnDelete();
+            $table->foreign("author_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("language_id");
-            $table->foreign("language_id")->references("id")->on("languages")->cascadeOnDelete();
+            $table->foreign("language_id")->references("id")->on("languages")->cascadeOnDelete()->cascadeOnUpdate();
             //
             $table->string("img")->nullable();
             $table->string("title");

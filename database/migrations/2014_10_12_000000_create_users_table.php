@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements("id");
             //Foreign Key
             $table->foreignId("role_id");
-            $table->foreign("role_id")->references("id")->on("roles")->cascadeOnDelete();
+            $table->foreign("role_id")->references("id")->on("roles")->cascadeOnDelete()->cascadeOnUpdate();
             //End Of Foreign Key
             $table->string('name');
             $table->string('email')->unique();
