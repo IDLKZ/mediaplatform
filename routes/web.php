@@ -45,6 +45,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
         return redirect(\route('login'));
     })->name('logout');
 
+
 //Start Authorization
     Route::group(["middlerware" => "guest"],function (){
         Route::get('/register', [RegisterController::class, 'register'])->name('register');
