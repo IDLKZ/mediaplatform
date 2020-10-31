@@ -10,7 +10,7 @@
                             <li class="active open">
                                 <a href="index.html">
                                     <i class="fa fa-dashboard"></i>
-                                    <span>Главная</span>
+                                    <span>{{__('website.main')}}</span>
                                 </a>
                             </li>
 {{--                            Главная--}}
@@ -19,16 +19,16 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-users"></i>
-                                    <span>Мои слушатели</span>
+                                    <span>{{__('website.subscribers')}}</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{route("confirmed_subscribers")}}">
-                                            <i class="fa fa-user"></i>Подтвержденные слушатели</a>
+                                            <i class="fa fa-user"></i>{{__('website.access_subscribers')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("unconfirmed_subscribers")}}">
-                                            <i class="icon-ghost"></i>Неподтвержденные слушатели</a>
+                                            <i class="icon-ghost"></i>{{__('website.request_subscribers')}}</a>
                                     </li>
 
                                 </ul>
@@ -36,16 +36,16 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-video-camera"></i>
-                                    <span>Видеокурсы</span>
+                                    <span>{{__('website.courses')}}</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{route("course.create")}}">
-                                            <i class="fa fa-user"></i>Новый видеокурс</a>
+                                            <i class="fa fa-user"></i>{{__('website.add_course')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("course.index")}}">
-                                            <i class="icon-ghost"></i>Список видеокурсов</a>
+                                            <i class="icon-ghost"></i>{{__('website.list_course')}}</a>
                                     </li>
 
                                 </ul>
@@ -54,16 +54,16 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-check-circle"></i>
-                                    <span>Задания</span>
+                                    <span>{{__('website.tasks')}}</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{route("teacher.checkedResult")}}">
-                                            <i class="fa fa-plus-circle"></i>Проверенные задания</a>
+                                            <i class="fa fa-plus-circle"></i>{{__('website.check_task')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("teacher.uncheckedResult")}}">
-                                            <i class="fa fa-angle-right"></i>Непроверенные задания</a>
+                                            <i class="fa fa-angle-right"></i>{{__('website.uncheck_task')}}</a>
                                     </li>
 
                                 </ul>
@@ -75,16 +75,16 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-film "></i>
-                                    <span>Видео</span>
+                                    <span>{{__('website.video')}}</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{route("video.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новое видео</a>
+                                            <i class="fa fa-plus-circle"></i>{{__('website.add_video')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("video.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список видео</a>
+                                            <i class="fa fa-angle-right"></i>{{__('website.list_video')}}</a>
                                     </li>
 
                                 </ul>
@@ -92,16 +92,16 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-book"></i>
-                                    <span>Материалы</span>
+                                    <span>{{__('website.materials')}}</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{route("material.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый материал</a>
+                                            <i class="fa fa-plus-circle"></i>{{__('website.add_material')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("material.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список Материалов</a>
+                                            <i class="fa fa-angle-right"></i>{{__('website.list_material')}}</a>
                                     </li>
 
                                 </ul>
@@ -110,16 +110,16 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-question"></i>
-                                    <span>База тестов</span>
+                                    <span>{{__('website.quizzes')}}</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{route("quiz.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый Тест</a>
+                                            <i class="fa fa-plus-circle"></i>{{__('website.add_quiz')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("quiz.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список Тестов</a>
+                                            <i class="fa fa-angle-right"></i>{{__('website.list_quiz')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("question.create")}}">
@@ -136,11 +136,11 @@
                                     <hr>
                                     <li>
                                         <a href="{{route("review.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый Опрос</a>
+                                            <i class="fa fa-plus-circle"></i>{{__('website.add_review')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("review.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список Опросов</a>
+                                            <i class="fa fa-angle-right"></i>{{__('website.list_review')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("review-question.create")}}">
@@ -156,16 +156,16 @@
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-check-square-o"></i>
-                                    <span>Экзамены</span>
+                                    <span>{{__('website.exam')}}</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{route("examination.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый Экзамен</a>
+                                            <i class="fa fa-plus-circle"></i>{{__('website.add_exam')}}</a>
                                     </li>
                                     <li>
                                         <a href="{{route("examination.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список Экзаменов</a>
+                                            <i class="fa fa-angle-right"></i>{{__('website.list_exam')}}</a>
                                     </li>
 
 

@@ -25,10 +25,10 @@
                 <div class="dropdown-menu pull-left panel-default pt-0 pb-0" role="menu">
                     <ul class="list-group mb-0">
                         <li class="list-group-item">
-                            <a href="javascript:void(0);" class="p-0 m-0" >Каз</a>
+                            <a href="{{route('setlocale', ['lang' => 'kz'])}}" class="p-0 m-0" >Қаз</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="javascript:void(0);" class="p-0 m-0" >Рус</a>
+                            <a href="{{route('setlocale', ['lang' => 'ru'])}}" class="p-0 m-0" >Рус</a>
                         </li>
                     </ul>
                 </div>

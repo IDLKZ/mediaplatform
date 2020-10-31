@@ -10,7 +10,7 @@
                             <li class="active open">
                                 <a href="{{route('user')}}">
                                     <i class="fa fa-dashboard"></i>
-                                    <span>Главная</span>
+                                    <span>{{__('website.main')}}</span>
                                 </a>
                             </li>
 {{--                            Главная--}}
