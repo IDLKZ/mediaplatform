@@ -22,6 +22,7 @@ class SubscriberController extends Controller
             return view("teacher.subscriber.index",compact("subscribers"));
         }
         else{
+            Toastr::warning("Ничего не найдено","Упс...");
             return  redirect()->back();
         }
 
@@ -33,6 +34,7 @@ class SubscriberController extends Controller
             return view("teacher.subscriber.index",compact("subscribers"));
         }
         else{
+
             return  redirect(route('confirmed_subscribers'));
         }
     }
