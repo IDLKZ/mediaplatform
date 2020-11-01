@@ -13,7 +13,7 @@
         </div>
         @if(count($courses)>0)
             @foreach($courses as $course)
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="boxs project_widget">
                         <div class="pw_img">
                             <img class="img-responsive p-10" src="{{$course->img}}" alt="{{$course->title}}" style="margin: 0 auto">

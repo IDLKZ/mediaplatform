@@ -51,6 +51,7 @@ return [
     "video_materials" => "Материалдар мен анықтамалар",
     "video_explanation" => "Видеоның түсініктемелері мен сипаттамалары",
     'videoCourse' => 'Курстың видеосабақтары',
+    'notVideoCourse' => 'Курстың видеосабақтары жоқ',
 
     //material
     "material"=>"Материал",
