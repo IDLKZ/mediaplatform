@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Subscriber;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Carbon::setLocale(config('app.locale'));
         view()->composer('teacher.header', function($view){
             $view->with('subscribers', Subscriber::where(['author_id' => Auth::id(), 'status' => false])->count());
         });

@@ -6,17 +6,17 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Заявки</strong></h3>
+                            <strong>{{__('content.request')}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         <div class="table-responsive">
                             <table class="table table-middle">
                                 <thead>
                                 <tr>
-                                    <th>Студент</th>
-                                    <th>Наименование курса</th>
-                                    <th>Время отправки запроса</th>
-                                    <th>Статус</th>
+                                    <th>{{__('content.listeners')}}</th>
+                                    <th>{{__('content.course_title')}}</th>
+                                    <th>{{__('content.sendTime')}}</th>
+                                    <th>{{__('content.course_status')}}</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -69,7 +69,7 @@
                                             </td>
                                             <td>{{$subscriber->created_at->diffForHumans()}}</td>
                                             <td>
-                                                <span class="label label-{{$subscriber->status ? 'success' : 'warning'}} label-pill">{{$subscriber->status ? 'Одобрен' : 'Не одобрен'}}</span>
+                                                <span class="label label-{{$subscriber->status ? 'success' : 'warning'}} label-pill">{{$subscriber->status ? __('content.approved') : __('content.requested')}}</span>
                                             </td>
                                             <td>
                                                 <div class="dropdown">
@@ -79,14 +79,15 @@
                                                     <ul class="dropdown-menu pull-right">
                                                         <li>
                                                             <a  href="{{route("getAccessVideo",$subscriber->id)}}">
-                                                                Редактировать
+                                                                {{__('content.edit')}}
                                                             </a>
                                                         </li>
                                                         <li class="divider"></li>
                                                         <li>
                                                             <form action="{{route('deleteSubscriber', $subscriber->id)}}" method="post">
                                                                 @csrf
-                                                                <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">Удалить</button>
+                                                                <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">
+                                                                    {{__('content.delete')}}</button>
                                                             </form>
                                                         </li>
                                                     </ul>

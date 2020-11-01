@@ -22,23 +22,51 @@ return [
     "course_language"=>"Язык курса",
     "course_image"=>"Изображение курса",
     "course_status"=>"Курс готов к выпуску",
+    "img"=>"Изображение",
+    "list_courses"=>"Список моих видеокурсов",
+    "small_subtitle_courses"=>"Здесь вы можете просмотреть свои видеокурсы",
+    "course_last_update"=>"Последнее обновление",
+    "not_course"=>"Курсов пока нет",
+    "course_info"=>"Информация о Курсе",
+    "course_author"=>"Автор",
+    "course_lang"=>"Основной язык",
+    "course_about"=>"О курсе",
+    "course_skills"=>"Навыки",
+    "course_requirement"=>"Требования",
+    "course_what_will_you_learn"=>"Чему ты научишься",
+    "course_change"=>"Изменить видеокурс",
 
     //video
     "video"=>"Видео",
+    "video_title"=>"Наименование видео",
     'new_video'=>"Новое видео",
     "video_count"=>"Номер видео",
     "video_video"=>"Видео",
+    "video_course"=>"Видео курса",
     "video_preview"=>"Разрешенный предпросмотр",
     "my_video"=>"Мои видеоуроки",
     "video_allowed"=>"Превью",
     "video_notallowed"=>"Не превью",
+    "selected" => "Не выбрано",
+    "video_materials" => "Материалы и описание",
+    "video_explanation" => "Описание и объяснение видео",
 
     //material
     "material"=>"Материал",
+    "material_my"=>"Мои материалы",
     "filename"=>"Наименование файла",
     "links"=>"Ссылки",
+    "not_links"=>"Ссылок нет",
     "material_type"=>"Тип материала",
     "material_video"=>"Файлы к материалу",
+    "material_add"=>"НОВЫЙ МАТЕРИАЛ К ВИДЕО",
+    "additional_links"=>"Дополнительные ссылки",
+    'material_audio' => 'Аудиозапись',
+    'material_other' => 'Другое',
+
+    //results
+    "result_list" => 'Результаты слушателей',
+    "result_time_pass" => 'Время сдачи экзамена',
 
     //examination
     "examination"=>"Экзамены",
@@ -47,7 +75,6 @@ return [
     "examination_base"=>"База вопросов",
     "examination_description"=>"Описание к экзамену",
     "examination_material"=>"Материалы к экзамену",
-
 
 
     //buttons

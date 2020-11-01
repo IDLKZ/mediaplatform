@@ -6,7 +6,7 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Мои материалы</strong></h3>
+                            <strong>{{__('content.material_my')}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         <div class="table-responsive">
@@ -14,10 +14,10 @@
                                 <thead>
                                 <tr>
                                     <th>Видео</th>
-                                    <th>Наименование материала</th>
-                                    <th>Тип файла</th>
-                                    <th>Ссылки</th>
-                                    <th>Действия</th>
+                                    <th>{{__('content.filename')}}</th>
+                                    <th>{{__('content.material_type')}}</th>
+                                    <th>{{__('content.links')}}</th>
+                                    <th>{{__('content.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -32,7 +32,7 @@
                                                 <a href="{{$link}}" target="_blank">{{$link}}</a>
                                             @endforeach
                                             @else
-                                                <p>Ссылок нет</p>
+                                                <p>{{__('content.not_links')}}</p>
                                             @endif
                                         </td>
                                         <td colspan="2">
@@ -43,12 +43,12 @@
                                                 <ul class="dropdown-menu pull-right">
                                                     <li>
                                                         <a  href="{{route("material",$material->id)}}">
-                                                            Скачать
+                                                            {{__('content.download')}}
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a  href="{{route("material.edit",$material->id)}}">
-                                                            Редактировать
+                                                            {{__('content.edit')}}
                                                         </a>
                                                     </li>
 
@@ -57,7 +57,8 @@
                                                         <form action="{{route('material.destroy',$material->id)}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">Удалить</button>
+                                                            <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">
+                                                                {{__('content.delete')}}</button>
                                                         </form>
                                                     </li>
                                                 </ul>

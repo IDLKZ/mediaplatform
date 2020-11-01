@@ -1,20 +1,20 @@
 @extends('teacher.layout')
 @section('content')
-    <a href="{{route("video.index")}}" class="btn btn-raised btn-info">Назад</a>
+    <a href="{{route("video.index")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>НОВОЕ</strong> ВИДЕО</h3>
+                        <strong>{{__('content.new_video')}}</strong></h3>
                 </div>
                 <div class="boxs-body">
                 <span id="route" style="display: none">{{$route}}</span>
                     <form id="my-form" action="{{route("video.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal uploadAjax" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Курс</label>
+                            <label class="col-sm-3 control-label">{{__('content.course')}}</label>
                             <div class="col-sm-9">
                                 <select name="course_id" class="form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     @foreach($courses as $course)
@@ -25,13 +25,13 @@
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Наименование курса</label>
+                            <label class="col-sm-3 control-label">{{__('content.course_title')}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="Наименование курса" maxlength="255" data-parsley-trigger="change" required>
+                                <input name="title" type="text" class="form-control" placeholder="{{__('content.course_title')}}" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Описание курса</label>
+                            <label class="col-sm-3 control-label">{{__('content.course_description')}}</label>
                             <div class="col-sm-9">
                                 <textarea name="description" id="editor"></textarea>
                             </div>
@@ -39,7 +39,7 @@
 
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Номер видео</label>
+                            <label class="col-sm-3 control-label">{{__('content.video_count')}}</label>
                             <div class="col-sm-9">
                                 <input name="count" type="text" min="1" class="form-control" placeholder="№ Видео" maxlength="500" data-parsley-trigger="change" required>
                             </div>
@@ -47,7 +47,7 @@
                         <hr class="line-dashed full-witdh-line" />
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Разрешенный предпросмотр</label>
+                            <label class="col-sm-3 control-label">{{__('content.video_preview')}}</label>
                             <div class="col-sm-9">
                                 <div class="togglebutton">
                                     <label>
@@ -58,10 +58,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Видео курса</label>
+                            <label class="col-sm-3 control-label">{{__('content.video_video')}}</label>
                             <div class="col-sm-9">
                                 <div class="customFile">
-                                    <span class="selectedFile">Не выбрано</span>
+                                    <span class="selectedFile">{{__('content.selected')}}</span>
                                     <input type="file" id="file" name="video_url">
                                 </div>
                                 <div class="progress mt-5">
@@ -77,8 +77,8 @@
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
 
-                            <button type="submit" id="btn-submit" class="btn btn-raised btn-default">Сохранить</button>
-                            <button type="reset" class="btn btn-raised btn-danger">Очистить поля</button>
+                            <button type="submit" id="btn-submit" class="btn btn-raised btn-default">{{__('content.save')}}</button>
+                            <button type="reset" class="btn btn-raised btn-danger">{{__('content.clear')}}</button>
                         </div>
                     </form>
                 </div>

@@ -6,18 +6,18 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Мои видеоуроки</strong></h3>
+                            <strong>{{__('content.my_video')}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         <div class="table-responsive">
                             <table class="table table-middle">
                                 <thead>
                                 <tr>
-                                    <th>Курс</th>
-                                    <th>Наименование курса</th>
+                                    <th>{{__('content.course')}}</th>
+                                    <th>{{__('content.course_title')}}</th>
                                     <th>№ Видео</th>
                                     <th>Статус</th>
-                                    <th>Действия</th>
+                                    <th>{{__('content.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -38,12 +38,12 @@
 
                                                     <li>
                                                         <a href="{{route("video.show",$video->alias)}}">
-                                                            Просмотреть
+                                                            {{__('content.watch')}}
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a  href="{{route("video.edit",$video->alias)}}">
-                                                            Редактировать
+                                                            {{__('content.edit')}}
                                                         </a>
                                                     </li>
 
@@ -52,7 +52,8 @@
                                                     <form action="{{route('video.destroy',$video->alias)}}" method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">Удалить</button>
+                                                        <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">
+                                                            {{__('content.delete')}}</button>
                                                     </form>
                                                 </li>
                                             </ul>

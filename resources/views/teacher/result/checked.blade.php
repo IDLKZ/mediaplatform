@@ -6,17 +6,17 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Результаты слушателей</strong></h3>
+                            <strong>{{__('content.result_list')}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         <div class="table-responsive">
                             <table class="table table-middle">
                                 <thead>
                                 <tr>
-                                    <th>Студент</th>
-                                    <th>Наименование курса</th>
-                                    <th>Наименование видео</th>
-                                    <th>Время сдачи экзамена</th>
+                                    <th>{{__('content.listeners')}}</th>
+                                    <th>{{__('content.course_title')}}</th>
+                                    <th>{{__('content.video_title')}}</th>
+                                    <th>{{__('content.result_time_pass')}}</th>
                                     <th>Статус</th>
                                     <th></th>
                                 </tr>
@@ -44,7 +44,7 @@
                                                         <div class="ripple-container"></div></a>
                                                     <ul class="dropdown-menu pull-right">
                                                             <li>
-                                                                <a href="{{route('teacher.showResult', $result->id)}}">Просмотреть</a>
+                                                                <a href="{{route('teacher.showResult', $result->id)}}">{{__('content.watch')}}</a>
                                                             </li>
 
 

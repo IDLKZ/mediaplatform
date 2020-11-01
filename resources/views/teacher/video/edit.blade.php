@@ -1,13 +1,13 @@
 @extends('teacher.layout')
 @section('content')
-    <a href="{{route("video.index")}}" class="btn btn-raised btn-info">Назад</a>
+    <a href="{{route("video.index")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>ИЗМЕНИТЬ</strong> ВИДЕО</h3>
+                        <strong>{{__('content.change')}}</strong></h3>
                 </div>
                 <div class="boxs-body">
                     @if ($errors->any())
@@ -34,13 +34,13 @@
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Наименование курса</label>
+                            <label class="col-sm-3 control-label">{{__('content.course_title')}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="Наименование курса" maxlength="255" data-parsley-trigger="change" required value="{{$video->title}}">
+                                <input name="title" type="text" class="form-control" placeholder="{{__('content.course_title')}}" maxlength="255" data-parsley-trigger="change" required value="{{$video->title}}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Описание курса</label>
+                            <label class="col-sm-3 control-label">{{__('content.course_description')}}</label>
                             <div class="col-sm-9">
                                 <textarea name="description" id="editor">
                                     {!! $video->description !!}
@@ -50,7 +50,7 @@
 
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Номер видео</label>
+                            <label class="col-sm-3 control-label">{{__('content.video_count')}}</label>
                             <div class="col-sm-9">
                                 <input name="count" type="number" min="1" class="form-control" placeholder="№ Видео" maxlength="500" data-parsley-trigger="change" required value="{{$video->count}}">
                             </div>
@@ -58,7 +58,7 @@
                         <hr class="line-dashed full-witdh-line" />
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Разрешенный предпросмотр</label>
+                            <label class="col-sm-3 control-label">{{__('content.video_preview')}}</label>
                             <div class="col-sm-9">
                                 <div class="togglebutton">
                                     <label>
@@ -69,11 +69,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Видео курса</label>
+                            <label class="col-sm-3 control-label">{{__('content.video_course')}}</label>
                             <div class="col-sm-9">
                                 <span class="btn btn-raised btn-success fileinput-button">
 												<i class="glyphicon glyphicon-plus"></i>
-												<span>Видео</span>
+												<span>{{__('content.video')}}</span>
 												<input type="file" name="video_url" >
 								</span>
                             </div>
@@ -81,8 +81,8 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Изменить курс</button>
-                            <button type="reset" class="btn btn-raised btn-danger">Очистить поля</button>
+                            <button type="submit" class="btn btn-raised btn-default">{{__('content.change')}}</button>
+                            <button type="reset" class="btn btn-raised btn-danger">{{__('content.clear')}}</button>
                         </div>
                     </form>
                 </div>
