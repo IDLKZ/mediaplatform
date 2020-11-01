@@ -1,6 +1,6 @@
 @extends('teacher.layout')
 @section('content')
-    <a href="{{route("material.index")}}" class="btn btn-raised btn-info">Назад</a>
+    <a href="{{route("confirmed_subscribers")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
@@ -45,7 +45,7 @@
                             <label class="col-sm-3 control-label">Видео</label>
                             <div class="col-sm-9">
                                 <select name="video_id" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
-                                    @foreach($videos as $video)
+                                    @foreach($subscriber->videos as $video)
                                         <option value="{{$video->id}}">{{$video->title}}</option>
                                     @endforeach
                                 </select>

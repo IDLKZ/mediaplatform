@@ -22,7 +22,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where(["author_id"=>Auth::user()->id])->paginate(8);
+        $courses = Course::where(["author_id"=>Auth::id()])->paginate(8);
         return  view("teacher.course.index",compact("courses"));
 
     }

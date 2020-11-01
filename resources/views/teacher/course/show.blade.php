@@ -7,7 +7,7 @@
     <div class="md-12">
 
         <div class="col-md-4 col-sm-12 col-xs-12">
-            <section class="boxs user_widget">
+            <section class="boxs user_widget" style="height: 470px">
                 <div class="uw_header l-blush">
                     <h3>{{$course->title}}</h3>
                     <h5>{{\Illuminate\Support\Carbon::parse($course->created_at)->diffForHumans()}}</h5>
@@ -95,12 +95,19 @@
                     <h3 class="custom-font hb-green">
                         <strong>{{__('content.videoCourse')}}</strong></h3>
                 </div>
+
+                @if (!empty($course->videos->toArray()))
                 <ul id="svList">
-                    @foreach($course->videos as $video)
-                        <li class="svThumb vimeoVideo" data-videoID="{{Str::of($video->video_url)->ltrim('https://vimeo.com/')}}">
-                            {{$video->title}}</li>
-                    @endforeach
+                        @foreach($course->videos as $video)
+                            <li class="svThumb vimeoVideo" data-videoID="{{Str::of($video->video_url)->ltrim('https://vimeo.com/')}}">
+                                {{$video->title}}</li>
+                        @endforeach
                 </ul>
+                @else
+                    <div class="boxs-body">
+                        {{__('content.notVideoCourse')}}
+                    </div>
+                @endif
             </section>
         </div>
 

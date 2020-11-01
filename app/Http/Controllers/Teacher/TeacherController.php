@@ -38,7 +38,7 @@ class TeacherController extends Controller
 
     public function subscribers()
     {
-        $subscribers = Subscriber::with('user')->orderBy('status', 'asc')->get();
+        $subscribers = Subscriber::with('user')->where('author_id', Auth::id())->orderBy('status', 'asc')->get();
         return view('teacher.subscriber.index', compact('subscribers'));
     }
 

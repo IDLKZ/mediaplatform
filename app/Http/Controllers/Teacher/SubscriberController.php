@@ -15,7 +15,9 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 class SubscriberController extends Controller
 {
     public function confirmed(){
-        $subscribers = Auth::user()->author_subscribers()->where("status",1)->paginate(15);
+//        $subscribers = Auth::user()->author_subscribers()->where("status",1)->paginate(15);
+        $subscribers = Subscriber::with('user')->where(["status" => 1, 'author_id' => Auth::id()])->paginate(15);
+
         if(!$subscribers->isEmpty()){
             return view("teacher.subscriber.index",compact("subscribers"));
         }
@@ -26,25 +28,26 @@ class SubscriberController extends Controller
     }
 
     public function unconfirmed(){
-        $subscribers = Auth::user()->author_subscribers()->where("status",0)->paginate(15);
+        $subscribers = Subscriber::with('user')->where(["status" => 1, 'author_id' => Auth::id()])->paginate(15);
         if(!$subscribers->isEmpty()){
             return view("teacher.subscriber.index",compact("subscribers"));
         }
         else{
-            return  redirect()->back();
+            return  redirect(route('confirmed_subscribers'));
         }
     }
 
     public function getAccessVideo($id){
-        $subscriber = Auth::user()->author_subscribers()->find($id);
+//        $subscriber = Auth::user()->author_subscribers()->find($id);
+        $subscriber = Subscriber::with(['user', 'videos', 'author'])->where(['author_id' => Auth::id()])->find($id);
         if($subscriber){
             $validator = JsValidator::make( [
                 'subscribe_id'=>"required",
                 'student_id'=>'required',
                 'video_id'=> 'required',
             ]);
-            $videos = $subscriber->videos;
-            return view("teacher.subscriber.video",compact("videos","subscriber","validator"));
+//            $videos = $subscriber->videos;
+            return view("teacher.subscriber.video",compact("subscriber","validator"));
         }
         else{
             Toastr::warning("Ничего не найдено","Упс...");
