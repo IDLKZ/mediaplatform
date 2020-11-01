@@ -38,9 +38,7 @@ class AjaxController extends Controller
         }
     }
     public function searchAuthor(Request $request){
-
         $users = [];
-
         if($request->has('q')){
             $search = $request->q;
             $users =User::select("id", "name")
@@ -48,6 +46,16 @@ class AjaxController extends Controller
                 ->get();
         }
         return response()->json($users);
+    }
+    public function searchVideo(Request $request){
+        $videos = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $videos =Video::select("id", "title")
+                ->where('title', 'LIKE', "%$search%")
+                ->get();
+        }
+        return response()->json($videos);
     }
 
 

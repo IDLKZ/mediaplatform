@@ -79,11 +79,11 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{route("video.create")}}">
+                                        <a href="{{route("admin-video.create")}}">
                                             <i class="fa fa-plus-circle"></i>{{__('website.add_video')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route("video.index")}}">
+                                        <a href="{{route("admin-video.index")}}">
                                             <i class="fa fa-angle-right"></i>{{__('website.list_video')}}</a>
                                     </li>
 
@@ -96,11 +96,11 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{route("material.create")}}">
+                                        <a href="{{route("admin-material.create")}}">
                                             <i class="fa fa-plus-circle"></i>{{__('website.add_material')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route("material.index")}}">
+                                        <a href="{{route("admin-material.index")}}">
                                             <i class="fa fa-angle-right"></i>{{__('website.list_material')}}</a>
                                     </li>
 

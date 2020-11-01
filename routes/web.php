@@ -23,6 +23,8 @@ use App\Http\Controllers\Teacher\AjaxController;
 use App\Http\Controllers\Teacher\SubscriberController;
 use App\Http\Controllers\Teacher\ResultController;
 use App\Http\Controllers\Admin\AdminCourseController;
+use App\Http\Controllers\Admin\AdminVideoController;
+use App\Http\Controllers\Admin\AdminMaterialController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +75,10 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get('/', [MainController::class, 'index'])->name('main');
             //Course
             Route::resource("/admin-course",AdminCourseController::class);
+            //Video
+            Route::resource("/admin-video",AdminVideoController::class);
+            //Material
+            Route::resource("/admin-material",AdminMaterialController::class);
 
 
 
@@ -131,6 +137,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
         Route::post("/ajax/videos",[AjaxController::class,"getVideo"]);
         Route::post("/ajax/getType",[AjaxController::class,"getType"]);
         Route::get('/ajax/searchAuthor', [AjaxController::class,"searchAuthor"]);
+        Route::get('/ajax/searchVideo', [AjaxController::class,"searchVideo"]);
 
         Route::get("/getdocument/{id}",[MaterialController::class,"download"])->name("material");
 

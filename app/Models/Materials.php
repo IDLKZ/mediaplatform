@@ -36,7 +36,12 @@ class Materials extends Model
             Storage::disk("materials")->putFileAs("/upload/materials/", $file,$name);
             $fill["file"] = "/upload/materials/". $name;
         }
-        $fill["author_id"] = Auth::id();
+        if (Auth::user()->role_id == 2){$fill["author_id"] = Auth::id();}
+        else{
+            $video = Video::find($request->get("video_id"));
+            $fill["author_id"] = $video->course->author_id;
+        }
+
         $material = new self();
         $material->fill($fill);
         return $material->save();

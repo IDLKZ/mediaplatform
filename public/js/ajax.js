@@ -6,6 +6,7 @@ $(document).ready(function () {
         "teacher_type":"/ajax/getType",
         "admin-course.create":"/admin/admin-course",
         "author_search":"/ajax/searchAuthor",
+        "video_search":"/ajax/searchVideo",
     };
 
     //Init Teacher Examination
@@ -133,8 +134,29 @@ $(document).ready(function () {
             }
 
         });
-
     }
+    $('.material-video').select2({
+        placeholder: 'Видео',
+        ajax: {
+            url: url["video_search"],
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results:  $.map(data, function (item) {
+                        return {
+                            text: item.title,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+
+            cache: true
+
+        }
+
+    });
 
 
 

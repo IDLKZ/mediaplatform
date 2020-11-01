@@ -1,4 +1,4 @@
-@extends('teacher.layout')
+@extends('admin.layout')
 @section('content')
 
     <a href="{{route("admin-course.index")}}" class="btn btn-raised btn-info">{{__("content.back")}}</a>

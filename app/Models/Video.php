@@ -58,6 +58,7 @@ class Video extends Model
 
 
 
+
     public static function saveData($request, $response){
         $video = new self();
         $fill = $request->all();
