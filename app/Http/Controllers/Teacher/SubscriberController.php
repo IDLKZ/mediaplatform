@@ -29,7 +29,7 @@ class SubscriberController extends Controller
     }
 
     public function unconfirmed(){
-        $subscribers = Subscriber::with('user')->where(["status" => 1, 'author_id' => Auth::id()])->paginate(15);
+        $subscribers = Subscriber::with('user')->where(["status" => 0, 'author_id' => Auth::id()])->paginate(15);
         if(!$subscribers->isEmpty()){
             return view("teacher.subscriber.index",compact("subscribers"));
         }
