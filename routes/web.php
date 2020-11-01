@@ -22,6 +22,7 @@ use App\Http\Controllers\Teacher\ExaminationController;
 use App\Http\Controllers\Teacher\AjaxController;
 use App\Http\Controllers\Teacher\SubscriberController;
 use App\Http\Controllers\Teacher\ResultController;
+use App\Http\Controllers\Admin\AdminCourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,6 +71,13 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
         //Start AdminBlade
         Route::group(['prefix' => 'admin',"middleware"=>"admin"], function (){
             Route::get('/', [MainController::class, 'index'])->name('main');
+            //Course
+            Route::resource("/admin-course",AdminCourseController::class);
+
+
+
+
+
         });
 //End AdminBlade
 
@@ -113,14 +121,16 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 
             //
 
-            //only Ajax Query
-            Route::post("/ajax/videos",[AjaxController::class,"getVideo"]);
-            Route::post("/ajax/getType",[AjaxController::class,"getType"]);
+
 
 
         });
 //End TeacherBlade
 
+        //only Ajax Query
+        Route::post("/ajax/videos",[AjaxController::class,"getVideo"]);
+        Route::post("/ajax/getType",[AjaxController::class,"getType"]);
+        Route::get('/ajax/searchAuthor', [AjaxController::class,"searchAuthor"]);
 
         Route::get("/getdocument/{id}",[MaterialController::class,"download"])->name("material");
 

@@ -68,9 +68,13 @@ class Course extends Model
     public static function saveData($request){
         $course = new self();
         $fill = $request->all();
-        $teacher = Auth::user();
+        if(Auth::user()->role_id == 2){
+            $teacher = Auth::user();
+            $fill["author_id"] = $teacher->id;
+        }
+        else{$fill["author_id"] == $request->get("id");}
         $fill["status"] = $request->has("status") ? 1 : 0;
-        $fill["author_id"] = $teacher->id;
+
         $fill["img"] = FileDownloader::saveFile("/upload/course/",$request,"img");
         $course->fill($fill);
         return $course->save();

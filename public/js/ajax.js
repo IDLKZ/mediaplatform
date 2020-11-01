@@ -2,8 +2,10 @@ $(document).ready(function () {
     //URLS
     let url = {
         "teacher_exam":"/teacher/examination",
-      "teacher_video":"/teacher/ajax/videos",
-        "teacher_type":"/teacher/ajax/getType"
+        "teacher_video":"/ajax/videos",
+        "teacher_type":"/ajax/getType",
+        "admin-course.create":"/admin/admin-course",
+        "author_search":"/ajax/searchAuthor",
     };
 
     //Init Teacher Examination
@@ -107,7 +109,32 @@ $(document).ready(function () {
     //Trigger Course to Find  end
 
 
+    //Search Teacher for Course
+    if(window.location.href.indexOf(url["admin-course.create"]) != -1){
+        $('.course_author').select2({
+            placeholder: 'Автор курса',
+            ajax: {
+                url: url["author_search"],
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
 
+                cache: true
+
+            }
+
+        });
+
+    }
 
 
 

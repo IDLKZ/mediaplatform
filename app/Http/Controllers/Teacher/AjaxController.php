@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Quiz;
 use App\Models\Review;
+use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,19 @@ class AjaxController extends Controller
             default:
                 return response()->json([]);
         }
-
     }
+    public function searchAuthor(Request $request){
+
+        $users = [];
+
+        if($request->has('q')){
+            $search = $request->q;
+            $users =User::select("id", "name")
+                ->where("role_id",2)->where('name', 'LIKE', "%$search%")
+                ->get();
+        }
+        return response()->json($users);
+    }
+
+
 }

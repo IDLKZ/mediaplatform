@@ -40,11 +40,11 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{route("course.create")}}">
+                                        <a href="{{route("admin-course.create")}}">
                                             <i class="fa fa-user"></i>{{__('website.add_course')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route("course.index")}}">
+                                        <a href="{{route("admin-course.index")}}">
                                             <i class="icon-ghost"></i>{{__('website.list_course')}}</a>
                                     </li>
 

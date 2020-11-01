@@ -15,6 +15,15 @@ $(document).ready(function () {
             }
         },
     });
+    $(".select2-single").select2({
+        multiple:false,
+        tags:true,
+        "language": {
+            "noResults": function(){
+                return "Результатов нет";
+            }
+        },
+    });
     $(".select-multi").select2({
         "language": {
             "noResults": function(){
