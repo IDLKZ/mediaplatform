@@ -79,6 +79,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::resource("/admin-video",AdminVideoController::class);
             //Material
             Route::resource("/admin-material",AdminMaterialController::class);
+            //Create
 
 
 
