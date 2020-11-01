@@ -34,9 +34,9 @@
     </div>
     <!-- CONTENT -->
     <section id="content">
-
+        <div class="page dashboard-page">
             @yield('content')
-
+        </div>
     </section>
 </div>
 
