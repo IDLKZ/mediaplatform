@@ -12,16 +12,9 @@
                     <h3>{{$course->title}}</h3>
                     <h5>{{\Illuminate\Support\Carbon::parse($course->created_at)->diffForHumans()}}</h5>
                 </div>
-                <div class="uw_image"> <img class="img-circle" src="{{$course->img}}" style="min-height: 120px" alt="User Avatar"></div>
+                <div class="uw_image"> <img class="img-circle" src="{{$course->img}}" style="min-height: 120px" alt="{{$course->title}}"></div>
                 <div class="uw_footer">
                     <div class="text-center">
-                                    <span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </span>
                         <p class="mt-20">{{$course->subtitle}}</p>
                     </div>
 
@@ -48,9 +41,8 @@
                 </div>
             </section>
             <div></div></div>
-        <div class="col-md-8 ">
-
-            <section class="boxs">
+        <div class="col-md-8">
+            <section class="boxs" style="height: 464px; overflow: scroll">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
                         <strong>{{__('content.course_info')}}</strong> </h3>
@@ -71,7 +63,7 @@
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade active in" role="tabpanel" id="about" aria-labelledby="home-tab"
-                            style="overflow: scroll; height: auto"
+                            style="height: auto"
                             >
                                 {!! $course->description !!}
                             </div>
@@ -95,25 +87,22 @@
                     </div>
                 </div>
             </section>
-            <section class="boxs">
-                <div class="boxs-header">
-                    <h3 class="custom-font hb-blush">
-                        <strong>{{__('website.courses')}}</strong> </h3>
-
-                </div>
-                <div class="boxs-body">
-                    <ul class="tabs-menu">
-                        @foreach($course->videos as $video)
-                        <li class="{{$loop->index%2 == 0 ? "active" : ""}}">
-                            <a href="#">{{$video->count.".".$video->title}}</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </section>
-
         </div>
 
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <section class="boxs">
+                <div class="boxs-header">
+                    <h3 class="custom-font hb-green">
+                        <strong>{{__('content.videoCourse')}}</strong></h3>
+                </div>
+                <ul id="svList">
+                    @foreach($course->videos as $video)
+                        <li class="svThumb vimeoVideo" data-videoID="{{Str::of($video->video_url)->ltrim('https://vimeo.com/')}}">
+                            {{$video->title}}</li>
+                    @endforeach
+                </ul>
+            </section>
+        </div>
 
 
 

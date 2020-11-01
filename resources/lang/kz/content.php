@@ -50,6 +50,7 @@ return [
     "selected" => "Таңдалмады",
     "video_materials" => "Материалдар мен анықтамалар",
     "video_explanation" => "Видеоның түсініктемелері мен сипаттамалары",
+    'videoCourse' => 'Курстың видеосабақтары',
 
     //material
     "material"=>"Материал",

@@ -50,6 +50,7 @@ return [
     "selected" => "Не выбрано",
     "video_materials" => "Материалы и описание",
     "video_explanation" => "Описание и объяснение видео",
+    'videoCourse' => 'Видеоуроки курса',
 
     //material
     "material"=>"Материал",
