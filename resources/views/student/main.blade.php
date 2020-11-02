@@ -25,14 +25,14 @@
             </div>
             @if(count($courses)>0)
                 @foreach($courses as $course)
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="boxs project_widget">
                             <div class="pw_img">
                                 <img class="img-responsive p-10" src="{{$course->img}}" alt="About the image">
                             </div>
                             <div class="pw_content">
                                 <div class="pw_header">
-                                    <h6><a href="{{route('userSingleCourse', $course->alias)}}">{{$course->title}}</a></h6>
+                                    <h6><a href="{{route('student.course.show', $course->alias)}}">{{$course->title}}</a></h6>
                                     <small class="text-muted">{{$course->author->name}}  |  Последнее обновление: {{\Illuminate\Support\Carbon::parse($course->updated_at)->diffForHumans()}}</small>
                                 </div>
                                 <div class="pw_meta">
