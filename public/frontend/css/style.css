@@ -8,7 +8,7 @@ html, body {
     scrollbar-width: none;  /* толщина */
     font-family: 'Roboto', sans-serif !important;
 }
-span {color: #29C2F9!important;}
+span {color: #29C2F9;}
 h1, h2, h5 {
     font-weight: 700;
 }

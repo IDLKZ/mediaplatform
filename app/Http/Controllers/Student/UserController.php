@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\UserVideo;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -95,9 +96,10 @@ class UserController extends Controller
 
     public function myCourse()
     {
-        $subscribers = Auth::user()->subscribers()->where("status",1)->get();
-        if(count($subscribers)>0){
-            return view("student.course.my-course",compact("subscribers"));
+        $courses = Subscriber::where(['user_id' => Auth::id(), 'status' => 1])->with(['author', 'course'])->paginate(10);
+
+        if(count($courses)>0){
+            return view("student.course.my-course",compact("courses"));
         }
         else{
             Toastr::warning('У вас еще нет подтвержденных курсов!','Упс...!');
@@ -107,10 +109,24 @@ class UserController extends Controller
 
     public function showCourse($alias){
         $course = Course::where("alias",$alias)->first();
-        $subscribe = Auth::user()->subscribers()->where(["course_id"=>$course->id,"status"=>1])->first();
+        $subscribe = Subscriber::with(['uservideo', 'author', 'videos'])->where(['user_id' => Auth::id(), 'status' => 1, 'course_id' => $course->id])->first();
+        // Home
+        Breadcrumbs::for('user', function ($trail) {
+            $trail->push('Кабинет', route('user'));
+        });
+        // Courses
+        Breadcrumbs::for('courses', function ($trail) {
+            $trail->parent('user');
+            $trail->push('Курсы', route('student.course'));
+        });
+        // Home > Courses > [Course]
+        Breadcrumbs::for('showCourse', function ($trail, $course) {
+            $trail->parent('courses');
+            $trail->push($course->title, route('student.course.show', $course->alias));
+        });
       if($subscribe){
-          $video_ids = $subscribe->uservideo()->pluck("video_id")->toArray();
-          return view("student.course.course-show",compact("course","subscribe","video_ids"));
+//          $video_ids = $subscribe->uservideo()->pluck("video_id")->toArray();
+          return view("student.course.course-show",compact("course","subscribe"));
       }
       else{
           Toastr::warning('У вас еще нет прав для этого курса!','Упс...!');

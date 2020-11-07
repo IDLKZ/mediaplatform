@@ -11,27 +11,33 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- vendor css files -->
     <script src="https://use.fontawesome.com/542408d0a0.js"></script>
-    <link rel="stylesheet" href="/css/admin.css">
+    <script src="https://kit.fontawesome.com/eea0169c71.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="/frontend/css/media.css">
     <link rel="stylesheet" href="/css/toastr.css">
     <link rel="stylesheet" href="/css/jquery.mn-file.css">
+    <link rel="stylesheet" href="/css/front.css">
+    <link rel="stylesheet" href="/css/circle.css">
     @yield('css')
 </head>
 <body id="falcon" class="main_Wrapper">
-<div id="wrap" class="animsition">
-    <!-- HEADER Content -->
-    @include('student.header')
-    <!--/ HEADER Content  -->
-    <div id="controls">
-        @include('student.left_sidebar')
-        @include('student.right_sidebar')
+@include('student.header')
+<div class="container">
+    <div class="row">
+        <div class="margin-75"></div>
+        <div class="margin-25"></div>
+        @yield('content')
+        <div class="margin-25"></div>
     </div>
-    <!-- CONTENT -->
-    <section id="content">
-            @yield('content')
-    </section>
 </div>
 
-<script src="js/admin.js"></script>
+@include('Frontend.footer')
+
+<script src="/frontend/js/jquery.js"></script>
+<script src="/frontend/js/bootstrap.min.js"></script>
+<script src="/frontend/js/jquery-color.js"></script>
+<script src="/frontend/js/scripts.js"></script>
 <script src="/js/toastr.js"></script>
 <script src="/js/jquery.mn-file.js"></script>
 <script src="/js/ckeditor.js"></script>
