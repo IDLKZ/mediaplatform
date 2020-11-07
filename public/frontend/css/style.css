@@ -33,7 +33,7 @@ h1, h2, h5 {
 #main {
     width: 100vw;
     height: 100vh;
-    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/bg-main.png") center no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/bg-main.png") center no-repeat;
     background-size: cover;
     display: table-cell;
     vertical-align: middle;
@@ -140,7 +140,7 @@ h1, h2, h5 {
     align-items: center;
 }
 #main-five .blog {
-    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/blog-1.png") center no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/blog-1.png") center no-repeat;
     background-size: cover;
     height: 230px;
     border-radius: 10px;
@@ -163,7 +163,7 @@ h1, h2, h5 {
 /*Start Main-six*/
 #main-six {
     height: calc(100vh * 0.5);
-    background: -moz-linear-gradient(#29C2F9, #01BCFF);
+    background: linear-gradient(#29C2F9, #01BCFF);
     display: flex;
     align-items: center;
 }
@@ -174,7 +174,7 @@ h1, h2, h5 {
     padding: 30px;
 }
 #button-auth {
-    background: -moz-linear-gradient(#29C2F9, #00BCFF)!important;
+    background: linear-gradient(#29C2F9, #00BCFF)!important;
     border-radius: 7px;
 }
 /*End Main-six*/

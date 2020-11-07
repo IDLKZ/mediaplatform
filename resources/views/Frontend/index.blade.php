@@ -319,7 +319,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="blog" style="background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-2.png')">
+                    <div class="blog" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-2.png')">
                         <div class="col-8">
                             <div class="small">Подборка от Jas Qalam</div>
                             <h5>Главные тренды
@@ -330,7 +330,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="blog" style="background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-3.png')">
+                    <div class="blog" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-3.png')">
                         <div class="col-8">
                             <div class="small">Прямая речь</div>
                             <h5>Прямая речь
