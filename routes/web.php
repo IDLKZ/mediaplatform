@@ -76,11 +76,18 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/users",[MainController::class,"users"])->name("admin-users");
             Route::resource("/user",AdminUserController::class);
             Route::get("/administrators/{type?}",[MainController::class,"administrators"])->name("admin-managers");
+            //Teacher
             Route::get("/teachers/{type?}",[MainController::class,"teachers"])->name("admin-teachers");
             Route::get("/teacher/{id}/subscribers",[MainController::class,"teacherSubscriber"])->name("admin-teacher-subscriber");
             Route::get("/teacher/{id}/courses",[MainController::class,"teacherCourse"])->name("admin-teacher-course");
             Route::get("/teacher/{id}/materials",[MainController::class,"teacherMaterial"])->name("admin-teacher-material");
             Route::get("/teacher/{id}/results",[MainController::class,"teacherResult"])->name("admin-teacher-result");
+            //Student
+            Route::get("/students/{type?}",[MainController::class,"students"])->name("admin-students");
+            Route::get("/student/{id}/courses",[MainController::class,"studentCourse"])->name("admin-student-course");
+            Route::get("/student/{id}/accessVideo",[MainController::class,"studentAccessVideo"])->name("admin-student-access-video");
+
+
 
             Route::get('/', [MainController::class, 'index'])->name('main');
             //Course

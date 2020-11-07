@@ -103,7 +103,7 @@
                                 <p class="mt-20">
                                     Здесь вы можете видеть список слушателей, которые проходят видеоуроки
                                 </p>
-                                <a href="#" class="btn btn-raised btn-info">
+                                <a href="{{route("admin-students","all")}}" class="btn btn-raised btn-info">
                                     <i class="fa fa-group"> </i>
                                     <small class="sm-none">Все слушатели</small>
 
@@ -113,18 +113,18 @@
                             <div class="row">
                                 <div class="col-sm-6 col-xs-6 border-right">
                                     <div class="uw_description">
-                                    <button class="btn btn-success btn-raised btn-round ">
+                                    <a href="{{route("admin-students","confirmed")}}" class="btn btn-success btn-raised btn-round ">
                                         <i class="icon-user-follow">  </i>
                                         <small class="sm-none">Активные</small>
-                                    </button>
+                                    </a>
                                     </div>
                                 </div>
                                 <div class="col-sm-4 col-xs-6 border-right">
                                     <div class="uw_description">
-                                        <button class="btn btn-warning btn-raised btn-round">
+                                        <a href="{{route("admin-students","unconfirmed")}}" class="btn btn-warning btn-raised btn-round">
                                             <i class="icon-user-unfollow pr-2">  </i>
                                             <small class="sm-none">В заявке</small>
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

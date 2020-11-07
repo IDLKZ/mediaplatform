@@ -6,6 +6,23 @@ Admin Users Start
  */
 .h-100{
     height: 100px;
+    width: 100px;
+}
+.mh-50{
+    min-height: 50px;
+    height: auto;
+}
+.mh-150{
+    min-height: 150px;
+    height: auto;
+}
+.mh-250{
+    min-height: 250px;
+    height: auto;
+}
+.mh-350{
+    min-height: 350px;
+    height: auto;
 }
 .centered-bg{
     background-position: center center;
@@ -32,6 +49,15 @@ Admin Users Start
     bottom: 30px;
     font-size: 20px;
     padding: 12px;
+}
+.card-result{
+    border-radius: 5%;
+}
+.card-result-header{
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    text-align: center;
+    padding: 5%;
 }
 /*Max Width*/
 @media screen and (max-width: 768px){

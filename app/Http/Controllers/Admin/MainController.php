@@ -8,6 +8,7 @@ use App\Models\Materials;
 use App\Models\Result;
 use App\Models\Subscriber;
 use App\Models\User;
+use App\Models\UserVideo;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -44,6 +45,7 @@ class MainController extends Controller
 
     }
 
+    //Teacher
     public function teachers($type){
         if($type){
             if($type == "confirmed"){
@@ -79,6 +81,7 @@ class MainController extends Controller
             return redirect()->back();
         }
     }
+
     public function teacherCourse($id){
         $user = User::find($id);
         $courses = Course::where("author_id",$user->id)->paginate(12);
@@ -95,10 +98,12 @@ class MainController extends Controller
         $results = Result::where("author_id",$id)->with(["student","author","course","video","examination"])->paginate(15);
         if($results->isNotEmpty())
         {
-
+            return  view("admin.user.teacher.result",compact("id","results"));
         }
         else
         {
+            Toastr::warning("Результаты не найдены","Упс");
+            return  redirect()->back();
 
         }
     }
@@ -113,4 +118,51 @@ class MainController extends Controller
             return  redirect()->back();
         }
     }
+
+    //End of Teacher
+
+    //Student
+    public function students($type){
+        if($type){
+            if($type == "confirmed"){
+                $students = User::where(["role_id"=>3,"status"=>1])->orderBy("created_at","desc")->paginate(9);
+                $students->load(["uservideo","subscribers"]);
+                return view("admin.user.students",compact("students"));
+            }
+            if($type == "unconfirmed"){
+                $students = User::where(["role_id"=>3,"status"=>0])->orderBy("created_at","desc")->paginate(9);
+                $students->load(["uservideo","subscribers"]);
+                return view("admin.user.students",compact("students"));
+            }
+            if ($type == "all") {
+                $students = User::where("role_id",3)->orderBy("created_at","desc")->paginate(9);
+                $students->load(["uservideo","subscribers"]);
+                return view("admin.user.students",compact("students"));
+            }
+            abort(404);
+        }
+        else{
+            abort(404);
+        }
+    }
+
+    public function studentCourse($id){
+        $subscribers = Subscriber::where("user_id",$id)->paginate(12);
+        if($subscribers){
+            $subscribers->load(["course","author"]);
+            return  view("admin.user.student.courses",compact("id","subscribers"));
+        }
+        else{
+            Toastr::warning("Курсов у данного преподавателя нет","Упс...");
+            return redirect()->back();
+        }
+    }
+
+    public function studentAccessVideo($id){
+        $subscribers = Subscriber::where("user_id",$id)->with(["course","videos","uservideo"])->paginate(12);
+        return view("admin.user.student.accessVideo",compact("subscribers"));
+
+    }
+
+
 }

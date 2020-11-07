@@ -15,7 +15,7 @@
                                     <img class="h-100" src="{{$img = $user->img !=null ? $user->img :"/images/no-image.png" }}" alt="">
                                 </div>
                                 <h4 class="mb-0"><strong>{{$user->name}}</strong></h4>
-                                <span class="text-muted">Тьютор</span>
+                                <span class="text-muted">Студент</span>
                                 <div class="mt-10">
 
                                     <a href="{{route("user.edit",$user->id)}}" class="btn btn-warning btn-raised btn-round btn-sm">
@@ -38,25 +38,25 @@
                             <div class="box-list">
                                 <ul class="text-center">
                                     <li>
-                                        <a href="{{route("admin-teacher-course",$user->id)}}" class="">
+                                        <a href="{{route("admin-student-course",$user->id)}}" class="">
                                             <i class="fa fa-video-camera"></i>
                                             <p>
-                                                Курсы
+                                                Подписки
                                             </p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{route("admin-teacher-subscriber",$user->id)}}" class="">
-                                            <i class="fa fa-users"></i>
+                                        <a href="{{route("admin-student-access-video",$user->id)}}" class="">
+                                            <i class="icon-lock-open"></i>
                                             <p>
-                                                Подписчики
+                                                Открыть доступ
                                             </p>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{route("admin-teacher-material",$user->id)}}">
-                                            <i class="fa fa-paperclip"></i>
-                                            <p>Материалы</p>
+                                            <i class="fa fa-film"></i>
+                                            <p>Видео</p>
                                         </a>
                                     </li>
                                     <li>
@@ -71,53 +71,40 @@
                     </section>
                 </div>
                 <div class="row clearfix">
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="boxs mini-social">
                             <div class="boxs-body">
                                 <div class="s-icon text-blush">
                                     <i class="fa fa-video-camera"></i>
                                 </div>
                                 <div class="s-detail">
-                                    <div class="like"><span>{{$user->courses->count()}}</span></div>
+                                    <div class="like"><span>{{$user->subscribers->count()}}</span></div>
                                     <span>Курсов</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="boxs mini-social">
                             <div class="boxs-body">
                                 <div class="s-icon text-greensea">
                                     <i class="fa fa-user-circle-o"></i>
                                 </div>
                                 <div class="s-detail">
-                                    <div class="like"><span>{{$user->author_subscribers->count()}}</span></div>
-                                    <span>Подписчики</span>
+                                    <div class="like"><span>{{$user->uservideo->count()}}</span></div>
+                                    <span>Видео</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="boxs mini-social">
-                            <div class="boxs-body">
-                                <div class="s-icon text-blue">
-                                    <i class="fa fa-book"></i>
-                                </div>
-                                <div class="s-detail">
-                                    <div class="like"><span>{{$user->materials->count()}}</span></div>
-                                    <span>Материалов</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="boxs mini-social">
                             <div class="boxs-body">
                                 <div class="s-icon text-warning">
                                     <i class="fa fa-question-circle"></i>
                                 </div>
                                 <div class="s-detail">
-                                    <div class="like"><span>{{$user->examinations->count()}}</span></div>
+                                    <div class="like"><span>{{$user->results_student->count()}}</span></div>
                                     <span>Задач</span>
                                 </div>
                             </div>
@@ -139,7 +126,7 @@
                                 <li class="media">
                                     <div class="media-img"><i class="fa fa-user-circle"></i></div>
                                     <div class="media-body">
-                                        <div class="media-heading">Тьютор</div>
+                                        <div class="media-heading">Студент</div>
                                     </div>
                                 </li>
                                 <li class="media">
@@ -182,6 +169,7 @@
         </div>
     </div>
 @endsection
-    <!--/ CONTENT -->
+<!--/ CONTENT -->
+
 
 

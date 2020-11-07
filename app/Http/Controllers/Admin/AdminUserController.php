@@ -83,7 +83,10 @@ class AdminUserController extends Controller
                 return view("admin.user.teacher.info",compact("user"));
             }
             if($user->role_id == 3)
-            {}
+            {
+                $user->load(["uservideo","subscribers","results_student"]);
+                return view("admin.user.student.info",compact("user"));
+            }
         }
         else{return  redirect()->back();}
 
