@@ -13,6 +13,12 @@
                                     <span>{{__('website.main')}}</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route("admin-users")}}">
+                                    <i class="fa fa-users"></i>
+                                    <span>Пользователи</span>
+                                </a>
+                            </li>
                             {{--                            Главная--}}
 
                             {{--                            Видеокурсы--}}

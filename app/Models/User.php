@@ -31,6 +31,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        "phone",
+        "img",
+        "description",
+        "status",
         'role_id',
         'password',
     ];
@@ -56,7 +60,9 @@ class User extends Authenticatable
 
     //Adding foreign Tables and Relations
     //#1 Видеокурсы, Материалы, Опросы, Тесты
-
+    public function role(){
+        return $this->belongsTo(Role::class,"role_id","id");
+    }
     //1.Курсы (автор)
     public function courses()
     {
@@ -83,7 +89,7 @@ class User extends Authenticatable
     public function subscribers(){
         return $this->hasMany(Subscriber::class,"user_id","id");
     }
-    //7. Подписка (студент)
+    //7. Подписка (автор)
     public function author_subscribers(){
         return $this->hasMany(Subscriber::class,"author_id","id");
     }
@@ -116,7 +122,35 @@ class User extends Authenticatable
 
 
 
+    public static function saveUser($request){
+        $data = $request->all();
+        $data["img"] = FileDownloader::saveFile("/upload/avatars/",$request,"img");
+        $data["password"] = bcrypt($data["password"]);
+        $data["status"] = $request->has("status") ? 1 : 0;
+        $user = new self();
+        $user->fill($data);
+        return $user->save();
+    }
+    public static function updateUser($request,$id){
+        $user = User::find($id);
+        if($user){
+            $data = $request->except("password");
+            $password = $request->get("password");
+            if(strlen(trim($password))){$data["password"] = bcrypt($password);}
+            $data["img"] = FileDownloader::saveFile("/upload/avatars/",$request,"img",$user->img);
+            $data["status"] = $request->has("status") ? 1 : 0;
 
+            $user->update($data);
+            return $user->save();
+
+        }
+        else{
+            return false;
+        }
+
+
+
+    }
 
 
 

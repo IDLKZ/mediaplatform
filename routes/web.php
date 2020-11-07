@@ -25,6 +25,7 @@ use App\Http\Controllers\Teacher\ResultController;
 use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Admin\AdminMaterialController;
+use App\Http\Controllers\Admin\AdminUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,6 +73,16 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 
         //Start AdminBlade
         Route::group(['prefix' => 'admin',"middleware"=>"admin"], function (){
+            //Show User
+            Route::get("/users",[MainController::class,"users"])->name("admin-users");
+            Route::resource("/user",AdminUserController::class);
+            Route::get("/administrators/{type?}",[MainController::class,"administrators"])->name("admin-managers");
+            Route::get("/teachers/{type?}",[MainController::class,"teachers"])->name("admin-teachers");
+            Route::get("/teacher/{id}/subscribers",[MainController::class,"teacherSubscriber"])->name("admin-teacher-subscriber");
+            Route::get("/teacher/{id}/courses",[MainController::class,"teacherCourse"])->name("admin-teacher-course");
+            Route::get("/teacher/{id}/materials",[MainController::class,"teacherMaterial"])->name("admin-teacher-material");
+            Route::get("/teacher/{id}/results",[MainController::class,"teacherResult"])->name("admin-teacher-result");
+
             Route::get('/', [MainController::class, 'index'])->name('main');
             //Course
             Route::resource("/admin-course",AdminCourseController::class);

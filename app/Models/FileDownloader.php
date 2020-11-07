@@ -25,9 +25,11 @@ class FileDownloader extends Model
         return $filepath;
     }
 
-    public static function saveVideo(){
-
+    public static function deleteFile($file){
+        if(Storage::exists($file)){Storage::delete($file);}
     }
+
+
 
 
 

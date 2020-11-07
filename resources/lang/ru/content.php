@@ -78,6 +78,16 @@ return [
     "examination_description"=>"Описание к экзамену",
     "examination_material"=>"Материалы к экзамену",
 
+    //user
+    "new_user"=>"Новый пользователь",
+    "user_name"=>"ФИО пользователя",
+    "user_role"=>"Роль пользователя",
+    "user_email"=>"Почта пользователя",
+    "user_password"=>"Пароль пользователя",
+    "user_phone"=>"Телефон пользователя",
+    "user_status"=>"Пользователь одобрен",
+    "user_img"=>"Изображение пользователя",
+    "user_description"=>"Информация пользователя",
 
     //buttons
     'save' => 'Сохранить',

@@ -1,0 +1,169 @@
+/*
+Admin Users Start
+**/
+/*
+/admin/users route styles
+ */
+.h-100{
+    height: 100px;
+}
+.centered-bg{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.users-icon{
+    font-size: 80px;
+}
+.l-blue-blush{
+    background: linear-gradient(45deg, #7fd9d0, #23808f) !important;
+    color: #fff !important;
+}
+.l-green-blush{
+    background: linear-gradient(45deg, #23d750, #0f898f) !important;
+    color: #fff !important;
+}
+.btn-add{
+    border-radius: 50%!important;
+    width: 50px;
+    height: 50px;
+    position: sticky;
+    left: 95%;
+    bottom: 30px;
+    font-size: 20px;
+    padding: 12px;
+}
+/*Max Width*/
+@media screen and (max-width: 768px){
+    .sm-none{
+        display: none;
+    }
+    .p-sm-5{
+        padding: 5px;
+    }
+    .p-sm-10{
+        padding: 5px;
+    }
+    .p-sm-15{
+        padding: 15px;
+    }
+    .p-sm-20{
+        padding: 20px;
+    }
+    .absolute-right{
+        position: absolute;
+        right: 0;
+    }
+    /*Admin - Teacher - Course*/
+    .course-item {
+        height: auto;
+        background-color: white;
+        border-radius: 15px;
+    }
+    .course-item-header{
+        width: 100%;
+        display: table;
+        border-radius: 20px 0;
+    }
+    .course-item-image{
+        padding: 20px;
+        border-radius: 50%;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .course-item-image>img{
+        border-radius: 50%;
+        width: 85%;
+        height: 190px;
+    }
+    .course-title{
+        padding: 10px;
+    }
+    .m-2{
+        display: inline;
+        padding: 0;
+    }
+    /*  Admin - Teacher - Subscriber   */
+    .subscriber-image{
+        min-height: 60px;
+        border-radius: 50%;
+        width: 25%;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+
+}
+
+/*Max - width 768*/
+
+
+@media screen and (min-width: 768px) {
+    /*Admin - Teacher - Course*/
+    .course-item {
+        height: auto;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    .course-item-header {
+        display: table;
+        border-radius: 20px 0;
+    }
+
+    .course-item-image {
+        padding: 20px;
+        border-radius: 50%;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .course-item-image > img {
+        border-radius: 50%;
+        width: 90%;
+        height: 190px;
+    }
+    .course-title {
+        padding: 10px;
+    }
+    .m-2 {
+        margin: 2px;
+    }
+    /*Admin - Teacher - Subscriber*/
+    .subscriber-card{
+        min-height: 50px;
+        border-radius: 55px;
+        padding: 10px;
+        margin-left: 10px
+    }
+    .subscriber-image{
+        min-height: 75px;
+        border-radius: 80%;
+    }
+    .absolute-right{
+        position: absolute;
+        right: 10px;
+    }
+}
+@media screen and (min-width: 1440px){
+    .lg-8{
+        width: 8.88%;
+    }
+    .p-lg-10{
+        padding: 10px;
+    }
+    .p-lg-20{
+        padding: 20px;
+    }
+    .p-lg-30{
+        padding: 30px;
+    }
+    .p-lg-40{
+        padding: 40px;
+    }
+    .p-lg-50{
+        padding: 50px;
+    }
+
+}
