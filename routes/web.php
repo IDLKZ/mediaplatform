@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\Student\UserController;
 use App\Http\Controllers\Teacher\HomeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -41,9 +42,7 @@ Route::get('/clear-cache', function () {
     return 'DONE';
 });
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+Route::get('/', [FrontController::class, 'index'])->name('front');
 Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 
     Route::get('/logout', function () {
