@@ -43,19 +43,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Главная</a>
+                        <a class="nav-link" href="#">{{__('front.main')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Программа</a>
+                        <a class="nav-link" href="#">{{__('front.program')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Контакты</a>
+                        <a class="nav-link" href="#">{{__('front.contact')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Отзывы</a>
+                        <a class="nav-link" href="#">{{__('front.review')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Новости</a>
+                        <a class="nav-link" href="#">{{__('front.news')}}</a>
                     </li>
                 </ul>
                 <div class="ml-auto" role="group" aria-label="Button group with nested dropdown">
@@ -68,8 +68,8 @@
                             Рус
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Қаз</a>
-                            <a class="dropdown-item" href="#">Рус</a>
+                            <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'kz'])}}">Қаз</a>
+                            <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}">Рус</a>
                         </div>
                     </div>
                 </div>
