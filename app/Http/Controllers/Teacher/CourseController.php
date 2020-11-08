@@ -11,7 +11,9 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
+use Vimeo\Laravel\Facades\Vimeo;
 
 class CourseController extends Controller
 {
@@ -164,8 +166,18 @@ class CourseController extends Controller
     public function destroy($alias)
     {
         $course = Auth::user()->courses()->where("alias",$alias)->first();
+
         if($course){
            Storage::delete($course->img);
+            if ($course->videos) {
+                foreach ($course->videos as $video) {
+                    $client = Vimeo::connection('main');
+                    $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
+                    $uri = "/videos/$TIMA";
+                    $client->request($uri, [], 'DELETE');
+                    $video->delete();
+                }
+            }
            $course->delete();
             Toastr::success('Курс был успешно удален','Успешно удален курс!');
             return redirect()->back();
