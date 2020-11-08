@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     @else
-                        <button type="button" class="btn mr-2" id="auth">Авторизация</button>
+                        <a href="{{route('login')}}"><button type="button" class="btn mr-2" id="auth">Авторизация</button></a>
                     @endif
 
                     <div class="btn-group" role="group">
