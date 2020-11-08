@@ -33,5 +33,10 @@ class Subscriber extends Model
         return $this->hasMany(UserVideo::class,"subscribe_id","id");
     }
 
+    public function results()
+    {
+        return $this->hasManyThrough(Result::class, Course::class, 'id', 'course_id', 'course_id');
+    }
+
 
 }

@@ -22,15 +22,20 @@ class UserController extends Controller
 {
     public function index()
     {
-        $courses = Course::with('author')->paginate(12);
-        return view('student.main', compact('courses'));
+        return redirect(route('front'));
     }
 
     public function profile()
     {
-        $courses = Subscriber::where(['user_id' => Auth::id(), 'status' => 1])->with(['author', 'course'])->paginate(10);
+        return view('student.profile.index');
+    }
 
-        return view('student.profile.index', compact('courses'));
+    public function updateProfile(Request $request)
+    {
+        $this->validate($request, ['name' => 'required', 'phone' => 'sometimes|numeric', 'description' => 'sometimes|max:30', ]);
+        User::updateUser($request, Auth::id());
+        Toastr::success('Ваши личные данные обновлены!','Успешно!');
+        return redirect()->back();
     }
 
     public function settings()
@@ -66,8 +71,22 @@ class UserController extends Controller
 
     public function singleCourse($alias)
     {
-        $course = Course::with('author')->where('alias', $alias)->first();
+        $course = Course::with('author', 'subscribers', 'videos')->where('alias', $alias)->first();
         $subscribe = Subscriber::where(['course_id' => $course->id, 'user_id' => Auth::id()])->first();
+        // Home
+        Breadcrumbs::for('user', function ($trail) {
+            $trail->push('Кабинет', route('userProfile'));
+        });
+        // Courses
+        Breadcrumbs::for('courses', function ($trail) {
+            $trail->parent('user');
+            $trail->push('Мои курсы', route('student.course'));
+        });
+        // Home > Courses > [Course]
+        Breadcrumbs::for('showCourse', function ($trail, $course) {
+            $trail->parent('courses');
+            $trail->push($course->title, route('student.course.show', $course->alias));
+        });
         if ($subscribe) {
             $link['link'] = $subscribe->status ? 'javascript:void(0)' : route('sendSubscribe', $course->alias);
             $link['color'] = $subscribe->status ? 'success' : 'info';
@@ -96,7 +115,7 @@ class UserController extends Controller
 
     public function myCourse()
     {
-        $courses = Subscriber::where(['user_id' => Auth::id(), 'status' => 1])->with(['author', 'course'])->paginate(10);
+        $courses = Subscriber::where(['user_id' => Auth::id(), 'status' => 1])->with(['author', 'course', 'videos', 'results'])->paginate(10);
 
         if(count($courses)>0){
             return view("student.course.my-course",compact("courses"));
@@ -112,7 +131,7 @@ class UserController extends Controller
         $subscribe = Subscriber::with(['uservideo', 'author', 'videos'])->where(['user_id' => Auth::id(), 'status' => 1, 'course_id' => $course->id])->first();
         // Home
         Breadcrumbs::for('user', function ($trail) {
-            $trail->push('Кабинет', route('user'));
+            $trail->push('Кабинет', route('userProfile'));
         });
         // Courses
         Breadcrumbs::for('courses', function ($trail) {
@@ -136,12 +155,13 @@ class UserController extends Controller
 
     public function showVideo($alias){
         $video = Video::where("alias",$alias)->first();
+        $result = Result::where(["video_id"=>$video->id,"student_id"=>Auth::id()])->first();
         if($video){
          $video_access  =   UserVideo::where(["video_id"=>$video->id,"student_id"=>Auth::id()])->first();
             if($video_access){
                 $video->load(["course","materials"]);
                 $file = $video->watch($video->video_url);
-                return  view("student.video.show",compact("video","file"));
+                return  view("student.video.show",compact("video","file", 'result'));
             }
             else{
                 Toastr::warning("У вас нет доступа к видео!","Упс");

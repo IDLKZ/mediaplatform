@@ -7,9 +7,9 @@
             <div class="b-b mb-10">
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
-                        <h1 class="h3 m-0">Проходим тест: {{$video->examination->title}}</h1>
-                        <h1 class="h3 m-0">Проходит тест: {{\Illuminate\Support\Facades\Auth::user()->name}}</h1>
-                        <h1 class="h3 m-0">Видео: {{$video->title}}</h1>
+                        <h2 class="h3 m-0">Проходим тест: {{$video->examination->title}}</h2>
+                        <h2 class="h3 m-0">Проходит тест: {{\Illuminate\Support\Facades\Auth::user()->name}}</h2>
+                        <h2 class="h3 m-0">Видео: {{$video->title}}</h2>
 
                     </div>
                 </div>
@@ -25,11 +25,11 @@
                         </div>
                         <div class="boxs-body">
                             <div id="b_rootwizard">
-                                <div class="navbar">
+                                <div class="navbar" id="quizz">
                                     <div class="navbar-inner">
                                         <ul class="nav nav-pills">
                                             @foreach($data as $item)
-                                            <li class="{{$loop->iteration == 1 ? "active":""}}">
+                                            <li class="{{$loop->iteration == 1 ? "active":""}} mr-3">
                                                 <a href="#btab{{$loop->iteration}}" data-toggle="tab">{{$loop->iteration}}</a>
                                             </li>
                                             @endforeach
@@ -53,8 +53,8 @@
                                             <input hidden name="right[{{$item["id"]}}]" value="{{$item["answer"]}}">
                                             <input hidden name="question[{{$item["id"]}}]" value="{{$item["question"]}}">
                                             @foreach($item["questions"] as $question)
-                                                        <input name="answer[{{$item["id"]}}]" class="questionCheck" type="radio" value="{{$question}}"  required>
-                                                        <b>{{$question}}</b>
+                                                        <input name="answer[{{$item["id"]}}]" id="{{$question}}" class="questionCheck" type="radio" value="{{$question}}"  required>
+                                                        <label for="{{$question}}"><b>{{$question}}</b></label>
                                                         <br>
                                             @endforeach
 
@@ -82,6 +82,7 @@
             <!-- page content -->
 
         </div>
+
 
     <!--/ CONTENT -->
 

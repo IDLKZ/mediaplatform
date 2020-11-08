@@ -75,9 +75,11 @@
                                 <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
 
                                     @csrf
-                                    <a href="{{route("student.passExam",$video->alias)}}" class="btn btn-raised btn-success">Видеоурок усвоил!</a>
-                                    <button type="reset" class="btn btn-raised btn-warning">Вернуться обратно</button>
-
+                                    @if ($result)
+                                        <a href="javascript:void (0)" class="btn btn-raised btn-warning">Вы уже прошли!</a>
+                                    @else
+                                        <a href="{{route("student.passExam",$video->alias)}}" class="btn btn-raised btn-success">Завершить!</a>
+                                    @endif
                                 </div>
                             </section>
 

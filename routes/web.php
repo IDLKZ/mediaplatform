@@ -164,6 +164,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get('/', [UserController::class, 'index'])->name('user');
             //Start Profile
             Route::get('/profile', [UserController::class, 'profile'])->name('userProfile');
+            Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('userUpdateProfile');
             Route::get('/profile-settings', [UserController::class, 'settings'])->name('userProfileSettings');
             Route::post('/update-profile-settings', [UserController::class, 'updateSetting'])->name('userProfileSettingsUpdate');
             //End Profile

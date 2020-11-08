@@ -60,7 +60,23 @@
                 </ul>
                 <div class="ml-auto" role="group" aria-label="Button group with nested dropdown">
 
-                    <button type="button" class="btn mr-2" id="auth">Авторизация</button>
+                    @if (\Illuminate\Support\Facades\Auth::check())
+
+                        <div class="btn-group" role="group">
+                            <button id="auth" type="button" class="btn mr-2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{\Illuminate\Support\Facades\Auth::user()->name}}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="auth">
+                                <a class="dropdown-item" href="{{route('userProfile')}}"><i class="far fa-user mr-2"></i>Мой профиль</a>
+                                <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}"><i class="far fa-bell mr-2"></i>Уведомления</a>
+                                <a class="dropdown-item" href="{{route('userProfileSettings')}}"><i class="fas fa-cog mr-2"></i>Настройки</a>
+                                <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>Выйти</a>
+                            </div>
+                        </div>
+                    @else
+                        <button type="button" class="btn mr-2" id="auth">Авторизация</button>
+                    @endif
 
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
