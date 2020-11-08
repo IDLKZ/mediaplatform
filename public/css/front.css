@@ -11,3 +11,32 @@
 }
 
 #quizz {background: transparent!important;}
+#main-third-course {
+    height: calc(100vh);
+    display: flex;
+    align-items: center;
+}
+#main-third-course .container > small {color: #BEC5C8}
+#main-third-course .skill-blocks {
+    background-color: #f0d0d5;
+    height: 180px;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding: 20px;
+    cursor: pointer;
+}
+#main-third-course .skill-blocks small {
+    color: black;
+    font-weight: 600;
+}
+#main-third-course .circle {
+    width: calc(100% * 0.99);
+    background-color: white;
+    border-radius: 50%;
+}
+#main-third-course img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

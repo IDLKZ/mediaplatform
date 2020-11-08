@@ -45,6 +45,9 @@ Route::get('/clear-cache', function () {
 
 Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
     Route::get('/', [FrontController::class, 'index'])->name('front');
+    Route::get('/courses', [FrontController::class, 'courses'])->name('frontCourses');
+
+
     Route::get('/logout', function () {
         \Illuminate\Support\Facades\Auth::logout();
         return redirect(\route('front'));

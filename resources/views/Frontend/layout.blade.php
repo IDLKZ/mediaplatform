@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
     <link rel="stylesheet" href="/frontend/css/style.css">
     <link rel="stylesheet" href="/frontend/css/media.css">
+    <link rel="stylesheet" href="/css/front.css">
     <title>Jas Qalam</title>
 </head>
 <body>
