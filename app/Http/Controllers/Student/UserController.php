@@ -265,8 +265,9 @@ class UserController extends Controller
             Toastr::warning("Не найден результат видео","Упс....");
             return redirect()->back();
         }
-
-
     }
+
+
+
 
 }

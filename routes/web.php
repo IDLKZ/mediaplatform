@@ -97,6 +97,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             //Material
             Route::resource("/admin-material",AdminMaterialController::class);
             //Create
+            Route::post("/Access",[MainController::class,"Access"])->name("admin-Access");
+
 
 
 

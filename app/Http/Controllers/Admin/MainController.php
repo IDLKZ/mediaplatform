@@ -163,6 +163,19 @@ class MainController extends Controller
         return view("admin.user.student.accessVideo",compact("subscribers"));
 
     }
+    public function Access(Request $request){
+        $this->validate($request,["student_id"=>"required","subscribe_id"=>"required","video_id"=>"required"]);
+        $uservideo = UserVideo::where(["student_id"=>$request->get("student_id"),"subscribe_id"=>$request->get("subscribe_id"),"video_id"=>$request->get("video_id")])->first();
+        if(!$uservideo){
+            Toastr::success("Успешно открыт доступ","Отлично");
+            UserVideo::create(["student_id"=>$request->get("student_id"),"subscribe_id"=>$request->get("subscribe_id"),"video_id"=>$request->get("video_id")]);
+        }
+        else{
+            $uservideo->delete();
+            Toastr::warning("Доступ к видео заблокирован","Выполнено");
+        }
+        return redirect()->back();
+    }
 
 
 }
