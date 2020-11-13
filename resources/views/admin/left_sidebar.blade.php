@@ -20,163 +20,24 @@
                                 </a>
                             </li>
                             {{--                            Главная--}}
-
+                            <li>
+                                <a href="{{route("admin-media")}}">
+                                    <i class="fa fa-film"></i>
+                                    <span>Медиа</span>
+                                </a>
+                            </li>
                             {{--                            Видеокурсы--}}
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-users"></i>
-                                    <span>{{__('website.subscribers')}}</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("confirmed_subscribers")}}">
-                                            <i class="fa fa-user"></i>{{__('website.access_subscribers')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("unconfirmed_subscribers")}}">
-                                            <i class="icon-ghost"></i>{{__('website.request_subscribers')}}</a>
-                                    </li>
 
-                                </ul>
-                            </li>
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-video-camera"></i>
-                                    <span>{{__('website.courses')}}</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("admin-course.create")}}">
-                                            <i class="fa fa-user"></i>{{__('website.add_course')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("admin-course.index")}}">
-                                            <i class="icon-ghost"></i>{{__('website.list_course')}}</a>
-                                    </li>
 
-                                </ul>
-                            </li>
 
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-check-circle"></i>
-                                    <span>{{__('website.tasks')}}</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("teacher.checkedResult")}}">
-                                            <i class="fa fa-plus-circle"></i>{{__('website.check_task')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("teacher.uncheckedResult")}}">
-                                            <i class="fa fa-angle-right"></i>{{__('website.uncheck_task')}}</a>
-                                    </li>
-
-                                </ul>
-                            </li>
 
                             {{--                            Видеокурсы--}}
                             {{--                            Видео--}}
 
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-film "></i>
-                                    <span>{{__('website.video')}}</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("admin-video.create")}}">
-                                            <i class="fa fa-plus-circle"></i>{{__('website.add_video')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("admin-video.index")}}">
-                                            <i class="fa fa-angle-right"></i>{{__('website.list_video')}}</a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-book"></i>
-                                    <span>{{__('website.materials')}}</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("admin-material.create")}}">
-                                            <i class="fa fa-plus-circle"></i>{{__('website.add_material')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("admin-material.index")}}">
-                                            <i class="fa fa-angle-right"></i>{{__('website.list_material')}}</a>
-                                    </li>
-
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-question"></i>
-                                    <span>{{__('website.quizzes')}}</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("quiz.create")}}">
-                                            <i class="fa fa-plus-circle"></i>{{__('website.add_quiz')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("quiz.index")}}">
-                                            <i class="fa fa-angle-right"></i>{{__('website.list_quiz')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("question.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый Вопрос</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("question.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список Вопросов</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("question.excel-create")}}">
-                                            <i class="fa fa-angle-right"></i>Загрузить Вопросы</a>
-                                    </li>
-                                    <hr>
-                                    <li>
-                                        <a href="{{route("review.create")}}">
-                                            <i class="fa fa-plus-circle"></i>{{__('website.add_review')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("review.index")}}">
-                                            <i class="fa fa-angle-right"></i>{{__('website.list_review')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("review-question.create")}}">
-                                            <i class="fa fa-plus-circle"></i>Новый Вопрос</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("review-question.index")}}">
-                                            <i class="fa fa-angle-right"></i>Список Вопросов</a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-check-square-o"></i>
-                                    <span>{{__('website.exam')}}</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{route("examination.create")}}">
-                                            <i class="fa fa-plus-circle"></i>{{__('website.add_exam')}}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route("examination.index")}}">
-                                            <i class="fa fa-angle-right"></i>{{__('website.list_exam')}}</a>
-                                    </li>
 
 
-                                </ul>
-                            </li>
+
+
 
                             {{--                            Видео--}}
 

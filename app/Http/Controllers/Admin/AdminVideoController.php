@@ -23,7 +23,7 @@ class AdminVideoController extends Controller
     {
         $videos = Video::with("course")->paginate(15);
         if(!$videos->isEmpty()){
-            return view("admin.video.index",compact("videos"));
+            return view("admin.media.video.index",compact("videos"));
         }
         else{
             return  redirect()->back();
@@ -47,7 +47,7 @@ class AdminVideoController extends Controller
         ]);
         $route = route('video.index');
         $courses = Course::all();
-        return  view("admin.video.create",compact("courses","validator", 'route'));
+        return  view("admin.media.video.create",compact("courses","validator", 'route'));
     }
 
     /**
@@ -88,7 +88,7 @@ class AdminVideoController extends Controller
         if($video){
             $video->load(["course","materials"]);
             $file = $video->watch($video->video_url);
-            return  view("admin.video.show",compact("video", 'file'));
+            return  view("admin.media.video.show",compact("video", 'file'));
         }
         else{
             Toastr::warning('Видео не найден!','Упс!');
@@ -113,7 +113,7 @@ class AdminVideoController extends Controller
                 "description"=>"required",
             ]);
             $courses = Course::all();
-            return  view("admin.video.edit",compact("video","courses","validator"));
+            return  view("admin.media.video.edit",compact("video","courses","validator"));
         }
         else{
             Toastr::warning('Видео не найдено!','Упс!');

@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Admin\AdminMaterialController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminResultController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,13 +96,19 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get('/', [MainController::class, 'index'])->name('main');
             //Course
             Route::resource("/admin-course",AdminCourseController::class);
+            Route::get("/admin-course-videos/{alias}",[AdminCourseController::class,"videos"])->name("admin-course-videos");
             //Video
             Route::resource("/admin-video",AdminVideoController::class);
             //Material
             Route::resource("/admin-material",AdminMaterialController::class);
             //Create
             Route::post("/Access",[MainController::class,"Access"])->name("admin-Access");
-
+            //Results
+            Route::resource("/admin-result",AdminResultController::class);
+            Route::get("/student/{id}/results",[AdminResultController::class,"studentResult"])->name("admin-student-result");
+            //VideoMaterial
+            Route::get("/admin-media",[MainController::class,"media"])->name("admin-media");
+//            Route::get("/admin-media-video",[MainController::class,"video"])->name("admin-media-video");
 
 
 

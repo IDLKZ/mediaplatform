@@ -60,7 +60,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{route("admin-teacher-result",$user->id)}}">
+                                        <a href="{{route("admin-student-result",$user->id)}}">
                                             <i class="fa fa-tasks "></i>
                                             <p>Результаты</p>
                                         </a>

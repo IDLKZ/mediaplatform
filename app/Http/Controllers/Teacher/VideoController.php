@@ -24,8 +24,6 @@ class VideoController extends Controller
     public function index()
     {
 
-//        $user = User::find(Auth::id());
-//        $videos = $user->videos()->paginate(15);
         $courses = Course::with('videos')->where(["author_id"=>Auth::id()])->paginate(8);
         return view("teacher.video.index",compact("courses"));
     }

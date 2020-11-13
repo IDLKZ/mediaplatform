@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Language;
 use App\Models\User;
+use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class AdminCourseController extends Controller
@@ -21,9 +23,9 @@ class AdminCourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy("created_at","desc")->paginate(12);
-        if(!$courses->isEmpty()){
-            return  view("admin.course.index",compact("courses"));
+        $courses = Course::with(["author","language","videos","subscribers"])->paginate(12);
+        if($courses->isNotEmpty()){
+            return view("admin.media.course.index",compact("courses"));
         }
         else{
             Toastr::warning("Пока курсов нет",'Упс');
@@ -48,7 +50,7 @@ class AdminCourseController extends Controller
                 "requirement"=>"required",
                 'img' => 'sometimes|image|max:10000',
             ]);
-            return  view("admin.course.create",compact("languages","validator"));
+            return  view("admin.media.course.create",compact("languages","validator"));
         }
         else{
             Toastr::warning("Создайте преподавателя!","Упс");
@@ -91,10 +93,9 @@ class AdminCourseController extends Controller
      */
     public function show($alias)
     {
-        $course = Course::where("alias",$alias)->first();
-        $languages = Language::all();
-        if($course && !$languages->isEmpty()){
-            return  view("admin.course.show",compact("course","languages"));
+        $course = Course::where("alias",$alias)->with(["author","language"])->first();
+        if($course){
+            return  view("admin.media.course.show",compact("course"));
         }
         else{
             Toastr::warning('Курс не найденн!','Упс!');
@@ -120,7 +121,7 @@ class AdminCourseController extends Controller
                 "requirement"=>"required",
                 'img' => 'sometimes|image|max:10000',
             ]);
-            return  view("admin.course.edit",compact("course","validator","languages"));
+            return  view("admin.media.course.edit",compact("course","validator","languages"));
         }
         else{
             Toastr::warning('Курс не найденн!','Упс!');
@@ -185,5 +186,20 @@ class AdminCourseController extends Controller
             Toastr::warning('Видеокурс не найден!','Упс!');
             return  redirect(route("admin-course.index"));
         }
+    }
+
+    public function videos($alias){
+        $course = Course::where("alias",$alias)->first();
+        if($course){
+
+            $videos = Video::where("course_id",$course->id)->with(["course"])->paginate(12);
+            return view("admin.media.video.index",compact("videos"));
+        }
+        else{
+            Toastr::warning("Ничего не найдено","Упс!");
+            return  redirect()->back();
+        }
+
+
     }
 }

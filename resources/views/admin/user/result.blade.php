@@ -3,9 +3,9 @@
     <!-- row -->
     <div class="page page-content">
         <a href="{{route("user.show",$id)}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
-        <div class="row p-20">
+        <div class="row">
             @foreach($results as $result)
-                <div class="col-md-4 mh-350 bg-white card-result">
+                <div class="col-md-4 mh-350 p-10">
                     <section class="boxs">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-cyan">
@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-xs-6 border-right">
                                 <div class="uw_description">
-                                    <a href="{{route("user.edit",$result->id)}}" class="btn btn-warning btn-raised btn-round">
+                                    <a href="{{route("admin-result.edit",$result->id)}}" class="btn btn-warning btn-raised btn-round">
                                         <i class="fa fa-pencil-square">  </i>
                                         <small class="sm-none">Изменить</small>
                                     </a>

@@ -98,7 +98,7 @@ class MainController extends Controller
         $results = Result::where("author_id",$id)->with(["student","author","course","video","examination"])->paginate(15);
         if($results->isNotEmpty())
         {
-            return  view("admin.user.teacher.result",compact("id","results"));
+            return  view("admin.user.result",compact("id","results"));
         }
         else
         {
@@ -163,6 +163,7 @@ class MainController extends Controller
         return view("admin.user.student.accessVideo",compact("subscribers"));
 
     }
+
     public function Access(Request $request){
         $this->validate($request,["student_id"=>"required","subscribe_id"=>"required","video_id"=>"required"]);
         $uservideo = UserVideo::where(["student_id"=>$request->get("student_id"),"subscribe_id"=>$request->get("subscribe_id"),"video_id"=>$request->get("video_id")])->first();
@@ -176,6 +177,16 @@ class MainController extends Controller
         }
         return redirect()->back();
     }
+
+    //End of Student
+
+
+    //Start of Media
+    public function media(){
+        return view("admin.media.index");
+    }
+
+
 
 
 }

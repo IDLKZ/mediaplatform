@@ -10,8 +10,8 @@
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <section class="boxs user_widget">
                         <div class="uw_header l-blush">
-                            <h3>{{$course->title}}</h3>
-                            <h5>{{\Illuminate\Support\Carbon::parse($course->created_at)->diffForHumans()}}</h5>
+                            <h5>{{$course->title}}</h5>
+                            <small>{{\Illuminate\Support\Carbon::parse($course->created_at)->diffForHumans()}}</small>
                         </div>
                         <div class="uw_image"> <img class="img-circle" src="{{$course->img}}" style="min-height: 120px" alt="{{$course->title}}"></div>
                         <div class="uw_footer">
@@ -90,20 +90,6 @@
                     </section>
                 </div>
 
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <section class="boxs">
-                        <div class="boxs-header">
-                            <h3 class="custom-font hb-green">
-                                <strong>{{__('content.videoCourse')}}</strong></h3>
-                        </div>
-                        <ul id="svList">
-                            @foreach($course->videos as $video)
-                                <li class="svThumb vimeoVideo" data-videoID="{{Str::of($video->video_url)->ltrim('https://vimeo.com/')}}">
-                                    {{$video->title}}</li>
-                            @endforeach
-                        </ul>
-                    </section>
-                </div>
 
 
 

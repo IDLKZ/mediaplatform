@@ -40,6 +40,19 @@ Admin Users Start
     background: linear-gradient(45deg, #23d750, #0f898f) !important;
     color: #fff !important;
 }
+.l-violet-blush{
+    background: linear-gradient(45deg, #6e09a7, #d3205b) !important;
+    color: #fff !important;
+}
+.l-dark-blue-blush{
+    background: linear-gradient(45deg, #380a49, #2c9daf) !important;
+    color: #fff !important;
+}
+.l-dark-green-blush{
+    background: linear-gradient(45deg, #0ecd08, #1e543e) !important;
+    color: #fff !important;
+}
+
 .btn-add{
     border-radius: 50%!important;
     width: 50px;
@@ -101,7 +114,7 @@ Admin Users Start
     .course-item-image>img{
         border-radius: 50%;
         width: 85%;
-        height: 190px;
+        height: 150px;
     }
     .course-title{
         padding: 10px;
