@@ -32,9 +32,9 @@ return [
     */
 
     'titles' => [
-        'discussion'  => 'Discussion',
-        'discussions' => 'Discussions',
-        'category'    => 'Category',
+        'discussion'  => 'обсуждение',
+        'discussions' => 'обсуждения',
+        'category'    => 'Категория',
     ],
 
    /*
@@ -56,7 +56,7 @@ return [
 
     'headline'      => 'Welcome to Chatter',
     'description'   => 'A simple forum package for your Laravel app.',
-    'headline_logo' => '/vendor/devdojo/chatter/assets/images/logo-light.png',
+    'headline_logo' => '/vendor/devdojo/chatter/assets/images/jasqalam.png',
 
     /*
     |--------------------------------------------------------------------------

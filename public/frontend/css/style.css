@@ -43,6 +43,7 @@ h1, h2, h5 {
     color: white;
     font-size: 43px;
 }
+#main p {font-size: 18px}
 .bottom-block {
     display: flex;
     position: absolute;
@@ -180,7 +181,7 @@ h1, h2, h5 {
 /*End Main-six*/
 /*Start Footer*/
 footer {
-    height: calc(100vh * 0.41);
+    height: calc(100vh * 0.31);
     background: #1D1F28;
     color: white!important;
 }

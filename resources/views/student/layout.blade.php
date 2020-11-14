@@ -4,7 +4,7 @@
     <base href="/">
     <meta charset="utf-8">
 
-    <title>:: Falcon - Admin Dashboard ::</title>
+    <title>:: Jas Qalam ::</title>
     <link rel="icon" type="image/ico" href="/images/favicon.ico" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/css/jquery.mn-file.css">
     <link rel="stylesheet" href="/css/front.css">
     <link rel="stylesheet" href="/css/circle.css">
+
     @yield('css')
 </head>
 <body id="falcon" class="main_Wrapper">
@@ -32,7 +33,7 @@
     </div>
 </div>
 
-@include('Frontend.footer')
+@include('student.footer')
 
 <script src="/frontend/js/jquery.js"></script>
 <script src="/frontend/js/bootstrap.min.js"></script>
@@ -42,6 +43,7 @@
 <script src="/js/jquery.mn-file.js"></script>
 <script src="/js/ckeditor.js"></script>
 <script src="/js/student.js"></script>
+
 @yield('js')
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\UpdateProfile', '#my-form')  !!}

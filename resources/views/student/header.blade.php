@@ -69,18 +69,18 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="auth">
                                 <a class="dropdown-item" href="{{route('userProfile')}}"><i class="far fa-user mr-2"></i>Мой профиль</a>
-                                <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}"><i class="far fa-bell mr-2"></i>Уведомления</a>
+{{--                                <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}"><i class="far fa-bell mr-2"></i>Уведомления</a>--}}
                                 <a class="dropdown-item" href="{{route('userProfileSettings')}}"><i class="fas fa-cog mr-2"></i>Настройки</a>
                                 <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>Выйти</a>
                             </div>
                         </div>
                     @else
-                        <button type="button" class="btn mr-2" id="auth">Авторизация</button>
+                        <button type="button" class="btn mr-4" id="auth">Авторизация</button>
                     @endif
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Рус
+                            {{App::isLocale('ru') ? 'Рус' : 'Қаз'}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'kz'])}}">Қаз</a>

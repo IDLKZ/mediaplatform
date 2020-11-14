@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\RealtimeController;
 use App\Http\Controllers\Student\UserController;
 use App\Http\Controllers\Teacher\HomeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -229,6 +230,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 //End StudentBlade
     });
 
+//    Start RealTime Chat
+    Route::get('/realtime-forums', [RealtimeController::class, 'index'])->name('forums');
 
 });
 //Переключение языков

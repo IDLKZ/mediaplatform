@@ -39,7 +39,7 @@ class LoginController extends Controller
             }
             if (Auth::user()->role_id == 3 && Auth::user()->status == 1) {
                 Toastr::success('Вход успешно выполнен','Добро пожаловать!');
-                return redirect(route('user'));
+                return redirect(route('student.course'));
             } else {
                 Toastr::warning('Вы не зарегистрированы в системе или вас еще не одобрили!','Уппс...');
                 return redirect(route('login'));

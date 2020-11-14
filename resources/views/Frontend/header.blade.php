@@ -75,13 +75,13 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{route('login')}}"><button type="button" class="btn mr-2" id="auth">Авторизация</button></a>
+                        <a href="{{route('login')}}"><button type="button" class="btn mr-4" id="auth">Авторизация</button></a>
                     @endif
 
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Рус
+                            {{App::isLocale('ru') ? 'Рус' : 'Қаз'}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'kz'])}}">Қаз</a>

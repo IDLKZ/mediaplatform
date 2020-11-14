@@ -235,14 +235,8 @@ class UserController extends Controller
     }
 
     public function checkedResult(){
-        $results = Auth::user()->results_student()->where("checked",1)->paginate(15);
-        if (!$results->isEmpty()) {
-            return view("student.result.index",compact("results"));
-        }
-        else{
-            Toastr::warning("Увы у вас нет проверенных работ","Упс....");
-            return redirect()->back();
-        }
+        $results = Auth::user()->results_student()->paginate(15);
+        return view("student.result.index",compact("results"));
     }
 
     public function uncheckedResult(){
@@ -258,6 +252,19 @@ class UserController extends Controller
 
     public function showResult($id){
         $result = Auth::user()->results_student()->find($id);
+        // Courses
+        Breadcrumbs::for('exam', function ($trail) {
+            $trail->push('Экзамены и тесты', route('student.checkedResult'));
+        });
+        // Home > Courses > [Course]
+        Breadcrumbs::for('showResult', function ($trail, $course) {
+            $trail->parent('exam');
+            $trail->push($course->title, route('student.course.show', $course->alias));
+        });
+        Breadcrumbs::for('show', function ($trail, $result) {
+            $trail->parent('showResult', $result->course);
+            $trail->push($result->video->title, route('student.showResult', $result->id));
+        });
         if($result){
             return view("student.result.show",compact("result"));
         }
