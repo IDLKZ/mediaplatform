@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Language;
+use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
@@ -174,8 +175,9 @@ class AdminCourseController extends Controller
      */
     public function destroy($alias)
     {
-        $course = Course::where("alias",$alias)->first();
+        $course = Course::where("alias",$alias)->with("videos")->first();
         if($course){
+            Video::deleteVideo($course);
             Storage::delete($course->img);
             $course->delete();
             Toastr::success('Курс был успешно удален','Успешно удален курс!');
@@ -188,6 +190,7 @@ class AdminCourseController extends Controller
         }
     }
 
+    //Course Videos
     public function videos($alias){
         $course = Course::where("alias",$alias)->first();
         if($course){
@@ -199,7 +202,66 @@ class AdminCourseController extends Controller
             Toastr::warning("Ничего не найдено","Упс!");
             return  redirect()->back();
         }
+    }
+
+    //Work With Subscriber
+
+    public function subscribers($id){
+            $subscribers = Subscriber::where(["course_id"=>$id,"status"=>1])->with(["course","user","author"])->paginate(12);
+            if($subscribers->isNotEmpty()){
+                return view("admin.media.course.subscriber",compact("subscribers"));
+            }
+            else{
+                Toastr::warning("Подписчиков данного видеокурса не найдено","Упс!");
+                return redirect()->back();
+            }
+    }
+
+    public function unconfirmed($id){
+        $subscribers = Subscriber::where(["course_id"=>$id,"status"=>0])->with(["course","user","author"])->paginate(12);
+        if($subscribers->isNotEmpty()){
+            return view("admin.media.course.subscriber",compact("subscribers"));
+        }
+        else{
+            Toastr::warning("Подписчиков данного видеокурса не найдено","Упс!");
+            return redirect()->back();
+        }
+    }
+
+
+    public function subscriberAction($id)
+    {
+        $subscriber = Subscriber::find($id);
+        if($subscriber){
+            if ($subscriber->status == 1) {
+                $subscriber->status = 0 ;
+                $subscriber->save();
+                return redirect()->back();
+            }
+            if ($subscriber->status == 0) {
+                $subscriber->status = 1 ;
+                $subscriber->save();
+                return redirect()->back();
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function deleteSubscriber($id){
+        $subscriber = Subscriber::find($id);
+        if($subscriber)
+        {
+            $subscriber->delete();
+            return redirect()->back();
+        }
+        else
+        {
+            Toastr::warning("Подписчик не найден","Упс");
+            return  redirect()->back();
+        }
 
 
     }
+
+
 }

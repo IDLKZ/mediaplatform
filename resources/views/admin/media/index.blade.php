@@ -47,7 +47,7 @@
                             <p class="mt-20">
                                 Здесь вы можете видеть список видеоуроков прикрепленных к видеокурсу, которые вы можете посмотреть
                             </p>
-                            <a href="{{route("admin-teachers","all")}}" class="btn btn-raised btn-info">
+                            <a href="{{route("admin-video.index")}}" class="btn btn-raised btn-info">
                                 <i class="fa fa-vimeo-square"> </i>
                                 <small class="sm-none">Все видеоуроки</small>
 

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Merujan99\LaravelVideoEmbed\Facades\LaravelVideoEmbed;
+use Vimeo\Laravel\Facades\Vimeo;
 
 class Video extends Model
 {
@@ -102,6 +103,21 @@ class Video extends Model
             'download' => false
         ];
         return LaravelVideoEmbed::parse($url, $whitelist, $params, $attributes);
+    }
+
+    public static function deleteVideo($course)
+    {
+        if($course->videos->isNotEmpty()){
+            foreach ($course->videos as $video){
+                $client = Vimeo::connection('main');
+                $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
+                $uri = "/videos/$TIMA";
+                $client->request($uri, [], 'DELETE');
+                $video->delete();
+            }
+        }
+
+
     }
 
 

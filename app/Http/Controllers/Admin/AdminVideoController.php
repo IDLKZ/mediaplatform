@@ -21,7 +21,7 @@ class AdminVideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::with("course")->paginate(15);
+        $videos = Video::with("course")->paginate(12);
         if(!$videos->isEmpty()){
             return view("admin.media.video.index",compact("videos"));
         }

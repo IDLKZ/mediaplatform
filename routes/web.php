@@ -97,6 +97,11 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             //Course
             Route::resource("/admin-course",AdminCourseController::class);
             Route::get("/admin-course-videos/{alias}",[AdminCourseController::class,"videos"])->name("admin-course-videos");
+            //Subscriber
+            Route::get("/admin-course-subscribers/{id}",[AdminCourseController::class,"subscribers"])->name("admin-course-subscribers");
+            Route::get("/admin-course-unconfirmed/{id}",[AdminCourseController::class,"unconfirmed"])->name("admin-course-unconfirmed");
+            Route::get("/admin-subscribe-action/{id}",[AdminCourseController::class,"subscriberAction"])->name("admin-subscribe-action");
+            Route::get("/admin-subscribe-delete/{id}",[AdminCourseController::class,"deleteSubscriber"])->name("admin-subscribe-delete");
             //Video
             Route::resource("/admin-video",AdminVideoController::class);
             //Material

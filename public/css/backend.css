@@ -8,8 +8,26 @@ Admin Users Start
     height: 100px;
     width: 100px;
 }
+mxh-100{
+    max-height: 100px;
+    overflow: scroll;
+}
+mxh-150{
+    max-height: 150px;
+    overflow: scroll;
+}
+mxh-200{
+    max-height: 200px;
+    overflow: scroll;
+}
+
+
 .mh-50{
     min-height: 50px;
+    height: auto;
+}
+.mh-100{
+    min-height: 100px;
     height: auto;
 }
 .mh-150{
@@ -71,6 +89,12 @@ Admin Users Start
     border-bottom-left-radius: 15px;
     text-align: center;
     padding: 5%;
+}
+
+.btn-a{
+    padding: 10px 20px;
+    margin: 0 5px;
+    text-transform: none;
 }
 /*Max Width*/
 @media screen and (max-width: 768px){

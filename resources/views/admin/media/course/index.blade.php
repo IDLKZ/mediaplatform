@@ -49,16 +49,20 @@
                                                         <i class="fa fa-pencil"></i> Редактировать </a>
                                                 </li>
                                                 <li>
-                                                    <a role="button" tabindex="0" class="boxs-fullscreen">
+                                                    <a href="{{route("admin-course-subscribers",$course->id)}}" role="button" tabindex="0" class="boxs-fullscreen">
                                                         <i class="fa fa-user-plus"></i> Подписчики </a>
                                                 </li>
                                                 <li>
-                                                    <a role="button" tabindex="0" class="boxs-fullscreen">
-                                                        <i class="fa fa-question-circle"></i> Заявка </a>
+                                                    <a href="{{route("admin-course-unconfirmed",$course->id)}}" role="button" tabindex="0" class="boxs-fullscreen">
+                                                        <i class="fa fa-question-circle"></i> Заявки </a>
                                                 </li>
                                                 <li>
-                                                    <a role="button" tabindex="0" class="boxs-fullscreen">
-                                                        <i class="fa fa-bitbucket"></i> Удалить </a>
+                                                    <form  method="post" action="{{route('admin-course.destroy',$course->alias)}}">
+                                                        @method("DELETE")
+                                                        @csrf
+                                                    <button onclick="return confirm('Вы уверены, удаление курса приведет к удалению видео!')" role="button" tabindex="0" class="btn btn-a">
+                                                        <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                    </form>
                                                 </li>
                                             </ul>
                                         </li>

@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('content')
     <div class="page static-page-tables">
-        <div class="row clearfix">
+        <div class="row">
             @if($videos->isNotEmpty())
             @foreach($videos as $video)
-            <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-md-3 col-sm-6 col-xs-12 mh-350">
                 <div class="boxs project_widget">
                     <div class="pw_img">
                         <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getVimeoThumbanail($video->video_url)}}" style="width: 100%" alt="About the image">
@@ -12,9 +12,9 @@
                     <div class="pw_content">
                         <div class="pw_header">
                             <h6>
-                                {{$video->title}}
+                                {{strlen($video->title) >20 ? mb_substr($video->title,0,20).".." : $video->title}}
                             </h6>
-                            <small class="text-muted">{{$video->course->title}}  |  {{$video->created_at->diffForHumans()}}</small>
+                            <small class="text-muted">{{strlen($video->course->title) > 20 ? mb_substr($video->course->title,0,12)."..." : $video->course->title }}  |  {{$video->created_at->diffForHumans()}}</small>
                         </div>
                         <div class="uw_footer ">
                             <div class="row">
