@@ -7,6 +7,9 @@ $(document).ready(function () {
         "admin-course.create":"/admin/admin-course",
         "author_search":"/ajax/searchAuthor",
         "video_search":"/ajax/searchVideo",
+        "course_search":"/ajax/searchCourse",
+        "admin_type":"/ajax/getTypes",
+        "admin_quiz.create":"/admin-quiz/create",
     };
 
     //Init Teacher Examination
@@ -111,7 +114,6 @@ $(document).ready(function () {
 
 
     //Search Teacher for Course
-    if(window.location.href.indexOf(url["admin-course.create"]) != -1){
         $('.course_author').select2({
             placeholder: 'Автор курса',
             ajax: {
@@ -134,7 +136,7 @@ $(document).ready(function () {
             }
 
         });
-    }
+    
     $('.material-video').select2({
         placeholder: 'Видео',
         ajax: {
@@ -157,7 +159,78 @@ $(document).ready(function () {
         }
 
     });
+    $('.course_admin').select2({
+        placeholder: 'Курсы',
+        ajax: {
+            url: url["course_search"],
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results:  $.map(data, function (item) {
+                        return {
+                            text: item.title,
+                            id: item.id
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
+    });
+
+    $(".course_admin").on("change",function () {
+        let course_id = $(this).val();
+        $(".video_admin").empty();
+        if(course_id){
+            $.ajax({
+                type: "POST",
+                url: "/ajax/searchCourseVideo",
+                data: {"_token":$('meta[name="csrf-token"]').attr('content'),"course_id":course_id},
+                success: function (response) {
+                    if(response.length > 0){
+                        for (let i=0;i<response.length; i++){
+                            $(".video_admin").append($("<option></option>")
+                                .attr("value", response[i]["id"])
+                                .text(response[i]["title"]));
+                        }
+
+                    }
+                },
+            })}
+    });
+
+    $("#exam_type2").on("change",function () {
+        $("#examination_select").empty().append("<option>Не выбрано</option>");
+       getType2();
+    })
+    if ($("#exam_type2").val() == "test" || $("#exam_type2").val() == "review" ){
+        getType2();
+    }
 
 
+    function getType2(){
+        let type = $("#exam_type2").val();
+        if(type){
+            $.ajax({
+                type: "POST",
+                url: url["admin_type"],
+                data: {"_token":$('meta[name="csrf-token"]').attr('content'),"type":type},
+                success: function (response) {
+                    let data = response.data;
+                    if(response["data"].length > 0){
+                        $("#examination_select").attr("name",response.type);
+                        for (let i=0;i<data.length; i++){
+                            $("#examination_select").append($("<option></option>")
+                                .attr("value", data[i]["id"])
+                                .text(data[i]["title"]));
+                        }
 
+                    }
+                },
+                error:function(error){console.log(error)},
+                dataType: "json"
+            });
+        }
+    }
 });

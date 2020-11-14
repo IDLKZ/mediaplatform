@@ -28,6 +28,9 @@ use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Admin\AdminMaterialController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminResultController;
+use App\Http\Controllers\Admin\AdminExaminationController;
+use App\Http\Controllers\Admin\AdminQuizController;
+use App\Http\Controllers\Admin\AdminQuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,13 +100,22 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             //Course
             Route::resource("/admin-course",AdminCourseController::class);
             Route::get("/admin-course-videos/{alias}",[AdminCourseController::class,"videos"])->name("admin-course-videos");
-            //Subscriber
+            //Course - Subscriber
             Route::get("/admin-course-subscribers/{id}",[AdminCourseController::class,"subscribers"])->name("admin-course-subscribers");
             Route::get("/admin-course-unconfirmed/{id}",[AdminCourseController::class,"unconfirmed"])->name("admin-course-unconfirmed");
             Route::get("/admin-subscribe-action/{id}",[AdminCourseController::class,"subscriberAction"])->name("admin-subscribe-action");
             Route::get("/admin-subscribe-delete/{id}",[AdminCourseController::class,"deleteSubscriber"])->name("admin-subscribe-delete");
             //Video
             Route::resource("/admin-video",AdminVideoController::class);
+            //Video-Student
+            Route::get("/admin-video-subscriber/{alias}",[AdminVideoController::class,"subscriber"])->name("admin-video-subscriber");
+            Route::get("/admin-video-checked/{alias}",[AdminVideoController::class,"checked"])->name("admin-video-checked");
+            Route::get("/admin-video-unchecked/{alias}",[AdminVideoController::class,"unchecked"])->name("admin-video-unchecked");
+            Route::get("/admin-video-material/{alias}",[AdminVideoController::class,"material"])->name("admin-video-material");
+
+
+
+
             //Material
             Route::resource("/admin-material",AdminMaterialController::class);
             //Create
@@ -113,9 +125,13 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/student/{id}/results",[AdminResultController::class,"studentResult"])->name("admin-student-result");
             //VideoMaterial
             Route::get("/admin-media",[MainController::class,"media"])->name("admin-media");
-//            Route::get("/admin-media-video",[MainController::class,"video"])->name("admin-media-video");
 
 
+            //Examination
+            Route::get("/admin-exams",[MainController::class,"exams"])->name("admin-exams");
+            Route::resource("/admin-examination",AdminExaminationController::class);
+            Route::resource("/admin-quiz",AdminQuizController::class);
+            Route::resource("/admin-question",AdminQuestionController::class);
 
 
 
@@ -159,7 +175,6 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/unchecked-result",[ResultController::class,"uncheckedResult"])->name("teacher.uncheckedResult");
             Route::get("/show-result/{id}",[ResultController::class,"showResult"])->name("teacher.showResult");
             Route::post("/check-result",[ResultController::class,"checkResult"])->name("teacher.checkResult");
-
             //
 
 
@@ -171,9 +186,11 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
         //only Ajax Query
         Route::post("/ajax/videos",[AjaxController::class,"getVideo"]);
         Route::post("/ajax/getType",[AjaxController::class,"getType"]);
+        Route::post("/ajax/getTypes",[AjaxController::class,"getTypes"]);
+        Route::get("/ajax/searchCourse",[AjaxController::class,"searchCourse"]);
+        Route::post("/ajax/searchCourseVideo",[AjaxController::class,"searchCourseVideo"]);
         Route::get('/ajax/searchAuthor', [AjaxController::class,"searchAuthor"]);
         Route::get('/ajax/searchVideo', [AjaxController::class,"searchVideo"]);
-
         Route::get("/getdocument/{id}",[MaterialController::class,"download"])->name("material");
 
 //Start StudentBlade

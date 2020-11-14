@@ -29,12 +29,16 @@ class Quiz extends Model
 
     public static function saveData($request){
         $model = new self();
-        $request["author_id"] = Auth::id();
+        if(Auth::user()->role_id == 2){
+            $request["author_id"] = Auth::id();
+        }
         $model->fill($request);
         return $model->save();
     }
     public static function updateData($request,$quiz){
-        $request["author_id"] = Auth::id();
+        if(Auth::user()->role_id == 2){
+            $request["author_id"] = Auth::id();
+        }
         $quiz->update($request);
         return $quiz->save();
     }

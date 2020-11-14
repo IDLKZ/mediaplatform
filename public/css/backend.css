@@ -70,7 +70,18 @@ mxh-200{
     background: linear-gradient(45deg, #0ecd08, #1e543e) !important;
     color: #fff !important;
 }
-
+.l-dark-violet-blush{
+    background: linear-gradient(45deg, #3b2341, #b515d8) !important;
+    color: #fff !important;
+}
+.l-light-blue-blush{
+    background: linear-gradient(45deg, #617fe5, #7850ba) !important;
+    color: #fff !important;
+}
+.l-dark-salad-blush{
+    background: linear-gradient(45deg, #2d4934, #15ff2f) !important;
+    color: #fff !important;
+}
 .btn-add{
     border-radius: 50%!important;
     width: 50px;
@@ -96,6 +107,8 @@ mxh-200{
     margin: 0 5px;
     text-transform: none;
 }
+
+
 /*Max Width*/
 @media screen and (max-width: 768px){
     .sm-none{
@@ -158,6 +171,8 @@ mxh-200{
 
 
 }
+
+
 
 /*Max - width 768*/
 

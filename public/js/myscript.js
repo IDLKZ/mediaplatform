@@ -1,8 +1,11 @@
 $(document).ready(function () {
-    ClassicEditor
-        .create( document.querySelector( '#editor' ),{
-            height:500
-        } )
+    if($("#editor").length){
+        ClassicEditor
+            .create( document.querySelector( '#editor' ),{
+                height:500
+            } )
+    }
+
 
 
     //Select2

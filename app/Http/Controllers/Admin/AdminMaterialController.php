@@ -22,7 +22,7 @@ class AdminMaterialController extends Controller
     {
         $materials = Materials::orderBy("created_at","desc")->paginate(15);
         if (!$materials->isEmpty()) {
-            return  view("admin.material.index",compact("materials"));
+            return  view("admin.media.material.index",compact("materials"));
         }
         else{
             Toastr::warning("Материалов еще нет!","Упс....");
@@ -48,7 +48,7 @@ class AdminMaterialController extends Controller
         ]);
         $videos = Video::count();
         if($videos){
-            return  view("admin.material.create",compact("videos","validator"));
+            return  view("admin.media.material.create",compact("videos","validator"));
         }
         else{
             Toastr::warning("Вы еще не создали видео","Упс...");
@@ -107,7 +107,7 @@ class AdminMaterialController extends Controller
                 'file'=> 'sometimes|file|max:5000',
                 "type"=>"required",
             ]);
-            return  view("admin.material.edit",compact("material","validator"));
+            return  view("admin.media.material.edit",compact("material","validator"));
         }
         else{
             Toastr::warning('Материал не найден!','Упс!');

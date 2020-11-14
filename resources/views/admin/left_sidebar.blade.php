@@ -7,8 +7,8 @@
                         <!--  NAVIGATION Content -->
                         <ul id="navigation">
                             {{--                            Главная--}}
-                            <li class="active open">
-                                <a href="index.html">
+                            <li>
+                                <a href="/admin">
                                     <i class="fa fa-dashboard"></i>
                                     <span>{{__('website.main')}}</span>
                                 </a>
@@ -26,20 +26,12 @@
                                     <span>Медиа</span>
                                 </a>
                             </li>
-                            {{--                            Видеокурсы--}}
-
-
-
-
-                            {{--                            Видеокурсы--}}
-                            {{--                            Видео--}}
-
-
-
-
-
-
-                            {{--                            Видео--}}
+                            <li>
+                                <a href="{{route("admin-exams")}}">
+                                    <i class="icon-puzzle"></i>
+                                    <span>Экзамены</span>
+                                </a>
+                            </li>
 
 
 

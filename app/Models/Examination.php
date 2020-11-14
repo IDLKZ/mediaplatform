@@ -34,7 +34,14 @@ class Examination extends Model
 
     public static function saveData($request){
         $model = new self();
-        $request["author_id"] = Auth::id();
+        if(Auth::user()->role_id == 2){
+            $request["author_id"] = Auth::id();
+        }
+        if(Auth::user()->role_id == 1){
+            $course = Course::find($request["course_id"]);
+            $request["author_id"] = $course->author_id;
+
+        }
         $model->fill($request);
         return $model->save();
     }

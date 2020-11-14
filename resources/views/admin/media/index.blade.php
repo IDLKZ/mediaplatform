@@ -70,10 +70,9 @@
                             <p class="mt-20">
                                 Здесь вы можете видеть список материалов, которые прикреплены к  видеоурокам
                             </p>
-                            <a href="{{route("admin-students","all")}}" class="btn btn-raised btn-info">
+                            <a href="{{route("admin-material.index")}}" class="btn btn-raised btn-info">
                                 <i class="fa fa-bookmark"> </i>
                                 <small class="sm-none">Все материалы</small>
-
                             </a>
                         </div>
 

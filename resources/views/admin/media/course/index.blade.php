@@ -37,23 +37,23 @@
                                             <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp list-unstyled">
 
                                                 <li>
-                                                    <a href="{{route("admin-course.show",$course->alias)}}" role="button" tabindex="0" class="boxs-fullscreen">
+                                                    <a href="{{route("admin-course.show",$course->alias)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-eye"></i> Посмотреть </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route("admin-course-videos",$course->alias)}}" role="button" tabindex="0" class="boxs-fullscreen">
+                                                    <a href="{{route("admin-course-videos",$course->alias)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-vimeo-square"></i> Видеоуроки </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route("admin-course.edit",$course->alias)}}" role="button" tabindex="0" class="boxs-fullscreen">
+                                                    <a href="{{route("admin-course.edit",$course->alias)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-pencil"></i> Редактировать </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route("admin-course-subscribers",$course->id)}}" role="button" tabindex="0" class="boxs-fullscreen">
+                                                    <a href="{{route("admin-course-subscribers",$course->id)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-user-plus"></i> Подписчики </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route("admin-course-unconfirmed",$course->id)}}" role="button" tabindex="0" class="boxs-fullscreen">
+                                                    <a href="{{route("admin-course-unconfirmed",$course->id)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-question-circle"></i> Заявки </a>
                                                 </li>
                                                 <li>

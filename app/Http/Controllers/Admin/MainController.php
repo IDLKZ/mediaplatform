@@ -187,6 +187,11 @@ class MainController extends Controller
     }
 
 
+    //Examination
+    public function exams(){
+        return view("admin.exams.index");
+    }
+
 
 
 }

@@ -74,5 +74,8 @@
             </div>
         </div>
     </div>
+    <a href="{{route("admin-material.create")}}" class="btn btn-success btn-raised  btn-add" >
+        <i class="fa fa-plus"></i>
+    </a>
 @endsection
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Quiz;
 use App\Models\Review;
 use App\Models\User;
@@ -37,6 +38,30 @@ class AjaxController extends Controller
                 return response()->json([]);
         }
     }
+
+
+
+    //Admin
+    public function searchCourse(Request $request){
+        $courses = [];
+        if($request->has('q')){
+            $search = $request->q;
+            $courses = Course::select("id", "title")
+                ->where('title', 'LIKE', "%$search%")
+                ->has('videos', '>' , 0)
+                ->get();
+        }
+        return response()->json($courses);
+    }
+
+    public function searchCourseVideo(Request  $request){
+        $videos = [];
+        if($request->has("course_id")){
+            $videos = Video::where("course_id",$request->get("course_id"))->get();
+        }
+        return response()->json($videos);
+    }
+
     public function searchAuthor(Request $request){
         $users = [];
         if($request->has('q')){
@@ -56,6 +81,22 @@ class AjaxController extends Controller
                 ->get();
         }
         return response()->json($videos);
+    }
+
+    public function getTypes(Request $request){
+        switch ($request->get("type")){
+            case "test":
+                $data["data"] =  Quiz::has('questions', '>' , 10)->get();
+                $data['type'] = "quiz_id";
+
+                return response()->json($data);
+            case "review":
+                $data["data"] = Review::has("reviewquestion",">",1)->get();
+                $data['type'] = "review_id";
+                return response()->json($data);
+            default:
+                return response()->json([]);
+        }
     }
 
 

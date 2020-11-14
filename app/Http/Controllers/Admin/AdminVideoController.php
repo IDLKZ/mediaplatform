@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Materials;
+use App\Models\Result;
+use App\Models\UserVideo;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -174,6 +177,49 @@ class AdminVideoController extends Controller
         else{
             Toastr::warning('Видео не найдено!','Упс!');
             return  redirect(route("admin-video.index"));
+        }
+    }
+
+    public function subscriber($alias){
+        $video = Video::where("alias",$alias)->first();
+        if($video){
+            $uservideos = UserVideo::where("video_id",$video->id)->with(["student","video"])->paginate(12);
+            return view("admin.media.video.uservideo",compact("uservideos"));
+        }
+        else{
+           return redirect()->back();
+        }
+    }
+
+    public function checked($alias){
+        $video = Video::where("alias",$alias)->first();
+        if($video){
+            $results = Result::where(["video_id"=>$video->id,"checked"=>1])->with(["student","examination","course","author","video"])->paginate(12);
+            return view("admin.result.index",compact("results"));
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+    public function unchecked($alias){
+        $video = Video::where("alias",$alias)->first();
+        if($video){
+            $results = Result::where(["video_id"=>$video->id,"checked"=>0])->with(["student","examination","course","author","video"])->paginate(12);
+            return view("admin.result.index",compact("results"));
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+
+    public function material($alias){
+        $video = Video::where("alias",$alias)->first();
+        if($video){
+            $materials = Materials::where("video_id",$video->id)->with(["author","video"])->paginate(12);
+            return view("admin.material.index",compact("materials"));
+        }
+        else{
+            return redirect()->back();
         }
     }
 }
