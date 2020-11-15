@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+    //First Page (Главная)
     public function index()
     {
         return view('admin.main');

@@ -82,6 +82,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 
         //Start AdminBlade
         Route::group(['prefix' => 'admin',"middleware"=>"admin"], function (){
+            //Index Page
+            Route::get('/', [MainController::class, 'index'])->name('main');
             //Show User
             Route::get("/users",[MainController::class,"users"])->name("admin-users");
             Route::resource("/user",AdminUserController::class);
@@ -97,9 +99,6 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/student/{id}/courses",[MainController::class,"studentCourse"])->name("admin-student-course");
             Route::get("/student/{id}/accessVideo",[MainController::class,"studentAccessVideo"])->name("admin-student-access-video");
 
-
-
-            Route::get('/', [MainController::class, 'index'])->name('main');
             //Course
             Route::resource("/admin-course",AdminCourseController::class);
             Route::get("/admin-course-videos/{alias}",[AdminCourseController::class,"videos"])->name("admin-course-videos");
@@ -115,9 +114,6 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/admin-video-checked/{alias}",[AdminVideoController::class,"checked"])->name("admin-video-checked");
             Route::get("/admin-video-unchecked/{alias}",[AdminVideoController::class,"unchecked"])->name("admin-video-unchecked");
             Route::get("/admin-video-material/{alias}",[AdminVideoController::class,"material"])->name("admin-video-material");
-
-
-
 
             //Material
             Route::resource("/admin-material",AdminMaterialController::class);

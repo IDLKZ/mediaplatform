@@ -21,8 +21,8 @@ class User extends Authenticatable
     protected static $imageFields = [
         'img' => [
             'path' => 'upload/avatars',
-            'width' => 150,
-            'height' => 150
+            'width' => 600,
+            'height' => 600
         ],
     ];
     /**
