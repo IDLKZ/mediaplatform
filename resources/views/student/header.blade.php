@@ -69,7 +69,6 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="auth">
                                 <a class="dropdown-item" href="{{route('userProfile')}}"><i class="far fa-user mr-2"></i>Мой профиль</a>
-                                <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}"><i class="far fa-bell mr-2"></i>Уведомления</a>
                                 <a class="dropdown-item" href="{{route('userProfileSettings')}}"><i class="fas fa-cog mr-2"></i>Настройки</a>
                                 <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>Выйти</a>
                             </div>

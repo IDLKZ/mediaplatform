@@ -167,7 +167,7 @@
 }
 
 /*Album*/
-@media only screen and (min-width: 568px) and (min-height: 320px){
+@media only screen and (min-width: 568px) and (max-width: 900px) and (min-height: 320px){
     #main h1 {font-size: 20px}
     .inner-bottom-block {
         flex-grow: 1;
@@ -184,9 +184,25 @@
     #main-second{height: auto;}
     #main-third {height: auto}
     #main-four {height: auto}
-    #main-five {height: auto}
-    #main-six {height: auto}
-    footer {height: auto}
+    #main-five {height: auto; padding-bottom: 15px}
+    #main-six {height: auto; padding-top: 15px;padding-bottom: 15px}
+    footer {height: calc(100vh * 0.88)}
+    footer li {font-size: 12px!important;}
+}
+@media only screen and (min-width: 667px) and (max-width: 900px) and (min-height: 375px) {
+    footer {height: calc(100vh * 0.75)}
+    footer li {font-size: 14px!important;}
+}
+@media only screen and (min-width: 736px) and (max-width: 900px) and (min-height: 414px) {
+    footer {height: calc(100vh * 0.68)}
+}
+@media only screen and (min-width: 812px) and (max-width: 900px) and (min-height: 375px) {
+    footer {height: calc(100vh * 0.55)}
+    footer li {font-size: 13px!important;}
+    footer .social-icon {margin-left: 10px}
+}
+@media only screen and (min-width: 896px) and (max-width: 900px) and (min-height: 375px) {
+    footer {height: calc(100vh * 0.45)}
 }
 
 
