@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use QCod\ImageUp\HasImageUploads;
 
+
+
 class User extends Authenticatable
 {
     use HasImageUploads;
@@ -166,6 +168,9 @@ class User extends Authenticatable
         $user->password = bcrypt($data->get('password'));
         $user->save();
     }
+
+
+
 
 
 }

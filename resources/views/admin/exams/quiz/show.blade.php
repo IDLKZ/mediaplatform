@@ -38,7 +38,7 @@
                             </ul>
                         </div>
                         <div class="boxs-body">
-                            <h4>{{$question->question}}</h4>
+                            <h4>{!! $question->question !!}</h4>
                             <ul class="media-list feeds_widget m-0">
                                 <li class="media">
                                     <div class="media-img">A</div>
@@ -90,7 +90,7 @@
 
 
     </div>
-    <a href="{{route("admin-quiz.create")}}" class="btn btn-success btn-raised  btn-add" >
+    <a href="{{route("admin-question.create")}}" class="btn btn-success btn-raised  btn-add" >
         <i class="fa fa-plus"></i>
     </a>
 

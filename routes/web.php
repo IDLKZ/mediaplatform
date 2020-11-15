@@ -32,6 +32,8 @@ use App\Http\Controllers\Admin\AdminResultController;
 use App\Http\Controllers\Admin\AdminExaminationController;
 use App\Http\Controllers\Admin\AdminQuizController;
 use App\Http\Controllers\Admin\AdminQuestionController;
+use App\Http\Controllers\Admin\AdminReviewController;
+use App\Http\Controllers\Admin\AdminReviewQuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -133,6 +135,29 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::resource("/admin-examination",AdminExaminationController::class);
             Route::resource("/admin-quiz",AdminQuizController::class);
             Route::resource("/admin-question",AdminQuestionController::class);
+            Route::resource("/admin-review",AdminReviewController::class);
+            Route::resource("/admin-review-question",AdminReviewQuestionController::class);
+
+            //Request
+            Route::get("/admin-request",[MainController::class,"request"])->name("admin-request");
+            Route::get("/admin-request-user",[MainController::class,"requestUser"])->name("admin-request-user");
+            Route::get("/admin-request-result",[MainController::class,"requestResult"])->name("admin-request-result");
+
+
+            //Search
+            Route::get("/admin-search",[MainController::class,"search"])->name("admin-search");
+
+            Route::get("/admin-search-user",[MainController::class,"searchUser"])->name("admin-search-user");
+            Route::get("/admin-search-user-result",[MainController::class,"searchUserResult"])->name("admin-search-user-result");
+
+            Route::get("/admin-search-media",[MainController::class,"searchMedia"])->name("admin-search-media");
+            Route::get("/admin-search-media-result",[MainController::class,"searchMediaResult"])->name("admin-search-media-result");
+
+            Route::get('/admin-search-question',[MainController::class,"searchQuestion"])->name("admin-search-question");
+            Route::get('/admin-search-question-result',[MainController::class,"searchQuestionResult"])->name("admin-search-question-result");
+
+
+
 
 
 

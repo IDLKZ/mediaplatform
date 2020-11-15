@@ -23,7 +23,9 @@ class Review extends Model
 
     public static function saveData($request){
         $model = new self();
-        $request["author_id"] = Auth::id();
+        if(Auth::user()->role_id == 2){
+            $request["author_id"] = Auth::id();
+        }
         $model->fill($request);
         return $model->save();
     }

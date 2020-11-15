@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Question;
-use App\Models\Quiz;
+use App\Models\Review;
+use App\Models\ReviewQuestion;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
-class AdminQuestionController extends Controller
+class AdminReviewQuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,23 +29,13 @@ class AdminQuestionController extends Controller
      */
     public function create()
     {
-        $quizzes = Quiz::all();
-        if(!$quizzes->isEmpty()){
-            $validator = JsValidator::make( [
-                'quiz_id'=>'required',
-                'question'=> 'required',
-                'A'=> 'required|max:255',
-                'B'=> 'required|max:255',
-                'C'=> 'required|max:255',
-                'D'=> 'required|max:255',
-                'E'=> 'required|max:255',
-                "answer"=>"required|in:A,B,C,D,E"
-            ]);
-            return view("admin.exams.question.create",compact("validator","quizzes"));
+        $reviews = Review::all();
+        if($reviews->isNotEmpty()){
+            return  view("admin.exams.review_question.create",compact('reviews'));
         }
         else{
-            Toastr::warning("Сначала создайте тест","Упс....");
-            return  redirect(route("admin-quiz.create"));
+            Toastr::warning("Создайте сначала опрос!","Упс");
+            return  redirect()->back();
         }
     }
 
@@ -58,22 +48,16 @@ class AdminQuestionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'quiz_id'=>'required',
+            "review_id"=>"required",
             'question'=> 'required',
-            'A'=> 'required|max:255',
-            'B'=> 'required|max:255',
-            'C'=> 'required|max:255',
-            'D'=> 'required|max:255',
-            'E'=> 'required|max:255',
-            "answer"=>"required|in:A,B,C,D,E"
         ]);
-        if(Question::saveData($request->all())){
+        if(ReviewQuestion::saveData($request->all())){
             Toastr::success("Успешно создан вопрос","Отлично!");
-            return redirect(route("question.create"));
+            return redirect()->back();
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
-            return redirect(route("question.index"));
+            return redirect()->back();
         }
     }
 
@@ -96,24 +80,19 @@ class AdminQuestionController extends Controller
      */
     public function edit($id)
     {
-        $question = Question::with("quiz")->find($id);
-        $quizzes = Quiz::all();
-        if($question){
+        $review_question =ReviewQuestion::find($id);
+        $reviews = Review::all();
+        if($review_question){
             $validator = JsValidator::make( [
+                "review_id"=>"required",
                 'question'=> 'required',
-                'A'=> 'required|max:255',
-                'B'=> 'required|max:255',
-                'C'=> 'required|max:255',
-                'D'=> 'required|max:255',
-                'E'=> 'required|max:255',
-                "answer"=>"required|in:A,B,C,D,E"
             ]);
-            return  view("admin.exams.question.edit",compact("quizzes","question","validator"));
+            return view("admin.exams.review_question.edit",compact("review_question","reviews","validator"));
         }
         else{
-            return  redirect()->back();
+            Toastr::warning("Вопрос не найден","Упс...");
+            return redirect()->back();
         }
-
     }
 
     /**
@@ -125,31 +104,24 @@ class AdminQuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $question =Question::find($id);
-        if($question){
+        $review_question =  ReviewQuestion::find($id);
+        if($review_question){
             $this->validate($request, [
-                "quiz_id"=>"required",
+                "review_id"=>"required",
                 'question'=> 'required',
-                'A'=> 'required|max:255',
-                'B'=> 'required|max:255',
-                'C'=> 'required|max:255',
-                'D'=> 'required|max:255',
-                'E'=> 'required|max:255',
-                "answer"=>"required|in:A,B,C,D,E"
             ]);
-            if(Question::updateData($request->all(),$question)){
-                Toastr::success("Успешно обновлен вопрос","Отлично!");
+            if(ReviewQuestion::updateData($request->all(),$review_question)){
+                Toastr::success("Успешно создан вопрос","Отлично!");
                 return redirect()->back();
             }
             else{
                 Toastr::warning("Что-то пошло не так","Упс...");
                 return redirect()->back();
             }
-
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
-            return  redirect(route("question.index"));
+            return redirect()->back();
         }
     }
 
@@ -161,6 +133,14 @@ class AdminQuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $review_question =  ReviewQuestion::find($id);
+        if($review_question){
+            Toastr::success("Успешно удалено","Упс...");
+            $review_question->delete();
+            return  redirect()->back();
+        }
+        else{
+            return  redirect()->back();
+        }
     }
 }

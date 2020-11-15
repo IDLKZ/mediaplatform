@@ -36,6 +36,7 @@
                                                             Показать
                                                         </a>
                                                     </li>
+
                                                     <li>
                                                         <a  href="{{route("review.edit",$review->id)}}">
                                                             Редактировать

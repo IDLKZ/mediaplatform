@@ -32,6 +32,25 @@
                                     <span>Экзамены</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route("admin-request")}}">
+                                    <i class="fa fa-question-circle-o"></i>
+                                    <span>Запросы</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route("admin-search")}}">
+                                    <i class="fa fa-search"></i>
+                                    <span>Поиск</span>
+                                </a>
+                            </li>
+                            <hr>
+                            <li>
+                                <a href="{{route("admin-request")}}">
+                                    <i class="fa fa-power-off"></i>
+                                    <span>Выход</span>
+                                </a>
+                            </li>
 
 
 

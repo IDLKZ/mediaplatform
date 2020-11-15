@@ -78,6 +78,9 @@ class AdminUserController extends Controller
     {
         $user = User::find($id);
         if($user){
+            if ($user->role_id == 1) {
+                return  redirect(route("user.edit",$id));
+            }
             if($user->role_id == 2){
                 $user->load(["courses","author_subscribers","materials","examinations"]);
                 return view("admin.user.teacher.info",compact("user"));

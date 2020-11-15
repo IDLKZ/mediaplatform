@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Examination;
 use App\Models\Materials;
+use App\Models\Question;
 use App\Models\Result;
+use App\Models\ReviewQuestion;
 use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\UserVideo;
+use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -192,6 +196,91 @@ class MainController extends Controller
         return view("admin.exams.index");
     }
 
+    //request
+    public function request(){
+        return view("admin.request.index");
+    }
 
+    public function requestUser(){
+        $users = User::where("status",0)->with("role")->paginate(12);
+        return view("admin.request.user",compact("users"));
+    }
+    public function requestResult(){
+        $results = Result::where("checked",0)->paginate(12);
+        return view("admin.request.result",compact("results"));
+    }
 
+    //search
+    public function search(){
+        return view("admin.search.index");
+    }
+
+    public function searchUser(){
+        return view("admin.search.user");
+    }
+
+    public function searchUserResult(Request $request){
+        $this->validate($request,["query"=>"required|min:1"]);
+        $searchterm = $request->input('query');
+        $searchResults = User::where('name','LIKE','%'.$searchterm.'%')->with("role")->paginate(15);
+        $searchResults->appends(['query' => $searchterm]);
+        return view("admin.search.user",compact("searchResults","searchterm"));
+    }
+    public function searchMedia(){
+        return view("admin.search.media");
+    }
+
+    public function searchMediaResult(Request $request){
+        $this->validate($request,["query"=>"required|min:1","type"=>"required"]);
+        $searchterm = $request->input('query');
+        $searchtype = $request->input('type');
+       switch ($searchtype) {
+           case "course" :
+               $searchResults = Course::where('title','LIKE','%'.$searchterm.'%')->with(["author","language"])->paginate(15);
+               $searchResults->appends(['type' => $searchtype]);
+               $searchResults->appends(['query' => $searchterm]);
+               return view("admin.search.media",compact("searchResults","searchterm","searchtype"));
+           case "video" :
+               $searchResults = Video::where('title','LIKE','%'.$searchterm.'%')->with(["course","examination"])->paginate(15);
+               $searchResults->appends(['type' => $searchtype]);
+               $searchResults->appends(['query' => $searchterm]);
+               return view("admin.search.media",compact("searchResults","searchterm","searchtype"));
+           case "material" :
+               $searchResults = Materials::where('title','LIKE','%'.$searchterm.'%')->with(["video"])->paginate(15);
+               $searchResults->appends(['type' => $searchtype]);
+               $searchResults->appends(['query' => $searchterm]);
+               return view("admin.search.media",compact("searchResults","searchterm","searchtype"));
+           case "examination" :
+               $searchResults = Examination::where('title','LIKE','%'.$searchterm.'%')->with(["video","quiz","review","author"])->paginate(15);
+               $searchResults->appends(['type' => $searchtype]);
+               $searchResults->appends(['query' => $searchterm]);
+               return view("admin.search.media",compact("searchResults","searchterm","searchtype"));
+           default:
+               return abort(404);
+       }
+    }
+
+    public function searchQuestion () {
+        return view("admin.search.question");
+    }
+
+    public function searchQuestionResult(Request $request){
+        $this->validate($request,["query"=>"required|min:1","type"=>"required"]);
+        $searchterm = $request->input('query');
+        $searchtype = $request->input('type');
+        switch ($searchtype) {
+            case "quiz" :
+                $searchResults = Question::where('question','LIKE','%'.$searchterm.'%')->with("quiz")->paginate(15);
+                $searchResults->appends(['type' => $searchtype]);
+                $searchResults->appends(['query' => $searchterm]);
+                return view("admin.search.question",compact("searchResults","searchterm","searchtype"));
+            case "review" :
+                $searchResults = ReviewQuestion::where('question','LIKE','%'.$searchterm.'%')->with("review")->paginate(15);
+                $searchResults->appends(['type' => $searchtype]);
+                $searchResults->appends(['query' => $searchterm]);
+                return view("admin.search.question",compact("searchResults","searchterm","searchtype"));
+            default:
+                return abort(404);
+        }
+    }
 }
