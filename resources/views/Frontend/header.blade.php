@@ -46,16 +46,16 @@
                         <a class="nav-link" href="#">{{__('front.main')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.program')}}</a>
+                        <a class="nav-link" href="{{route('front')}}#main-third">{{__('front.program')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.contact')}}</a>
+                        <a class="nav-link" href="{{route('front')}}#main-four">{{__('front.review')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.review')}}</a>
+                        <a class="nav-link" href="{{route('front')}}#main-five">{{__('front.news')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.news')}}</a>
+                        <a class="nav-link" href="{{route('front')}}">{{__('front.contact')}}</a>
                     </li>
                 </ul>
                 <div class="ml-auto" role="group" aria-label="Button group with nested dropdown">

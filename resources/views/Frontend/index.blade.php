@@ -102,50 +102,49 @@
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
+                                <h5>КОПИРАЙТИНГ/
+                                    СТОРИТЕЛИНГ</h5><br>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-2.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="skill-blocks">
+                    <div class="skill-blocks" style="background-color: #FBBFD0!important;">
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
+                                <h5>ТРЕНДЫ
                                     В СОЦИАЛЬНЫХ
                                     МЕДИА</h5>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-3.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="skill-blocks">
+                    <div class="skill-blocks" style="background-color: #FFBFBF!important;">
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
+                                <h5>ВЕДЕНИЕ
+                                    ВИДЕО-КОНТЕНТА
+                                    (YOUTUBE)</h5>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-4.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -156,14 +155,14 @@
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
+                                <h5>АВТОРСКИЙ <br>
+                                    БЛОГ <br>
+                                    В ТЕЛЕГРАМ</h5>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-5.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -174,90 +173,70 @@
             <b>Навыки PR и Личный бренд:</b>
             <div class="row">
                 <div class="col-md-4 col-sm-12">
-                    <div class="skill-blocks">
+                    <div class="skill-blocks" style="background-color: #90CAF9!important;">
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
+                                <h6><strong>ВВЕДЕНИЕ <br>
+                                        В PR И СВЯЗЬ <br>
+                                        С ОБЩЕСТВЕННОСТЬЮ</strong></h6> <br>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-6.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="skill-blocks">
+                    <div class="skill-blocks" style="background-color: #F9E299!important;">
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
+                                <h6><strong>ЛИЧНЫЙ БРЕНД
+                                        (СОЗДАНИЕ ИМИДЖА <br>
+                                        И РЕПУТАЦИИ)</strong></h6> <br>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-7.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="skill-blocks">
+                    <div class="skill-blocks" style="background-color: #B4D7F6!important;">
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
+                                <h6><strong>ВЗАИМОДЕЙСТВИЕ <br>
+                                        СО СМИ</strong></h6> <br><br>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-8.png" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="skill-blocks">
+                    <div class="skill-blocks" style="background-color: #E5C0A8!important;">
                         <div class="row">
                             <div class="col-8">
                                 <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
+                                <h6><strong>АНТИКРИЗИСНЫЙ <br>
+                                        МЕНЕДЖМЕНТ</strong></h6> <br> <br>
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="skill-blocks">
-                        <div class="row">
-                            <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
-                                <small>Подробнее</small>
-                            </div>
-                            <div class="col-4 row align-items-center">
-                                <div class="circle">
-                                    <img src="/frontend/images/skill-1.png" alt="">
+                                    <img src="/frontend/images/skill-9.png" alt="">
                                 </div>
                             </div>
                         </div>

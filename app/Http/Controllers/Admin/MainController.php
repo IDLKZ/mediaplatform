@@ -207,7 +207,7 @@ class MainController extends Controller
         return view("admin.request.user",compact("users"));
     }
     public function requestResult(){
-        $results = Result::where("checked",0)->paginate(12);
+        $results = Result::where("checked",0)->with(['video', 'course', 'author', 'student'])->paginate(12);
         return view("admin.request.result",compact("results"));
     }
 
