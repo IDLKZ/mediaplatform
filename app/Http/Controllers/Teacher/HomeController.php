@@ -15,4 +15,19 @@ class HomeController extends Controller
         return view('teacher.main');
     }
 
+    //users
+
+    public function users(){
+        return view("teacher.user.index");
+    }
+
+    public function media(){
+        return view("teacher.media.index");
+    }
+
+    public function exams(){
+        return view("teacher.exams.index");
+    }
+
+
 }

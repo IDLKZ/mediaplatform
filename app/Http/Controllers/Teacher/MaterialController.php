@@ -21,9 +21,9 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $materials = Auth::user()->materials()->paginate(15);
+        $materials = Materials::where("author_id",Auth::id())->with(["author","video"])->paginate(15);
         if (!$materials->isEmpty()) {
-            return  view("teacher.material.index",compact("materials"));
+            return  view("teacher.media.material.index",compact("materials"));
         }
         else{
             Toastr::warning("Материалов еще нет!","Упс....");
@@ -47,7 +47,7 @@ class MaterialController extends Controller
         ]);
         $videos = Auth::user()->videos;
         if(!$videos->isEmpty()){
-            return  view("teacher.material.create",compact("videos","validator"));
+            return  view("teacher.media.material.create",compact("videos","validator"));
         }
         else{
             Toastr::warning("Вы еще не создали видео","Упс...");
@@ -108,7 +108,7 @@ class MaterialController extends Controller
                 'file'=> 'sometimes|file|max:5000',
                 "type"=>"required",
             ]);
-            return  view("teacher.material.edit",compact("material","videos","validator"));
+            return  view("teacher.media.material.edit",compact("material","videos","validator"));
         }
         else{
             Toastr::warning('Материал не найден!','Упс!');

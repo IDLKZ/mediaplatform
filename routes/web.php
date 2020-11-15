@@ -166,9 +166,18 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 //Start TeacherBlade
         Route::group(['prefix' => 'teacher',"middleware"=>"teacher"], function (){
             Route::get('/', [HomeController::class, 'index'])->name('home');
+
+            Route::get("/teacher-users",[HomeController::class,"users"])->name("teacher-users");
+            Route::get("/confirmed-subscribers",[SubscriberController::class,"confirmed"])->name("confirmed_subscribers");
+            Route::get("/unconfirmed-subscribers",[SubscriberController::class,"unconfirmed"])->name("unconfirmed_subscribers");
+
+            Route::get("/teacher-media",[HomeController::class,"media"])->name("teacher-media");
             Route::resource("/course",CourseController::class);
             Route::resource("/video",VideoController::class);
             Route::resource("/material",MaterialController::class);
+
+
+            Route::get("/teacher-exams",[HomeController::class,"exams"])->name("teacher-exams");
             Route::resource("/quiz",QuizController::class);
             Route::resource("/question",QuestionController::class);
             Route::get("/question-excel-create",[QuestionController::class,"questionExcelCreate"])->name("question.excel-create");
@@ -183,8 +192,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
             //End Profile
             //Start Subscribers
-            Route::get("/confirmed-subscribers",[SubscriberController::class,"confirmed"])->name("confirmed_subscribers");
-            Route::get("/unconfirmed-subscribers",[SubscriberController::class,"unconfirmed"])->name("unconfirmed_subscribers");
+
             Route::get("/getAccessVideo/{id}",[SubscriberController::class,"getAccessVideo"])->name("getAccessVideo");
             Route::post("/saveAccessVideo",[SubscriberController::class,"saveAccessVideo"])->name("saveAccessVideo");
             Route::get('/subscribers', [TeacherController::class, 'subscribers'])->name('teacherSubscribers');

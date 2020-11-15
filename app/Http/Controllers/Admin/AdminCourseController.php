@@ -78,7 +78,7 @@ class AdminCourseController extends Controller
         ]);
         if(Course::saveData($request)){
             Toastr::success('Курс был успешно создан','Успешно создан курс!');
-            return redirect(route('course.index'));
+            return redirect()->back();
         }
         else{
             Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');

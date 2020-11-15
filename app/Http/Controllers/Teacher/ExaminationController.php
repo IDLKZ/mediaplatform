@@ -21,9 +21,9 @@ class ExaminationController extends Controller
     public function index()
     {
 
-        $examinations = Auth::user()->examinations()->paginate(15);
+        $examinations = Examination::where("author_id",Auth::id())->with(["course","video","quiz","review","author"])->paginate(15);
         if(!$examinations->isEmpty()){
-            return  view("teacher.examination.index",compact("examinations"));
+            return  view("teacher.exams.examination.index",compact("examinations"));
         }
         else{
             Toastr::warning('У вас еще нет созданных эказменов!','Упс!');
@@ -48,7 +48,7 @@ class ExaminationController extends Controller
         ]);
         $courses = Auth::user()->courses;
         if(!$courses->isEmpty()){
-            return  view("teacher.examination.create",compact("courses","validator"));
+            return  view("teacher.exams.examination.create",compact("courses","validator"));
         }
         else{
             Toastr::warning("Сначала создайте видеокурс", "Упс...");
@@ -109,7 +109,7 @@ class ExaminationController extends Controller
      */
     public function edit($id)
     {
-        $examination = Auth::user()->examinations()->find($id);
+        $examination = Examination::where(["author_id"=>Auth::id(),"id"=>$id])->with(["course","video","quiz","review","author"])->first();
         if($examination){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
@@ -118,7 +118,7 @@ class ExaminationController extends Controller
                 'file' => 'sometimes|file|max:2048',
             ]);
             $courses = Auth::user()->courses;
-            return view("teacher.examination.edit",compact("examination","validator","courses"));
+            return view("teacher.exams.examination.edit",compact("examination","validator","courses"));
         }
         else{
             Toastr::warning('Не найден экзамен!','Упс!');

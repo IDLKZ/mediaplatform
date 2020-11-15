@@ -35,50 +35,52 @@
             </li>
             <li class="dropdown leftmenu-collapse">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-plus mr-5"></i>New
+                    <i class="fa fa-plus mr-5"></i>
                 </a>
                 <div class="dropdown-menu pull-left panel panel-default" role="menu">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a role="button" class="media">
+                            <a href="{{route("course.create")}}" role="button" class="media">
                                         <span class="pull-left media-object">
-                                            <i class="fa fa-briefcase"></i>
+                                            <i class="fa fa-video-camera"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">New Campaign</span>
+                                    <span class="block">{{__("admin.header.new_course")}}</span>
                                 </div>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a role="button" class="media">
+                            <a href="{{route("video.create")}}" role="button" class="media">
                                         <span class="pull-left media-object">
-                                            <i class="fa fa-area-chart"></i>
+                                            <i class="fa fa-vimeo"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">Generate Report</span>
+                                    <span class="block">{{__("admin.header.new_video")}}</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="list-group-item">
+                            <a href="{{route("material.create")}}" role="button" class="media">
+                                        <span class="pull-left media-object">
+                                            <i class="fa fa-book"></i>
+                                        </span>
+                                <div class="media-body">
+                                    <span class="block">{{__("admin.header.new_material")}}</span>
                                 </div>
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <a role="button" class="media">
+                            <a href="{{route("examination.create")}}" role="button" class="media">
                                         <span class="pull-left media-object">
-                                            <i class="fa fa-user"></i>
+                                            <i class="fa fa-question-circle-o"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">Add New User</span>
+                                    <span class="block">{{__("admin.header.new_examination")}}</span>
                                 </div>
                             </a>
                         </li>
-                        <li class="list-group-item">
-                            <a role="button" class="media">
-                                        <span class="pull-left media-object">
-                                            <i class="fa fa-file-text"></i>
-                                        </span>
-                                <div class="media-body">
-                                    <span class="block">Create Page</span>
-                                </div>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </li>

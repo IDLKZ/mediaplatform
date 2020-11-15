@@ -25,7 +25,7 @@ class VideoController extends Controller
     {
 
         $courses = Course::with('videos')->where(["author_id"=>Auth::id()])->paginate(8);
-        return view("teacher.video.index",compact("courses"));
+        return view("teacher.media.video.index",compact("courses"));
     }
 
     /**
@@ -43,7 +43,7 @@ class VideoController extends Controller
         ]);
         $route = route('video.index');
         $courses = Course::where(["author_id"=>Auth::user()->id])->get();
-        return  view("teacher.video.create",compact("courses","validator", 'route'));
+        return  view("teacher.media.video.create",compact("courses","validator", 'route'));
     }
 
     /**
@@ -85,7 +85,7 @@ class VideoController extends Controller
         if($video){
             $video->load(["course","materials"]);
             $file = $video->watch($video->video_url);
-            return  view("teacher.video.show",compact("video", 'file'));
+            return  view("teacher.media.video.show",compact("video", 'file'));
         }
         else{
             Toastr::warning('Видео не найден!','Упс!');
@@ -110,7 +110,7 @@ class VideoController extends Controller
                 "description"=>"required",
             ]);
             $courses = Course::where(["author_id"=>Auth::user()->id])->get();
-            return  view("teacher.video.edit",compact("video","courses","validator"));
+            return  view("teacher.media.video.edit",compact("video","courses","validator"));
         }
         else{
             Toastr::warning('Видео не найдено!','Упс!');

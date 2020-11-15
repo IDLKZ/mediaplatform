@@ -15,9 +15,8 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 class SubscriberController extends Controller
 {
     public function confirmed(){
-//        $subscribers = Auth::user()->author_subscribers()->where("status",1)->paginate(15);
-        $subscribers = Subscriber::with('user')->where(["status" => 1, 'author_id' => Auth::id()])->paginate(15);
 
+        $subscribers = Subscriber::with(['user',"author","course"])->where(["status" => 1, 'author_id' => Auth::id()])->paginate(15);
         if(!$subscribers->isEmpty()){
             return view("teacher.subscriber.index",compact("subscribers"));
         }
@@ -29,7 +28,7 @@ class SubscriberController extends Controller
     }
 
     public function unconfirmed(){
-        $subscribers = Subscriber::with('user')->where(["status" => 0, 'author_id' => Auth::id()])->paginate(15);
+        $subscribers = Subscriber::with(['user',"author","course"])->where(["status" => 0, 'author_id' => Auth::id()])->paginate(15);
         if(!$subscribers->isEmpty()){
             return view("teacher.subscriber.index",compact("subscribers"));
         }
