@@ -1,9 +1,9 @@
 @extends('student.layout')
 @section('content')
-    <div class="col-4">
+    <div class="col-md-4 col-sm-12">
         @include('student.left_sidebar')
     </div>
-    <div class="col-8">
+    <div class="col-md-8 col-sm-12">
         <section class="boxs">
             <div class="boxs-header">
                 <h3 class="custom-font hb-green">

@@ -7,7 +7,9 @@ html, body {
     /*scrollbar-color: #458245 #714826;     !* «цвет ползунка» «цвет полосы скроллбара» *!*/
     scrollbar-width: none;  /* толщина */
     font-family: 'Roboto', sans-serif !important;
+    scroll-behavior: smooth;
 }
+.desk-none {display: none}
 span {color: #29C2F9;}
 h1, h2, h5 {
     font-weight: 700;

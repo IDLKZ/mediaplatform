@@ -1,9 +1,9 @@
 @extends('student.layout')
 @section('content')
-    <div class="col-4">
+    <div class="col-md-4 col-sm-12">
         @include('student.left_sidebar')
     </div>
-    <div class="col-8">
+    <div class="col-md-8 col-sm-12">
 
 {{--        @foreach($results as $result)--}}
 {{--                <div class="media">--}}
@@ -26,7 +26,7 @@
 {{--        @endforeach--}}
         <div class="row">
             @foreach($results as $result)
-            <div class="col-6 mb-4">
+            <div class="col-md-6 col-sm-12 mb-4">
                 <div class="container-test">
                     <div class="img-container">
                         <img src="{{$result->course->img}}" alt="">

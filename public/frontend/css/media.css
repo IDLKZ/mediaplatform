@@ -2,6 +2,9 @@
 @media only screen and (min-width: 320px) and (max-width: 414px){
     h1 {font-size: 30px}
     h2 {font-size: 24px}
+    h6 {font-size: 12px}
+    .mob-none {display: none}
+    .desk-none {display: block}
     /*Main*/
     #main {width: 100%}
     #main h1 {
@@ -74,6 +77,9 @@
 @media (width: 414px) and (height: 736px){
     h1 {font-size: 30px}
     h2 {font-size: 24px}
+    h6 {font-size: 12px}
+    .mob-none {display: none}
+    .desk-none {display: block}
     /*Main*/
     #main {width: 100%}
     #main h1 {
@@ -143,9 +149,6 @@
     .margin-25 {margin-top: 0}
 }
 
-
-
-
 @media (min-height: 1081px) and (max-height: 2200px){
     #main-second {height: calc(100vh * 0.4);}
     #main-third {height: calc(100vh * 0.7);}
@@ -162,3 +165,28 @@
     #main-five {height: calc(100vh * 0.6);}
     footer {height: calc(100vh * 0.30);}
 }
+
+/*Album*/
+@media only screen and (min-width: 568px) and (min-height: 320px){
+    #main h1 {font-size: 20px}
+    .inner-bottom-block {
+        flex-grow: 1;
+        flex-shrink: 0;
+        width: calc(100vw / 3);
+    }
+    .bottom-block {
+        width: 100%;
+        display: flex;
+        flex-grow: 0;
+        overflow-x: scroll;
+    }
+
+    #main-second{height: auto;}
+    #main-third {height: auto}
+    #main-four {height: auto}
+    #main-five {height: auto}
+    #main-six {height: auto}
+    footer {height: auto}
+}
+
+

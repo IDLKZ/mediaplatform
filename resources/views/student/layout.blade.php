@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/css/jquery.mn-file.css">
     <link rel="stylesheet" href="/css/front.css">
     <link rel="stylesheet" href="/css/circle.css">
+    <link rel="stylesheet" href="/frontend/css/pushy.css">
 
     @yield('css')
 </head>
@@ -43,6 +44,7 @@
 <script src="/js/jquery.mn-file.js"></script>
 <script src="/js/ckeditor.js"></script>
 <script src="/js/student.js"></script>
+<script src="/frontend/js/pushy.min.js"></script>
 
 @yield('js')
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>

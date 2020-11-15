@@ -214,7 +214,7 @@
                             <div class="col-8">
                                 <small>Блогер</small><br>
                                 <h6><strong>ВЗАИМОДЕЙСТВИЕ <br>
-                                        СО СМИ</strong></h6> <br><br>
+                                        СО СМИ</strong></h6> <br><br class="mob-none">
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">
@@ -231,7 +231,7 @@
                             <div class="col-8">
                                 <small>Блогер</small><br>
                                 <h6><strong>АНТИКРИЗИСНЫЙ <br>
-                                        МЕНЕДЖМЕНТ</strong></h6> <br> <br>
+                                        МЕНЕДЖМЕНТ</strong></h6> <br> <br class="mob-none">
                                 <small>Подробнее</small>
                             </div>
                             <div class="col-4 row align-items-center">

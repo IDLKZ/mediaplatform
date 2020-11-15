@@ -4,7 +4,7 @@
     <div class="container">
         {{Diglactic\Breadcrumbs\Breadcrumbs::render('showCourse', $course)}}
         <div class="row">
-            <div class="col-8">
+            <div class="col-md-8">
                 <div class="card mb-3">
                     <img src="{{$course->img}}" class="card-img-top" alt="{{$course->title}}">
                     <div class="card-body">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 row justify-content-center">
+            <div class="col-md-4 row justify-content-center">
                 <div class="card" style="width: 18rem;">
                     <ul class="list-group list-group-flush">
                         @foreach($subscribe->videos as $video)

@@ -46,16 +46,16 @@
                         <a class="nav-link" href="#">{{__('front.main')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.program')}}</a>
+                        <a class="nav-link" href="{{route('front')}}#main-third">{{__('front.program')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.contact')}}</a>
+                        <a class="nav-link" href="{{route('front')}}#main-four">{{__('front.review')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.review')}}</a>
+                        <a class="nav-link" href="{{route('front')}}#main-five">{{__('front.news')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.news')}}</a>
+                        <a class="nav-link" href="{{route('front')}}">{{__('front.contact')}}</a>
                     </li>
                 </ul>
                 <div class="ml-auto" role="group" aria-label="Button group with nested dropdown">
@@ -69,14 +69,15 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="auth">
                                 <a class="dropdown-item" href="{{route('userProfile')}}"><i class="far fa-user mr-2"></i>Мой профиль</a>
-{{--                                <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}"><i class="far fa-bell mr-2"></i>Уведомления</a>--}}
+                                <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}"><i class="far fa-bell mr-2"></i>Уведомления</a>
                                 <a class="dropdown-item" href="{{route('userProfileSettings')}}"><i class="fas fa-cog mr-2"></i>Настройки</a>
                                 <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>Выйти</a>
                             </div>
                         </div>
                     @else
-                        <button type="button" class="btn mr-4" id="auth">Авторизация</button>
+                        <a href="{{route('login')}}"><button type="button" class="btn mr-4" id="auth">Авторизация</button></a>
                     @endif
+
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
