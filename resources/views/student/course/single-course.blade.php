@@ -11,7 +11,7 @@
                     <div class="uw_image"> <img class="img-circle" src="{{$course->img}}" alt="{{$course->title}}" style="width: 100%"></div>
                     <div class="uw_footer">
                         <div class="text-center">
-                            <p class="mt-20">{{$course->title}}</p>
+                            <p class="mt-3"><strong>{{$course->title}}</strong></p>
                             <a href="{{$link['link']}}" class="btn btn-raised btn-{{$link['color']}}">{{$link['text']}}</a>
                         </div>
 
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="boxs">
+                <section class="boxs mt-5">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-cyan">
                             <strong>Этот курс </strong> включает:</h3>
