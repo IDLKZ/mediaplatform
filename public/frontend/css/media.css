@@ -157,7 +157,10 @@
     #main-six {height: calc(100vh * 0.35);}
     footer {height: calc(100vh * 0.15)}
 }
-@media (min-width: 1200px) and (min-height: 720px){#main-third {height: calc(100vh * 1.5)!important;}}
+@media (min-width: 1200px) and (min-height: 720px){
+    #main-third {height: calc(100vh * 1.5)!important;}
+    footer {height: calc(100vh * 0.25)!important;}
+}
 @media (min-width: 1000px) and (min-height: 801px) and (max-height: 1199px) {
     #main-second {height: calc(100vh * 0.7);}
     #main-third {height: calc(100vh * 1.3);}
