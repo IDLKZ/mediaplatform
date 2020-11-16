@@ -26,7 +26,7 @@ class AdminMaterialController extends Controller
         }
         else{
             Toastr::warning("Материалов еще нет!","Упс....");
-            //return  redirect(route("admin-material.create"));
+           return redirect()->back();
         }
 
 
