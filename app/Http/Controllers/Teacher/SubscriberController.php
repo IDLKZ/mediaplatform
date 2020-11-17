@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\UserVideo;
@@ -18,7 +19,7 @@ class SubscriberController extends Controller
 
         $subscribers = Subscriber::with(['user',"author","course"])->where(["status" => 1, 'author_id' => Auth::id()])->paginate(15);
         if(!$subscribers->isEmpty()){
-            return view("teacher.subscriber.index",compact("subscribers"));
+            return view("teacher.user.subscriber.index",compact("subscribers"));
         }
         else{
             Toastr::warning("Ничего не найдено","Упс...");
@@ -30,7 +31,7 @@ class SubscriberController extends Controller
     public function unconfirmed(){
         $subscribers = Subscriber::with(['user',"author","course"])->where(["status" => 0, 'author_id' => Auth::id()])->paginate(15);
         if(!$subscribers->isEmpty()){
-            return view("teacher.subscriber.index",compact("subscribers"));
+            return view("teacher.user.subscriber.index",compact("subscribers"));
         }
         else{
 
@@ -39,7 +40,7 @@ class SubscriberController extends Controller
     }
 
     public function getAccessVideo($id){
-//        $subscriber = Auth::user()->author_subscribers()->find($id);
+
         $subscriber = Subscriber::with(['user', 'videos', 'author'])->where(['author_id' => Auth::id()])->find($id);
         if($subscriber){
             $validator = JsValidator::make( [
@@ -47,8 +48,7 @@ class SubscriberController extends Controller
                 'student_id'=>'required',
                 'video_id'=> 'required',
             ]);
-//            $videos = $subscriber->videos;
-            return view("teacher.subscriber.video",compact("subscriber","validator"));
+            return view("teacher.user.subscriber.video",compact("subscriber","validator"));
         }
         else{
             Toastr::warning("Ничего не найдено","Упс...");
@@ -81,6 +81,86 @@ class SubscriberController extends Controller
 
         }
 
+    }
+
+    public function subscriber($id)
+    {
+        $subscriber = Subscriber::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        if($subscriber){
+            $user = User::where("id",$subscriber->user_id)->with(["uservideo","subscribers","results_student"])->first();
+            return view("teacher.user.subscriber.show",compact("user"));
+        }
+        else{
+
+        }
+    }
+
+    public function course($id){
+        $subscribers = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id()])->pluck("course_id")->toArray();
+        $courses = Course::whereIn("id",$subscribers)->with(["author","language","videos","subscribers"])->paginate(12);
+        return view("teacher.user.subscriber.course",compact("courses"));
+
+    }
+
+    public function access($id){
+        $subscribers = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id()])->with(["course","videos","uservideo"])->paginate(12);
+        return view("teacher.user.subscriber.accessVideo",compact("subscribers"));
+    }
+
+    public function giveAccessToVideo(Request  $request){
+        $this->validate($request,["student_id"=>"required","video_id"=>"required","subscribe_id"=>"required"]);
+        $user_video = UserVideo::where(["student_id"=>$request->get("student_id"),"video_id"=>$request->get("video_id"),"subscribe_id"=>$request->get("subscribe_id")])->first();
+        if($user_video){
+            $user_video->delete();
+            Toastr::success("Доступ к видео закрыт!","Выполнено");
+            return redirect()->back();
+        }
+        else{
+            UserVideo::saveData($request->all());
+            Toastr::success("Доступ к видео открыт!","Выполнено");
+            return redirect()->back();
+        }
+
+
+
+
+
+    }
+
+    public function subscribers()
+    {
+        $subscribers = Subscriber::with(['user',"author","course"])->where('author_id', Auth::id())->orderBy('status', 'desc')->paginate(15);
+        return view('teacher.user.subscriber.index', compact('subscribers'));
+    }
+
+    public function accessSubscriber($id)
+    {
+        $subscribe = Subscriber::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        if($subscribe){
+            $subscribe->status = true;
+            $subscribe->save();
+            Toastr::success('Вы приняли участника!','Успешно!');
+        }
+        return redirect()->back();
+    }
+
+    public function cancelSubscriber($id){
+        $subscribe = Subscriber::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        if($subscribe){
+            $subscribe->status = false;
+            $subscribe->save();
+            Toastr::success('Вы отменили участника!','Успешно!');
+        }
+        return redirect()->back();
+    }
+    public function deleteSubscriber($id)
+    {
+        $subscribe = Subscriber::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        if($subscribe){
+            $subscribe->delete();
+            Toastr::success('Вы удалили участника!','Успешно!');
+        }
+        return redirect()->back();
     }
 
 }

@@ -166,10 +166,35 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 //Start TeacherBlade
         Route::group(['prefix' => 'teacher',"middleware"=>"teacher"], function (){
             Route::get('/', [HomeController::class, 'index'])->name('home');
-
+            //Начало работы со слушателем
             Route::get("/teacher-users",[HomeController::class,"users"])->name("teacher-users");
+            //Start Subscribers
+            //Подтвержденные слушатели на курс
             Route::get("/confirmed-subscribers",[SubscriberController::class,"confirmed"])->name("confirmed_subscribers");
+            //Неподтвержденные слушатели на курс
             Route::get("/unconfirmed-subscribers",[SubscriberController::class,"unconfirmed"])->name("unconfirmed_subscribers");
+            //Дать доступ к видео
+            Route::get("/getAccessVideo/{id}",[SubscriberController::class,"getAccessVideo"])->name("getAccessVideo");
+            Route::post("/saveAccessVideo",[SubscriberController::class,"saveAccessVideo"])->name("saveAccessVideo");
+            //Все подписчики
+            Route::get('/subscribers', [SubscriberController::class, 'subscribers'])->name('teacherSubscribers');
+            //Информация о подписчике
+            Route::get('/subscriber/{id}', [SubscriberController::class, 'subscriber'])->name('teacherSubscriber');
+            //Курсы преподавателя у Студента
+            Route::get("/subscriber/{id}/course",[SubscriberController::class,"course"])->name("teacherSubscriberCourse");
+            //Список открытых видео у курсов преподавателя у студента
+            Route::get("/subscriber/{id}/access",[SubscriberController::class,"access"])->name("teacherSubscriberAccess");
+            Route::post("/subscriber/giveAccessToVideo",[SubscriberController::class,"giveAccessToVideo"])->name("giveAccessToVideo");
+            //Список видео преподавателя у студента
+            Route::get("/subscriber/{id}/video",[SubscriberController::class,"video"])->name("teacherSubscriberVideo");
+
+
+
+            //Разрешить, удалить, отменить подписку
+            Route::get('/access-subscriber/{id}', [SubscriberController::class, 'accessSubscriber'])->name('accessSubscriber');
+            Route::get('/delete-subscriber/{id}', [SubscriberController::class, 'deleteSubscriber'])->name('deleteSubscriber');
+            Route::get('/cancel-subscriber/{id}', [SubscriberController::class, 'cancelSubscriber'])->name('cancelSubscriber');
+            //End Subscribers
 
             Route::get("/teacher-media",[HomeController::class,"media"])->name("teacher-media");
             Route::resource("/course",CourseController::class);
@@ -191,14 +216,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
             Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
             //End Profile
-            //Start Subscribers
 
-            Route::get("/getAccessVideo/{id}",[SubscriberController::class,"getAccessVideo"])->name("getAccessVideo");
-            Route::post("/saveAccessVideo",[SubscriberController::class,"saveAccessVideo"])->name("saveAccessVideo");
-            Route::get('/subscribers', [TeacherController::class, 'subscribers'])->name('teacherSubscribers');
-            Route::get('/access-subscriber/{id}', [TeacherController::class, 'accessSubscriber'])->name('accessSubscriber');
-            Route::post('/delete-subscriber/{id}', [TeacherController::class, 'deleteSubscriber'])->name('deleteSubscriber');
-            //End Subscribers
+
 
             //Check Student Result
             Route::get("/checked-result",[ResultController::class,"checkedResult"])->name("teacher.checkedResult");

@@ -2,8 +2,8 @@
     <header class="clearfix">
         <!-- Branding -->
         <div class="branding">
-            <a class="brand" href="index.html">
-                <span>Falcon</span>
+            <a class="brand" href="/teacher">
+                <span>Jas Qalam</span>
             </a>
             <a role="button" tabindex="0" class="offcanvas-toggle visible-xs-inline">
                 <i class="fa fa-bars"></i>

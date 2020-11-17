@@ -21,6 +21,13 @@
                         <i class="fa fa-group users-icon"></i>
                     </div>
                     <div class="uw_footer pt-20">
+                        <div class="text-center">
+                            <a href="{{route("teacherSubscribers")}}" class="btn btn-raised btn-info">
+                                <i class="fa fa-group"> </i>
+                                <small class="sm-none"> Все подписчики</small>
+
+                            </a>
+                        </div>
                         <div class="row">
                             <div class="col-sm-6 col-xs-6 border-right">
                                 <div class="uw_description">
