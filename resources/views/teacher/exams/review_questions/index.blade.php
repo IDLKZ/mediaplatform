@@ -23,8 +23,6 @@
                                     <tr>
                                         <td>{{$review->review->title}}</td>
                                         <td>{{$review->question}}</td>
-                                        <td>{{$review->review->author->name}}</td>
-
                                         <td colspan="2">
                                             <div class="dropdown">
                                                 <a href="#" class="btn btn-simple dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

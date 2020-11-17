@@ -46,7 +46,7 @@
                             </li>
                             <hr>
                             <li>
-                                <a href="{{route("admin-request")}}">
+                                <a href="{{route("logout")}}">
                                     <i class="fa fa-power-off"></i>
                                     <span>Выход</span>
                                 </a>

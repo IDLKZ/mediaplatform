@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Materials;
+use App\Models\Result;
 use App\Models\User;
+use App\Models\UserVideo;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -24,8 +27,8 @@ class VideoController extends Controller
     public function index()
     {
 
-        $courses = Course::with('videos')->where(["author_id"=>Auth::id()])->paginate(8);
-        return view("teacher.media.video.index",compact("courses"));
+        $videos = Video::whereIn("course_id",Auth::user()->courses->pluck("id")->toArray())->with("course")->paginate(12);
+        return view("teacher.media.video.index",compact("videos"));
     }
 
     /**
@@ -180,5 +183,34 @@ class VideoController extends Controller
         }
 
     }
+
+    public function subscriber($alias){
+        $uservideos = UserVideo::whereIn("video_id",Video::where("alias",$alias)->pluck("id")->toArray())->whereIn("id",Auth::user()->videos->pluck("id")->toArray())->with("student")->paginate(12);
+        return view("teacher.media.video.subscriber",compact("uservideos"));
+    }
+
+    public function checked($alias){
+        $results = Result::whereIn("video_id",Video::where("alias",$alias)->pluck("id")->toArray())->where(["author_id"=>Auth::id(),"checked"=>1])->with(["student","author","course","video","examination"])->paginate(12);
+        return view("teacher.result.index",compact("results"));
+    }
+
+    public function unchecked($alias){
+        $results = Result::whereIn("video_id",Video::where("alias",$alias)->pluck("id")->toArray())->where(["author_id"=>Auth::id(),"checked"=>0])->with(["student","author","course","video","examination"])->paginate(12);
+        return view("teacher.result.index",compact("results"));
+    }
+
+    public function material($alias){
+        $video = Video::where("alias",$alias)->first();
+        if($video){
+            $materials = Materials::where(["video_id"=>$video->id,"author_id"=>Auth::id()])->with(["video","author"])->paginate(12);
+            return view("teacher.media.material.index",compact("materials"));
+        }
+        else{
+            return redirect()->back();
+        }
+
+
+    }
+
 
 }

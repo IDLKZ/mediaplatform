@@ -12,9 +12,9 @@ class ResultController extends Controller
 {
 
     public function checkedResult(){
-        $results = Auth::user()->results()->where("checked",1)->paginate(15);
+        $results = Result::where(["author_id"=>Auth::id(),"checked"=>1])->with(["student","author","course","video","examination"])->paginate(15);
         if(count($results)>0){
-            return view("teacher.result.checked",compact("results"));
+            return view("teacher.result.index",compact("results"));
         }
         else{
             Toastr::warning("Вы еще не проверяли ни одного задания","Упс....");
@@ -24,9 +24,9 @@ class ResultController extends Controller
     }
 
     public function uncheckedResult(){
-        $results = Auth::user()->results()->where("checked",0)->paginate(15);
+        $results = Result::where(["author_id"=>Auth::id(),"checked"=>0])->with(["student","author","course","video","examination"])->paginate(15);
         if(count($results)>0){
-            return view("teacher.result.checked",compact("results"));
+            return view("teacher.result.index",compact("results"));
         }
         else{
             Toastr::warning("Вы еще не проверяли ни одного задания","Упс....");
@@ -43,6 +43,17 @@ class ResultController extends Controller
             Toastr::warning("Результат не найден","Упс...");
             return redirect()->back();
         }
+    }
+
+    public function deleteResult($id){
+        $result = Auth::user()->results()->where("id",$id)->first();
+        if($result){
+            $result->delete();
+        }
+        else{
+            Toastr::warning("Результат не найден","Упс...");
+        }
+        return redirect()->back();
     }
 
     public function checkResult(Request $request){

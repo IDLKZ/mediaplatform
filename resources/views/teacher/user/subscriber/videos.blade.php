@@ -27,19 +27,19 @@
                                                 <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
 
                                                     <li>
-                                                        <a href="{{route("video.show",$video->alias)}}" role="button" tabindex="0" >
+                                                        <a href="{{route("admin-video.show",$video->alias)}}" role="button" tabindex="0" >
                                                             <i class="fa fa-eye"></i> Посмотреть </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("video-subscriber",$video->alias)}}" role="button" tabindex="0" >
+                                                        <a href="{{route("admin-video-subscriber",$video->alias)}}" role="button" tabindex="0" >
                                                             <i class="fa fa-group"></i> Слушатели </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("video-result-checked",$video->alias)}}" role="button" tabindex="0" >
+                                                        <a href="{{route("admin-video-checked",$video->alias)}}" role="button" tabindex="0" >
                                                             <i class="fa fa-check-circle-o"></i> Провереннные задания </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("video-result-unchecked",$video->alias)}}" role="button" tabindex="0" >
+                                                        <a href="{{route("admin-video-unchecked",$video->alias)}}" role="button" tabindex="0" >
                                                             <i class="fa fa-warning"></i> Непровереннные задания </a>
                                                     </li>
                                                     <li>
@@ -47,11 +47,11 @@
                                                             <i class="fa fa-question-circle"></i> Экзамен </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("video-material",$video->alias)}}" role="button" tabindex="0" >
+                                                        <a href="{{route("admin-video-material",$video->alias)}}" role="button" tabindex="0" >
                                                             <i class="fa fa-bookmark-o"></i> Материалы </a>
                                                     </li>
                                                     <li>
-                                                        <form  method="post" action="{{route('video.destroy',$video->alias)}}">
+                                                        <form  method="post" action="{{route('admin-video.destroy',$video->alias)}}">
                                                             @method("DELETE")
                                                             @csrf
                                                             <button onclick="return confirm('Вы уверены, удаление видео приведет к удалению результатов!')" role="button" tabindex="0" class="btn btn-a">
@@ -74,8 +74,5 @@
             @endif
         </div>
     </div>
-    <a href="{{route("video.create")}}" class="btn btn-success btn-raised  btn-add" >
-        <i class="fa fa-plus"></i>
-    </a>
-@endsection
 
+@endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Review;
 use App\Models\ReviewQuestion;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -18,9 +19,9 @@ class ReviewQuestionController extends Controller
      */
     public function index()
     {
-        $review_questions = Auth::user()->review_questions;
+        $review_questions = ReviewQuestion::whereIn("review_id",Review::where("author_id",Auth::id())->pluck("id")->toArray())->with("review")->paginate(15);
         if(count($review_questions)){
-            return view("teacher.review_questions.index",compact("review_questions"));
+            return view("teacher.exams.review_questions.index",compact("review_questions"));
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
@@ -41,7 +42,7 @@ class ReviewQuestionController extends Controller
                 "review_id"=>"required",
                 'question'=> 'required',
             ]);
-            return view("teacher.review_questions.create",compact("reviews","validator"));
+            return view("teacher.exams.review_questions.create",compact("reviews","validator"));
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
@@ -97,7 +98,7 @@ class ReviewQuestionController extends Controller
                 "review_id"=>"required",
                 'question'=> 'required',
             ]);
-            return view("teacher.review_questions.edit",compact("review_question","reviews","validator"));
+            return view("teacher.exams.review_questions.edit",compact("review_question","reviews","validator"));
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");

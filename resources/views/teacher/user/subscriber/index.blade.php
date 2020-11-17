@@ -33,7 +33,7 @@
 
                                 </section>
                                 <div class="text-center">
-                                    <a href="{{route("teacherSubscriber",$subscriber->id)}}" class="btn btn-raised btn-info">
+                                    <a href="{{route("teacherSubscriber",$subscriber->user->id)}}" class="btn btn-raised btn-info">
                                         <i class="fa fa-info"> </i>
                                         <small class="sm-none"> О студенте</small>
 
@@ -87,7 +87,7 @@
 
                                 </section>
                                 <div class="text-center">
-                                    <a href="" class="btn btn-raised btn-info">
+                                    <a href="{{route("teacherSubscriber",$subscriber->user->id)}}" class="btn btn-raised btn-info">
                                         <i class="fa fa-info"> </i>
                                         <small class="sm-none"> О студенте</small>
 

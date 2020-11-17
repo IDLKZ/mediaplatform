@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Result;
 use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\UserVideo;
@@ -86,13 +87,13 @@ class SubscriberController extends Controller
 
     public function subscriber($id)
     {
-        $subscriber = Subscriber::where(["id"=>$id,"author_id"=>Auth::id()])->first();
+        $subscriber = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id()])->first();
         if($subscriber){
             $user = User::where("id",$subscriber->user_id)->with(["uservideo","subscribers","results_student"])->first();
             return view("teacher.user.subscriber.show",compact("user"));
         }
         else{
-
+            dd(123);
         }
     }
 
@@ -104,11 +105,19 @@ class SubscriberController extends Controller
     }
 
     public function video($id){
+        $user_video = UserVideo::where("student_id",$id)->pluck("video_id")->toArray();
+        $course = Auth::user()->videos->pluck("id")->toArray();
+        $videos = Video::whereIn("id",$course)->whereIn("id",$user_video)->with("course")->paginate(12);
+        return view("teacher.user.subscriber.videos",compact("videos"));
+    }
 
+    public function result($id){
+        $results = Result::where(["author_id"=>Auth::id(),"student_id"=>$id])->with(["student","author","course","video","examination"])->paginate(15);
+        return view("teacher.result.index",compact("results"));
     }
 
     public function access($id){
-        $subscribers = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id()])->with(["course","videos","uservideo"])->paginate(12);
+        $subscribers = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id(),"status"=>1])->with(["course","videos","uservideo"])->paginate(12);
         return view("teacher.user.subscriber.accessVideo",compact("subscribers"));
     }
 
@@ -125,11 +134,6 @@ class SubscriberController extends Controller
             Toastr::success("Доступ к видео открыт!","Выполнено");
             return redirect()->back();
         }
-
-
-
-
-
     }
 
     public function subscribers()

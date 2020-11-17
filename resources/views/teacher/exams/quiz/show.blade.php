@@ -68,6 +68,12 @@
             </div>
         </div>
     </div>
+    <a href="{{route("question.excel-create")}}" class="btn btn-success btn-raised  btn-add"  style="position:fixed;bottom:90px">
+        <i class="fa fa-file-excel-o"></i>
+    </a>
+    <a href="{{route("question.create")}}" class="btn btn-success btn-raised  btn-add" >
+        <i class="fa fa-plus"></i>
+    </a>
 @endsection
 
 

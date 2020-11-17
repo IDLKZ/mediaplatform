@@ -21,9 +21,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Auth::user()->questions;
+        $questions = Question::where("author_id",Auth::id())->paginate(60);
         if($questions){
-            return  view("teacher.question.index",compact("questions"));
+            return  view("teacher.exams.question.index",compact("questions"));
         }
         else{
             Toastr::warning("Вопросы не найдены","Упс...");
@@ -51,7 +51,7 @@ class QuestionController extends Controller
                 'E'=> 'required|max:255',
                 "answer"=>"required|in:A,B,C,D,E"
             ]);
-            return view("teacher.question.create",compact("validator","quizzes"));
+            return view("teacher.exams.question.create",compact("validator","quizzes"));
         }
         else{
             Toastr::warning("Сначала создайте тест","Упс....");
@@ -99,7 +99,7 @@ class QuestionController extends Controller
         if($question){
             $user = Auth::user();
             $quizzes = $user->quiz;
-            return view("teacher.question.show",compact("question","quizzes"));
+            return view("teacher.exams.question.show",compact("question","quizzes"));
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
@@ -128,7 +128,7 @@ class QuestionController extends Controller
                 'E'=> 'required|max:255',
                 "answer"=>"required|in:A,B,C,D,E"
             ]);
-            return view("teacher.question.edit",compact("question","validator","quizzes"));
+            return view("teacher.exams.question.edit",compact("question","validator","quizzes"));
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
@@ -201,7 +201,7 @@ class QuestionController extends Controller
                 "quiz_id"=>"required",
                 "file"=>"required|file|mimes:xls,xlsx|max:1024"
             ]);
-            return view("teacher.question.excel",compact("quizzes","validator"));
+            return view("teacher.exams.question.excel",compact("quizzes","validator"));
         }
         else {
             Toastr::warning("Создайте тему вопроса","Упс...");

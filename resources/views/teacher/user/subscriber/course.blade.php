@@ -1,12 +1,13 @@
 @extends('teacher.layout')
 @section('content')
+    <!--  CONTENT  -->
     <div class="page page-dashboard">
         <div class="row clearfix">
             <div class="b-b mb-20">
                 <div class="row">
                     <div class="col-sm-6 col-xs-12">
-                        <h1 class="h3 m-0">{{__('content.list_courses')}}</h1>
-                        <small class="text-muted">{{__('content.small_subtitle_courses')}}</small>
+                        <h1 class="h3 m-0">Курсы подписчика</h1>
+                        <small class="text-muted">Список утвержденных курсов</small>
                     </div>
                 </div>
             </div>
@@ -36,11 +37,15 @@
                                             <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp list-unstyled">
 
                                                 <li>
-                                                    <a href="{{route("course.show",$course->alias)}}" role="button" tabindex="0" >
+                                                    <a href="{{route("admin-course.show",$course->alias)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-eye"></i> Посмотреть </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route("course.edit",$course->alias)}}" role="button" tabindex="0" >
+                                                    <a href="{{route("admin-course-videos",$course->alias)}}" role="button" tabindex="0" >
+                                                        <i class="fa fa-vimeo-square"></i> Видеоуроки </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route("admin-course.edit",$course->alias)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-pencil"></i> Редактировать </a>
                                                 </li>
                                                 <li>
@@ -48,11 +53,11 @@
                                                         <i class="fa fa-user-plus"></i> Подписчики </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{route("course-request",$course->id)}}" role="button" tabindex="0" >
+                                                    <a href="{{route("admin-course-unconfirmed",$course->id)}}" role="button" tabindex="0" >
                                                         <i class="fa fa-question-circle"></i> Заявки </a>
                                                 </li>
                                                 <li>
-                                                    <form  method="post" action="{{route('course.destroy',$course->alias)}}">
+                                                    <form  method="post" action="{{route('admin-course.destroy',$course->alias)}}">
                                                         @method("DELETE")
                                                         @csrf
                                                         <button onclick="return confirm('Вы уверены, удаление курса приведет к удалению видео!')" role="button" tabindex="0" class="btn btn-a">
@@ -62,7 +67,6 @@
                                             </ul>
                                         </li>
                                     </ul>
-
                                 </div>
                                 <div class="col-md-12">
                                     <h5>{{$course->subtitle}}</h5>
@@ -110,8 +114,10 @@
 
         </div>
     </div>
-    <a href="{{route("course.create")}}" class="btn btn-success btn-raised  btn-add" >
-        <i class="fa fa-plus"></i>
-    </a>
+
+
+    <!--/ CONTENT -->
 
 @endsection
+
+

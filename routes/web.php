@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\AdminQuizController;
 use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\AdminReviewQuestionController;
+use App\Http\Controllers\Teacher\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -187,44 +188,80 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::post("/subscriber/giveAccessToVideo",[SubscriberController::class,"giveAccessToVideo"])->name("giveAccessToVideo");
             //Список видео преподавателя у студента
             Route::get("/subscriber/{id}/video",[SubscriberController::class,"video"])->name("teacherSubscriberVideo");
-
-
-
+            //Список результатов видео преподавателя у ученика
+            Route::get("/subscriber/{id}/result",[SubscriberController::class,"result"])->name("teacherSubscriberResult");
             //Разрешить, удалить, отменить подписку
             Route::get('/access-subscriber/{id}', [SubscriberController::class, 'accessSubscriber'])->name('accessSubscriber');
             Route::get('/delete-subscriber/{id}', [SubscriberController::class, 'deleteSubscriber'])->name('deleteSubscriber');
             Route::get('/cancel-subscriber/{id}', [SubscriberController::class, 'cancelSubscriber'])->name('cancelSubscriber');
             //End Subscribers
 
+
+            //Начало работы с медиа
             Route::get("/teacher-media",[HomeController::class,"media"])->name("teacher-media");
+            //Курс преподавателя
             Route::resource("/course",CourseController::class);
+            //Список подписчиков курса подписанные и в заявке
+            Route::get("/course-subscribe/{id}",[CourseController::class,"subscriber"])->name("course-subscriber");
+            Route::get("/course-request/{id}",[CourseController::class,"request"])->name("course-request");
+
+            //Видео преподавателя
             Route::resource("/video",VideoController::class);
+            //Слушатели преподавателя
+            Route::get("/video-subscriber/{alias}",[VideoController::class,"subscriber"])->name("video-subscriber");
+            //Задания видеоурока
+            Route::get("/video-result/{alias}/checked",[VideoController::class,"checked"])->name("video-result-checked");
+            Route::get("/video-result/{alias}/unchecked",[VideoController::class,"unchecked"])->name("video-result-unchecked");
+            //Видео материалы
+            Route::get("/video-result/{alias}/material",[VideoController::class,"material"])->name("video-material");
+
+            //Материалы к видео
             Route::resource("/material",MaterialController::class);
 
-
+            //Начало работы с экзаменами
             Route::get("/teacher-exams",[HomeController::class,"exams"])->name("teacher-exams");
+            //Тесты
             Route::resource("/quiz",QuizController::class);
+            //Вопросы к тестам
             Route::resource("/question",QuestionController::class);
+            //Загрузка вопросов через Excel
             Route::get("/question-excel-create",[QuestionController::class,"questionExcelCreate"])->name("question.excel-create");
             Route::post("/question-excel-load",[QuestionController::class,"questionExcelSave"])->name("question.excel-store");
+            //Опросы
             Route::resource("/review",ReviewController::class);
+            //Вопросы к опросам
             Route::resource("/review-question",ReviewQuestionController::class);
+            //Экзамены
             Route::resource("/examination",ExaminationController::class);
-
-            //Start Profile
-            Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
-            Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
-            Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
-            //End Profile
-
-
-
-            //Check Student Result
+            //Проверка результатов
             Route::get("/checked-result",[ResultController::class,"checkedResult"])->name("teacher.checkedResult");
             Route::get("/unchecked-result",[ResultController::class,"uncheckedResult"])->name("teacher.uncheckedResult");
             Route::get("/show-result/{id}",[ResultController::class,"showResult"])->name("teacher.showResult");
             Route::post("/check-result",[ResultController::class,"checkResult"])->name("teacher.checkResult");
-            //
+            Route::post("/delete-result/{id}",[ResultController::class,"deleteResult"])->name("teacher.deleteResult");
+
+            //Начало работы с запросами
+            Route::get("/teacher-request",[HomeController::class,"request"])->name("teacher-request");
+
+            //Работа с профилем
+            Route::get('/profile', [TeacherController::class, 'profile'])->name('teacherProfile');
+            Route::get('/profile-settings', [TeacherController::class, 'settings'])->name('teacherProfileSettings');
+            Route::post('/update-profile-settings', [TeacherController::class, 'updateSetting'])->name('teacherProfileSettingsUpdate');
+            //Конец работы с профилем
+            //Начало работы в поиске
+            Route::get("/teacher-search",[HomeController::class,"search"])->name("teacher-search");
+            //Поиск подписчика
+            Route::get("/teacher-search-subscriber",[SearchController::class,"subscriber"])->name("teacher-search-subscriber");
+            Route::get("/teacher-search-subscriber-result",[SearchController::class,"subscriberResult"])->name("teacher-search-subscriber-result");
+            //Поиск материала
+            Route::get("/teacher-search-media",[SearchController::class,"media"])->name("teacher-search-media");
+            Route::get("/teacher-search-media-result",[SearchController::class,"mediaResult"])->name("teacher-search-media-result");
+            //Поиск вопросов
+            Route::get("/teacher-search-question",[SearchController::class,"question"])->name("teacher-search-question");
+            Route::get("/teacher-search-question-result",[SearchController::class,"questionResult"])->name("teacher-search-question-result");
+
+
+
 
 
 

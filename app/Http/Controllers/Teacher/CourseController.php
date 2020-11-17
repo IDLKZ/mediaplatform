@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\FileDownloader;
 use App\Models\Language;
+use App\Models\Subscriber;
 use App\Models\User;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
@@ -188,5 +189,14 @@ class CourseController extends Controller
             Toastr::warning('Видеокурс не найден!','Упс!');
             return  redirect(route("course.index"));
         }
+    }
+
+    public function subscriber($id){
+        $subscribers = Subscriber::with(['user',"author","course"])->where(["author_id"=>Auth::id(),"course_id"=>$id,"status"=>1])->paginate(12);
+        return view('teacher.user.subscriber.index', compact('subscribers'));
+    }
+    public function request($id){
+        $subscribers = Subscriber::with(['user',"author","course"])->where(["author_id"=>Auth::id(),"course_id"=>$id,"status"=>0])->paginate(12);
+        return view('teacher.user.subscriber.index', compact('subscribers'));
     }
 }

@@ -20,10 +20,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Review::where("author_id",Auth::id())->paginate(15);
+        $reviews = Review::where("author_id",Auth::id())->with("author")->paginate(15);
         if(!$reviews->isEmpty())
         {
-            return  view("teacher.review.index",compact("reviews"));
+            return  view("teacher.exams.review.index",compact("reviews"));
         }
         else
         {
@@ -46,7 +46,7 @@ class ReviewController extends Controller
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
         ]);
-        return  view("teacher.review.create",compact("validator"));
+        return  view("teacher.exams.review.create",compact("validator"));
     }
 
     /**
@@ -78,9 +78,9 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        $review_questions = Auth::user()->reviews()->reviewquestion;
-        if(count($review_questions)){
-            return view("teacher.review.show",compact("review_questions"));
+        $review_questions = ReviewQuestion::where("review_id",$id)->with("review")->paginate(15);
+        if($review_questions->isNotEmpty()){
+            return view("teacher.exams.review.show",compact("review_questions"));
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
@@ -101,7 +101,7 @@ class ReviewController extends Controller
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
             ]);
-            return  view("teacher.review.edit",compact("review","validator"));
+            return  view("teacher.exams.review.edit",compact("review","validator"));
         }
         else{
             Toastr::warning("Не удалось найти","Упс...");

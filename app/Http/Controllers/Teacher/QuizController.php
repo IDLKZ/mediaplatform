@@ -19,9 +19,9 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Auth::user()->quiz()->paginate(15);
+        $quizzes = Quiz::where("author_id",Auth::id())->with("author")->paginate(15);
         if(!$quizzes->isEmpty()){
-            return  view("teacher.quiz.index",compact("quizzes"));
+            return  view("teacher.exams.quiz.index",compact("quizzes"));
         }
         else{
             Toastr::warning("Тест еще не создан", "Упс");
@@ -39,7 +39,7 @@ class QuizController extends Controller
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
         ]);
-        return view("teacher.quiz.create",compact("validator"));
+        return view("teacher.exams.quiz.create",compact("validator"));
     }
 
     /**
@@ -76,7 +76,7 @@ class QuizController extends Controller
 
         if($quiz){
             $quiz = $quiz->load("questions");
-            return  view("teacher.quiz.show",compact("quiz"));
+            return  view("teacher.exams.quiz.show",compact("quiz"));
         }
         else{
             Toastr::warning("Не найден тест","Упс....");
@@ -97,7 +97,7 @@ class QuizController extends Controller
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
             ]);
-            return  view("teacher.quiz.edit",compact("quiz","validator"));
+            return  view("teacher.exams.quiz.edit",compact("quiz","validator"));
         }
         else{
             Toastr::warning("Не найден тест","Упс....");

@@ -69,6 +69,9 @@
             </div>
         </div>
     </div>
+    <a href="{{route("question.create")}}" class="btn btn-success btn-raised  btn-add" >
+        <i class="fa fa-plus"></i>
+    </a>
 @endsection
 
 

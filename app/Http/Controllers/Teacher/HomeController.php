@@ -29,5 +29,13 @@ class HomeController extends Controller
         return view("teacher.exams.index");
     }
 
+    public function request(){
+        return view("teacher.request.index");
+    }
+
+    public function search(){
+        return view("teacher.search.index");
+    }
+
 
 }

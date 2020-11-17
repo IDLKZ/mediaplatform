@@ -1,6 +1,5 @@
 @extends('teacher.layout')
 @section('content')
-
     <div class="page dashboard-page">
         <!-- bradcome -->
         <div class="b-b mb-20">
@@ -14,17 +13,17 @@
 
 
         <div class="row clearfix">
-            @foreach($quizzes as $quiz)
+            @foreach($reviews as $review)
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <section class="boxs user_widget">
-                        <div class="uw_header l-light-blue-blush">
-                            <h5>{{$quiz->title}}</h5>
-                            <i class="fa fa-list-ol users-icon"></i>
+                        <div class="uw_header l-dark-salad-blush">
+                            <h5>{{$review->title}}</h5>
+                            <i class="fa fa-question-circle users-icon"></i>
                         </div>
                         <div class="uw_footer pt-20">
                             <div class="text-center">
                                 <p class="mt-20">
-                                    Автор теста:{{$quiz->author->name}}
+                                    Автор : {{$review->author->name}}
                                 </p>
                                 <ul class="controls list-group-flush p-0">
                                     <li class="dropdown list-group-item">
@@ -33,15 +32,21 @@
                                         </a>
                                         <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
                                             <li>
-                                                <a href="{{route('quiz.show',$quiz->id)}}" role="button" tabindex="0" >
+                                                <a href="{{route('review.show',$review->id)}}" role="button" tabindex="0" >
                                                     <i class="fa fa-eye"></i> Посмотреть </a>
                                             </li>
                                             <li>
-                                                <a href="{{route('quiz.edit',$quiz->id)}}" role="button" tabindex="0" >
+                                                <a  href="{{route("review-question.create")}}">
+                                                    <i class="fa fa-plus-circle"></i>
+                                                    Добавить вопрос
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('review.edit',$review->id)}}" role="button" tabindex="0" >
                                                     <i class="fa fa-pencil"></i> Изменить </a>
                                             </li>
                                             <li>
-                                                <form  method="post" action="{{route('quiz.destroy',$quiz->id)}}">
+                                                <form  method="post" action="{{route('review.destroy',$review->id)}}">
                                                     @method("DELETE")
                                                     @csrf
                                                     <button onclick="return confirm('Вы уверены?')" role="button" tabindex="0" class="btn btn-a">
@@ -54,7 +59,6 @@
                                 </ul>
                             </div>
 
-
                         </div>
                     </section>
                 </div>
@@ -63,14 +67,9 @@
 
 
     </div>
-    <a href="{{route("quiz.create")}}" class="btn btn-success btn-raised  btn-add" >
+    <a href="{{route("review.create")}}" class="btn btn-success btn-raised  btn-add" >
         <i class="fa fa-plus"></i>
     </a>
-
-
-
-
 @endsection
-
 
 
