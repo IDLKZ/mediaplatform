@@ -28,6 +28,7 @@ class SubscriberController extends Controller
 
     }
 
+
     public function unconfirmed(){
         $subscribers = Subscriber::with(['user',"author","course"])->where(["status" => 0, 'author_id' => Auth::id()])->paginate(15);
         if(!$subscribers->isEmpty()){
@@ -99,6 +100,10 @@ class SubscriberController extends Controller
         $subscribers = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id()])->pluck("course_id")->toArray();
         $courses = Course::whereIn("id",$subscribers)->with(["author","language","videos","subscribers"])->paginate(12);
         return view("teacher.user.subscriber.course",compact("courses"));
+
+    }
+
+    public function video($id){
 
     }
 
