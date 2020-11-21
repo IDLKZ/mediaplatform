@@ -30,15 +30,15 @@ class MainController extends Controller
     public function administrators($type){
         if($type){
             if($type == "confirmed"){
-                $administrators = User::where(["role_id"=>1,"status"=>1])->orderBy("created_at","desc")->paginate(9);
+                $administrators = User::where(["role_id"=>1,"status"=>1])->orderBy("created_at","desc")->paginate(12);
                 return view("admin.user.administrators",compact("administrators"));
             }
             if($type == "unconfirmed"){
-                $administrators = User::where(["role_id"=>1,"status"=>0])->orderBy("created_at","desc")->paginate(9);
+                $administrators = User::where(["role_id"=>1,"status"=>0])->orderBy("created_at","desc")->paginate(12);
                 return view("admin.user.administrators",compact("administrators"));
             }
             if ($type == "all") {
-                $administrators = User::where("role_id",1)->orderBy("created_at","desc")->paginate(9);
+                $administrators = User::where("role_id",1)->orderBy("created_at","desc")->paginate(12);
                 return view("admin.user.administrators",compact("administrators"));
             }
             abort(404);
@@ -83,7 +83,7 @@ class MainController extends Controller
         }
         else{
             Toastr::warning("Подписчиков у данного преподавателя нет","Упс...");
-            return redirect()->back();
+            return redirect(route("main"));
         }
     }
 
@@ -95,7 +95,7 @@ class MainController extends Controller
         }
         else{
             Toastr::warning("Курсов у данного преподавателя нет","Упс...");
-            return redirect()->back();
+            return redirect(route("main"));
         }
     }
 
@@ -108,7 +108,7 @@ class MainController extends Controller
         else
         {
             Toastr::warning("Результаты не найдены","Упс");
-            return  redirect()->back();
+            return  redirect(route("main"));
 
         }
     }
@@ -120,7 +120,7 @@ class MainController extends Controller
         }
         else{
             Toastr::warning("Материалы не найдены","Упс");
-            return  redirect()->back();
+            return  redirect(route("main"));
         }
     }
 
@@ -159,7 +159,7 @@ class MainController extends Controller
         }
         else{
             Toastr::warning("Курсов у данного преподавателя нет","Упс...");
-            return redirect()->back();
+            return redirect(route("main"));
         }
     }
 
@@ -283,5 +283,9 @@ class MainController extends Controller
             default:
                 return abort(404);
         }
+    }
+
+    public function news(){
+        return view("admin.news.index");
     }
 }

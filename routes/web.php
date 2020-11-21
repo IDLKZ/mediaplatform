@@ -35,6 +35,8 @@ use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\AdminReviewQuestionController;
 use App\Http\Controllers\Teacher\SearchController;
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminNewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,21 +85,24 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 
         //Start AdminBlade
         Route::group(['prefix' => 'admin',"middleware"=>"admin"], function (){
-            //Index Page
+            //Главная страница
             Route::get('/', [MainController::class, 'index'])->name('main');
-            //Show User
+            //Все пользователи
             Route::get("/users",[MainController::class,"users"])->name("admin-users");
+            //Создание, изменение, удаление пользователей
             Route::resource("/user",AdminUserController::class);
+            //Администратор
             Route::get("/administrators/{type?}",[MainController::class,"administrators"])->name("admin-managers");
-            //Teacher
+            //Учитель
             Route::get("/teachers/{type?}",[MainController::class,"teachers"])->name("admin-teachers");
             Route::get("/teacher/{id}/subscribers",[MainController::class,"teacherSubscriber"])->name("admin-teacher-subscriber");
             Route::get("/teacher/{id}/courses",[MainController::class,"teacherCourse"])->name("admin-teacher-course");
             Route::get("/teacher/{id}/materials",[MainController::class,"teacherMaterial"])->name("admin-teacher-material");
             Route::get("/teacher/{id}/results",[MainController::class,"teacherResult"])->name("admin-teacher-result");
-            //Student
+            //Студент
             Route::get("/students/{type?}",[MainController::class,"students"])->name("admin-students");
             Route::get("/student/{id}/courses",[MainController::class,"studentCourse"])->name("admin-student-course");
+            Route::get("/student/{id}/accessVideo",[MainController::class,"studentAccessVideo"])->name("admin-student-access-video");
             Route::get("/student/{id}/accessVideo",[MainController::class,"studentAccessVideo"])->name("admin-student-access-video");
 
             //Course
@@ -153,8 +158,10 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get('/admin-search-question',[MainController::class,"searchQuestion"])->name("admin-search-question");
             Route::get('/admin-search-question-result',[MainController::class,"searchQuestionResult"])->name("admin-search-question-result");
 
-
-
+            //Новости
+            Route::get('/admin-media-news', [MainController::class,"news"])->name("admin-media-news");
+            Route::resource('/admin-category',AdminCategoryController::class);
+            Route::resource('/admin-news',AdminNewsController::class);
 
 
 

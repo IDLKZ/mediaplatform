@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section("content")
+    <a href="{{route("user.index",$user->id)}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <!--CONTENT  -->
     <div class="page profile-page">
         <!-- page content -->

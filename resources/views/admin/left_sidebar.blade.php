@@ -27,6 +27,12 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{route("admin-media-news")}}">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span>Новости</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{route("admin-exams")}}">
                                     <i class="icon-puzzle"></i>
                                     <span>Экзамены</span>
