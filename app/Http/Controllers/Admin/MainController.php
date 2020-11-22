@@ -19,15 +19,16 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    //First Page (Главная)
+    // Главная страница
     public function index()
     {
         return view('admin.main');
     }
+    //Пользователи
     public function users(){
         return view("admin.user.index");
     }
-
+    //Администраторы
     public function administrators($type){
         if($type){
             if($type == "confirmed"){
@@ -47,35 +48,37 @@ class MainController extends Controller
         else{
             abort(404);
         }
-
-
     }
 
-    //Teacher
+    //Учителя
     public function teachers($type){
         if($type){
+            //Подтвержденные учителя
             if($type == "confirmed"){
-                $teachers = User::where(["role_id"=>2,"status"=>1])->orderBy("created_at","desc")->paginate(9);
+                $teachers = User::where(["role_id"=>2,"status"=>1])->orderBy("created_at","desc")->paginate(12);
                 $teachers->load(["courses","author_subscribers","videos"]);
                 return view("admin.user.teachers",compact("teachers"));
             }
+            //Неподтвежденные учителя
             if($type == "unconfirmed"){
-                $teachers = User::where(["role_id"=>2,"status"=>0])->orderBy("created_at","desc")->paginate(9);
+                $teachers = User::where(["role_id"=>2,"status"=>0])->orderBy("created_at","desc")->paginate(12);
                 $teachers->load(["courses","author_subscribers","videos"]);
                 return view("admin.user.teachers",compact("teachers"));
             }
+            //Все учителя
             if ($type == "all") {
-                $teachers = User::where("role_id",2)->orderBy("created_at","desc")->paginate(9);
+                $teachers = User::where("role_id",2)->orderBy("created_at","desc")->paginate(12);
                 $teachers->load(["courses","author_subscribers","videos"]);
                 return view("admin.user.teachers",compact("teachers"));
             }
             abort(404);
         }
+        //если нет то 404
         else{
             abort(404);
         }
     }
-
+    //Подписчики учителя
     public function teacherSubscriber($id){
         $user = User::find($id);
         $subscribers = Subscriber::where("author_id",$id)->with(["user","course"])->paginate(12);
@@ -84,10 +87,10 @@ class MainController extends Controller
         }
         else{
             Toastr::warning("Подписчиков у данного преподавателя нет","Упс...");
-            return redirect(route("main"));
+            return redirect(route("user.show",$id));
         }
     }
-
+    //Курсы у преподавателя
     public function teacherCourse($id){
         $user = User::find($id);
         $courses = Course::where("author_id",$user->id)->paginate(12);
@@ -96,10 +99,10 @@ class MainController extends Controller
         }
         else{
             Toastr::warning("Курсов у данного преподавателя нет","Упс...");
-            return redirect(route("main"));
+            return redirect(route("user.show",$id));
         }
     }
-
+    //Результаты учителя
     public function teacherResult($id){
         $results = Result::where("author_id",$id)->with(["student","author","course","video","examination"])->paginate(15);
         if($results->isNotEmpty())
@@ -109,25 +112,24 @@ class MainController extends Controller
         else
         {
             Toastr::warning("Результаты не найдены","Упс");
-            return  redirect(route("main"));
-
+            return redirect(route("user.show",$id));
         }
     }
-
+    //Материалы учителя
     public function teacherMaterial($id){
         $materials = Materials::where("author_id",$id)->with(["video","author"])->paginate(15);
         if($materials->isNotEmpty()){
-            return view("admin.user.teacher.material",compact("materials"));
+            return view("admin.user.teacher.material",compact("materials","id"));
         }
         else{
             Toastr::warning("Материалы не найдены","Упс");
-            return  redirect(route("main"));
+            return redirect(route("user.show",$id));
         }
     }
 
-    //End of Teacher
+    //Конец учителя
 
-    //Student
+    //Студент
     public function students($type){
         if($type){
             if($type == "confirmed"){
@@ -147,11 +149,12 @@ class MainController extends Controller
             }
             abort(404);
         }
+        //Неизвестный запрос
         else{
             abort(404);
         }
     }
-
+    //Курс студента
     public function studentCourse($id){
         $subscribers = Subscriber::where("user_id",$id)->paginate(12);
         if($subscribers){
@@ -159,16 +162,16 @@ class MainController extends Controller
             return  view("admin.user.student.courses",compact("id","subscribers"));
         }
         else{
-            Toastr::warning("Курсов у данного преподавателя нет","Упс...");
-            return redirect(route("main"));
+            Toastr::warning("Курсов у данного студента нет","Упс...");
+            return redirect(route("user.show",$id));
         }
     }
-
+    //Список открытых видео у студента
     public function studentAccessVideo($id){
         $subscribers = Subscriber::where("user_id",$id)->with(["course","videos","uservideo"])->paginate(12);
-        return view("admin.user.student.accessVideo",compact("subscribers"));
+        return view("admin.user.student.accessVideo",compact("subscribers","id"));
     }
-
+    //Действие на открытие доступа к видео у студента
     public function Access(Request $request){
         $this->validate($request,["student_id"=>"required","subscribe_id"=>"required","video_id"=>"required"]);
         $uservideo = UserVideo::where(["student_id"=>$request->get("student_id"),"subscribe_id"=>$request->get("subscribe_id"),"video_id"=>$request->get("video_id")])->first();
@@ -185,7 +188,12 @@ class MainController extends Controller
         return redirect()->back();
     }
 
-    //End of Student
+
+    //Запросы студента
+    public function studentRequest(){
+
+    }
+    //Конец студента
 
 
     //Start of Media

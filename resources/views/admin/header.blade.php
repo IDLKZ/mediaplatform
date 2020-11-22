@@ -30,9 +30,11 @@
                         <li class="list-group-item">
                             <a href="{{route('setlocale', ['lang' => 'ru'])}}" class="p-0 m-0" >Рус</a>
                         </li>
+
                     </ul>
                 </div>
             </li>
+
             <li class="dropdown leftmenu-collapse">
                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-plus mr-5"></i>
@@ -94,19 +96,7 @@
                 </div>
             </li>
         </ul>
-        <!-- Left-side navigation end -->
-{{--        <div class="search" id="main-search">--}}
-{{--            <form action="{{route("admin-search-user-result")}}">--}}
-{{--                <div class="input-group bootstrap-touchspin input-group-sm">--}}
-{{--                    <span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span>--}}
-{{--                    <input id="small-ts" class="form-control" name="query" style="display: block;">--}}
-{{--                    <span class="input-group-addon bootstrap-touchspin-postfix"><button type="submit" class="btn btn-info btn-sm"><i class="fa fa-search"></i> </button> </span>--}}
-{{--                </div>--}}
-{{--            </form>--}}
 
-
-{{--        </div>--}}
-        <!-- Search end -->
 
         <!-- Right-side navigation -->
         <ul class="nav-right pull-right list-inline">

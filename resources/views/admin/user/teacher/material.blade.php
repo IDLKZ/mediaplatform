@@ -1,5 +1,6 @@
 @extends('admin.layout')
 @section('content')
+    <a href="{{route("user.show",$id)}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <div class="page static-page-tables">
         <div class="row">
             <div class="col-md-12">

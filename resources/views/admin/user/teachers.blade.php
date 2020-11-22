@@ -6,8 +6,8 @@
         <div class="b-b mb-20">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Список менеджеров</h1>
-                    <small class="text-muted">Список всех менеджеров</small>
+                    <h1 class="h3 m-0">Список учителей</h1>
+                    <small class="text-muted">Список всех учителей</small>
                 </div>
             </div>
         </div>

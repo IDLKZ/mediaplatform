@@ -1,5 +1,6 @@
 @extends('admin.layout')
 @section('content')
+    <a href="{{route("admin-media")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <div class="page static-page-tables">
         <div class="row">
             @if($videos->isNotEmpty())
@@ -42,10 +43,10 @@
                                                 <a href="{{route("admin-video-unchecked",$video->alias)}}" role="button" tabindex="0" >
                                                     <i class="fa fa-warning"></i> Непровереннные задания </a>
                                             </li>
-                                            <li>
-                                                <a href="" role="button" tabindex="0" >
-                                                    <i class="fa fa-question-circle"></i> Экзамен </a>
-                                            </li>
+{{--                                            <li>--}}
+{{--                                                <a href="" role="button" tabindex="0" >--}}
+{{--                                                    <i class="fa fa-question-circle"></i> Экзамен </a>--}}
+{{--                                            </li>--}}
                                             <li>
                                                 <a href="{{route("admin-video-material",$video->alias)}}" role="button" tabindex="0" >
                                                     <i class="fa fa-bookmark-o"></i> Материалы </a>
@@ -71,6 +72,9 @@
                 </div>
             </div>
                 @endforeach
+                {{$videos->links()}}
+            @else
+                <h3>Нет видео</h3>
             @endif
         </div>
     </div>

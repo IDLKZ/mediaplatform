@@ -216,7 +216,7 @@ class AdminVideoController extends Controller
         $video = Video::where("alias",$alias)->first();
         if($video){
             $materials = Materials::where("video_id",$video->id)->with(["author","video"])->paginate(12);
-            return view("admin.material.index",compact("materials"));
+            return view("admin.media.material.index",compact("materials"));
         }
         else{
             return redirect()->back();

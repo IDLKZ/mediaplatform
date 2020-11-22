@@ -1,7 +1,5 @@
 @extends('admin.layout')
 @section('content')
-    <a href="{{route("admin-media-news")}}" class="btn btn-raised btn-info">{{__("content.back")}}</a>
-
     <div class="page dashboard-page">
         <!-- bradcome -->
         <div class="b-b mb-20">

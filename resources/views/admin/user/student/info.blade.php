@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section("content")
-    <a href="{{route("user.index",$user->id)}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+    <a href="{{route("admin-students","all")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
 
     <!--CONTENT  -->
     <div class="page profile-page">
@@ -55,12 +55,7 @@
                                             </p>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{{route("admin-teacher-material",$user->id)}}">
-                                            <i class="fa fa-film"></i>
-                                            <p>Видео</p>
-                                        </a>
-                                    </li>
+
                                     <li>
                                         <a href="{{route("admin-student-result",$user->id)}}">
                                             <i class="fa fa-tasks "></i>
@@ -86,19 +81,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="boxs mini-social">
-                            <div class="boxs-body">
-                                <div class="s-icon text-greensea">
-                                    <i class="fa fa-user-circle-o"></i>
-                                </div>
-                                <div class="s-detail">
-                                    <div class="like"><span>{{$user->uservideo->count()}}</span></div>
-                                    <span>Видео</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <div class="boxs mini-social">--}}
+{{--                            <div class="boxs-body">--}}
+{{--                                <div class="s-icon text-greensea">--}}
+{{--                                    <i class="fa fa-user-circle-o"></i>--}}
+{{--                                </div>--}}
+{{--                                <div class="s-detail">--}}
+{{--                                    <div class="like"><span>{{$user->uservideo->count()}}</span></div>--}}
+{{--                                    <span>Видео</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="boxs mini-social">
                             <div class="boxs-body">

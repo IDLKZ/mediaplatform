@@ -1,6 +1,8 @@
 @extends('admin.layout')
 @section('content')
     <!--  CONTENT  -->
+    <a href="{{route("admin-media")}}" class="btn btn-raised btn-info">{{__("content.back")}}</a>
+
     <div class="page page-dashboard">
         <div class="row clearfix">
             <div class="b-b mb-20">
@@ -106,6 +108,7 @@
 
                         </div>
                     </div>
+                    {{$courses->links()}}
                 @endforeach
             @else
                 <h1>{{__('content.not_course')}}</h1>

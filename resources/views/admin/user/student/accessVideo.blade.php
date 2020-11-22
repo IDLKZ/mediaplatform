@@ -2,6 +2,7 @@
 
 @section("content")
     <!--CONTENT  -->
+    <a href="{{route("user.show",$id)}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
 
     <div class="page profile-page">
         <section class="boxs">

@@ -1,11 +1,19 @@
 <?php
 return [
+    //General
+    "info"=>"Информация",
+    "change"=>"Изменить",
+    "delete"=>"Удалить",
+
+
+
 
     //For Layout Part - Для Layout
     //Left SideBar (Левое меню)
     "sidebar.index"=>"Главная",
     "sidebar.users"=>"Пользователи",
     "sidebar.media"=>"Медиа",
+    "sidebar.news"=>"Новости",
     "sidebar.examination"=>"Экзамены",
     "sidebar.request"=>"Запросы",
     "sidebar.search"=>"Поиск",

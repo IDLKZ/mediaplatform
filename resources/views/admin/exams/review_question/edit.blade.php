@@ -7,7 +7,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>НОВЫЙ</strong> ВОПРОС К ОПРОСУ</h3>
+                        <strong>ИЗМЕНИТЬ</strong> ВОПРОС К ОПРОСУ</h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">

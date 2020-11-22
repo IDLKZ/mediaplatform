@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
     <!-- row -->
-    <a href="" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+    <a href="{{route("admin-course.index")}}" class="btn btn-raised btn-info">{{__("content.back")}}</a>
     <div class="row">
         @foreach($subscribers as $subscriber)
             <div class="col-md-6 col-sm-12 p-10">

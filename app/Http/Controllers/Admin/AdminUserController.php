@@ -144,7 +144,7 @@ class AdminUserController extends Controller
         ]);
         if(User::updateUser($request,$id)){
             Toastr::success("Успешно создан пользователь","Отлично!");
-            return redirect()->back();
+            return redirect(route("user.show",$id));
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс");
@@ -174,7 +174,7 @@ class AdminUserController extends Controller
             }
         }
         else{
-            if(uth::id() == $id){Toastr::warning("Вы не можете удалять самого себя!","Упс");}
+            if(Auth::id() == $id){Toastr::warning("Вы не можете удалять самого себя!","Упс");}
             return  redirect()->back();
         }
 

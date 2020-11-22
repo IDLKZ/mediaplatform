@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Result;
 use App\Models\Subscriber;
 use App\Models\User;
+use App\Models\UserRequest;
 use App\Models\UserVideo;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
@@ -39,6 +40,23 @@ class SubscriberController extends Controller
 
             return  redirect(route('confirmed_subscribers'));
         }
+    }
+
+    public function listRequestVideo(){
+        $videos = Auth::user()->videos->pluck("id")->toArray();
+        $userrequest = UserRequest::whereIn("video_id",$videos)->with(["user","video"])->paginate(15);
+        return view("teacher.request.video",compact("userrequest"));
+    }
+
+    public function requestVideo($id){
+        $userrequest = UserRequest::with("video")->find($id);
+        if($userrequest){
+            $subscribers = Subscriber::where(["user_id"=>$userrequest->user_id,"author_id"=>Auth::id(),"status"=>1,"course_id"=>$userrequest->video->course_id])->with(["course","videos","uservideo"])->paginate(12);
+            return view("teacher.user.subscriber.accessVideo",compact("subscribers"));
+
+        }
+        return redirect()->back();
+
     }
 
     public function getAccessVideo($id){
@@ -130,6 +148,8 @@ class SubscriberController extends Controller
             return redirect()->back();
         }
         else{
+            $userrequest = UserRequest::where(["user_id"=>$request->get("student_id"),"video_id"=>$request->get("video_id")])->first();
+            if ($userrequest) {$userrequest->delete();}
             UserVideo::saveData($request->all());
             Toastr::success("Доступ к видео открыт!","Выполнено");
             return redirect()->back();

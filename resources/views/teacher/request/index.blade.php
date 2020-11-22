@@ -70,7 +70,7 @@
                             <p class="mt-20">
                                 Здесь вы можете открыть доступ к видео для пользователей, которые отправили заявку
                             </p>
-                            <a href="{{route("admin-material.index")}}" class="btn btn-raised btn-info">
+                            <a href="{{route("listRequestVideo")}}" class="btn btn-raised btn-info">
                                 <i class="fa fa-unlock"> </i>
                                 <small class="sm-none">Все заявки</small>
                             </a>

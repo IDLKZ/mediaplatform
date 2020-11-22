@@ -93,7 +93,7 @@ class AdminReviewController extends Controller
                 "author_id"=>"required",
                 'title'=> 'required|max:255',
             ]);
-            return  view("admin.exams.review_question.edit",compact("review","validator"));
+            return  view("admin.exams.review.edit",compact("review","validator"));
         }
         else{
             Toastr::warning("Не удалось найти","Упс...");

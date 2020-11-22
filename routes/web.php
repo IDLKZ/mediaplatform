@@ -83,26 +83,43 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
     Route::group(["middleware"=>"auth"],function(){
 
 
-        //Start AdminBlade
+        //Начало работы администратора
         Route::group(['prefix' => 'admin',"middleware"=>"admin"], function (){
-            //Главная страница
+            //1.Главная страница
             Route::get('/', [MainController::class, 'index'])->name('main');
-            //Все пользователи
+
+            //2.Все пользователи
             Route::get("/users",[MainController::class,"users"])->name("admin-users");
-            //Создание, изменение, удаление пользователей
+
+            //2.1 Создание, изменение, удаление пользователей
             Route::resource("/user",AdminUserController::class);
-            //Администратор
+
+            //2.2Администратор
             Route::get("/administrators/{type?}",[MainController::class,"administrators"])->name("admin-managers");
-            //Учитель
+
+            //2.3 Учитель
             Route::get("/teachers/{type?}",[MainController::class,"teachers"])->name("admin-teachers");
+            //2.3.1 Подписчики учителя
             Route::get("/teacher/{id}/subscribers",[MainController::class,"teacherSubscriber"])->name("admin-teacher-subscriber");
+            //2.3.2. Курсы учителя
             Route::get("/teacher/{id}/courses",[MainController::class,"teacherCourse"])->name("admin-teacher-course");
+            //2.3.3 Курсы преподавателя
             Route::get("/teacher/{id}/materials",[MainController::class,"teacherMaterial"])->name("admin-teacher-material");
+            //2.3.4 Задачи преподавателя
             Route::get("/teacher/{id}/results",[MainController::class,"teacherResult"])->name("admin-teacher-result");
-            //Студент
+
+
+            //2.4 Студент
             Route::get("/students/{type?}",[MainController::class,"students"])->name("admin-students");
+            //2.4.1 Курсы у студента
             Route::get("/student/{id}/courses",[MainController::class,"studentCourse"])->name("admin-student-course");
+            //2.4.2 Открыть доступ к видео
             Route::get("/student/{id}/accessVideo",[MainController::class,"studentAccessVideo"])->name("admin-student-access-video");
+            Route::post("/Access",[MainController::class,"Access"])->name("admin-Access");
+            //2.4.3 Результаты у студента
+            Route::get("/student/{id}/results",[AdminResultController::class,"studentResult"])->name("admin-student-result");
+            //2.4.4 Запросы на откртытие видео у студента
+
 
 
             //Course
@@ -124,10 +141,9 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             //Material
             Route::resource("/admin-material",AdminMaterialController::class);
             //Create
-            Route::post("/Access",[MainController::class,"Access"])->name("admin-Access");
+
             //Results
             Route::resource("/admin-result",AdminResultController::class);
-            Route::get("/student/{id}/results",[AdminResultController::class,"studentResult"])->name("admin-student-result");
             //VideoMaterial
             Route::get("/admin-media",[MainController::class,"media"])->name("admin-media");
 
@@ -176,6 +192,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 //Start TeacherBlade
         Route::group(['prefix' => 'teacher',"middleware"=>"teacher"], function (){
             Route::get('/', [HomeController::class, 'index'])->name('home');
+            //Задачи
+            Route::get("/teacher-tasks",[HomeController::class,"tasks"])->name("teacher-tasks");
             //Начало работы со слушателем
             Route::get("/teacher-users",[HomeController::class,"users"])->name("teacher-users");
             //Start Subscribers
@@ -184,6 +202,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             //Неподтвержденные слушатели на курс
             Route::get("/unconfirmed-subscribers",[SubscriberController::class,"unconfirmed"])->name("unconfirmed_subscribers");
             //Дать доступ к видео
+            Route::get("/listRequestVideo",[SubscriberController::class,"listRequestVideo"])->name("listRequestVideo");
+            Route::get("/requestVideo/{id}",[SubscriberController::class,"requestVideo"])->name("requestVideo");
             Route::get("/getAccessVideo/{id}",[SubscriberController::class,"getAccessVideo"])->name("getAccessVideo");
             Route::post("/saveAccessVideo",[SubscriberController::class,"saveAccessVideo"])->name("saveAccessVideo");
             //Все подписчики
