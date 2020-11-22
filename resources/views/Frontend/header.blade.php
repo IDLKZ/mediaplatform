@@ -69,18 +69,17 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="auth">
                                 @if (\Illuminate\Support\Facades\Auth::user()->role_id == 1)
-                                    <a class="dropdown-item" href="{{route('main')}}"><i class="far fa-user mr-2"></i>Мой профиль</a>
+                                    <a class="dropdown-item" href="{{route('main')}}">Мой профиль</a>
                                 @endif
                                 @if (\Illuminate\Support\Facades\Auth::user()->role_id == 2)
-                                    <a class="dropdown-item" href="{{route('teacherProfile')}}"><i class="far fa-user mr-2"></i>Мой профиль</a>
+                                    <a class="dropdown-item" href="{{route('teacherProfile')}}">Мой профиль</a>
+                                    <a class="dropdown-item" href="{{route('teacherProfileSettings')}}"><i class="fas fa-cog mr-2"></i>Настройки</a>
                                 @endif
                                 @if (\Illuminate\Support\Facades\Auth::user()->role_id == 3)
-                                    <a class="dropdown-item" href="{{route('userProfile')}}"><i class="far fa-user mr-2"></i>Мой профиль</a>
+                                    <a class="dropdown-item" href="{{route('userProfile')}}">Мой профиль</a>
+                                    <a class="dropdown-item" href="{{route('userProfileSettings')}}">Настройки</a>
                                 @endif
-
-                                <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}"><i class="far fa-bell mr-2"></i>Уведомления</a>
-                                <a class="dropdown-item" href="{{route('userProfileSettings')}}"><i class="fas fa-cog mr-2"></i>Настройки</a>
-                                <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>Выйти</a>
+                                <a class="dropdown-item" href="{{route('logout')}}">Выйти</a>
                             </div>
                         </div>
                     @else

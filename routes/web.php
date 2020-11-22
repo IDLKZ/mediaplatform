@@ -324,10 +324,15 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             //End Courses
         });
 //End StudentBlade
+
+        //    Start Forums
+        Route::get('/realtime-forums', [RealtimeController::class, 'index'])->name('forums');
+        Route::post('/add-discussion', [RealtimeController::class, 'addDiscussion']);
+        Route::get('/single-categories/{slug}', [RealtimeController::class, 'singleCategory'])->name('singleCategory');
+        Route::get('/single-post/{alias}', [RealtimeController::class, 'singlePost'])->name('singlePost');
+        Route::post('/send-comment', [RealtimeController::class, 'sendComment']);
     });
 
-//    Start RealTime Chat
-    Route::get('/realtime-forums', [RealtimeController::class, 'index'])->name('forums');
 
 });
 //Переключение языков
