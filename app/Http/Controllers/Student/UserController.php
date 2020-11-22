@@ -9,6 +9,7 @@ use App\Models\Result;
 use App\Models\ReviewQuestion;
 use App\Models\Subscriber;
 use App\Models\User;
+use App\Models\UserRequest;
 use App\Models\UserVideo;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
@@ -272,6 +273,29 @@ class UserController extends Controller
             Toastr::warning("Не найден результат видео","Упс....");
             return redirect()->back();
         }
+    }
+
+    public function openVideo(){
+        $uservideos = UserVideo::where("student_id",Auth::id())->pluck("video_id")->toArray();
+        $allvideos = Video::whereIn("course_id",Auth::user()->subscribers->pluck("course_id")->toArray())->get();
+        return view("student.video.openvideo",compact("uservideos","allvideos"));
+    }
+
+    public function getOpenVideo(Request  $request){
+        $uservideos = UserVideo::where("student_id",Auth::id())->pluck("video_id")->toArray();
+        $allvideos = Video::whereIn("course_id",Auth::user()->subscribers->pluck("course_id")->toArray())->pluck("id")->toArray();
+        $userrequest = UserRequest::where(["user_id"=>Auth::id(), "video_id"=>$request->get("video_id")])->first();
+        if(!in_array($request->get("video_id"),$uservideos) && in_array($request->get("video_id"),$allvideos) && !$userrequest){
+            $data = $request->all(); $data["user_id"] = Auth::id();
+            if(UserRequest::createData($data)){
+                Toastr::success("Заявка успешно отправлена","Отлично!");
+            }
+            else{
+                Toastr::warning("Произошла ошибка попробуйте позже","Упс");
+            }
+        }
+        return redirect()->back();
+
     }
 
 

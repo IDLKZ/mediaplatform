@@ -11,6 +11,7 @@ use App\Models\Result;
 use App\Models\ReviewQuestion;
 use App\Models\Subscriber;
 use App\Models\User;
+use App\Models\UserRequest;
 use App\Models\UserVideo;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
@@ -166,13 +167,14 @@ class MainController extends Controller
     public function studentAccessVideo($id){
         $subscribers = Subscriber::where("user_id",$id)->with(["course","videos","uservideo"])->paginate(12);
         return view("admin.user.student.accessVideo",compact("subscribers"));
-
     }
 
     public function Access(Request $request){
         $this->validate($request,["student_id"=>"required","subscribe_id"=>"required","video_id"=>"required"]);
         $uservideo = UserVideo::where(["student_id"=>$request->get("student_id"),"subscribe_id"=>$request->get("subscribe_id"),"video_id"=>$request->get("video_id")])->first();
         if(!$uservideo){
+            $userrequest = UserRequest::where(["user_id"=>$request->get("student_id"),"video_id"=>$request->get("video_id")])->first();
+            if($userrequest){$userrequest->delete();}
             Toastr::success("Успешно открыт доступ","Отлично");
             UserVideo::create(["student_id"=>$request->get("student_id"),"subscribe_id"=>$request->get("subscribe_id"),"video_id"=>$request->get("video_id")]);
         }
@@ -209,6 +211,20 @@ class MainController extends Controller
     public function requestResult(){
         $results = Result::where("checked",0)->with(['video', 'course', 'author', 'student'])->paginate(12);
         return view("admin.request.result",compact("results"));
+    }
+
+    public function requestVideo(){
+        $userrequest = UserRequest::with(["user","video"])->paginate(15);
+        return view("admin.request.video",compact("userrequest"));
+    }
+
+    public function userVideo($id){
+        $userrequest = UserRequest::with("video")->find($id);
+        if($userrequest){
+            $subscribers = Subscriber::where(["user_id"=>$userrequest->user_id,"course_id"=>$userrequest->video->course_id])->with(["course","videos","uservideo"])->paginate(12);
+            return view("admin.user.student.accessVideo",compact("subscribers"));
+        }
+        return redirect()->back();
     }
 
     //search

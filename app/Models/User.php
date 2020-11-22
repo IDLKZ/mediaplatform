@@ -124,6 +124,9 @@ class User extends Authenticatable
 
 
 
+
+
+
     public static function saveUser($request){
         $data = $request->all();
         $data["img"] = FileDownloader::saveFile("/upload/avatars/",$request,"img");

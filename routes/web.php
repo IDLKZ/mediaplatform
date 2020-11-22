@@ -103,7 +103,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/students/{type?}",[MainController::class,"students"])->name("admin-students");
             Route::get("/student/{id}/courses",[MainController::class,"studentCourse"])->name("admin-student-course");
             Route::get("/student/{id}/accessVideo",[MainController::class,"studentAccessVideo"])->name("admin-student-access-video");
-            Route::get("/student/{id}/accessVideo",[MainController::class,"studentAccessVideo"])->name("admin-student-access-video");
+
 
             //Course
             Route::resource("/admin-course",AdminCourseController::class);
@@ -144,6 +144,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/admin-request",[MainController::class,"request"])->name("admin-request");
             Route::get("/admin-request-user",[MainController::class,"requestUser"])->name("admin-request-user");
             Route::get("/admin-request-result",[MainController::class,"requestResult"])->name("admin-request-result");
+            Route::get("/admin-request-video",[MainController::class,"requestVideo"])->name("admin-request-video");
+            Route::get("/admin-request-uservideo/{id}",[MainController::class,"userVideo"])->name("admin-request-uservideo");
 
 
             //Search
@@ -317,6 +319,8 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get('/single-course/{alias}', [UserController::class, 'singleCourse'])->name('userSingleCourse');
             Route::get('/my-requests', [UserController::class, 'requestSubscribe'])->name('userRequests');
             Route::post('/cancel-my-request/{id}', [UserController::class, 'cancelRequest'])->name('userCancelRequest');
+            Route::get("/open-video",[UserController::class,"openVideo"])->name("open-video");
+            Route::post("/get-open-video",[UserController::class,"getOpenVideo"])->name("get-open-video");
             //End Courses
         });
 //End StudentBlade
