@@ -39,7 +39,8 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Изменить</button>
+                            <button type="submit" class="btn btn-raised btn-default">{{__('content.change')}}</button>
+                            <a href="{{route('admin-quiz.index')}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
                         </div>
                     </form>
                 </div>

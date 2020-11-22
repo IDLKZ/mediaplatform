@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-    <a href="{{route("admin-video.index")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
@@ -44,41 +44,48 @@
                                 <input name="count" type="text" min="1" class="form-control" placeholder="№ Видео" maxlength="500" data-parsley-trigger="change" required>
                             </div>
                         </div>
-                        <hr class="line-dashed full-witdh-line" />
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('content.video_preview')}}</label>
-                            <div class="col-sm-9">
-                                <div class="togglebutton">
-                                    <label>
-                                        <input type="checkbox" checked="">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">{{__('content.video_video')}}</label>
                             <div class="col-sm-9">
-                                <div class="customFile">
-                                    <span class="selectedFile">{{__('content.selected')}}</span>
-                                    <input type="file" id="file" name="video_url">
-                                </div>
-                                <div class="progress mt-5">
-                                    <div class="bar"></div >
-                                    <div class="percent">0%</div >
-                                </div>
-                                <div id="status"></div>
-                                <div>
-                                    <span><img id="ajax-gif" src="/images/upload-ajax.gif" style="display: none;width: 50px;height: 50px;"></span>
-                                </div>
+                                <input name="video_url" type="text" class="form-control" placeholder="Ссылка на Youtube" required>
                             </div>
                         </div>
+                        <hr class="line-dashed full-witdh-line" />
+
+{{--                        <div class="form-group">--}}
+{{--                            <label class="col-sm-3 control-label">{{__('content.video_preview')}}</label>--}}
+{{--                            <div class="col-sm-9">--}}
+{{--                                <div class="togglebutton">--}}
+{{--                                    <label>--}}
+{{--                                        <input type="checkbox" checked="">--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                        <div class="form-group">--}}
+{{--                            <label class="col-sm-3 control-label">{{__('content.video_video')}}</label>--}}
+{{--                            <div class="col-sm-9">--}}
+{{--                                <div class="customFile">--}}
+{{--                                    <span class="selectedFile">{{__('content.selected')}}</span>--}}
+{{--                                    <input type="file" id="file" name="video_url">--}}
+{{--                                </div>--}}
+{{--                                <div class="progress mt-5">--}}
+{{--                                    <div class="bar"></div >--}}
+{{--                                    <div class="percent">0%</div >--}}
+{{--                                </div>--}}
+{{--                                <div id="status"></div>--}}
+{{--                                <div>--}}
+{{--                                    <span><img id="ajax-gif" src="/images/upload-ajax.gif" style="display: none;width: 50px;height: 50px;"></span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
 
-                            <button type="submit" id="btn-submit" class="btn btn-raised btn-default">{{__('content.save')}}</button>
-                            <button type="reset" class="btn btn-raised btn-danger">{{__('content.clear')}}</button>
+                            <button type="submit" id="btn-submit" class="btn btn-raised btn-info">{{__('content.save')}}</button>
+                            <a href="{{route("admin-video.index")}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
                         </div>
                     </form>
                 </div>

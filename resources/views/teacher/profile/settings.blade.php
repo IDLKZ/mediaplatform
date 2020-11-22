@@ -63,35 +63,23 @@
                     <div class="uw_image"><img class="img-circle" src="{{\Illuminate\Support\Facades\Auth::user()->img}}" alt="User Avatar" width="120" height="120">
                     </div>
                     <div class="uw_footer">
-                        <div class="text-center">
-                                    <span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </span>
-                            <p class="mt-20">It is a long established fact that a reader will be content of a page</p>
-                            <a href="#" class="btn btn-raised btn-info">Follow</a>
-                        </div>
-
                         <div class="row">
                             <div class="col-sm-4 col-xs-6 border-right">
                                 <div class="uw_description">
-                                    <h5>3,521</h5>
-                                    <span>SALES</span>
+                                    <h5>{{\Illuminate\Support\Facades\Auth::user()->subscribers()->count()}}</h5>
+                                    <span>Подписчики</span>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xs-6 border-right">
                                 <div class="uw_description">
-                                    <h5>17,600</h5>
-                                    <span>FOLLOWERS</span>
+                                    <h5>{{\Illuminate\Support\Facades\Auth::user()->courses()->count()}}</h5>
+                                    <span>Курсы</span>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xs-12">
                                 <div class="uw_description">
-                                    <h5>23</h5>
-                                    <span>PRODUCTS</span>
+                                    <h5>{{\Illuminate\Support\Facades\Auth::user()->videos()->count()}}</h5>
+                                    <span>Видеоуроки</span>
                                 </div>
                             </div>
                         </div>

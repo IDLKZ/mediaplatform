@@ -60,10 +60,10 @@ class Video extends Model
 
 
 
-    public static function saveData($request, $response){
+    public static function saveData($request){
         $video = new self();
         $fill = $request->all();
-        $fill["video_url"] = $response['body']['link'];
+        $fill["video_url"] = $request->get('video_url');
         $video->fill($fill);
         return($video->save());
     }
@@ -86,11 +86,10 @@ class Video extends Model
 
     public function watch($url)
     {
-        $whitelist = ['Vimeo'];
+        $whitelist = [];
         $params = [
             'autoplay' => 1,
             'loop' => 1,
-            'download' => false
         ];
 
 //Optional attributes for embed container
@@ -100,7 +99,6 @@ class Video extends Model
             'data-html5-parameter' => true,
             'width' => '100%',
             'height' => '500',
-            'download' => false
         ];
         return LaravelVideoEmbed::parse($url, $whitelist, $params, $attributes);
     }

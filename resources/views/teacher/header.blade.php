@@ -121,7 +121,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="{{route('teacherProfile')}}" role="button" tabindex="0">
+                        <a href="{{route('home')}}" role="button" tabindex="0">
                             {{--                                <span class="label label-success pull-right">80%</span>--}}
                             <i class="fa fa-user"></i>Мой профиль</a>
                     </li>

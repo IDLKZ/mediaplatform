@@ -1,6 +1,6 @@
 @extends('teacher.layout')
 @section('content')
-    <a href="{{route("course.index")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
@@ -89,7 +89,8 @@
                             </div>
                         </div>
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">{{__('content.change')}}</button>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('content.change')}}</button>
+                            <a href="{{route("course.index")}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
                         </div>
                     </form>
                 </div>

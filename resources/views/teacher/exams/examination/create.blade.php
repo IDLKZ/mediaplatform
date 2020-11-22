@@ -1,6 +1,5 @@
 @extends('teacher.layout')
 @section('content')
-    <a href="{{route("video.index")}}" class="btn btn-raised btn-info">Назад</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
@@ -87,8 +86,8 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Сохранить</button>
-                            <button type="reset" class="btn btn-raised btn-danger">Очистить поля</button>
+                            <button type="submit" class="btn btn-raised btn-info">Сохранить</button>
+                            <a href="{{route("examination.index")}}" class="btn btn-raised btn-primary">Назад</a>
                         </div>
                     </form>
                 </div>

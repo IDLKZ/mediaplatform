@@ -72,8 +72,8 @@
                                     <a class="dropdown-item" href="{{route('main')}}">Мой профиль</a>
                                 @endif
                                 @if (\Illuminate\Support\Facades\Auth::user()->role_id == 2)
-                                    <a class="dropdown-item" href="{{route('teacherProfile')}}">Мой профиль</a>
-                                    <a class="dropdown-item" href="{{route('teacherProfileSettings')}}"><i class="fas fa-cog mr-2"></i>Настройки</a>
+                                    <a class="dropdown-item" href="{{route('home')}}">Мой профиль</a>
+                                    <a class="dropdown-item" href="{{route('teacherProfileSettings')}}">Настройки</a>
                                 @endif
                                 @if (\Illuminate\Support\Facades\Auth::user()->role_id == 3)
                                     <a class="dropdown-item" href="{{route('userProfile')}}">Мой профиль</a>

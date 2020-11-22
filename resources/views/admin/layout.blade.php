@@ -4,7 +4,7 @@
     <base href="/">
     <meta charset="utf-8">
 
-    <title>:: Falcon - Admin Dashboard ::</title>
+    <title>:: Jas Qalam ::</title>
     <link rel="icon" type="image/ico" href="/images/favicon.ico" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">

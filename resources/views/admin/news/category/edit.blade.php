@@ -1,6 +1,5 @@
 @extends('admin.layout')
 @section('content')
-    <a href="{{route("admin-category.index")}}" class="btn btn-raised btn-info">{{__("content.back")}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
@@ -31,7 +30,8 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">{{__('content.save')}}</button>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('content.save')}}</button>
+                            <a href="{{route("admin-category.index")}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
                         </div>
                     </form>
                 </div>

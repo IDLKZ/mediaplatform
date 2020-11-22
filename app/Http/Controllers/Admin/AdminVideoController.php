@@ -68,14 +68,16 @@ class AdminVideoController extends Controller
             "description"=>"required",
         ]);
 
-        $client = Vimeo::connection('main');
-        $file_name = $request->file('video_url');
-        $uri = $client->upload($file_name, [
-            "name" => $request->get('title').'-'.Str::random(7),
-            "description" => $request->get('description')
-        ]);
-        $response = $client->request($uri . '?fields=link');
-        Video::saveData($request, $response);
+//        $client = Vimeo::connection('main');
+//        $file_name = $request->file('video_url');
+//        $uri = $client->upload($file_name, [
+//            "name" => $request->get('title').'-'.Str::random(7),
+//            "description" => $request->get('description')
+//        ]);
+//        $response = $client->request($uri . '?fields=link');
+        Video::saveData($request);
+        Toastr::success('Видео успешно создано!', 'Ураа ...!');
+        return redirect(route('admin-video.index'));
     }
 
     /**
@@ -166,10 +168,10 @@ class AdminVideoController extends Controller
     {
         $video = Video::where(["alias"=>$alias])->first();
         if($video){
-            $client = Vimeo::connection('main');
-            $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
-            $uri = "/videos/$TIMA";
-            $client->request($uri, [], 'DELETE');
+//            $client = Vimeo::connection('main');
+//            $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
+//            $uri = "/videos/$TIMA";
+//            $client->request($uri, [], 'DELETE');
             $video->delete();
             Toastr::success('Видео было успешно удалено','Успешно удалено видео!');
             return redirect()->back();

@@ -55,7 +55,7 @@ class SubscriberController extends Controller
             return view("teacher.user.subscriber.accessVideo",compact("subscribers"));
 
         }
-        return redirect()->back();
+        return redirect(route('teacher-media'));
 
     }
 

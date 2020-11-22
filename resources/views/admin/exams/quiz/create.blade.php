@@ -36,7 +36,8 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Сохранить</button>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('content.save')}}</button>
+                            <a href="{{route('admin-quiz.index')}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
                         </div>
                     </form>
                 </div>

@@ -65,7 +65,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 
 
 //Start Authorization
-    Route::group(["middlerware" => "guest"],function (){
+    Route::group(["middleware" => "guest"],function (){
         Route::get('/register', [RegisterController::class, 'register'])->name('register');
         Route::post('/send-user-data', [RegisterController::class, 'store']);
         Route::get('/login', [LoginController::class,"login"])->name("login");

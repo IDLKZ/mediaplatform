@@ -50,6 +50,12 @@
                                     <span>Поиск</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route("forums")}}">
+                                    <i class="fa fa-forumbee"></i>
+                                    <span>Форум</span>
+                                </a>
+                            </li>
                             <hr>
                             <li>
                                 <a href="{{route("logout")}}">

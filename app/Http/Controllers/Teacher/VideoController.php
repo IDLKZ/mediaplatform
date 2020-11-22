@@ -13,6 +13,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Merujan99\LaravelVideoEmbed\Facades\LaravelVideoEmbed;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 use Vimeo\Laravel\Facades\Vimeo;
 
@@ -40,7 +41,7 @@ class VideoController extends Controller
     {
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
-            'video_url'=> 'required|mime:mp4,mov,ogg,qt|max:500000',
+            'video_url'=> 'required',
             "count"=>"required|integer|max:255",
             "description"=>"required",
         ]);
@@ -59,20 +60,22 @@ class VideoController extends Controller
     {
         $this->validate($request, [
             'title'=> 'required|max:255',
-            'video_url'=> 'required|mimes:mp4,mov,ogg,qt|max:50000000',
+            'video_url'=> 'required',
             "count"=>"required|integer|max:255",
             "description"=>"required",
         ]);
 
-        $client = Vimeo::connection('main');
-        $file_name = $request->file('video_url');
-        $uri = $client->upload($file_name, [
-            "name" => $request->get('title').'-'.Str::random(7),
-            "description" => $request->get('description')
-        ]);
-        $response = $client->request($uri . '?fields=link');
-        Video::saveData($request, $response);
+//        $client = Vimeo::connection('main');
+//        $file_name = $request->file('video_url');
+//        $uri = $client->upload($file_name, [
+//            "name" => $request->get('title').'-'.Str::random(7),
+//            "description" => $request->get('description')
+//        ]);
+//        $response = $client->request($uri . '?fields=link');
 
+        Video::saveData($request);
+        Toastr::success('Видео успешно создано!', 'Ураа ...!');
+        return redirect(route('video.index'));
     }
 
     /**
@@ -84,7 +87,6 @@ class VideoController extends Controller
     public function show($alias)
     {
         $video = Video::where("alias",$alias)->first();
-
         if($video){
             $video->load(["course","materials"]);
             $file = $video->watch($video->video_url);
@@ -169,10 +171,10 @@ class VideoController extends Controller
     {
         $video = Video::where(["alias"=>$alias])->first();
         if($video){
-            $client = Vimeo::connection('main');
-            $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
-            $uri = "/videos/$TIMA";
-            $client->request($uri, [], 'DELETE');
+//            $client = Vimeo::connection('main');
+//            $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
+//            $uri = "/videos/$TIMA";
+//            $client->request($uri, [], 'DELETE');
             $video->delete();
             Toastr::success('Видео было успешно удалено','Успешно удалено видео!');
             return redirect()->back();
