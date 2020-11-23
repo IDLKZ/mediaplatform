@@ -48,13 +48,7 @@
                             </div>
                         </div>
 
-                        <hr class="line-dashed full-witdh-line" />
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('admin.video_count')}}</label>
-                            <div class="col-sm-9">
-                                <input name="count" type="number" min="1" class="form-control" placeholder="№ Видео" maxlength="500" data-parsley-trigger="change" required value="{{$video->count}}">
-                            </div>
-                        </div>
+
                         <hr class="line-dashed full-witdh-line" />
 
                         <div class="form-group">

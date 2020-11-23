@@ -177,7 +177,6 @@ class AdminCourseController extends Controller
     {
         $course = Course::where("alias",$alias)->with("videos")->first();
         if($course){
-            Video::deleteVideo($course);
             Storage::delete($course->img);
             $course->delete();
             Toastr::success('Курс был успешно удален','Успешно удален курс!');

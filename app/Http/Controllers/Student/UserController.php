@@ -55,18 +55,43 @@ class UserController extends Controller
 
     public function subscribe($alias)
     {
-        $course = Course::where('alias', $alias)->first();
-        if (Subscriber::where(['course_id' => $course->id, 'user_id' => Auth::id()])->first()) {
-            Toastr::warning('Вы уже отправили подписку на этот курс!','Sorry...!');
-            return redirect()->back();
+        $course = Course::with("videos")->where('alias', $alias)->first();
+        if($course){
+            if (Subscriber::where(['course_id' => $course->id, 'user_id' => Auth::id()])->first()) {
+                Toastr::warning('Вы уже отправили подписку на этот курс!','Sorry...!');
+                return redirect()->back();
+            }
+            else{
+                if($course->videos->count() > 0 ){
+                  $id = Subscriber::create([
+                        'course_id' => $course->id,
+                        'author_id' => $course->author_id,
+                        'user_id' => Auth::id(),
+                        'status' => true
+                    ])->id;
+                  $video = $course->videos->where("count",1)->first();
+                  if($video){
+                      UserVideo::create(
+                          [
+                              "subscribe_id"=>$id,
+                              "video_id"=>$video->id,
+                              "student_id"=>Auth::id()
+
+                          ]
+                      );
+                  }
+
+
+                    Toastr::success('Вы успешно подписаны!','Успешно!');
+                }
+                else{
+                    Toastr::warning('Дождитесь когда автор добавит видео к курсу!','Упс!');
+                }
+
+            }
         }
-        Subscriber::create([
-            'course_id' => $course->id,
-            'author_id' => $course->author_id,
-            'user_id' => Auth::id(),
-            'status' => true
-        ]);
-        Toastr::success('Вы успешно подписаны!','Успешно!');
+
+
         return redirect()->back();
     }
 

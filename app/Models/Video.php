@@ -63,6 +63,7 @@ class Video extends Model
     public static function saveData($request){
         $video = new self();
         $fill = $request->all();
+        $fill["count"] = Video::where("course_id",$request->get("course_id"))->count() + 1;
         $fill["video_url"] = $request->get('video_url');
         $video->fill($fill);
         return($video->save());
@@ -103,17 +104,19 @@ class Video extends Model
         return LaravelVideoEmbed::parse($url, $whitelist, $params, $attributes);
     }
 
-    public static function deleteVideo($course)
-    {
-        if($course->videos->isNotEmpty()){
-            foreach ($course->videos as $video){
-                $client = Vimeo::connection('main');
-                $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
-                $uri = "/videos/$TIMA";
-                $client->request($uri, [], 'DELETE');
-                $video->delete();
+
+
+    public static function recountNumber($course_id){
+        $videos = Video::where("course_id",$course_id)->orderBy("created_at","asc")->get();
+        $i = 1;
+        if($videos->isNotEmpty()){
+            foreach ($videos as $video){
+                $video->count = $i;
+                ++$i;
+                $video->save();
             }
         }
+
 
 
     }
