@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\RealtimeController;
 use App\Http\Controllers\Student\UserController;
@@ -342,6 +343,10 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::get("/open-video",[UserController::class,"openVideo"])->name("open-video");
             Route::post("/get-open-video",[UserController::class,"getOpenVideo"])->name("get-open-video");
             //End Courses
+
+            //Get Certificate
+            Route::get('/get-certificate/{course_id}', [CertificateController::class, 'index'])->name('getCertificate');
+            Route::get('/my-certificates', [CertificateController::class, 'certificates'])->name('myCertificates');
         });
 //End StudentBlade
 

@@ -64,9 +64,9 @@ class UserController extends Controller
             'course_id' => $course->id,
             'author_id' => $course->author_id,
             'user_id' => Auth::id(),
-            'status' => false
+            'status' => true
         ]);
-        Toastr::success('Ваша заявка отправлена!','Успешно!');
+        Toastr::success('Вы успешно подписаны!','Успешно!');
         return redirect()->back();
     }
 

@@ -20,8 +20,11 @@
 
                     </div>
                     <div class="card-footer text-muted text-left">
-                        <a href="{{route('student.course.show', $course->course->alias)}}" class="btn" id="auth">Продолжить</a>
+                        <a href="{{route('student.course.show', $course->course->alias)}}" class="btn btn-raised" id="auth">Продолжить</a>
                         <a href="{{route('userSingleCourse', $course->course->alias)}}" class="btn btn-outline-dark">Страница курса</a>
+                        @if (App\Models\Result::where(['student_id' => Auth::id(), 'course_id' => $course->course->id, 'status' => 1])->count() == $course->course->videos->count())
+                            <a href="{{route('getCertificate', $course->course->id)}}" class="btn btn-raised btn-outline-secondary">Получить сертификат</a>
+                        @endif
                     </div>
                 </div>
             @endforeach
