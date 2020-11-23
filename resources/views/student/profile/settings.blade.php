@@ -7,13 +7,13 @@
         <section class="boxs">
             <div class="boxs-header">
                 <h3 class="custom-font hb-green">
-                    <strong>Изменить </strong>данные</h3>
+                    <strong>{{__('student.change_data')}}</strong></h3>
             </div>
             <div class="boxs-body">
                 <form id="my-form" method="post" enctype="multipart/form-data" action="{{route('userProfileSettingsUpdate')}}" class="form-horizontal" role="form">
                     @csrf
                     <div class="form-group is-empty">
-                        <label for="inputName" class="col-sm-2 control-label">Имя</label>
+                        <label for="inputName" class="col-sm-2 control-label">{{__('student.name')}}</label>
                         <div class="col-sm-10">
                             <input type="text" name="name" class="form-control" id="inputName"
                                    placeholder="Имя" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
@@ -39,14 +39,14 @@
                     <div class="form-group is-empty">
                         <label class="col-sm-2 control-label">Аватар</label>
                         <div class="customFile">
-                            <span class="selectedFile">No file selected</span>
+                            <span class="selectedFile">{{__('content.selected')}}</span>
                             <input type="file" name="avatar">
                         </div>
                         <img style="margin-left: 40px; margin-top: 10px;" class="preview" src="{{\Illuminate\Support\Facades\Auth::user()->img}}" width="150" height="150"/>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-raised btn-primary">Изменить</button>
+                            <button type="submit" class="btn btn-raised btn-primary">{{__('content.change')}}</button>
                         </div>
                     </div>
                 </form>

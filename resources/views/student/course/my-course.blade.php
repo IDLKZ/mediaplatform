@@ -16,14 +16,16 @@
                             </div>
                         </div>
                         <h5 class="card-title">{{$course->course->title}}</h5>
-                        <p class="card-text">Основной язык: {{$course->course->language_id == 1 ? 'Русский язык' : 'Казахский язык'}}</p>
+                        <p class="card-text">{{__('student.main_lang')}}: {{$course->course->language_id == 1 ? 'Русский язык' : 'Казахский язык'}}</p>
 
                     </div>
                     <div class="card-footer text-muted text-left">
-                        <a href="{{route('student.course.show', $course->course->alias)}}" class="btn btn-raised" id="auth">Продолжить</a>
-                        <a href="{{route('userSingleCourse', $course->course->alias)}}" class="btn btn-outline-dark">Страница курса</a>
-                        @if (App\Models\Result::where(['student_id' => Auth::id(), 'course_id' => $course->course->id, 'status' => 1])->count() == $course->course->videos->count())
-                            <a href="{{route('getCertificate', $course->course->id)}}" class="btn btn-raised btn-outline-secondary">Получить сертификат</a>
+                        <a href="{{route('student.course.show', $course->course->alias)}}" class="btn btn-raised" id="auth">{{__('student.continue')}}</a>
+                        <a href="{{route('userSingleCourse', $course->course->alias)}}" class="btn btn-outline-dark">{{__('student.page_of_course')}}</a>
+                        @if ($course->course->videos->count() != 0)
+                            @if (App\Models\Result::where(['student_id' => Auth::id(), 'course_id' => $course->course->id, 'status' => 1])->count() == $course->course->videos->count())
+                                <a href="{{route('getCertificate', $course->course->id)}}" class="btn btn-raised btn-outline-secondary">{{__('student.get_certificate')}}</a>
+                            @endif
                         @endif
                     </div>
                 </div>

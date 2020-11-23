@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <base href="/">
     <meta charset="UTF-8">
@@ -36,6 +36,7 @@
             <link rel="stylesheet" href="/css/front.css">
             <link rel="stylesheet" href="/css/toastr.css">
         @else
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
             <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
             <link rel="stylesheet" href="/frontend/css/style.css">
             <link rel="stylesheet" href="/frontend/css/media.css">

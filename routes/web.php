@@ -56,7 +56,11 @@ Route::get('/clear-cache', function () {
 
 Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
     Route::get('/', [FrontController::class, 'index'])->name('front');
+    Route::get('/about', [FrontController::class, 'about'])->name('frontAbout');
     Route::get('/courses', [FrontController::class, 'courses'])->name('frontCourses');
+    Route::get('/exam', [FrontController::class, 'exam'])->name('frontExam');
+    Route::get('/discussion', [FrontController::class, 'discussion'])->name('frontDiscussion');
+    Route::get('/certificates', [FrontController::class, 'certificate'])->name('frontCertificate');
 
 
     Route::get('/logout', function () {

@@ -5,22 +5,22 @@
                 <div class="margin-50"></div>
                 <ul class="row text-left">
                     <li class="">
-                        <a href="">Курсы</a>
+                        <a href="{{route('frontCourses')}}">{{__('front.courses')}}</a>
                     </li>
                     <li class="">
-                        <a href="">О Нас</a>
+                        <a href="{{route('frontAbout')}}">{{__('front.about')}}</a>
                     </li>
                     <li class="">
-                        <a href="">Экзамены/тесты</a>
+                        <a href="{{route('frontExam')}}">{{__('front.exam')}}</a>
+                    </li>
+                    {{--                    <li class="text-center">--}}
+                    {{--                        <a href="{{route('frontDiscussion')}}">Отзывы</a>--}}
+                    {{--                    </li>--}}
+                    <li class="text-center">
+                        <a href="{{route('frontDiscussion')}}">{{__('front.discuss')}}</a>
                     </li>
                     <li class="text-center">
-                        <a href="">Отзывы</a>
-                    </li>
-                    <li class="text-center">
-                        <a href="">Обсуждения</a>
-                    </li>
-                    <li class="text-center">
-                        <a href="">Сертификаты</a>
+                        <a href="{{route('frontCertificate')}}">{{__('front.certificate')}}</a>
                     </li>
                 </ul>
             </div>

@@ -14,27 +14,30 @@ class CertificateController extends Controller
     public function index($course_id)
     {
         $course = Course::find($course_id);
-        if (Result::where(['student_id' => Auth::id(), 'course_id' => $course_id, 'status' => 1])->count() == $course->videos->count()) {
-            $certificate = Certificate::where(['user_id' => Auth::id(), 'course_id' => $course_id])->first();
-            if ($certificate) {
-                $student = Auth::user();
-                return view('student.certificate.certificate', compact('student', 'course'));
+        if ($course->videos->count() != 0) {
+            if (Result::where(['student_id' => Auth::id(), 'course_id' => $course_id, 'status' => 1])->count() == $course->videos->count()) {
+                $certificate = Certificate::where(['user_id' => Auth::id(), 'course_id' => $course_id])->first();
+                if ($certificate) {
+                    $student = Auth::user();
+                    return view('student.certificate.certificate', compact('student', 'course'));
+                } else {
+                    Certificate::create([
+                        'course_id' => $course_id,
+                        'user_id' => Auth::id()
+                    ]);
+                    $student = Auth::user();
+                    return view('student.certificate.certificate', compact('student', 'course'));
+                }
             } else {
-                Certificate::create([
-                    'course_id' => $course_id,
-                    'user_id' => Auth::id()
-                ]);
-                $student = Auth::user();
-                return view('student.certificate.certificate', compact('student', 'course'));
+                $certificate = Certificate::where(['user_id' => Auth::id(), 'course_id' => $course_id])->first();
+                if ($certificate) {
+                    $certificate->delete();
+                }
+                Toastr::error('Вы до конца не прошли курс!','Ошибка...!');
+                return redirect(route("student.course"));
             }
-        } else {
-            $certificate = Certificate::where(['user_id' => Auth::id(), 'course_id' => $course_id])->first();
-            if ($certificate) {
-                $certificate->delete();
-            }
-            Toastr::error('Вы до конца не прошли курс!','Ошибка...!');
-            return redirect(route("student.course"));
         }
+        return abort(404);
     }
 
     public function certificates()
