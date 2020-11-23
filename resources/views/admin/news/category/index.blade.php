@@ -7,7 +7,7 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Категории</strong></h3>
+                            <strong>{{__("admin.categories")}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         @if ($categories->isNotEmpty())
@@ -15,7 +15,7 @@
                                 <table class="table table-middle">
                                     <thead>
                                     <tr>
-                                        <th colspan="4">Наименование</th>
+                                        <th colspan="4">{{__("admin.category_title")}}</th>
                                         <th>Действия</th>
                                     </tr>
                                     </thead>
@@ -31,7 +31,7 @@
                                                     <ul class="dropdown-menu pull-right">
                                                         <li>
                                                             <a  href="{{route("admin-category.edit",$category->id)}}">
-                                                                {{__('content.edit')}}
+                                                                {{__('admin.edit')}}
                                                             </a>
                                                         </li>
 
@@ -41,7 +41,7 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">
-                                                                    {{__('content.delete')}}</button>
+                                                                    {{__('admin.delete')}}</button>
                                                             </form>
                                                         </li>
                                                     </ul>
@@ -54,7 +54,7 @@
                                 {{$categories->links()}}
                             </div>
                         @else
-                            <h1>Категорий пока нет</h1>
+                            <h3>{{__("admin.no_category")}}</h3>
                         @endif
 
                     </div>

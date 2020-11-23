@@ -91,6 +91,16 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="{{route("admin-news.create")}}" role="button" class="media">
+                                        <span class="pull-left media-object">
+                                            <i class="fa fa-newspaper-o"></i>
+                                        </span>
+                                <div class="media-body">
+                                    <span class="block">{{__("admin.header.new_news")}}</span>
+                                </div>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>

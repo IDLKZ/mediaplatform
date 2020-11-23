@@ -6,7 +6,7 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Запрос на открытие доступа</strong></h3>
+                            <strong>{{__("admin.access_description")}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         @if ($userrequest->isNotEmpty())
@@ -14,9 +14,9 @@
                                 <table class="table table-middle">
                                     <thead>
                                     <tr>
-                                        <th>Пользователь</th>
-                                        <th>Видео</th>
-                                        <th>Действия</th>
+                                        <th>{{__("admin.user.student")}}</th>
+                                        <th>{{__("admin.video")}}</th>
+                                        <th>{{__("admin.action")}}</th>
 
                                     </tr>
                                     </thead>
@@ -34,19 +34,8 @@
                                                         <li>
                                                             <a  href="{{route("admin-request-uservideo",$request->id)}}">
                                                                 <i class="fa fa-eye"></i>
-                                                                 Смотреть
+                                                                {{__("admin.watch")}}
                                                             </a>
-                                                        </li>
-
-
-                                                        <li class="divider"></li>
-                                                        <li>
-                                                            <form action="" method="post">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">
-                                                                    {{__('content.delete')}}</button>
-                                                            </form>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -57,7 +46,7 @@
                                 </table>
                             </div>
                         @else
-                           <h3>Запросов пока нет</h3>
+                           <h3>{{__("admin.no-request")}}</h3>
                         @endif
 
                     </div>

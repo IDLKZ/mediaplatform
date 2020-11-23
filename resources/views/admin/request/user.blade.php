@@ -5,9 +5,9 @@
         <!-- bradcome -->
         <div class="b-b mb-20">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Заявки</h1>
-                    <small class="text-muted">Здесь вы можете добавить заявки, открыть доступ к видео, задания</small>
+                <div class="col-sm-12 col-xs-12">
+                    <h1 class="h3 m-0">{{__("admin.requests")}}</h1>
+                    <small class="text-muted">{{__("admin.request_description")}}</small>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="{{"#information".$user->id}}" aria-expanded="true" aria-controls="collapseOne" class="">
                                                 <i class="fa fa-bars"></i>
-                                                Основная информация
+                                                {{__("admin.main.info")}}
                                             </a>
                                         </h4>
                                     </div>
@@ -49,7 +49,7 @@
                                             <li class="media">
                                                 <div class="media-img"><i class="{{$user->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
                                                 <div class="media-body">
-                                                    <div class="media-heading">{{$user->status == 1 ? "Активный" : "В заявке"}}</div>
+                                                    <div class="media-heading">{{$user->status == 1 ? __('admin.active') : __('admin.request')}}</div>
                                                 </div>
                                             </li>
 
@@ -62,7 +62,7 @@
                                     <div class="uw_description">
                                         <a href="{{route("user.edit",$user->id)}}" class="btn btn-warning btn-raised btn-round">
                                             <i class="fa fa-pencil-square">  </i>
-                                            <small class="sm-none">Изменить</small>
+                                            <small class="sm-none">{{__('admin.change')}}</small>
                                         </a>
                                     </div>
 
@@ -72,9 +72,9 @@
                                         <form action="{{route("user.destroy",$user->id)}}" method="post">
                                             @method("DELETE")
                                             @csrf
-                                            <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger btn-raised btn-round">
+                                            <button onclick="return confirm({{__('admin.question')}})" type="submit" class="btn btn-danger btn-raised btn-round">
                                                 <i class="fa fa-bitbucket pr-2">  </i>
-                                                <small class="sm-none">Удалить</small>
+                                                <small class="sm-none">{{__('admin.delete')}}</small>
                                             </button>
                                         </form>
                                     </div>

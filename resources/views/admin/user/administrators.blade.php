@@ -5,9 +5,9 @@
         <!-- bradcome -->
         <div class="b-b mb-20">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Список менеджеров</h1>
-                    <small class="text-muted">Список всех менеджеров</small>
+                <div class="col-sm-12 col-xs-12">
+                    <h1 class="h3 m-0">{{__("admin.user.all_admins")}}</h1>
+                    <small class="text-muted">{{__("admin.user.admin_description")}}</small>
                 </div>
             </div>
         </div>
@@ -29,14 +29,14 @@
                                 <section class="boxs boxs-simple">
                                     <div class="boxs-header">
                                         <h3 class="custom-font hb-green">
-                                            <strong>Информация</strong></h3>
+                                            <strong>{{__("admin.info")}}</strong></h3>
                                     </div>
                                     <div class="boxs-body">
                                         <ul class="media-list feeds_widget m-0">
                                             <li class="media">
                                                 <div class="media-img"><i class="fa fa-user-circle"></i></div>
                                                 <div class="media-body">
-                                                    <div class="media-heading">Администратор</div>
+                                                    <div class="media-heading">{{__("user.admin")}}</div>
                                                 </div>
                                             </li>
                                             <li class="media">
@@ -54,7 +54,7 @@
                                             <li class="media">
                                                 <div class="media-img"><i class="{{$admin->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
                                                 <div class="media-body">
-                                                    <div class="media-heading">{{$admin->status == 1 ? "Активный" : "В заявке"}}</div>
+                                                    <div class="media-heading">{{$admin->status == 1 ? __("admin.active") : __("admin.request")}}</div>
                                                 </div>
                                             </li>
 
@@ -68,7 +68,7 @@
                                         <div class="uw_description">
                                             <a href="{{route("user.edit",$admin->id)}}" class="btn btn-warning btn-raised btn-round">
                                                 <i class="fa fa-pencil-square">  </i>
-                                                <small class="sm-none">Изменить</small>
+                                                <small class="sm-none">{{__("admin.change")}}</small>
                                             </a>
                                         </div>
 
@@ -80,7 +80,7 @@
                                                 @csrf
                                                 <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger btn-raised btn-round">
                                                     <i class="fa fa-bitbucket pr-2">  </i>
-                                                    <small class="sm-none">Удалить</small>
+                                                    <small class="sm-none">{{__("admin.delete")}}</small>
                                                 </button>
                                             </form>
                                         </div>
@@ -92,7 +92,7 @@
                 @endforeach
                 {{$administrators->links()}}
                 @else
-                <h2>Менеджеров нет</h2>
+                <h2>{{__("admin.no_admin")}}</h2>
             @endif
 
         </div>

@@ -6,8 +6,8 @@
         <div class="b-b mb-20">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Экзамены</h1>
-                    <small class="text-muted">Здесь вы можете добавить экзамены, тесты и опросы</small>
+                    <h1 class="h3 m-0">{{__("admin.reviews")}}</h1>
+                    <small class="text-muted">{{__("admin.review_description")}}</small>
                 </div>
             </div>
         </div>
@@ -34,24 +34,24 @@
                                         <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
                                             <li>
                                                 <a href="{{route('admin-review.show',$review->id)}}" role="button" tabindex="0" >
-                                                    <i class="fa fa-eye"></i> Посмотреть </a>
+                                                    <i class="fa fa-eye"></i> {{__("admin.watch")}} </a>
                                             </li>
                                             <li>
                                                 <a  href="{{route("admin-review-question.create")}}">
                                                     <i class="fa fa-plus-circle"></i>
-                                                    Добавить вопрос
+                                                    {{__("admin.new_review")}}
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="{{route('admin-review.edit',$review->id)}}" role="button" tabindex="0" >
-                                                    <i class="fa fa-pencil"></i> Изменить </a>
+                                                    <i class="fa fa-pencil"></i> {{__("admin.change")}} </a>
                                             </li>
                                             <li>
                                                 <form  method="post" action="{{route('admin-review.destroy',$review->id)}}">
                                                     @method("DELETE")
                                                     @csrf
-                                                    <button onclick="return confirm('Вы уверены?')" role="button" tabindex="0" class="btn btn-a">
-                                                        <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                    <button onclick="return confirm({{__("admin.question")}})" role="button" tabindex="0" class="btn btn-a">
+                                                        <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                                 </form>
                                             </li>
 

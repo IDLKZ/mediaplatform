@@ -7,7 +7,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>Поиск пользователя</strong></h3>
+                        <strong>{{__("admin.search_user")}}</strong></h3>
                 </div>
                 <div class="boxs-body">
                     @if ($errors->any())
@@ -27,7 +27,7 @@
                                     <input type="text" class="form-control " name="query" placeholder="Введите ФИО..."><span class="material-input"></span></div>
                                 <span class="input-group-btn">
 										<button type="submit" class="btn btn-raised btn-default" type="button">
-											<i class="fa fa-search"></i> Искать!</button>
+											<i class="fa fa-search"></i> {{__("admin.search")}}!</button>
 									</span>
                             </div>
                         </div>
@@ -52,13 +52,13 @@
                                 <table class="table table-hover table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width:60px;">Изображение</th>
+                                        <th style="width:60px;"{{__("admin.img")}}</th>
                                         <th>ФИО</th>
-                                        <th>Роль</th>
-                                        <th>Почта</th>
-                                        <th>Телефон</th>
-                                        <th>Статус</th>
-                                        <th>Действия</th>
+                                        <th>"{{__("admin.user_role")}}</th>
+                                        <th>"{{__("admin.user_email")}}</th>
+                                        <th>"{{__("admin.user_phone")}}</th>
+                                        <th>"{{__("admin.status")}}</th>
+                                        <th>"{{__("admin.action")}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -79,7 +79,7 @@
                                             <p>{{$result->phone}}</p>
                                         </td>
                                         <td>
-                                            <p>{{$result->status == 1 ? "Верифицирован":"Не верифицирован"}}</p>
+                                            <p>{{$result->status == 1 ? __("admin.active"): __("admin.request") }}</p>
                                         </td>
                                         <td>
                                             <a href="{{route("user.show",$result->id)}}"><i class="fa fa-eye"></i> </a>
@@ -92,7 +92,7 @@
                                 {{$searchResults->links()}}
                             </div>
                         @else
-                            <h3 class="text-danger"> Ничего не найдено</h3>
+                            <h3 class="text-danger"> "{{__("admin.not_found")}}</h3>
                         @endif
                     </div>
 

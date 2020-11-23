@@ -13,9 +13,9 @@
                                 <div class="col-md-9 course-title">
                                     <div class="col-md-10">
                                         <h3 class="text-blush">{{$subscriber->course->title}}</h3>
-                                        <small class="text-blush">Автор:{{$subscriber->course->author->name}}</small><br>
-                                        <small class="text-blush">Создано {{$subscriber->course->created_at->diffForHumans()}}</small> |
-                                        <small class="text-blush">Обновлено {{$subscriber->course->updated_at->diffForHumans()}}</small>
+                                        <small class="text-blush">{{__("admin.author")}}:{{$subscriber->course->author->name}}</small><br>
+                                        <small class="text-blush">{{__("admin.created")}}: {{$subscriber->course->created_at->diffForHumans()}}</small> |
+                                        <small class="text-blush">{{__("admin.updated")}} {{$subscriber->course->updated_at->diffForHumans()}}</small>
                                         <hr class="mt-0">
                                     </div>
                                     <div class="col-md-2 text-center">
@@ -28,30 +28,30 @@
 
                                                     <li>
                                                         <a href="{{route("admin-course.show",$subscriber->course->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-eye"></i> Посмотреть </a>
+                                                            <i class="fa fa-eye"></i> {{__("admin.watch")}} </a>
                                                     </li>
                                                     <li>
                                                         <a href="{{route("admin-course-videos",$subscriber->course->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-vimeo-square"></i> Видеоуроки </a>
+                                                            <i class="fa fa-vimeo-square"></i> {{__("admin.videos")}} </a>
                                                     </li>
                                                     <li>
                                                         <a href="{{route("admin-course.edit",$subscriber->course->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-pencil"></i> Редактировать </a>
+                                                            <i class="fa fa-pencil"></i> {{__("admin.change")}} </a>
                                                     </li>
                                                     <li>
                                                         <a href="{{route("admin-course-subscribers",$subscriber->course->id)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-user-plus"></i> Подписчики </a>
+                                                            <i class="fa fa-user-plus"></i> {{__("admin.subscribers")}} </a>
                                                     </li>
                                                     <li>
                                                         <a href="{{route("admin-course-unconfirmed",$subscriber->course->id)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-question-circle"></i> Заявки </a>
+                                                            <i class="fa fa-question-circle"></i> {{__("admin.request")}} </a>
                                                     </li>
                                                     <li>
                                                         <form  method="post" action="{{route('admin-course.destroy',$subscriber->course->alias)}}">
                                                             @method("DELETE")
                                                             @csrf
                                                             <button onclick="return confirm('Вы уверены, удаление курса приведет к удалению видео!')" role="button" tabindex="0" class="btn btn-a">
-                                                                <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                                <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                                         </form>
                                                     </li>
                                                 </ul>
@@ -97,7 +97,8 @@
                             </div>
                         </div>
                     @endforeach
-                        @endif
+
+    @endif
 @endsection
 
     <!--/ CONTENT -->

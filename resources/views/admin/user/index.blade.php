@@ -37,7 +37,7 @@
                                     <div class="uw_description">
                                     <a href="{{route("admin-managers","confirmed")}}" class="btn btn-success btn-raised btn-round ">
                                         <i class="icon-user-follow">  </i>
-                                        <small class="sm-none">{{__("admin.user.active")}}</small>
+                                        <small class="sm-none">{{__("admin.active")}}</small>
                                     </a>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                     <div class="uw_description">
                                         <a href="{{route("admin-managers","unconfirmed")}}" class="btn btn-warning btn-raised btn-round">
                                             <i class="icon-user-unfollow pr-2">  </i>
-                                            <small class="sm-none">{{__("admin.user.request")}}</small>
+                                            <small class="sm-none">{{__("admin.request")}}</small>
                                         </a>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                                     <div class="uw_description">
                                     <a href="{{route("admin-teachers","confirmed")}}" class="btn btn-success btn-raised btn-round ">
                                         <i class="icon-user-follow">  </i>
-                                        <small class="sm-none">{{__("admin.user.active")}}</small>
+                                        <small class="sm-none">{{__("admin.active")}}</small>
                                     </a>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                     <div class="uw_description">
                                         <a href="{{route("admin-teachers","unconfirmed")}}" class="btn btn-warning btn-raised btn-round">
                                             <i class="icon-user-unfollow pr-2">  </i>
-                                            <small class="sm-none">{{__("admin.user.request")}}</small>
+                                            <small class="sm-none">{{__("admin.request")}}</small>
                                         </a>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                     <div class="uw_description">
                                     <a href="{{route("admin-students","confirmed")}}" class="btn btn-success btn-raised btn-round ">
                                         <i class="icon-user-follow">  </i>
-                                        <small class="sm-none">{{__("admin.user.active")}}</small>
+                                        <small class="sm-none">{{__("admin.active")}}</small>
                                     </a>
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
                                     <div class="uw_description">
                                         <a href="{{route("admin-students","unconfirmed")}}" class="btn btn-warning btn-raised btn-round">
                                             <i class="icon-user-unfollow pr-2">  </i>
-                                            <small class="sm-none">{{__("admin.user.request")}}</small>
+                                            <small class="sm-none">{{__("admin.request")}}</small>
                                         </a>
                                     </div>
                                 </div>

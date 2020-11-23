@@ -7,7 +7,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>Новая категория</strong></h3>
+                        <strong>{{__("admin.new_category")}}</strong></h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -23,16 +23,16 @@
                         @csrf
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Наименование категории</label>
+                            <label class="col-sm-3 control-label">{{__("admin.category_title")}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="Наименование категории" maxlength="255" data-parsley-trigger="change" required>
+                                <input name="title" type="text" class="form-control" placeholder="{{__("admin.category_title")}}" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-info">{{__('content.save')}}</button>
-                            <a href="{{route("admin-category.index")}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('admin.save')}}</button>
+                            <a href="{{route("admin-category.index")}}" class="btn btn-raised btn-primary">{{__('admin.back')}}</a>
                         </div>
                     </form>
                 </div>

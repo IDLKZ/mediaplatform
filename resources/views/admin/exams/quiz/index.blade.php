@@ -6,8 +6,8 @@
         <div class="b-b mb-20">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Экзамены</h1>
-                    <small class="text-muted">Здесь вы можете добавить экзамены, тесты и опросы</small>
+                    <h1 class="h3 m-0">{{__("admin.quiz")}}</h1>
+                    <small class="text-muted">{{__("admin.quiz_description")}}</small>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                     <div class="uw_footer pt-20">
                         <div class="text-center">
                             <p class="mt-20">
-                               Автор теста:{{$quiz->author->name}}
+                               {{__("admin.author")}}:{{$quiz->author->name}}
                             </p>
                             <ul class="controls list-group-flush p-0">
                                 <li class="dropdown list-group-item">
@@ -34,18 +34,18 @@
                                     <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
                                         <li>
                                             <a href="{{route('admin-quiz.show',$quiz->id)}}" role="button" tabindex="0" >
-                                                <i class="fa fa-eye"></i> Посмотреть </a>
+                                                <i class="fa fa-eye"></i> {{__("admin.watch")}} </a>
                                         </li>
                                         <li>
                                             <a href="{{route('admin-quiz.edit',$quiz->id)}}" role="button" tabindex="0" >
-                                                <i class="fa fa-pencil"></i> Изменить </a>
+                                                <i class="fa fa-pencil"></i> {{__("admin.edit")}} </a>
                                         </li>
                                         <li>
                                             <form  method="post" action="{{route('admin-quiz.destroy',$quiz->id)}}">
                                                 @method("DELETE")
                                                 @csrf
-                                                <button onclick="return confirm('Вы уверены?')" role="button" tabindex="0" class="btn btn-a">
-                                                    <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                <button onclick="return confirm({{__("admin.question")}})" role="button" tabindex="0" class="btn btn-a">
+                                                    <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                             </form>
                                         </li>
 

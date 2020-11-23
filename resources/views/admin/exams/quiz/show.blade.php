@@ -6,8 +6,8 @@
         <div class="b-b mb-20">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Вопросы данного теста</h1>
-                    <small class="text-muted">Здесь вы можете добавить тестовые вопросы</small>
+                    <h1 class="h3 m-0">{{__("admin.questions")}}</h1>
+                    <small class="text-muted">{{__("admin.quiz_description")}}</small>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                                     <ul class="dropdown-menu ">
                                         <li>
                                             <a href="{{route("admin-question.edit",$question->id)}}">
-                                            <i class="fa fa-pencil"></i> Изменить
+                                            <i class="fa fa-pencil"></i> {{__("admin.change")}}
                                             </a>
                                         </li>
 

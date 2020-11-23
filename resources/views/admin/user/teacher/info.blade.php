@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section("content")
-    <a href="{{route("admin-users")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+    <a href="{{route("admin-users")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <!--CONTENT  -->
     <div class="page profile-page">
         <!-- page content -->
@@ -16,19 +16,19 @@
                                     <img class="h-100" src="{{$img = $user->img !=null ? $user->img :"/images/no-image.png" }}" alt="">
                                 </div>
                                 <h4 class="mb-0"><strong>{{$user->name}}</strong></h4>
-                                <span class="text-muted">Тьютор</span>
+                                <span class="text-muted">{{__("admin.user.teacher")}}</span>
                                 <div class="mt-10">
 
                                     <a href="{{route("user.edit",$user->id)}}" class="btn btn-warning btn-raised btn-round btn-sm">
                                         <i class="fa fa-pencil-square">  </i>
-                                        <small class="sm-none">Изменить</small>
+                                        <small class="sm-none">{{__("admin.edit")}}</small>
                                     </a>
                                     <form action="{{route("user.destroy",$user->id)}}" method="post">
                                         @method("DELETE")
                                         @csrf
-                                        <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger btn-raised btn-round btn-sm">
+                                        <button onclick="return confirm({{__("admin.question")}})" type="submit" class="btn btn-danger btn-raised btn-round btn-sm">
                                             <i class="fa fa-bitbucket pr-2">  </i>
-                                            <small class="sm-none">Удалить</small>
+                                            <small class="sm-none">{{__("admin.delete")}}</small>
                                         </button>
                                     </form>
                                 </div>
@@ -42,7 +42,7 @@
                                         <a href="{{route("admin-teacher-course",$user->id)}}" class="">
                                             <i class="fa fa-video-camera"></i>
                                             <p>
-                                                Курсы
+                                                {{__("admin.courses")}}
                                             </p>
                                         </a>
                                     </li>
@@ -50,20 +50,20 @@
                                         <a href="{{route("admin-teacher-subscriber",$user->id)}}" class="">
                                             <i class="fa fa-users"></i>
                                             <p>
-                                                Подписчики
+                                                {{__("admin.user.students")}}
                                             </p>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{route("admin-teacher-material",$user->id)}}">
                                             <i class="fa fa-paperclip"></i>
-                                            <p>Материалы</p>
+                                            <p>{{__("admin.materials")}}</p>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{route("admin-teacher-result",$user->id)}}">
                                             <i class="fa fa-tasks "></i>
-                                            <p>Результаты</p>
+                                            <p>{{__("admin.result")}}</p>
                                         </a>
                                     </li>
                                 </ul>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->courses->count()}}</span></div>
-                                    <span>Курсов</span>
+                                    <span>{{__("admin.courses")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->author_subscribers->count()}}</span></div>
-                                    <span>Подписчики</span>
+                                    <span>{{__("admin.subscribers")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->materials->count()}}</span></div>
-                                    <span>Материалов</span>
+                                    <span>{{__("admin.materials")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->examinations->count()}}</span></div>
-                                    <span>Задач</span>
+                                    <span>{{__("admin.tasks")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -133,14 +133,14 @@
                     <section class="boxs boxs-simple">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-green">
-                                <strong>Информация</strong></h3>
+                                <strong>{{__("admin.info")}}</strong></h3>
                         </div>
                         <div class="boxs-body">
                             <ul class="media-list feeds_widget m-0">
                                 <li class="media">
                                     <div class="media-img"><i class="fa fa-user-circle"></i></div>
                                     <div class="media-body">
-                                        <div class="media-heading">Тьютор</div>
+                                        <div class="media-heading">{{__("admin.user.teacher")}}</div>
                                     </div>
                                 </li>
                                 <li class="media">
@@ -158,7 +158,7 @@
                                 <li class="media">
                                     <div class="media-img"><i class="{{$user->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
                                     <div class="media-body">
-                                        <div class="media-heading">{{$user->status == 1 ? "Активный" : "В заявке"}}</div>
+                                        <div class="media-heading">{{$user->status == 1 ? __("admin.active") : __("admin.request")}}</div>
                                     </div>
                                 </li>
 
@@ -171,7 +171,7 @@
                     <section class="boxs boxs-simple">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-green">
-                                <strong>О себе</strong></h3>
+                                <strong>{{__("admin.main.about")}}</strong></h3>
                         </div>
                         <div class="boxs-body p-10">
                             {!! $user->description !!}

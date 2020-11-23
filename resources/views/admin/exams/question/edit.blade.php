@@ -1,13 +1,13 @@
 @extends('admin.layout')
 @section('content')
-    <a href="" class="btn btn-raised btn-info">Назад</a>
+    <a href="{{route("admin-quiz.index")}}" class="btn btn-raised btn-info">{{__("admin.back")}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>ИЗМЕНИТЬ</strong> ВОПРОС</h3>
+                        <strong>{{__("admin.edit_question")}}</strong> </h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -23,7 +23,7 @@
                         @method("PUT")
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Тест</label>
+                            <label class="col-sm-3 control-label">{{__("admin.quiz")}}</label>
                             <div class="col-sm-9">
                                 <select name="quiz_id" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     <option value="{{$question->quiz_id}}">{{$question->quiz->title}}</option>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Вопрос</label>
+                            <label class="col-sm-3 control-label">{{__("admin.question")}}</label>
                             <div class="col-sm-9">
                                 <textarea name="question" id="editor">
                                     {!! $question->question !!}
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Ответ</label>
+                            <label class="col-sm-3 control-label">{{__("admin.answer")}}</label>
                             <div class="col-sm-9">
                                 <select name="answer" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     <option value="A">A</option>
@@ -93,7 +93,7 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Сохранить</button>
+                            <button type="submit" class="btn btn-raised btn-default">{{__("admin.save")}}</button>
                         </div>
                     </form>
                 </div>

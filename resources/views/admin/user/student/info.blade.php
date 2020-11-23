@@ -17,19 +17,19 @@
                                     <img class="h-100" src="{{$img = $user->img !=null ? $user->img :"/images/no-image.png" }}" alt="">
                                 </div>
                                 <h4 class="mb-0"><strong>{{$user->name}}</strong></h4>
-                                <span class="text-muted">Студент</span>
+                                <span class="text-muted">{{__("admin.user.student")}}</span>
                                 <div class="mt-10">
 
                                     <a href="{{route("user.edit",$user->id)}}" class="btn btn-warning btn-raised btn-round btn-sm">
                                         <i class="fa fa-pencil-square">  </i>
-                                        <small class="sm-none">Изменить</small>
+                                        <small class="sm-none">{{__("admin.change")}}</small>
                                     </a>
                                     <form action="{{route("user.destroy",$user->id)}}" method="post">
                                         @method("DELETE")
                                         @csrf
-                                        <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger btn-raised btn-round btn-sm">
+                                        <button onclick="return confirm('{{__("admin.question")}}')" type="submit" class="btn btn-danger btn-raised btn-round btn-sm">
                                             <i class="fa fa-bitbucket pr-2">  </i>
-                                            <small class="sm-none">Удалить</small>
+                                            <small class="sm-none">{{__("admin.delete")}}</small>
                                         </button>
                                     </form>
                                 </div>
@@ -43,7 +43,7 @@
                                         <a href="{{route("admin-student-course",$user->id)}}" class="">
                                             <i class="fa fa-video-camera"></i>
                                             <p>
-                                                Подписки
+                                                {{__("admin.courses")}}
                                             </p>
                                         </a>
                                     </li>
@@ -51,7 +51,7 @@
                                         <a href="{{route("admin-student-access-video",$user->id)}}" class="">
                                             <i class="icon-lock-open"></i>
                                             <p>
-                                                Открыть доступ
+                                                {{__("admin.access")}}
                                             </p>
                                         </a>
                                     </li>
@@ -59,7 +59,7 @@
                                     <li>
                                         <a href="{{route("admin-student-result",$user->id)}}">
                                             <i class="fa fa-tasks "></i>
-                                            <p>Результаты</p>
+                                            <p>{{__("admin.result")}}</p>
                                         </a>
                                     </li>
                                 </ul>
@@ -76,24 +76,11 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->subscribers->count()}}</span></div>
-                                    <span>Курсов</span>
+                                    <span>{{__("admin.courses")}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
-{{--                        <div class="boxs mini-social">--}}
-{{--                            <div class="boxs-body">--}}
-{{--                                <div class="s-icon text-greensea">--}}
-{{--                                    <i class="fa fa-user-circle-o"></i>--}}
-{{--                                </div>--}}
-{{--                                <div class="s-detail">--}}
-{{--                                    <div class="like"><span>{{$user->uservideo->count()}}</span></div>--}}
-{{--                                    <span>Видео</span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="boxs mini-social">
                             <div class="boxs-body">
@@ -102,7 +89,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->results_student->count()}}</span></div>
-                                    <span>Задач</span>
+                                    <span>{{__("admin.tasks")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -116,14 +103,14 @@
                     <section class="boxs boxs-simple">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-green">
-                                <strong>Информация</strong></h3>
+                                <strong>{{__("admin.info")}}</strong></h3>
                         </div>
                         <div class="boxs-body">
                             <ul class="media-list feeds_widget m-0">
                                 <li class="media">
                                     <div class="media-img"><i class="fa fa-user-circle"></i></div>
                                     <div class="media-body">
-                                        <div class="media-heading">Студент</div>
+                                        <div class="media-heading">{{__("admin.user.student")}}</div>
                                     </div>
                                 </li>
                                 <li class="media">
@@ -141,7 +128,7 @@
                                 <li class="media">
                                     <div class="media-img"><i class="{{$user->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
                                     <div class="media-body">
-                                        <div class="media-heading">{{$user->status == 1 ? "Активный" : "В заявке"}}</div>
+                                        <div class="media-heading">{{$user->status == 1 ? __("admin.active") : __("admin.request")}}</div>
                                     </div>
                                 </li>
 
@@ -154,7 +141,7 @@
                     <section class="boxs boxs-simple">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-green">
-                                <strong>О себе</strong></h3>
+                                <strong>{{__("admin.main.about")}}</strong></h3>
                         </div>
                         <div class="boxs-body p-10">
                             {!! $user->description !!}

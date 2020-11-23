@@ -111,7 +111,7 @@ class SubscriberController extends Controller
             return view("teacher.user.subscriber.show",compact("user"));
         }
         else{
-            dd(123);
+            return redirect()->back();
         }
     }
 

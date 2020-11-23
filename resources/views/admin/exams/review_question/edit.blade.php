@@ -6,7 +6,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>ИЗМЕНИТЬ</strong> ВОПРОС К ОПРОСУ</h3>
+                        <strong>{{__("admin.edit_review_questions")}}</strong></h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -22,7 +22,7 @@
                         @method("PUT")
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Опрос</label>
+                            <label class="col-sm-3 control-label">{{__("admin.review")}}</label>
                             <div class="col-sm-9">
                                 <select name="review_id" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     @foreach($reviews as $review)
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Вопрос</label>
+                            <label class="col-sm-3 control-label">{{__("admin.question")}}</label>
                             <div class="col-sm-9">
                                 <textarea name="question" id="editor">
                                     {!! $review_question->question !!}
@@ -47,8 +47,8 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-info">{{__('content.save')}}</button>
-                            <a href="{{route('admin-review-question.index')}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('admin.save')}}</button>
+                            <a href="{{route('admin-review-question.index')}}" class="btn btn-raised btn-primary">{{__('admin.back')}}</a>
                         </div>
                     </form>
                 </div>

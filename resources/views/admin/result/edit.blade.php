@@ -1,13 +1,13 @@
 @extends('admin.layout')
 @section('content')
-    <a href="" class="btn btn-raised btn-info">Назад</a>
+    <a href="/" class="btn btn-raised btn-info">{{__("admin.back")}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>Результаты</strong></h3>
+                        <strong>{{__("admin.results")}}</strong></h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -23,49 +23,49 @@
                         @csrf
                         @method("PUT")
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Наименование экзамена</label>
+                            <label class="col-sm-3 control-label">{{__("admin.exam")}}</label>
                             <div class="col-sm-9">
                                 <input disabled value="{{$result->examination->title}}" type="text" class="form-control" placeholder="Наименование файла" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Автор экзамена</label>
+                            <label class="col-sm-3 control-label">{{__("admin.author")}}</label>
                             <div class="col-sm-9">
                                 <input disabled value="{{$result->author->name}}" type="text" class="form-control" placeholder="Наименование файла" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Студент сдавший экзамен</label>
+                            <label class="col-sm-3 control-label">{{__("admin.user.student")}}</label>
                             <div class="col-sm-9">
                                 <input disabled value="{{$result->student->name}}" type="text" class="form-control" placeholder="Наименование файла" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Курс </label>
+                            <label class="col-sm-3 control-label">{{__("admin.course")}} </label>
                             <div class="col-sm-9">
-                                <input disabled value="{{$result->course->title}}" type="text" class="form-control" placeholder="Наименование файла" maxlength="255" data-parsley-trigger="change" required>
+                                <input disabled value="{{$result->course->title}}" type="text" class="form-control" placeholder="{{__("admin.course")}}" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Видео</label>
+                            <label class="col-sm-3 control-label">{{__("admin.video")}}</label>
                             <div class="col-sm-9">
-                                <input disabled value="{{$result->video->title}}" type="text" class="form-control" placeholder="Наименование файла" maxlength="255" data-parsley-trigger="change" required>
+                                <input disabled value="{{$result->video->title}}" type="text" class="form-control" placeholder="{{__("admin.video)}}" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Комментарии от студента</label>
+                            <label class="col-sm-3 control-label">{{__("admin.comments_student")}}</label>
                             <div class="col-sm-9">
                                 {!! $result->student_comments !!}
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Время сдачи</label>
+                            <label class="col-sm-3 control-label">{{__("admin.pass_time")}}</label>
                             <div class="col-sm-9">
                                 {{$result->passed_day}}
                             </div>
@@ -74,17 +74,17 @@
                         <section class="boxs">
                             <div class="boxs-header">
                                 <h3 class="custom-font">
-                                    <strong>Результаты </strong></h3>
+                                    <strong>{{__("admin.results")}} </strong></h3>
                             </div>
                             <div class="boxs-body p-0">
                                 <table class="table table-condensed table-bordered table-responsive">
                                     <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>Вопрос</th>
-                                        <th>Ответ</th>
-                                        <th>Верный ответ</th>
-                                        <th>Балл</th>
+                                        <th>{{__("admin.questions")}}</th>
+                                        <th>{{__("admin.answer")}}</th>
+                                        <th>{{__("admin.right_answer")}}</th>
+                                        <th>{{__("admin.rating")}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -110,7 +110,7 @@
                                         </tr>
                                     @endforeach
                                     <td colspan="4">
-                                        Итого:
+                                        {{__("admin.total")}}:
                                     </td>
                                     <td>
                                         {{$result->result}}
@@ -121,11 +121,11 @@
                         </section>
                         <div class="boxs-header">
                             <h3 class="custom-font hb-blush">
-                                <strong>Ваша оценка</strong></h3>
+                                <strong>{{__("admin.total")}}:</strong></h3>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Ваш комментарий </label>
+                            <label class="col-sm-3 control-label">{{__("admin.comments_teacher")}}: </label>
                             <div class="col-sm-9">
                                 <textarea name="teacher_comments" id="editor">
                                     {{$result->teacher_comments}}
@@ -134,17 +134,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Ваш комментарий </label>
+                            <label class="col-sm-3 control-label">{{__("admin.result")}} </label>
                             <div class="col-sm-9">
                                 <input name="result" value="{{$result->result}}" type="number" min="0" max="10" class="form-control" placeholder="Ваш рейтинг" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Курс</label>
+                            <label class="col-sm-3 control-label">{{__("admin.course")}}</label>
                             <div class="col-sm-9">
                                 <select name="status" class="form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
-                                    <option value="1">Успешно сдал!</option>
-                                    <option value="-1">Пересдача!</option>
+                                    <option value="1">{{__("admin.passed")}}</option>
+                                    <option value="-1">{{__("admin.repass")}}</option>
 
                                 </select>
                             </div>
@@ -152,7 +152,7 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-default">Проверено!</button>
+                            <button type="submit" class="btn btn-raised btn-default">{{__("admin.checked")}}</button>
                         </div>
                     </form>
                 </div>

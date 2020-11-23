@@ -6,8 +6,10 @@
         <div class="b-b mb-20">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Вопросы данного теста</h1>
-                    <small class="text-muted">Здесь вы можете добавить тестовые вопросы</small>
+                    <h1 class="h3 m-0">{{__("admin.review_questions")}}</h1>
+                    <small class="text-muted">
+                        {{__("admin.review_questions.description")}}
+                    </small>
                 </div>
             </div>
         </div>
@@ -19,7 +21,7 @@
                     <section class="boxs">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-cyan">
-                                <strong>Вопросы  {{$loop->iteration}}</strong></h3>
+                                <strong>{{__("admin.questions")}}  {{$loop->iteration}}</strong></h3>
                             <ul class="controls">
                                 <li class="dropdown">
                                     <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown" aria-expanded="true">
@@ -29,7 +31,7 @@
                                     <ul class="dropdown-menu ">
                                         <li>
                                             <a href="{{route("admin-review-question.edit",$review_question->id)}}">
-                                                <i class="fa fa-pencil"></i> Изменить
+                                                <i class="fa fa-pencil"></i> {{__("admin.change")}}
                                             </a>
                                         </li>
                                         <li>
@@ -37,7 +39,7 @@
                                                 @method("DELETE")
                                                 @csrf
                                                 <button onclick="return confirm('Вы уверены?')" role="button" tabindex="0" class="btn btn-a">
-                                                    <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                    <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                             </form>
                                         </li>
 
@@ -46,7 +48,7 @@
                             </ul>
                         </div>
                         <div class="boxs-body">
-                            <h5>Вопрос:</h5>
+                            <h5>{{__("admin.questions")}}:</h5>
                             <blockquote>
                                 {!! $review_question->question !!}
                             </blockquote>

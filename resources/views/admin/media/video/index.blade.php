@@ -29,34 +29,31 @@
 
                                             <li>
                                                 <a href="{{route("admin-video.show",$video->alias)}}" role="button" tabindex="0" >
-                                                    <i class="fa fa-eye"></i> Посмотреть </a>
+                                                    <i class="fa fa-eye"></i> {{__("admin.watch")}} </a>
                                             </li>
                                             <li>
                                                 <a href="{{route("admin-video-subscriber",$video->alias)}}" role="button" tabindex="0" >
-                                                    <i class="fa fa-group"></i> Слушатели </a>
+                                                    <i class="fa fa-group"></i> {{__("admin.subscribers")}} </a>
                                             </li>
                                             <li>
                                                 <a href="{{route("admin-video-checked",$video->alias)}}" role="button" tabindex="0" >
-                                                    <i class="fa fa-check-circle-o"></i> Провереннные задания </a>
+                                                    <i class="fa fa-check-circle-o"></i> {{__("admin.checked_result")}} </a>
                                             </li>
                                             <li>
                                                 <a href="{{route("admin-video-unchecked",$video->alias)}}" role="button" tabindex="0" >
-                                                    <i class="fa fa-warning"></i> Непровереннные задания </a>
+                                                    <i class="fa fa-warning"></i> {{__("admin.unchecked_result")}} </a>
                                             </li>
-{{--                                            <li>--}}
-{{--                                                <a href="" role="button" tabindex="0" >--}}
-{{--                                                    <i class="fa fa-question-circle"></i> Экзамен </a>--}}
-{{--                                            </li>--}}
+
                                             <li>
                                                 <a href="{{route("admin-video-material",$video->alias)}}" role="button" tabindex="0" >
-                                                    <i class="fa fa-bookmark-o"></i> Материалы </a>
+                                                    <i class="fa fa-bookmark-o"></i> {{__("admin.materials")}} </a>
                                             </li>
                                             <li>
                                                 <form  method="post" action="{{route('admin-video.destroy',$video->alias)}}">
                                                     @method("DELETE")
                                                     @csrf
-                                                    <button onclick="return confirm('Вы уверены, удаление видео приведет к удалению результатов!')" role="button" tabindex="0" class="btn btn-a">
-                                                        <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                    <button onclick="return confirm('{{__("admin.question")}}')" role="button" tabindex="0" class="btn btn-a">
+                                                        <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                                 </form>
                                             </li>
 
@@ -74,7 +71,7 @@
                 @endforeach
                 {{$videos->links()}}
             @else
-                <h3>Нет видео</h3>
+                <h3>{{__("admin.no_videos")}}</h3>
             @endif
         </div>
     </div>

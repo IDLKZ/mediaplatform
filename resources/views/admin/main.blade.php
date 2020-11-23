@@ -12,7 +12,7 @@
         <section class="boxs boxs-simple">
             <div class="boxs-header">
                 <h3 class="custom-font hb-green">
-                    <strong>Информация</strong></h3>
+                    <strong>{{__("admin.info")}}</strong></h3>
             </div>
             <div class="boxs-body">
                 <div class="panel panel-default">
@@ -20,7 +20,7 @@
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="{{"#information".\Illuminate\Support\Facades\Auth::user()->id}}" aria-expanded="true" aria-controls="collapseOne" class="">
                                 <i class="fa fa-bars"></i>
-                                Основная информация
+                                {{__("admin.main.info")}}
                             </a>
                         </h4>
                     </div>
@@ -29,7 +29,7 @@
                             <li class="media">
                                 <div class="media-img"><i class="fa fa-user-circle"></i></div>
                                 <div class="media-body">
-                                    <div class="media-heading">Тьютор</div>
+                                    <div class="media-heading">{{__("admin.user.admin")}}</div>
                                 </div>
                             </li>
                             <li class="media">
@@ -63,7 +63,7 @@
     <div class="col-md-8">
         <div class="boxs-header">
             <h3 class="custom-font hb-blue">
-                <strong>Немного о себе </strong></h3>
+                <strong>{{__("admin.main.about")}}</strong></h3>
 
         </div>
         <div class="boxs-body">

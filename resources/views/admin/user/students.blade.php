@@ -5,9 +5,9 @@
         <!-- bradcome -->
         <div class="b-b mb-20">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Список студентов</h1>
-                    <small class="text-muted">Список всех студентов</small>
+                <div class="col-sm-12 col-xs-12">
+                    <h1 class="h3 m-0">{{__("admin.user.all_students")}}</h1>
+                    <small class="text-muted">{{__("admin.user.student_description")}}</small>
                 </div>
             </div>
         </div>
@@ -30,13 +30,13 @@
                                     <div class="col-sm-6 col-xs-6 border-right">
                                         <div class="uw_description">
                                             <h5>{{$student->uservideo->count()}}</h5>
-                                            <span>Видео</span>
+                                            <span>{{__("admin.videos")}}</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-xs-6 border-right">
                                         <div class="uw_description">
                                             <h5>{{$student->subscribers->count()}}</h5>
-                                            <span>Подписок</span>
+                                            <span>{{__("admin.courses")}}</span>
                                         </div>
                                     </div>
 
@@ -44,7 +44,7 @@
                                 <section class="boxs boxs-simple">
                                     <div class="boxs-header">
                                         <h3 class="custom-font hb-green">
-                                            <strong>Информация</strong></h3>
+                                            <strong>{{__("admin.info")}}</strong></h3>
                                     </div>
                                     <div class="boxs-body">
                                         <div class="panel panel-default">
@@ -52,7 +52,7 @@
                                                 <h4 class="panel-title">
                                                     <a data-toggle="collapse" data-parent="#accordion" href="{{"#information".$student->id}}" aria-expanded="true" aria-controls="collapseOne" class="">
                                                         <i class="fa fa-bars"></i>
-                                                        Основная информация
+                                                        {{__("admin.main.info")}}
                                                     </a>
                                                 </h4>
                                             </div>
@@ -61,7 +61,7 @@
                                                     <li class="media">
                                                         <div class="media-img"><i class="fa fa-user-circle"></i></div>
                                                         <div class="media-body">
-                                                            <div class="media-heading">Тьютор</div>
+                                                            <div class="media-heading">{{__("admin.user.student")}}</div>
                                                         </div>
                                                     </li>
                                                     <li class="media">
@@ -79,7 +79,7 @@
                                                     <li class="media">
                                                         <div class="media-img"><i class="{{$student->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
                                                         <div class="media-body">
-                                                            <div class="media-heading">{{$student->status == 1 ? "Активный" : "В заявке"}}</div>
+                                                            <div class="media-heading">{{$student->status == 1 ? __("admin.active") : __("admin.request")}}</div>
                                                         </div>
                                                     </li>
 
@@ -95,7 +95,7 @@
                                     <div class="text-center">
                                         <a href="{{route("user.show",$student->id)}}" class="btn btn-raised btn-info">
                                             <i class="fa fa-eye"> </i>
-                                            <small class="sm-none">О студенте</small>
+                                            <small class="sm-none">{{__("admin.user.about_student")}}</small>
 
                                         </a>
                                     </div>
@@ -103,7 +103,7 @@
                                         <div class="uw_description">
                                             <a href="{{route("user.edit",$student->id)}}" class="btn btn-warning btn-raised btn-round">
                                                 <i class="fa fa-pencil-square">  </i>
-                                                <small class="sm-none">Изменить</small>
+                                                <small class="sm-none">{{__("admin.change")}}</small>
                                             </a>
                                         </div>
 
@@ -115,7 +115,7 @@
                                                 @csrf
                                                 <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger btn-raised btn-round">
                                                     <i class="fa fa-bitbucket pr-2">  </i>
-                                                    <small class="sm-none">Удалить</small>
+                                                    <small class="sm-none">{{__("admin.delete")}}</small>
                                                 </button>
                                             </form>
                                         </div>
@@ -128,7 +128,7 @@
                 @endforeach
                 {{$students->links()}}
             @else
-                <h2>Студенты не найдены</h2>
+                <h2>{{__("admin.no_student")}}</h2>
             @endif
 
         </div>

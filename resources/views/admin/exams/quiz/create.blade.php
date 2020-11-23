@@ -6,7 +6,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>НОВЫЙ</strong> ТЕСТ</h3>
+                        <strong>{{__("admin.new_quiz")}}</strong></h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -21,23 +21,23 @@
                     <form id="my-form" action="{{route("admin-quiz.store")}}" method="post"  class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__("content.course_author")}}</label>
+                            <label class="col-sm-3 control-label">{{__("admin.course_author")}}</label>
                             <div class="col-sm-9">
                                 <select class="course_author form-control" name="author_id"  data-parsley-trigger="change" required="" style="width: 100%!important;"></select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Наименование теста</label>
+                            <label class="col-sm-3 control-label">{{__("admin.quiz_title")}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="Наименование теста" maxlength="255" data-parsley-trigger="change" required>
+                                <input name="title" type="text" class="form-control" placeholder="{{__("admin.quiz_title")}}" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-info">{{__('content.save')}}</button>
-                            <a href="{{route('admin-quiz.index')}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('admin.save')}}</button>
+                            <a href="{{route('admin-quiz.index')}}" class="btn btn-raised btn-primary">{{__('admin.back')}}</a>
                         </div>
                     </form>
                 </div>

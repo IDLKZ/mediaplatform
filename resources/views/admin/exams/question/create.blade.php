@@ -6,7 +6,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>НОВЫЙ</strong> ВОПРОС</h3>
+                        <strong>{{__("admin.new_question")}}</strong></h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -22,7 +22,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Тест</label>
+                            <label class="col-sm-3 control-label">{{__("admin.quiz")}}</label>
                             <div class="col-sm-9">
                                 <select name="quiz_id" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     @foreach($quizzes as $quiz)
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Вопрос</label>
+                            <label class="col-sm-3 control-label">{{__("admin.question")}}</label>
                             <div class="col-sm-9">
                                 <textarea name="question" id="editor"></textarea>
                             </div>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Ответ</label>
+                            <label class="col-sm-3 control-label">{{__("admin.answer")}}</label>
                             <div class="col-sm-9">
                                 <select name="answer" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     <option value="A">A</option>
@@ -86,8 +86,8 @@
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-info">Сохранить</button>
-                            <a href="{{route('admin-question.index')}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
+                            <button type="submit" class="btn btn-raised btn-info">{{__("admin.save")}}</button>
+                            <a href="{{route('admin-question.index')}}" class="btn btn-raised btn-primary">{{__('admin.back')}}</a>
                         </div>
                     </form>
                 </div>

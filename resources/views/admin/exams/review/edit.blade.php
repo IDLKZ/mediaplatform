@@ -6,7 +6,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>НОВЫЙ</strong> ОПРОС</h3>
+                        <strong>{{__("admin.edit_review")}}</strong></h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -22,7 +22,7 @@
                         @method("PUT")
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__("content.course_author")}}</label>
+                            <label class="col-sm-3 control-label">{{__("admin.course_author")}}</label>
                             <div class="col-sm-9">
                                 <select class="course_author form-control" name="author_id"  data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     <option value="{{$review->author_id}}" selected>{{$review->author->name}}</option>
@@ -30,17 +30,17 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Наименование опроса</label>
+                            <label class="col-sm-3 control-label">{{__("admin.review_title")}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="Наименование теста" maxlength="255" data-parsley-trigger="change" required value="{{$review->title}}">
+                                <input name="title" type="text" class="form-control" placeholder="{{__("admin.review_title")}}" maxlength="255" data-parsley-trigger="change" required value="{{$review->title}}">
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
 
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-info">{{__('content.change')}}</button>
-                            <a href="{{route('admin-review.index')}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('admin.change')}}</button>
+                            <a href="{{route('admin-review.index')}}" class="btn btn-raised btn-primary">{{__('admin.back')}}</a>
                         </div>
                     </form>
                 </div>

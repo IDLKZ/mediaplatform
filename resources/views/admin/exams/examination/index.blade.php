@@ -6,8 +6,8 @@
         <div class="b-b mb-20">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Экзамены</h1>
-                    <small class="text-muted">Здесь вы можете добавить экзамены, тесты и опросы</small>
+                    <h1 class="h3 m-0">{{__("admin.exams")}}</h1>
+                    <small class="text-muted">{{__("admin.exam_descriptions")}}</small>
                 </div>
             </div>
         </div>
@@ -24,17 +24,17 @@
                     <div class="uw_image"> <img class="img-circle" src="{{$examination->course->img}}" alt="User Avatar"></div>
                     <div class="uw_footer ">
                         <div class="text-center">
-                                    <p>Автор: {{$examination->author->name}}</p><br>
-                                   <p>Видео: {{$examination->video->title}}</p>
+                                    <p>{{__("admin.author")}}: {{$examination->author->name}}</p><br>
+                                   <p>{{__("admin.video")}}: {{$examination->video->title}}</p>
                             @if ($examination->quiz_id)
-                                <p class="mt-20">Тест: {{$examination->quiz->title}}</p>
+                                <p class="mt-20">{{__("admin.quiz")}}: {{$examination->quiz->title}}</p>
                             @endif
                             @if ($examination->review_id)
-                                <p class="mt-20">Тест: {{$examination->review->title}}</p>
+                                <p class="mt-20">{{__("admin.review")}}: {{$examination->review->title}}</p>
                             @endif
                         </div>
                         <div class="boxs-header">
-                            <h3 class="custom-font hb-cyan">Информация</h3>
+                            <h3 class="custom-font hb-cyan">{{__("admin.info")}}</h3>
                                 {!! $examination->description !!}
 
                         </div>
@@ -47,15 +47,15 @@
                                     <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
 
                                         <li>
-                                            <a href="" role="button" tabindex="0" >
-                                                <i class="fa fa-pencil"></i> Изменить </a>
+                                            <a href="{{route('admin-examination.edit',$examination->id)}}" role="button" tabindex="0" >
+                                                <i class="fa fa-pencil"></i> {{__("admin.change")}} </a>
                                         </li>
                                         <li>
                                             <form  method="post" action="{{route('admin-examination.destroy',$examination->id)}}">
                                                 @method("DELETE")
                                                 @csrf
                                                 <button onclick="return confirm('Вы уверены?')" role="button" tabindex="0" class="btn btn-a">
-                                                    <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                    <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                             </form>
                                         </li>
 

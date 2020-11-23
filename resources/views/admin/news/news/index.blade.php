@@ -26,19 +26,19 @@
                                             <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
                                                 <li>
                                                     <a href="{{route("admin-news.show",$item->alias)}}" role="button" tabindex="0" >
-                                                        <i class="fa fa-eye"></i> Смотреть </a>
+                                                        <i class="fa fa-eye"></i> {{__("admin.watch")}} </a>
                                                 </li>
                                                 <li>
                                                     <a href="{{route("admin-news.edit",$item->alias)}}" role="button" tabindex="0" >
-                                                        <i class="fa fa-pencil"></i> Изменить </a>
+                                                        <i class="fa fa-pencil"></i> {{__("admin.change")}} </a>
                                                 </li>
 
                                                 <li>
                                                     <form  method="post" action="{{route('admin-news.destroy',$item->alias)}}">
                                                         @method("DELETE")
                                                         @csrf
-                                                        <button onclick="return confirm('Вы уверены, удаление видео приведет к удалению результатов!')" role="button" tabindex="0" class="btn btn-a">
-                                                            <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                        <button onclick="return confirm({{__("admin.question")}})" role="button" tabindex="0" class="btn btn-a">
+                                                            <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                                     </form>
                                                 </li>
 
