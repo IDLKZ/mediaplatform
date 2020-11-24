@@ -20,7 +20,7 @@
                                 </a>
                             </div>
                         </div>
-                        <h3 class="mt-0">Falcon</h3>
+                        <h3 class="mt-0">JasQalam</h3>
                         <p class="help-block">Вводите свои данные:</p>
                         <div class="content">
                             <div class="form-group">
@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center mt-20">
-                    <a href="login.html" class="text-uppercase text-white">На главную</a>
+                    <a href="{{route('front')}}" class="text-uppercase text-white">На главную</a>
                 </div>
             </div>
         </div>
