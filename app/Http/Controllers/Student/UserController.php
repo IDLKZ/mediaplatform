@@ -154,7 +154,7 @@ class UserController extends Controller
         }
         else{
             Toastr::warning('У вас еще нет подтвержденных курсов!','Упс...!');
-            return redirect()->back();
+            return redirect(route('listCourses'));
         }
     }
 

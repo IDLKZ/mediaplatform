@@ -53,7 +53,7 @@ return [
 
     'description_video' => 'Описание и объяснение видео',
     'material_video' => 'Материалы для видео',
-
+    'you_are_passed' => 'Вы уже прошли!',
     'prev' => 'Пред',
     'next' => 'След',
     'pass_end' => 'Завершить',

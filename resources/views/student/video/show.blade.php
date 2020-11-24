@@ -79,9 +79,9 @@
                                     <a href="{{route("student.course.show", $video->course->alias)}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
                                     @csrf
                                     @if ($result)
-                                        <a href="javascript:void (0)" class="btn btn-raised btn-warning">Вы уже прошли!</a>
+                                        <a href="javascript:void (0)" class="btn btn-raised btn-warning">{{__('student.you_are_passed')}}</a>
                                     @else
-                                        <a href="{{route("student.passExam",$video->alias)}}" class="btn btn-raised btn-success">Завершить!</a>
+                                        <a href="{{route("student.passExam",$video->alias)}}" class="btn btn-raised btn-success">{{__('student.pass_end')}}</a>
                                     @endif
                                 </div>
                             </section>
