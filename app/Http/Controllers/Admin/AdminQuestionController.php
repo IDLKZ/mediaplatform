@@ -69,7 +69,7 @@ class AdminQuestionController extends Controller
         ]);
         if(Question::saveData($request->all())){
             Toastr::success("Успешно создан вопрос","Отлично!");
-            return redirect(route("question.create"));
+            return redirect(route("admin-question.create"));
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
