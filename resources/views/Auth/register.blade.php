@@ -20,7 +20,7 @@
                                 </a>
                             </div>
                         </div>
-                        <h3 class="mt-0">Falcon</h3>
+                        <h3 class="mt-0">Jas Qalam</h3>
                         <p class="help-block">Вводите свои данные:</p>
                         <div class="content">
                             <div class="form-group">
