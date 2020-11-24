@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Brian2694\Toastr\Toastr;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Result extends Model
 {
@@ -54,6 +56,27 @@ class Result extends Model
 
     public static function saveResult($data){
         $result = new self();
+        $data["checked"] = 0;
+        $data["status"] = 0;
+        $result->fill($data);
+        return $result->save();
+    }
+
+    public static function saveQuizResult($data){
+        $result = new self();
+        $subscriber = Subscriber::where(["user_id"=>Auth::id(),"course_id"=>$data["course_id"]])->first();
+        if($subscriber){
+            $video = Video::find($data["video_id"]);
+            $accessvideo = Video::where(["count"=>$video->count + 1,"course_id"=>$data["course_id"]])->first();
+            if($accessvideo){
+                $uservideo = UserVideo::where(["subscribe_id"=>$subscriber->id,"student_id"=>Auth::id(),"video_id"=>$accessvideo->id])->first();
+                if(!$uservideo){
+                    UserVideo::create(["subscribe_id"=>$subscriber->id,"student_id"=>Auth::id(),"video_id"=>$accessvideo->id]);
+                }
+            }
+        }
+        $data["checked"] = 1;
+        $data["status"] = 1;
         $result->fill($data);
         return $result->save();
     }

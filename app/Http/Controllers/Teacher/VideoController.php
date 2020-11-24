@@ -41,8 +41,8 @@ class VideoController extends Controller
     {
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
+            "course_id"=>"required",
             'video_url'=> 'required',
-            "count"=>"required|integer|max:255",
             "description"=>"required",
         ]);
         $route = route('video.index');
@@ -60,19 +60,10 @@ class VideoController extends Controller
     {
         $this->validate($request, [
             'title'=> 'required|max:255',
+            "course_id"=>"required",
             'video_url'=> 'required',
-            "count"=>"required|integer|max:255",
             "description"=>"required",
         ]);
-
-//        $client = Vimeo::connection('main');
-//        $file_name = $request->file('video_url');
-//        $uri = $client->upload($file_name, [
-//            "name" => $request->get('title').'-'.Str::random(7),
-//            "description" => $request->get('description')
-//        ]);
-//        $response = $client->request($uri . '?fields=link');
-
         Video::saveData($request);
         Toastr::success('Видео успешно создано!', 'Ураа ...!');
         return redirect(route('video.index'));
@@ -110,8 +101,8 @@ class VideoController extends Controller
         if($video){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
-                'video_url'=> 'sometimes|mime:mp4,mov,ogg,qt|max:500000',
-                "count"=>"required|integer",
+                'video_url'=> 'required',
+                "course_id"=>"required",
                 "description"=>"required",
             ]);
             $courses = Course::where(["author_id"=>Auth::user()->id])->get();
@@ -140,8 +131,8 @@ class VideoController extends Controller
         if($video){
             $this->validate($request, [
                 'title'=> 'required|max:255',
-                'video_url'=> 'sometimes|mimes:mp4,mov,ogg,qt|max:500000',
-                "count"=>"required|integer",
+                'video_url'=> 'required',
+                "course_id"=>"required",
                 "description"=>"required",
             ]);
             if(Video::updateData($request,$video)){
@@ -171,11 +162,9 @@ class VideoController extends Controller
     {
         $video = Video::where(["alias"=>$alias])->first();
         if($video){
-//            $client = Vimeo::connection('main');
-//            $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
-//            $uri = "/videos/$TIMA";
-//            $client->request($uri, [], 'DELETE');
+            $course_id = $video->course_id;
             $video->delete();
+            Video::recountNumber($course_id);
             Toastr::success('Видео было успешно удалено','Успешно удалено видео!');
             return redirect()->back();
         }

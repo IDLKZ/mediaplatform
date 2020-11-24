@@ -10,8 +10,17 @@
                         <strong>{{__('admin.new_video')}}</strong></h3>
                 </div>
                 <div class="boxs-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 <span id="route" style="display: none">{{$route}}</span>
-                    <form id="my-form" action="{{route("admin-video.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal uploadAjax" name="form4" role="form" id="form4" data-parsley-validate>
+                    <form id="my-form" action="{{route("admin-video.store")}}" method="post" enctype="multipart/form-data" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
                         <div class="form-group">
                             <label class="col-sm-3 control-label">{{__('admin.course')}}</label>
@@ -38,12 +47,7 @@
                         </div>
 
                         <hr class="line-dashed full-witdh-line" />
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('admin.video_count')}}</label>
-                            <div class="col-sm-9">
-                                <input name="count" type="text" min="1" class="form-control" placeholder="№ Видео" maxlength="500" data-parsley-trigger="change" required>
-                            </div>
-                        </div>
+
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">{{__('admin.video_url')}}</label>
@@ -53,7 +57,7 @@
                         </div>
                         <hr class="line-dashed full-witdh-line" />
 
-admin
+
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
 

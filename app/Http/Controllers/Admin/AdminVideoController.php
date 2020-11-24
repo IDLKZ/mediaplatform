@@ -44,8 +44,8 @@ class AdminVideoController extends Controller
     {
         $validator = JsValidator::make( [
             'title'=> 'required|max:255',
-            'video_url'=> 'required|mime:mp4,mov,ogg,qt|max:500000',
-            "count"=>"required|integer|max:255",
+            "course_id"=>"required",
+            'video_url'=> 'required',
             "description"=>"required",
         ]);
         $route = route('video.index');
@@ -63,8 +63,8 @@ class AdminVideoController extends Controller
     {
         $this->validate($request, [
             'title'=> 'required|max:255',
-            'video_url'=> 'required|mimes:mp4,mov,ogg,qt|max:50000000',
-            "count"=>"required|integer|max:255",
+            "course_id"=>"required",
+            'video_url'=> 'required',
             "description"=>"required",
         ]);
 
@@ -113,8 +113,8 @@ class AdminVideoController extends Controller
         if($video){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
-                'video_url'=> 'sometimes|mime:mp4,mov,ogg,qt|max:500000',
-                "count"=>"required|integer",
+                "course_id"=>"required",
+                'video_url'=> 'required',
                 "description"=>"required",
             ]);
             $courses = Course::all();
@@ -139,8 +139,8 @@ class AdminVideoController extends Controller
         if($video){
             $this->validate($request, [
                 'title'=> 'required|max:255',
-                'video_url'=> 'sometimes|mimes:mp4,mov,ogg,qt|max:500000',
-                "count"=>"required|integer",
+                "course_id"=>"required",
+                'video_url'=> 'required',
                 "description"=>"required",
             ]);
             if(Video::updateData($request,$video)){
@@ -172,7 +172,10 @@ class AdminVideoController extends Controller
 //            $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
 //            $uri = "/videos/$TIMA";
 //            $client->request($uri, [], 'DELETE');
+            $course_id = $video->course_id;
             $video->delete();
+            Video::recountNumber($course_id);
+
             Toastr::success('Видео было успешно удалено','Успешно удалено видео!');
             return redirect()->back();
         }

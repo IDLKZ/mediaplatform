@@ -177,9 +177,6 @@ class CourseController extends Controller
 
         if($course){
            Storage::delete($course->img);
-            if ($course->videos) {
-                Video::deleteVideo($course);
-            }
            $course->delete();
             Toastr::success('Курс был успешно удален','Успешно удален курс!');
             return redirect()->back();

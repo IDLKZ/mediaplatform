@@ -55,18 +55,43 @@ class UserController extends Controller
 
     public function subscribe($alias)
     {
-        $course = Course::where('alias', $alias)->first();
-        if (Subscriber::where(['course_id' => $course->id, 'user_id' => Auth::id()])->first()) {
-            Toastr::warning('Вы уже отправили подписку на этот курс!','Sorry...!');
-            return redirect()->back();
+        $course = Course::with("videos")->where('alias', $alias)->first();
+        if($course){
+            if (Subscriber::where(['course_id' => $course->id, 'user_id' => Auth::id()])->first()) {
+                Toastr::warning('Вы уже отправили подписку на этот курс!','Sorry...!');
+                return redirect()->back();
+            }
+            else{
+                if($course->videos->count() > 0 ){
+                  $id = Subscriber::create([
+                        'course_id' => $course->id,
+                        'author_id' => $course->author_id,
+                        'user_id' => Auth::id(),
+                        'status' => true
+                    ])->id;
+                  $video = $course->videos->where("count",1)->first();
+                  if($video){
+                      UserVideo::create(
+                          [
+                              "subscribe_id"=>$id,
+                              "video_id"=>$video->id,
+                              "student_id"=>Auth::id()
+
+                          ]
+                      );
+                  }
+
+
+                    Toastr::success('Вы успешно подписаны!','Успешно!');
+                }
+                else{
+                    Toastr::warning('Дождитесь когда автор добавит видео к курсу!','Упс!');
+                }
+
+            }
         }
-        Subscriber::create([
-            'course_id' => $course->id,
-            'author_id' => $course->author_id,
-            'user_id' => Auth::id(),
-            'status' => true
-        ]);
-        Toastr::success('Вы успешно подписаны!','Успешно!');
+
+
         return redirect()->back();
     }
 
@@ -211,16 +236,33 @@ class UserController extends Controller
                 "answer"=>"required", "right"=>"required", "question"=>"required"
             ]
         );
+            $data = Result::prepareData($request->all());
+            if($data['result']>8){
+                if(Result::saveQuizResult($data)){
+                    Toastr::success("Вы успешно сдали тест, следующее видео успешно открыто","Отлично!");
+                    $course = Course::find($request->get("course_id"));
+                    return redirect(route("student.course.show",$course->alias));
+                }
+                else{
+                    Toastr::warning("Упс, что-то пошло не так","Упс....");
+                    return redirect(route("userProfile"));
+                }
+            }
+            else{
+                $video = Video::find($request->get("video_id"));
+                Toastr::warning("Вы набрали меньше 80% верных ответов, попробуйте сдать еще раз","Пересдача!");
+                if($video){
+                    return  redirect(route("student.video.show",$video->alias));
+                }
+                else{
+                    return  redirect("/");
+                }
 
-        $data = Result::prepareData($request->all());
-        if(Result::saveResult($data)){
-            Toastr::success("Ваш результат отправлен на проверку учителя","Отлично!");
-            return redirect(route("userProfile"));
-        }
-        else{
-            Toastr::warning("Упс, что-то пошло не так","Упс....");
-            return redirect(route("userProfile"));
-        }
+
+            }
+
+
+
 
     }
 

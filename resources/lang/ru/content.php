@@ -12,6 +12,28 @@ return [
     'deny'=>'Отказать',
     'detail'=>"Детали",
 
+    //Left SideBar (Левое меню)
+    "sidebar.index"=>"Главная",
+    "sidebar.users"=>"Подписчики",
+    "sidebar.tasks"=>"Задачи",
+    "sidebar.media"=>"Медиа",
+    "sidebar.news"=>"Новости",
+    "sidebar.examination"=>"Экзамены",
+    "sidebar.request"=>"Запросы",
+    "sidebar.search"=>"Поиск",
+    "sidebar.forum"=>"Форум",
+    "sidebar.logout"=>"Выход",
+
+    //Header`s Add Button - Добавить новые материалы
+    "header.new_course"=>"Новый Курс",
+    "header.new_video"=>"Новое Видео",
+    "header.new_user"=>"Новый пользователь",
+    "header.new_material"=>"Новый Материал",
+    "header.new_examination"=>"Новый Экзамен",
+    "header.new_news"=>"Новая новость",
+    "header.new_question"=>"Новый вопрос к тесту",
+    "header.new_reviewquestion"=>"Новый вопрос к опросу",
+
     //course
     "course"=>"Курс",
     'new_course'=>"Новый видеокурс",
