@@ -26,6 +26,7 @@ return [
     'page_of_course' => 'Курстың парақшасына өту',
     'get_certificate' => 'Сертификатты алу',
     'main_lang' => 'Негізгі тіл',
+    'all_courses' => 'Барлық курстар',
     //courses
 
     //exam
@@ -47,5 +48,16 @@ return [
     'question' => 'Сұрақ',
     'answer' => 'Жауап',
     'answer_r' => 'Дұрыс жауап',
+    'subscribe' => 'Жазылу',
+    'subscribed' => 'Жазылған',
+
+    'description_video' => 'Видеоның анықтамасы',
+    'material_video' => 'Видео материалдары',
+
+    'prev' => 'Алдыңғы',
+    'next' => 'Келесі',
+    'pass_end' => 'Аяқтау',
     //exam
+
+
 ];

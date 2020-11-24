@@ -16,19 +16,13 @@
                         </div>
 
                         <div class="row mt-3 mb-3">
-                            <div class="col-sm-4 col-xs-6 border-right">
-                                <div class="uw_description">
-                                    <h5>3,568</h5>
-                                    <span>Завершившие</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 col-xs-6 border-right">
+                            <div class="col-sm-6 col-xs-6 border-right">
                                 <div class="uw_description">
                                     <h5>{{$course->subscribers->count()}}</h5>
                                     <span>Подписчиков</span>
                                 </div>
                             </div>
-                            <div class="col-sm-4 col-xs-12">
+                            <div class="col-sm-6 col-xs-6">
                                 <div class="uw_description">
                                     <h5>{{$course->videos->count()}}</h5>
                                     <span>Уроков</span>

@@ -39,6 +39,12 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function listCourses()
+    {
+        $courses = Course::paginate(10);
+        return view('student.course.list-courses', compact('courses'));
+    }
+
     public function settings()
     {
 
@@ -116,11 +122,11 @@ class UserController extends Controller
         if ($subscribe) {
             $link['link'] = $subscribe->status ? 'javascript:void(0)' : route('sendSubscribe', $course->alias);
             $link['color'] = $subscribe->status ? 'success' : 'info';
-            $link['text'] = $subscribe->status ? 'Подписан' : 'Подписаться';
+            $link['text'] = $subscribe->status ? __('student.subscribed') : __('student.subscribe');
         } else {
             $link['link'] = route('sendSubscribe', $course->alias);
             $link['color'] = 'info';
-            $link['text'] = 'Подписаться';
+            $link['text'] = __('student.subscribe');
         }
         return view('student.course.single-course', compact('course', 'link'));
     }
@@ -201,14 +207,28 @@ class UserController extends Controller
     }
 
     public function passExam($alias){
+        $_SESSION['route'] = $alias;
         $video = Video::where("alias",$alias)->first();
         $result = Result::where(["video_id"=>$video->id,"student_id"=>Auth::id()])->first();
        if($video && !$result){
           if($video->examination){
               if($video->examination->quiz_id){
                   $data = Examination::getQuestions($video->examination->quiz_id,10);
-                  return view("student.examination.quiz",compact("data","video"));
 
+                  $quiz['user'] = Auth::user()->name;
+                  foreach ($data as $k => $datum) {
+                      $quiz['questions'][$k]['text'] = $datum['question'];
+                      foreach ($datum['questions'] as $question) {
+                          if ($question == $datum['answer']) {
+                              $quiz['questions'][$k]['responses'][0]['text'] = $question;
+                              $quiz['questions'][$k]['responses'][0]['correct'] = true;
+                          }
+                          $quiz['questions'][$k]['responses'][]['text'] = $question;
+                      }
+                  }
+                  $quiz = json_encode($quiz);
+                  $_SESSION['quiz'] = $quiz;
+                  return view("student.examination.quiz",compact("data","video"));
               }
               if($video->examination->review_id){
                   $data = ReviewQuestion::where("review_id",$video->examination->review_id)->get();

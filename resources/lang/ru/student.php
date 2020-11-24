@@ -26,6 +26,7 @@ return [
     'page_of_course' => 'Страница курса',
     'get_certificate' => 'Получить сертификат',
     'main_lang' => 'Основной язык',
+    'all_courses' => 'Все курсы',
     //courses
 
     //exam
@@ -47,6 +48,14 @@ return [
     'question' => 'Вопрос',
     'answer' => 'Ответ',
     'answer_r' => 'Верный ответ',
+    'subscribe' => 'Подписаться',
+    'subscribed' => 'Подписан',
 
+    'description_video' => 'Описание и объяснение видео',
+    'material_video' => 'Материалы для видео',
+
+    'prev' => 'Пред',
+    'next' => 'След',
+    'pass_end' => 'Завершить',
     //exam
 ];
