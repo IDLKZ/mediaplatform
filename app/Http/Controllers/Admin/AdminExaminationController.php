@@ -20,12 +20,9 @@ class AdminExaminationController extends Controller
     public function index()
     {
         $examinations = Examination::with(["course","video","quiz","review","author"])->paginate(12);
-        if ($examinations->isNotEmpty()) {
             return view("admin.exams.examination.index",compact("examinations"));
-        }
-        else{
 
-        }
+
 
 
     }

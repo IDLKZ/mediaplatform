@@ -81,6 +81,8 @@ return [
     "header.new_user"=>"Новый пользователь",
     "header.new_material"=>"Новый Материал",
     "header.new_examination"=>"Новый Экзамен",
+    "header.new_question"=>"Новый вопрос к тесту",
+    "header.new_reviewquestion"=>"Новый вопрос к опросу",
     "header.new_news"=>"Новая новость",
 
     //Header Profile - Профиль админа

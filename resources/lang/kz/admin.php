@@ -82,6 +82,8 @@ return [
     "header.new_material"=>"Жаңа Материал",
     "header.new_examination"=>"Жаңа Емтихан",
     "header.new_news"=>"Жаңа Жаңалық",
+    "header.new_question"=>"Тестке Жаңа сұрақ",
+    "header.new_reviewquestion"=>"Сауалнамаға жаңа сұрақ",
 
     //Header Profile - Профиль админа
     "profile.my_profile"=>"Менің профилім",

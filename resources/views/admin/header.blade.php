@@ -92,6 +92,26 @@
                             </a>
                         </li>
                         <li class="list-group-item">
+                            <a href="{{route("admin-question.create")}}" role="button" class="media">
+                                        <span class="pull-left media-object">
+                                            <i class="fa fa-question-circle-o"></i>
+                                        </span>
+                                <div class="media-body">
+                                    <span class="block">{{__("admin.header.new_question")}}</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route("admin-review-question.create")}}" role="button" class="media">
+                                        <span class="pull-left media-object">
+                                            <i class="fa fa-question-circle-o"></i>
+                                        </span>
+                                <div class="media-body">
+                                    <span class="block">{{__("admin.header.new_reviewquestion")}}</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="{{route("admin-news.create")}}" role="button" class="media">
                                         <span class="pull-left media-object">
                                             <i class="fa fa-newspaper-o"></i>
