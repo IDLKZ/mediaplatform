@@ -81,7 +81,7 @@ class UserController extends Controller
         // Courses
         Breadcrumbs::for('courses', function ($trail) {
             $trail->parent('user');
-            $trail->push('Мои курсы', route('student.course'));
+            $trail->push(__('student.my_courses'), route('student.course'));
         });
         // Home > Courses > [Course]
         Breadcrumbs::for('showCourse', function ($trail, $course) {
@@ -255,7 +255,7 @@ class UserController extends Controller
         $result = Auth::user()->results_student()->find($id);
         // Courses
         Breadcrumbs::for('exam', function ($trail) {
-            $trail->push('Экзамены и тесты', route('student.checkedResult'));
+            $trail->push(__('front.exam'), route('student.checkedResult'));
         });
         // Home > Courses > [Course]
         Breadcrumbs::for('showResult', function ($trail, $course) {

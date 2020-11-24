@@ -32,13 +32,13 @@
                         <img src="{{$result->course->img}}" alt="">
                     </div>
                     <ul class="social-media">
-                        <li><a href="{{route('student.showResult', $result->id)}}"><i class="fa fa-info"></i>Детали</a></li>
+                        <li><a href="{{route('student.showResult', $result->id)}}"><i class="fa fa-info"></i>{{__('student.details')}}</a></li>
                     </ul>
                     <div class="user-info">
                         <h3>{{$result->video->title}}</h3>
-                        <span>Автор курса: {{$result->author->name}}</span><br>
-                        <span>Дата сдачи: {{$result->passed_day}}</span><br>
-                        <span class="text-{{$result->checked ? 'success' : 'warning'}}">Статус: {{$result->checked ? 'Проверено' : 'Не проверено'}}</span>
+                        <span>{{__('student.author_name')}}: {{$result->author->name}}</span><br>
+                        <span>{{__('student.date_exam')}}: {{$result->passed_day}}</span><br>
+                        <span class="text-{{$result->checked ? 'success' : 'warning'}}">Статус: {{$result->checked ? __('student.status_success') : __('student.status_warning')}}</span>
                     </div>
                 </div>
             </div>
