@@ -27,4 +27,26 @@ return [
     'get_certificate' => 'Получить сертификат',
     'main_lang' => 'Основной язык',
     //courses
+
+    //exam
+    'details' => 'Детали',
+    'author_name' => 'Автор курса',
+    'date_exam' => 'Дата сдачи',
+    'status_success' => 'Проверено',
+    'status_warning' => 'Не проверено',
+
+    'results' => 'Результаты',
+    'name_exam' => 'Наименование экзамена',
+    'author_exam' => 'Автор экзамена',
+    'comment_user' => 'Комментарии от студента',
+    'comment_author' => 'Комментарий учителя',
+    'time_exam' => 'Время сдачи',
+    'time_check' => 'Время проверки',
+    'appraisal' => 'Оценка',
+    'outcome' => 'Итог',
+    'question' => 'Вопрос',
+    'answer' => 'Ответ',
+    'answer_r' => 'Верный ответ',
+
+    //exam
 ];

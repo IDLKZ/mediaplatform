@@ -27,4 +27,25 @@ return [
     'get_certificate' => 'Сертификатты алу',
     'main_lang' => 'Негізгі тіл',
     //courses
+
+    //exam
+    'details' => 'Толығырақ',
+    'author_name' => 'Курс авторы',
+    'date_exam' => 'Тапсырған күні',
+    'status_success' => 'Тексерілді',
+    'status_warning' => 'Тексерілмеді',
+
+    'results' => 'Нәтижелер',
+    'name_exam' => 'Емтихан атауы',
+    'author_exam' => 'Емтихан авторы',
+    'comment_user' => 'Студенттің комменті',
+    'comment_author' => 'Мұғалімнің комменті',
+    'time_exam' => 'Тапсырған уақыты',
+    'time_check' => 'Тексерген уақыты',
+    'appraisal' => 'Бағасы',
+    'outcome' => 'Жалпы',
+    'question' => 'Сұрақ',
+    'answer' => 'Жауап',
+    'answer_r' => 'Дұрыс жауап',
+    //exam
 ];
