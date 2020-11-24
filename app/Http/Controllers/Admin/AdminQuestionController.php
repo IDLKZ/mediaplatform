@@ -73,7 +73,7 @@ class AdminQuestionController extends Controller
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
-            return redirect(route("question.index"));
+            return redirect(route("admin-question.create"));
         }
     }
 
