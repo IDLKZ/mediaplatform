@@ -323,6 +323,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
             Route::post('/update-profile-settings', [UserController::class, 'updateSetting'])->name('userProfileSettingsUpdate');
             //End Profile
             //Course
+            Route::get('/list-courses', [UserController::class, 'listCourses'])->name('listCourses');
             Route::get("/my-course",[UserController::class,"myCourse"])->name("student.course");
             Route::get("/show-course/{alias}",[UserController::class,"showCourse"])->name("student.course.show");
             Route::get("/show-video/{alias}",[UserController::class,"showVideo"])->name("student.video.show");

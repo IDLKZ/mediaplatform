@@ -12,32 +12,32 @@
             </div>
         </div>
 
-        <div class="bottom-block">
-            <div class="inner-bottom-block">
+{{--        <div class="bottom-block">--}}
+{{--            <div class="inner-bottom-block">--}}
 
-                <a href="{{route('frontAbout')}}">
-                    <span class="material-icons">groups</span>
-                    {{__('front.about')}}
-                </a> </div>
-            <div class="inner-bottom-block"><a href="#">
-                    <a href="{{route('frontCourses')}}">
-                        <span class="material-icons">cast</span>
-                        {{__('front.courses')}}
-                    </a>
-                </a> </div>
-            <div class="inner-bottom-block"><a href="{{route('frontExam')}}">
-                    <span class="material-icons">attach_file</span>
-                {{__('front.exam')}}
-                </a> </div>
-            <div class="inner-bottom-block"><a href="{{route('frontDiscussion')}}">
-                    <span class="material-icons">comment</span>
-                {{__('front.discuss')}}
-                </a> </div>
-            <div class="inner-bottom-block"><a href="{{route('frontCertificate')}}">
-                    <span class="material-icons">verified</span>
-                {{__('front.certificate')}}
-                </a> </div>
-        </div>
+{{--                <a href="{{route('frontAbout')}}">--}}
+{{--                    <span class="material-icons">groups</span>--}}
+{{--                    {{__('front.about')}}--}}
+{{--                </a> </div>--}}
+{{--            <div class="inner-bottom-block"><a href="#">--}}
+{{--                    <a href="{{route('frontCourses')}}">--}}
+{{--                        <span class="material-icons">cast</span>--}}
+{{--                        {{__('front.courses')}}--}}
+{{--                    </a>--}}
+{{--                </a> </div>--}}
+{{--            <div class="inner-bottom-block"><a href="{{route('frontExam')}}">--}}
+{{--                    <span class="material-icons">attach_file</span>--}}
+{{--                {{__('front.exam')}}--}}
+{{--                </a> </div>--}}
+{{--            <div class="inner-bottom-block"><a href="{{route('frontDiscussion')}}">--}}
+{{--                    <span class="material-icons">comment</span>--}}
+{{--                {{__('front.discuss')}}--}}
+{{--                </a> </div>--}}
+{{--            <div class="inner-bottom-block"><a href="{{route('frontCertificate')}}">--}}
+{{--                    <span class="material-icons">verified</span>--}}
+{{--                {{__('front.certificate')}}--}}
+{{--                </a> </div>--}}
+{{--        </div>--}}
     </section>
     <section id="main-second">
         <div class="container">

@@ -20,7 +20,11 @@
     <link rel="stylesheet" href="/css/front.css">
     <link rel="stylesheet" href="/css/circle.css">
     <link rel="stylesheet" href="/frontend/css/pushy.css">
-
+    @if (!empty($_SESSION))
+        @if (\Illuminate\Support\Facades\Request::url() === route('student.passExam', $_SESSION['route']))
+    <link rel="stylesheet" href="/frontend/css/jquery-steps.min.css">
+        @endif
+    @endif
     @yield('css')
 </head>
 <body id="falcon" class="main_Wrapper">
@@ -45,22 +49,31 @@
 <script src="/js/ckeditor.js"></script>
 <script src="/js/student.js"></script>
 <script src="/frontend/js/pushy.min.js"></script>
-
+@if (!empty($_SESSION))
+    @if (\Illuminate\Support\Facades\Request::url() === route('student.passExam', $_SESSION['route']))
+<script src="/frontend/js/jquery-steps.min.js"></script>
+<script>
+$('#demo').steps({
+    onFinish: function () { console.log('complete'); }
+});
+</script>
+    @endif
+@endif
 @yield('js')
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\UpdateProfile', '#my-form')  !!}
 {!! Toastr::message() !!}
 <script>
-    $("[type=file]").mnFileInput({
-        // left, right or button
-        display: 'left',
-        // button text
-        controlMsg : 'Выберите файл',
-        // image preview element
-        preview : '.preview',
-        // supported extensions
-        previewSupportedExt : ['png', 'jpeg', 'jpg', 'gif']
-    });
+$("[type=file]").mnFileInput({
+    // left, right or button
+    display: 'left',
+    // button text
+    controlMsg : 'Выберите файл',
+    // image preview element
+    preview : '.preview',
+    // supported extensions
+    previewSupportedExt : ['png', 'jpeg', 'jpg', 'gif']
+});
 </script>
 
 </body>
