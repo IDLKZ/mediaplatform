@@ -350,7 +350,7 @@
             <div class="contact">
                 <h2>{{__('front.six_text')}}</h2>
                 <p>{{__('front.six_text_2')}}</p>
-                <button class="btn btn-info" id="button-auth">Авторизация</button>
+                <a href="{{route('login')}}" class="btn btn-info" id="button-auth">Авторизация</a>
             </div>
         </div>
     </section>
