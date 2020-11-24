@@ -236,16 +236,33 @@ class UserController extends Controller
                 "answer"=>"required", "right"=>"required", "question"=>"required"
             ]
         );
+            $data = Result::prepareData($request->all());
+            if($data['result']>8){
+                if(Result::saveQuizResult($data)){
+                    Toastr::success("Вы успешно сдали тест, следующее видео успешно открыто","Отлично!");
+                    $course = Course::find($request->get("course_id"));
+                    return redirect(route("student.course.show",$course->alias));
+                }
+                else{
+                    Toastr::warning("Упс, что-то пошло не так","Упс....");
+                    return redirect(route("userProfile"));
+                }
+            }
+            else{
+                $video = Video::find($request->get("video_id"));
+                Toastr::warning("Вы набрали меньше 80% верных ответов, попробуйте сдать еще раз","Пересдача!");
+                if($video){
+                    return  redirect(route("student.video.show",$video->alias));
+                }
+                else{
+                    return  redirect("/");
+                }
 
-        $data = Result::prepareData($request->all());
-        if(Result::saveResult($data)){
-            Toastr::success("Ваш результат отправлен на проверку учителя","Отлично!");
-            return redirect(route("userProfile"));
-        }
-        else{
-            Toastr::warning("Упс, что-то пошло не так","Упс....");
-            return redirect(route("userProfile"));
-        }
+
+            }
+
+
+
 
     }
 

@@ -11,7 +11,27 @@ return [
     'accept'=>"Қабылдау",
     'deny'=>'Бас тарту',
     'detail'=>"Толығырақ",
+    //Left SideBar (Левое меню)
+    "sidebar.index"=>"Басты бет",
+    "sidebar.users"=>"Тындаушылар",
+    "sidebar.tasks"=>"Тапсырмалар",
+    "sidebar.media"=>"Медиа",
+    "sidebar.news"=>"Жаңалықтар",
+    "sidebar.examination"=>"Емтихандар",
+    "sidebar.request"=>"Сұраулар",
+    "sidebar.search"=>"Іздеу",
+    "sidebar.forum"=>"Форум",
+    "sidebar.logout"=>"Шығу",
 
+    //Header`s Add Button - Добавить новые материалы
+    "header.new_course"=>"Жаңа Курс",
+    "header.new_video"=>"Жаңа Бейнесабақ",
+    "header.new_user"=>"Жаңа Пайдаланушы",
+    "header.new_material"=>"Жаңа Материал",
+    "header.new_examination"=>"Жаңа Емтихан",
+    "header.new_news"=>"Жаңа Жаңалық",
+    "header.new_question"=>"Тестке Жаңа сұрақ",
+    "header.new_reviewquestion"=>"Сауалнамаға жаңа сұрақ",
     //course
     "course"=>"Курс",
     'new_course'=>"Жаңа видеокурс",

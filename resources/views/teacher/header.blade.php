@@ -45,7 +45,7 @@
                                             <i class="fa fa-video-camera"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("admin.header.new_course")}}</span>
+                                    <span class="block">{{__("content.header.new_course")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -55,7 +55,7 @@
                                             <i class="fa fa-vimeo"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("admin.header.new_video")}}</span>
+                                    <span class="block">{{__("content.header.new_video")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -66,7 +66,7 @@
                                             <i class="fa fa-book"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("admin.header.new_material")}}</span>
+                                    <span class="block">{{__("content.header.new_material")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -76,7 +76,7 @@
                                             <i class="fa fa-question-circle-o"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("admin.header.new_examination")}}</span>
+                                    <span class="block">{{__("content.header.new_examination")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -86,7 +86,7 @@
                                             <i class="fa fa-question-circle-o"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">Новый вопрос к тесту</span>
+                                    <span class="block">{{__("content.header.new_question")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -96,7 +96,7 @@
                                             <i class="fa fa-question-circle-o"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">Новый вопрос к опросу</span>
+                                    <span class="block">{{__("content.header.new_reviewquestion")}}</span>
                                 </div>
                             </a>
                         </li>

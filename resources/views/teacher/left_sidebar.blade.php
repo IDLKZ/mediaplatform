@@ -10,57 +10,57 @@
                             <li>
                                 <a href="/teacher">
                                     <i class="fa fa-dashboard"></i>
-                                    <span>{{__('website.main')}}</span>
+                                    <span>{{__('content.sidebar.index')}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("teacher-tasks")}}">
                                     <i class="fa fa-list-ol"></i>
-                                    <span>Мои задачи</span>
+                                    <span>{{__('content.sidebar.tasks')}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("teacher-users")}}">
                                     <i class="fa fa-users"></i>
-                                    <span>{{__('website.subscribers')}}</span>
+                                    <span>{{__('content.sidebar.users')}}</span>
                                 </a>
                             </li>
                             {{--                            Главная--}}
                             <li>
                                 <a href="{{route("teacher-media")}}">
                                     <i class="fa fa-film"></i>
-                                    <span>Медиа</span>
+                                    <span>{{__('content.sidebar.media')}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("teacher-exams")}}">
                                     <i class="icon-puzzle"></i>
-                                    <span>Экзамены</span>
+                                    <span>{{__('content.sidebar.examination')}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("teacher-request")}}">
                                     <i class="fa fa-question-circle-o"></i>
-                                    <span>Запросы</span>
+                                    <span>{{__('content.sidebar.request')}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("teacher-search")}}">
                                     <i class="fa fa-search"></i>
-                                    <span>Поиск</span>
+                                    <span>{{__('content.sidebar.search')}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("forums")}}">
                                     <i class="fa fa-forumbee"></i>
-                                    <span>Форум</span>
+                                    <span>{{__('content.sidebar.forum')}}</span>
                                 </a>
                             </li>
                             <hr>
                             <li>
                                 <a href="{{route("logout")}}">
                                     <i class="fa fa-power-off"></i>
-                                    <span>Выход</span>
+                                    <span>{{__('content.sidebar.logout')}}</span>
                                 </a>
                             </li>
 
