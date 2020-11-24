@@ -1,26 +1,27 @@
 @extends('teacher.layout')
 @section('content')
+    <a href="{{route("quiz.index")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <div class="page static-page-tables">
         <div class="row">
             <div class="col-md-12">
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Мои Вопросы</strong></h3>
+                            <strong>{{__("admin.questions")}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         <div class="table-responsive">
                             <table class="table table-middle">
                                 <thead>
                                 <tr>
-                                    <th>Вопрос</th>
+                                    <th>{{__("admin.questions")}}</th>
                                     <th>A</th>
                                     <th>B</th>
                                     <th>C</th>
                                     <th>D</th>
                                     <th>E</th>
-                                    <th>Правильный ответ</th>
-                                    <th>Действия</th>
+                                    <th>{{__("admin.right_answer")}}</th>
+                                    <th>{{__("admin.action")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,7 +44,7 @@
                                                 <ul class="dropdown-menu pull-right">
                                                     <li>
                                                         <a  href="{{route("question.edit",$question->id)}}">
-                                                            Редактировать
+                                                            {{__("admin.edit")}}
                                                         </a>
                                                     </li>
 
@@ -52,7 +53,7 @@
                                                         <form action="{{route('quiz.destroy',$question->id)}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">Удалить</button>
+                                                            <button onclick="return confirm({{__("admin.question")}})" type="submit" class="btn btn-danger">{{__("admin.delete")}}</button>
                                                         </form>
                                                     </li>
                                                 </ul>

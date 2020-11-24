@@ -13,25 +13,17 @@ class ResultController extends Controller
 
     public function checkedResult(){
         $results = Result::where(["author_id"=>Auth::id(),"checked"=>1])->with(["student","author","course","video","examination"])->paginate(15);
-        if(count($results)>0){
-            return view("teacher.result.index",compact("results"));
-        }
-        else{
-            Toastr::warning("Вы еще не проверяли ни одного задания","Упс....");
-            return redirect()->back();
-        }
+        return view("teacher.result.index",compact("results"));
+
+
 
     }
 
     public function uncheckedResult(){
         $results = Result::where(["author_id"=>Auth::id(),"checked"=>0])->with(["student","author","course","video","examination"])->paginate(15);
-        if(count($results)>0){
-            return view("teacher.result.index",compact("results"));
-        }
-        else{
-            Toastr::warning("Вы еще не проверяли ни одного задания","Упс....");
-            return redirect()->back();
-        }
+        return view("teacher.result.index",compact("results"));
+
+
     }
 
     public function showResult($id){

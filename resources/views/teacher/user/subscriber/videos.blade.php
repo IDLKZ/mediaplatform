@@ -1,13 +1,14 @@
 @extends('teacher.layout')
 @section('content')
     <div class="page static-page-tables">
+        <a href="{{route("teacher-users")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
         <div class="row">
             @if($videos->isNotEmpty())
                 @foreach($videos as $video)
                     <div class="col-md-3 col-sm-6 col-xs-12 mh-350">
                         <div class="boxs project_widget">
                             <div class="pw_img">
-                                <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getVimeoThumbanail($video->video_url)}}" style="width: 100%" alt="About the image">
+                                <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getYoutubeThumbnail($video->video_url)}}" style="width: 100%; height: 200px" alt="About the image">
                             </div>
                             <div class="pw_content">
 
@@ -27,35 +28,31 @@
                                                 <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
 
                                                     <li>
-                                                        <a href="{{route("admin-video.show",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-eye"></i> Посмотреть </a>
+                                                        <a href="{{route("video.show",$video->alias)}}" role="button" tabindex="0" >
+                                                            <i class="fa fa-eye"></i> {{__("admin.watch")}} </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("admin-video-subscriber",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-group"></i> Слушатели </a>
+                                                        <a href="{{route("video-subscriber",$video->alias)}}" role="button" tabindex="0" >
+                                                            <i class="fa fa-group"></i> {{__("admin.subscribers")}} </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("admin-video-checked",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-check-circle-o"></i> Провереннные задания </a>
+                                                        <a href="{{route("video-result-checked",$video->alias)}}" role="button" tabindex="0" >
+                                                            <i class="fa fa-check-circle-o"></i> {{__("admin.checked_result")}} </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("admin-video-unchecked",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-warning"></i> Непровереннные задания </a>
+                                                        <a href="{{route("video-result-unchecked",$video->alias)}}" role="button" tabindex="0" >
+                                                            <i class="fa fa-warning"></i> {{__("admin.unchecked_result")}} </a>
                                                     </li>
                                                     <li>
-                                                        <a href="" role="button" tabindex="0" >
-                                                            <i class="fa fa-question-circle"></i> Экзамен </a>
+                                                        <a href="{{route("video-material",$video->alias)}}" role="button" tabindex="0" >
+                                                            <i class="fa fa-bookmark-o"></i> {{__("admin.materials")}} </a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route("admin-video-material",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-bookmark-o"></i> Материалы </a>
-                                                    </li>
-                                                    <li>
-                                                        <form  method="post" action="{{route('admin-video.destroy',$video->alias)}}">
+                                                        <form  method="post" action="{{route('video.destroy',$video->alias)}}">
                                                             @method("DELETE")
                                                             @csrf
-                                                            <button onclick="return confirm('Вы уверены, удаление видео приведет к удалению результатов!')" role="button" tabindex="0" class="btn btn-a">
-                                                                <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                            <button onclick="return confirm('{{__("admin.question")}}')" role="button" tabindex="0" class="btn btn-a">
+                                                                <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
                                                         </form>
                                                     </li>
 
@@ -71,6 +68,11 @@
                         </div>
                     </div>
                 @endforeach
+                {{$videos->links()}}
+            @else
+                <h3>
+                    {{__("admin.no_videos")}}
+                </h3>
             @endif
         </div>
     </div>

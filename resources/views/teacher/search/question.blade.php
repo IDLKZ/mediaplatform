@@ -1,13 +1,13 @@
 @extends('teacher.layout')
 @section('content')
-    <a href="" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+    <a href="" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>Поиск среди вопросов</strong></h3>
+                        <strong>{{__("admin.search_question")}}</strong></h3>
                 </div>
                 <div class="boxs-body">
                     @if ($errors->any())
@@ -22,21 +22,21 @@
                     <form id="my-form" action="{{route("teacher-search-question-result")}}" method="get" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Искать в</label>
+                            <label class="col-sm-3 control-label">{{__("admin.search")}}</label>
                             <div class="col-sm-9">
                                 <select name="type" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
-                                    <option value="quiz">Тесты</option>
-                                    <option value="review">Опросы</option>
+                                    <option value="quiz">{{__("admin.quiz")}}</option>
+                                    <option value="review">{{__("admin.review")}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="boxs-body">
                             <div class="input-group search-bar">
                                 <div class="form-group is-empty">
-                                    <input type="text" class="form-control " name="query" placeholder="Введите наименование вопроса или ответа..."><span class="material-input"></span></div>
+                                    <input type="text" class="form-control " name="query" placeholder="{{__("admin.search_key")}}..."><span class="material-input"></span></div>
                                 <span class="input-group-btn">
 										<button type="submit" class="btn btn-raised btn-default" type="button">
-											<i class="fa fa-search"></i> Искать!</button>
+											<i class="fa fa-search"></i> {{__("admin.search")}}!</button>
 									</span>
                             </div>
                         </div>
@@ -53,25 +53,25 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font text-success">
-                            <strong>Результаты поиска по слову "{{$searchterm}}"</strong></h3>
+                            <strong>{{__("admin.search_word")}} "{{$searchterm}}"</strong></h3>
                     </div>
                     <div class="boxs-body">
                         @if ($searchResults->isNotEmpty())
                             @if ($searchtype == "quiz")
-                                <h4>Поиск по Тестам</h4>
+                                <h4>{{__("admin.search_quiz")}}</h4>
                                 <div class="body table-responsive members_profiles">
                                     <table class="table table-hover table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Тестник</th>
-                                            <th>Вопрос</th>
+                                            <th>{{__("admin.title")}}</th>
+                                            <th>{{__("admin.questons")}}</th>
                                             <th>A</th>
                                             <th>B</th>
                                             <th>C</th>
                                             <th>D</th>
                                             <th>E</th>
-                                            <td>Правильный ответ</td>
-                                            <td>Действия</td>
+                                            <td>{{__("admin.right_answer")}}</td>
+                                            <td>{{__("admin.action")}}</td>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -127,14 +127,14 @@
                                 </div>
                             @endif
                             @if ($searchtype == "review")
-                                <h4>Поиск по Опросам</h4>
+                                <h4>{{__("admin.search_question")}}</h4>
                                 <div class="body table-responsive members_profiles">
                                     <table class="table table-hover table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>Опросник</th>
-                                            <th>Вопрос</th>
-                                            <th>Действия</th>
+                                            <th>{{__("admin.title")}}</th>
+                                            <th>{{__("admin.questions")}}</th>
+                                            <th>{{__("admin.action")}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -148,7 +148,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{route("review-question.edit",$result->id)}}">
-                                                        <i class="fa fa-pencil"></i> Изменить
+                                                        <i class="fa fa-pencil"></i> {{__("admin.edit")}}
                                                     </a>
                                                 </td>
                                             </tr>
@@ -161,7 +161,7 @@
                             @endif
 
                         @else
-                            <h3 class="text-danger"> Ничего не найдено</h3>
+                            <h3 class="text-danger"> {{__("admin.not_found")}}</h3>
                         @endif
                     </div>
 

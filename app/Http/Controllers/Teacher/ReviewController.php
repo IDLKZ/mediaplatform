@@ -21,18 +21,7 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = Review::where("author_id",Auth::id())->with("author")->paginate(15);
-        if(!$reviews->isEmpty())
-        {
-            return  view("teacher.exams.review.index",compact("reviews"));
-        }
-        else
-        {
-            Toastr::warning("У вас нет созданного опроса","Упс..");
-            return redirect(route("review.create"));
-        }
-
-
-
+        return  view("teacher.exams.review.index",compact("reviews"));
 
     }
 
@@ -62,11 +51,11 @@ class ReviewController extends Controller
         ]);
         if(Review::saveData($request->all())){
             Toastr::success("Успешно создан опрос","Отлично!");
-            return redirect()->back();
+            return redirect(route("review.index"));
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
-            return redirect()->back();
+            return redirect(route("review.index"));
         }
     }
 
@@ -84,7 +73,7 @@ class ReviewController extends Controller
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
-            return redirect()->back();
+            return redirect(route("review.index"));
         }
     }
 
@@ -105,7 +94,7 @@ class ReviewController extends Controller
         }
         else{
             Toastr::warning("Не удалось найти","Упс...");
-            return redirect()->back();
+            return redirect(route("review.index"));
         }
     }
 
@@ -125,16 +114,16 @@ class ReviewController extends Controller
             ]);
             if(Review::updateData($request->all(),$review)){
                 Toastr::success("Успешно обновлен опрос","Отлично!");
-                return redirect()->back();
+                return redirect(route("review.index"));
             }
             else{
                 Toastr::warning("Что-то пошло не так","Упс...");
-                return redirect()->back();
+                return redirect(route("review.index"));
             }
         }
         else{
             Toastr::warning("Не удалось найти","Упс...");
-            return redirect()->back();
+            return redirect(route("review.index"));
         }
     }
 
@@ -150,11 +139,11 @@ class ReviewController extends Controller
         if($review){
            $review->delete();
            Toastr::success("Успешно удален опрос","Отлично!");
-           return redirect()->back();
+           return redirect(route("review.index"));
         }
         else{
             Toastr::warning("Не удалось найти","Упс...");
-            return redirect()->back();
+            return redirect(route("review.index"));
         }
     }
 }

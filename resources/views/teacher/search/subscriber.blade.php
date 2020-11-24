@@ -1,13 +1,13 @@
 @extends('teacher.layout')
 @section('content')
-    <a href="" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+    <a href="" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>Поиск подписчика</strong></h3>
+                        <strong>{{__("admin.search_user")}}</strong></h3>
                 </div>
                 <div class="boxs-body">
                     @if ($errors->any())
@@ -24,10 +24,10 @@
                         <div class="boxs-body">
                             <div class="input-group search-bar">
                                 <div class="form-group is-empty">
-                                    <input type="text" class="form-control " name="query" placeholder="Введите ФИО..."><span class="material-input"></span></div>
+                                    <input type="text" class="form-control " name="query" placeholder="{{__("admin.search_key")}}..."><span class="material-input"></span></div>
                                 <span class="input-group-btn">
 										<button type="submit" class="btn btn-raised btn-default" type="button">
-											<i class="fa fa-search"></i> Искать!</button>
+											<i class="fa fa-search"></i> {{__("admin.search")}}!</button>
 									</span>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font text-success">
-                            <strong>Результаты поиска по слову "{{$searchterm}}"</strong></h3>
+                            <strong>{{__("admin.search_word")}}"{{$searchterm}}"</strong></h3>
                     </div>
                     <div class="boxs-body">
                         @if ($searchResults->isNotEmpty())
@@ -52,13 +52,13 @@
                                 <table class="table table-hover table-bordered">
                                     <thead>
                                     <tr>
-                                        <th style="width:60px;">Изображение</th>
+                                        <th style="width:60px;">{{__("admin.img")}}</th>
                                         <th>ФИО</th>
-                                        <th>Роль</th>
-                                        <th>Почта</th>
-                                        <th>Телефон</th>
-                                        <th>Статус</th>
-                                        <th>Действия</th>
+                                        <th>{{__("admin.user_role")}}</th>
+                                        <th>Email</th>
+                                        <th>{{__("admin.user_phone")}}</th>
+                                        <th>{{__("admin.status")}}</th>
+                                        <th>{{__("admin.action")}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -92,7 +92,7 @@
                                 {{$searchResults->links()}}
                             </div>
                         @else
-                            <h3 class="text-danger"> Ничего не найдено</h3>
+                            <h3 class="text-danger"> {{__("admin.not_found")}}</h3>
                         @endif
                     </div>
 

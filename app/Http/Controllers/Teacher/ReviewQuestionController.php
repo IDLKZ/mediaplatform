@@ -20,13 +20,9 @@ class ReviewQuestionController extends Controller
     public function index()
     {
         $review_questions = ReviewQuestion::whereIn("review_id",Review::where("author_id",Auth::id())->pluck("id")->toArray())->with("review")->paginate(15);
-        if(count($review_questions)){
-            return view("teacher.exams.review_questions.index",compact("review_questions"));
-        }
-        else{
-            Toastr::warning("Вопрос не найден","Упс...");
-            return redirect()->back();
-        }
+        return view("teacher.exams.review_questions.index",compact("review_questions"));
+
+
     }
 
     /**

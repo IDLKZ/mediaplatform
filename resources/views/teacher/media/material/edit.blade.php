@@ -7,7 +7,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-blush">
-                        <strong>{{__('content.change')}}</strong></h3>
+                        <strong>{{__('admin.change')}}</strong></h3>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -24,7 +24,7 @@
                         @method("PUT")
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Видео</label>
+                            <label class="col-sm-3 control-label">{{__('admin.video')}}</label>
                             <div class="col-sm-9">
                                 <select name="video_id" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     @foreach($videos as $video)
@@ -34,14 +34,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('content.filename')}}</label>
+                            <label class="col-sm-3 control-label">{{__('admin.filename')}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="{{__('content.filename')}}" maxlength="255" data-parsley-trigger="change" required value="{{$material->title}}">
+                                <input name="title" type="text" class="form-control" placeholder="{{__('admin.filename')}}" maxlength="255" data-parsley-trigger="change" required value="{{$material->title}}">
                             </div>
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('content.additional_links')}}</label>
+                            <label class="col-sm-3 control-label">{{__('admin.links')}}</label>
                             <div class="col-sm-9">
                                 <select name="links[]" multiple class="select2 form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     @if ($material->links)
@@ -54,33 +54,33 @@
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('content.material_type')}}</label>
+                            <label class="col-sm-3 control-label">{{__('admin.material_type')}}</label>
                             <div class="col-sm-9">
                                 <select name="type" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     <option value="Документ">Документ</option>
-                                    <option value="Изображение">{{__('content.img')}}</option>
-                                    <option value="Аудиозапись">{{__('content.material_audio')}}</option>
+                                    <option value="Изображение">{{__('admin.img')}}</option>
+                                    <option value="Аудиозапись">{{__('admin.audio')}}</option>
                                     <option value="PDF">PDF</option>
-                                    <option value="Другое">{{__('content.material_other')}}</option>
+                                    <option value="Другое">{{__('admin.other')}}</option>
                                 </select>
                             </div>
                         </div>
 
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('content.material_video')}}</label>
+                            <label class="col-sm-3 control-label">{{__('admin.file')}}</label>
                             <div class="col-sm-9">
                                 <span class="btn btn-raised btn-success fileinput-button">
 												<i class="glyphicon glyphicon-plus"></i>
-												<span>Файл</span>
+												<span>{{__('admin.file')}}</span>
 												<input type="file" name="file" >
 								</span>
                             </div>
                         </div>
 
                         <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                            <button type="submit" class="btn btn-raised btn-info">{{__('content.change')}}</button>
-                            <a href="{{route("material.index")}}" class="btn btn-raised btn-primary">{{__('content.back')}}</a>
+                            <button type="submit" class="btn btn-raised btn-info">{{__('admin.change')}}</button>
+                            <a href="{{route("material.index")}}" class="btn btn-raised btn-primary">{{__('admin.back')}}</a>
                         </div>
                     </form>
                 </div>

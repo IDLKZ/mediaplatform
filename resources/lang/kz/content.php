@@ -32,6 +32,19 @@ return [
     "header.new_news"=>"Жаңа Жаңалық",
     "header.new_question"=>"Тестке Жаңа сұрақ",
     "header.new_reviewquestion"=>"Сауалнамаға жаңа сұрақ",
+
+    //Header Profile - Профиль админа
+    "profile.my_profile"=>"Менің профилім",
+    "profile.settings"=>"Баптаулар",
+    "profile.request"=>"Өтініштерім",
+    "profile.logout"=>"Шығу",
+    //User
+    "user.teachers"=>"Тьюторлар",
+    "user.teacher"=>"Тьютор",
+    "user.about_teacher"=>"тьютор Туралы",
+    "user.teacher_description"=>"Мұнда сіз бейне сабақтарын жүргізетін тьюторлардың тізімін көре аласыз",
+    "user.all_teachers"=>"Барлық тьюторлар",
+
     //course
     "course"=>"Курс",
     'new_course'=>"Жаңа видеокурс",

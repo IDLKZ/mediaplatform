@@ -6,16 +6,16 @@
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Изменить </strong>данные</h3>
+                            <strong>{{__('admin.edit')}} </strong></h3>
                     </div>
                     <div class="boxs-body">
                         <form id="my-form" method="post" enctype="multipart/form-data" action="{{route('teacherProfileSettingsUpdate')}}" class="form-horizontal" role="form">
                             @csrf
                             <div class="form-group is-empty">
-                                <label for="inputName" class="col-sm-2 control-label">Имя</label>
+                                <label for="inputName" class="col-sm-2 control-label">ФИО/Аты-Жөні</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="name" class="form-control" id="inputName"
-                                           placeholder="Имя" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
+                                           placeholder="{{__("admin.user_name")}}" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
                                 </div>
                                 <span class="material-input"></span>
                             </div>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-raised btn-primary">Изменить</button>
+                                    <button type="submit" class="btn btn-raised btn-primary">{{__("admin.change")}}</button>
                                 </div>
                             </div>
                         </form>
@@ -73,13 +73,13 @@
                             <div class="col-sm-4 col-xs-6 border-right">
                                 <div class="uw_description">
                                     <h5>{{\Illuminate\Support\Facades\Auth::user()->courses()->count()}}</h5>
-                                    <span>Курсы</span>
+                                    <span>{{__("admin.courses")}}</span>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xs-12">
                                 <div class="uw_description">
                                     <h5>{{\Illuminate\Support\Facades\Auth::user()->videos()->count()}}</h5>
-                                    <span>Видеоуроки</span>
+                                    <span>{{__("admin.videos")}}</span>
                                 </div>
                             </div>
                         </div>

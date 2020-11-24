@@ -20,13 +20,8 @@ class QuizController extends Controller
     public function index()
     {
         $quizzes = Quiz::where("author_id",Auth::id())->with("author")->paginate(15);
-        if(!$quizzes->isEmpty()){
-            return  view("teacher.exams.quiz.index",compact("quizzes"));
-        }
-        else{
-            Toastr::warning("Тест еще не создан", "Упс");
-            return  redirect(route("quiz.create"));
-        }
+        return  view("teacher.exams.quiz.index",compact("quizzes"));
+
     }
 
     /**
@@ -55,11 +50,11 @@ class QuizController extends Controller
         ]);
         if(Quiz::saveData($request->all())){
             Toastr::success("Успешно создан тест","Отлично!");
-            return redirect()->back();
+            return redirect(route("quiz.index"));
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
-            return redirect()->back();
+            return redirect(route("quiz.index"));
         }
     }
 
@@ -80,7 +75,7 @@ class QuizController extends Controller
         }
         else{
             Toastr::warning("Не найден тест","Упс....");
-            return redirect()->back();
+            return redirect(route("quiz.index"));
         }
     }
 
@@ -101,7 +96,7 @@ class QuizController extends Controller
         }
         else{
             Toastr::warning("Не найден тест","Упс....");
-            return redirect()->back();
+            return redirect(route("quiz.index"));
         }
     }
 
@@ -121,16 +116,12 @@ class QuizController extends Controller
         if($quiz){
             if(Quiz::updateData($request->all(),$quiz)){
                 Toastr::success("Успешно обновлен тест","Отлично!");
-                return redirect()->back();
             }
             else{
                 Toastr::warning("Что-то пошло не так","Упс...");
-                return redirect()->back();
             }
         }
-        else{
-            return  redirect()->back();
-        }
+        return redirect(route("quiz.index"));
 
     }
 
@@ -146,11 +137,10 @@ class QuizController extends Controller
         if($quiz){
            $quiz->delete();
             Toastr::success("Успешно удален тест","Отлично!");
-            return  redirect()->back();
         }
         else{
             Toastr::warning("Не найден тест","Упс....");
-            return redirect()->back();
         }
+        return redirect(route("quiz.index"));
     }
 }

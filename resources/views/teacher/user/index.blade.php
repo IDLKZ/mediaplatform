@@ -5,9 +5,9 @@
         <!-- bradcome -->
         <div class="b-b mb-20">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <h1 class="h3 m-0">Мои подписчики</h1>
-                    <small class="text-muted">Здесь вы можете увидеть моих подписчиков</small>
+                <div class="col-sm-12 col-xs-12">
+                    <h1 class="h3 m-0">{{__("admin.user.students")}}</h1>
+                    <small class="text-muted">{{__("admin.user.student_description")}}</small>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                         <div class="text-center">
                             <a href="{{route("teacherSubscribers")}}" class="btn btn-raised btn-info">
                                 <i class="fa fa-group"> </i>
-                                <small class="sm-none"> Все подписчики</small>
+                                <small class="sm-none">{{__("admin.user.all_students")}} </small>
 
                             </a>
                         </div>
@@ -33,7 +33,7 @@
                                 <div class="uw_description">
                                     <a href="{{route("confirmed_subscribers")}}" class="btn btn-success btn-raised btn-round ">
                                         <i class="icon-user-follow">  </i>
-                                        <small class="sm-none">Активные</small>
+                                        <small class="sm-none">{{__("admin.active")}}</small>
                                     </a>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                 <div class="uw_description">
                                     <a href="{{route("unconfirmed_subscribers")}}" class="btn btn-warning btn-raised btn-round">
                                         <i class="icon-user-unfollow pr-2">  </i>
-                                        <small class="sm-none">В заявке</small>
+                                        <small class="sm-none">{{__("admin.request")}}</small>
                                     </a>
                                 </div>
                             </div>

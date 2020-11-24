@@ -26,14 +26,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::where("author_id",Auth::id())->with(["author","language","videos","subscribers"])->paginate(12);
-        if($courses->isNotEmpty()){
-            return view("teacher.media.course.index",compact("courses"));
-        }
-        else{
-            Toastr::warning("Пока курсов нет",'Упс');
-            return  redirect()->route("course.create");
-        }
+        $courses = Course::where("author_id",Auth::id())->with(["author","language","videos","subscribers"])->orderBy("created_at","desc")->paginate(12);
+        return view("teacher.media.course.index",compact("courses"));
 
     }
 
@@ -76,7 +70,7 @@ class CourseController extends Controller
         }
         else{
             Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
-            return redirect()->back();
+            return redirect(route('course.index'));
         }
 
     }
@@ -96,7 +90,7 @@ class CourseController extends Controller
         }
         else{
             Toastr::warning('Видеокурс не найден!','Упс!');
-            return  redirect()->back();
+            return  redirect(route('course.index'));
         }
 
     }
@@ -124,7 +118,7 @@ class CourseController extends Controller
         }
         else{
             Toastr::warning('Видеокурс не найден!','Упс!');
-            return  redirect()->back();
+            return redirect(route('course.index'));
         }
     }
 
@@ -153,7 +147,7 @@ class CourseController extends Controller
             }
             else{
                 Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
-                return redirect()->back();
+                return redirect(route('course.index'));
             }
         }
         else{
@@ -179,7 +173,7 @@ class CourseController extends Controller
            Storage::delete($course->img);
            $course->delete();
             Toastr::success('Курс был успешно удален','Успешно удален курс!');
-            return redirect()->back();
+            return redirect(route('course.index'));
 
         }
         else{

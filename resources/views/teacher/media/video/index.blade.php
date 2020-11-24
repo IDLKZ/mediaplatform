@@ -1,13 +1,22 @@
 @extends('teacher.layout')
 @section('content')
+    <a href="{{route("teacher-media")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <div class="page static-page-tables">
         <div class="row">
+            <div class="b-b mb-20">
+                <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                        <h1 class="h3 m-0">{{__('admin.videos')}}</h1>
+                        <small class="text-muted">{{__('admin.video_description')}}</small>
+                    </div>
+                </div>
+            </div>
             @if($videos->isNotEmpty())
                 @foreach($videos as $video)
                     <div class="col-md-3 col-sm-6 col-xs-12 mh-350">
                         <div class="boxs project_widget">
                             <div class="pw_img">
-                                <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getYoutubeThumbnail($video->video_url)}}" style="width: 100%" alt="About the image">
+                                <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getYoutubeThumbnail($video->video_url)}}" style="width: 100%; height: 150px" alt="About the image">
                             </div>
                             <div class="pw_content">
 
@@ -28,34 +37,35 @@
 
                                                     <li>
                                                         <a href="{{route("video.show",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-eye"></i> Посмотреть </a>
+                                                            <i class="fa fa-eye"></i> {{__('admin.watch')}} </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{route("video.edit",$video->alias)}}" role="button" tabindex="0" >
+                                                            <i class="fa fa-pencil"></i> {{__('admin.edit')}} </a>
                                                     </li>
                                                     <li>
                                                         <a href="{{route("video-subscriber",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-group"></i> Слушатели </a>
+                                                            <i class="fa fa-group"></i> {{__('admin.subscribers')}} </a>
                                                     </li>
                                                     <li>
                                                         <a href="{{route("video-result-checked",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-check-circle-o"></i> Провереннные задания </a>
+                                                            <i class="fa fa-check-circle-o"></i> {{__('admin.checked_result')}} </a>
                                                     </li>
                                                     <li>
                                                         <a href="{{route("video-result-unchecked",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-warning"></i> Непровереннные задания </a>
+                                                            <i class="fa fa-warning"></i>{{__('admin.unchecked_result')}} </a>
                                                     </li>
-                                                    <li>
-                                                        <a href="" role="button" tabindex="0" >
-                                                            <i class="fa fa-question-circle"></i> Экзамен </a>
-                                                    </li>
+
                                                     <li>
                                                         <a href="{{route("video-material",$video->alias)}}" role="button" tabindex="0" >
-                                                            <i class="fa fa-bookmark-o"></i> Материалы </a>
+                                                            <i class="fa fa-bookmark-o"></i> {{__('admin.material')}} </a>
                                                     </li>
                                                     <li>
                                                         <form  method="post" action="{{route('video.destroy',$video->alias)}}">
                                                             @method("DELETE")
                                                             @csrf
-                                                            <button onclick="return confirm('Вы уверены, удаление видео приведет к удалению результатов!')" role="button" tabindex="0" class="btn btn-a">
-                                                                <i class="fa fa-bitbucket"></i> Удалить </button>
+                                                            <button onclick="return confirm({{__('admin.question')}})" role="button" tabindex="0" class="btn btn-a">
+                                                                <i class="fa fa-bitbucket"></i> {{__('admin.delete')}} </button>
                                                         </form>
                                                     </li>
 
@@ -71,6 +81,9 @@
                         </div>
                     </div>
                 @endforeach
+                {{$videos->links()}}
+            @else
+                {{__("admin.no_videos")}}
             @endif
         </div>
     </div>

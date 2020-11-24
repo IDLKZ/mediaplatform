@@ -21,14 +21,11 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::where("author_id",Auth::id())->paginate(60);
-        if($questions){
-            return  view("teacher.exams.question.index",compact("questions"));
-        }
-        else{
-            Toastr::warning("Вопросы не найдены","Упс...");
-            return  redirect(route("question.index"));
-        }
+        $quiz = Quiz::where("author_id",Auth::id())->pluck("id")->toArray();
+        $questions = Question::whereIn("quiz_id",$quiz)->with("quiz")->paginate(60);
+        return  view("teacher.exams.question.index",compact("questions"));
+
+
 
     }
 

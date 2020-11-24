@@ -34,6 +34,20 @@ return [
     "header.new_question"=>"Новый вопрос к тесту",
     "header.new_reviewquestion"=>"Новый вопрос к опросу",
 
+    //Header Profile - Профиль админа
+    "profile.my_profile"=>"Мой профиль",
+    "profile.settings"=>"Настройки",
+    "profile.request"=>"Мои заявки",
+    "profile.logout"=>"Выход",
+
+    //2.Users - Пользователи (admin/users)
+    //user.index
+    "user.teachers"=>"Тьюторы",
+    "user.teacher"=>"Тьютор",
+    "user.about_teacher"=>"О тьюторе",
+    "user.teacher_description"=>"Здесь вы можете видеть список тьюторов, которые ведут свои видеоуроки",
+    "user.all_teachers"=>"Все тьюторы",
+
     //course
     "course"=>"Курс",
     'new_course'=>"Новый видеокурс",

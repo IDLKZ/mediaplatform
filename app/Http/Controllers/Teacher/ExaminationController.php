@@ -21,14 +21,10 @@ class ExaminationController extends Controller
     public function index()
     {
 
-        $examinations = Examination::where("author_id",Auth::id())->with(["course","video","quiz","review","author"])->paginate(15);
-        if(!$examinations->isEmpty()){
-            return  view("teacher.exams.examination.index",compact("examinations"));
-        }
-        else{
-            Toastr::warning('У вас еще нет созданных эказменов!','Упс!');
-            return  redirect()->back();
-        }
+        $examinations = Examination::where("author_id",Auth::id())->with(["course","video","quiz","review","author"])->orderBy("created_at","desc")->paginate(15);
+        return  view("teacher.exams.examination.index",compact("examinations"));
+
+
 
     }
 
@@ -75,17 +71,15 @@ class ExaminationController extends Controller
         if(!$examination){
             if(Examination::saveData($request->all())){
                 Toastr::success('Экзамен был успешно создан','Успешно создан курс!');
-                return redirect(route('examination.index'));
             }
             else{
                 Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
-                return redirect()->back();
             }
         }
         else{
             Toastr::warning('Вы уже добавили экзамен на данное видео!','Упс!');
-            return  redirect()->back();
         }
+        return redirect(route('examination.index'));
 
 
     }

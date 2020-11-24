@@ -1,23 +1,25 @@
 @extends('teacher.layout')
 @section('content')
+    <a href="{{route("teacher-media")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <div class="page static-page-tables">
         <div class="row">
             <div class="col-md-12">
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>{{__('content.material_my')}}</strong></h3>
+                            <strong>{{__('admin.material')}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
-                        <div class="table-responsive">
+                        @if($materials->isNotEmpty())
+                         <div class="table-responsive">
                             <table class="table table-middle">
                                 <thead>
                                 <tr>
-                                    <th>Видео</th>
-                                    <th>{{__('content.filename')}}</th>
-                                    <th>{{__('content.material_type')}}</th>
-                                    <th>{{__('content.links')}}</th>
-                                    <th>{{__('content.action')}}</th>
+                                    <th>{{__('admin.video')}}</th>
+                                    <th>{{__('admin.filename')}}</th>
+                                    <th>{{__('admin.material_type')}}</th>
+                                    <th>{{__('admin.links')}}</th>
+                                    <th>{{__('admin.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,12 +45,12 @@
                                                 <ul class="dropdown-menu pull-right">
                                                     <li>
                                                         <a  href="{{route("material",$material->id)}}">
-                                                            {{__('content.download')}}
+                                                            {{__('admin.download')}}
                                                         </a>
                                                     </li>
                                                     <li>
                                                         <a  href="{{route("material.edit",$material->id)}}">
-                                                            {{__('content.edit')}}
+                                                            {{__('admin.edit')}}
                                                         </a>
                                                     </li>
 
@@ -57,8 +59,8 @@
                                                         <form action="{{route('material.destroy',$material->id)}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">
-                                                                {{__('content.delete')}}</button>
+                                                            <button onclick="return confirm({{__('admin.question')}})" type="submit" class="btn btn-danger">
+                                                                {{__('admin.delete')}}</button>
                                                         </form>
                                                     </li>
                                                 </ul>
@@ -68,11 +70,18 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                                {{$materials->links()}}
                         </div>
+                        @else
+                            <h3>{{__("admin.no_materials")}}</h3>
+                        @endif
                     </div>
                 </section>
             </div>
         </div>
     </div>
+    <a href="{{route("material.create")}}" class="btn btn-success btn-raised  btn-add" >
+        <i class="fa fa-plus"></i>
+    </a>
 @endsection
 

@@ -8,6 +8,7 @@ return [
     "save"=>"Сақтау",
     "download"=>"Скачать",
     "back"=>"Артқа",
+    "cancel"=>"Болдырмау",
     "main.info"=>"Негізгі ақпарат",
     "title"=>"Атауы",
     "active"=>"Белсенді",
@@ -66,7 +67,9 @@ return [
     //For Layout Part - Для Layout
     //Left SideBar (Левое меню)
     "sidebar.index"=>"Басты бет",
+    "sidebar.tasks"=>"Тапсырмалар",
     "sidebar.users"=>"Пайдаланушылар",
+    "sidebar.subscribers"=>"Тындаушылар",
     "sidebar.media"=>"Медиа",
     "sidebar.news"=>"Жаңалықтар",
     "sidebar.examination"=>"Емтихандар",
@@ -88,6 +91,7 @@ return [
     //Header Profile - Профиль админа
     "profile.my_profile"=>"Менің профилім",
     "profile.settings"=>"Баптаулар",
+    "profile.request"=>"Өтініштерім",
     "profile.logout"=>"Шығу",
 
     //Main page (admin.main.blade)
@@ -255,7 +259,7 @@ return [
     //search
     "search"=>"Іздеу",
     "search_key"=>"Іздеу сөзін енгізіңіз",
-    "search_word"=>"Результаты поиска сөзіне",
+    "search_word"=>"Іздеу сөзіне нәтижелері",
     "search_description"=>"Мұнда Сіз пайдаланушыларды, медианы, материалдарды, емтихандарды, сұрақтарды таба аласыз",
     "search_user"=>"Пайдаланушыны іздеу",
     "search_user_description"=>"Мұнда сіз осы порталдың пайдаланушыларын таба аласыз.",

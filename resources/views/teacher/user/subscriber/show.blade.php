@@ -3,6 +3,7 @@
 @section("content")
     <!--CONTENT  -->
     <div class="page profile-page">
+        <a href="{{route("teacher-users")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
         <!-- page content -->
         <div class="pagecontent">
             <!-- row -->
@@ -15,7 +16,7 @@
                                     <img class="h-100" src="{{$img = $user->img !=null ? $user->img :"/images/no-image.png" }}" alt="">
                                 </div>
                                 <h4 class="mb-0"><strong>{{$user->name}}</strong></h4>
-                                <span class="text-muted">Студент</span>
+                                <span class="text-muted">{{__("admin.user.student")}}</span>
 
 
                             </div>
@@ -27,7 +28,7 @@
                                         <a href="{{route("teacherSubscriberCourse",$user->id)}}" class="">
                                             <i class="fa fa-video-camera"></i>
                                             <p>
-                                                Подписки
+                                                {{__("admin.course")}}
                                             </p>
                                         </a>
                                     </li>
@@ -35,20 +36,20 @@
                                         <a href="{{route("teacherSubscriberAccess",$user->id)}}" class="">
                                             <i class="icon-lock-open"></i>
                                             <p>
-                                                Открыть доступ
+                                                {{__("admin.access")}}
                                             </p>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{route("teacherSubscriberVideo",$user->id)}}">
                                             <i class="fa fa-film"></i>
-                                            <p>Видео</p>
+                                            <p>{{__("admin.video")}}</p>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{route("teacherSubscriberResult",$user->id)}}">
                                             <i class="fa fa-tasks "></i>
-                                            <p>Результаты</p>
+                                            <p>{{__("admin.results")}}</p>
                                         </a>
                                     </li>
                                 </ul>
@@ -65,7 +66,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->subscribers->count()}}</span></div>
-                                    <span>Курсов</span>
+                                    <span>{{__("admin.courses")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +79,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->uservideo->count()}}</span></div>
-                                    <span>Видео</span>
+                                    <span>{{__("admin.video")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +92,7 @@
                                 </div>
                                 <div class="s-detail">
                                     <div class="like"><span>{{$user->results_student->count()}}</span></div>
-                                    <span>Задач</span>
+                                    <span>{{__("admin.result")}}</span>
                                 </div>
                             </div>
                         </div>
@@ -105,14 +106,14 @@
                     <section class="boxs boxs-simple">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-green">
-                                <strong>Информация</strong></h3>
+                                <strong>{{__("admin.info")}}</strong></h3>
                         </div>
                         <div class="boxs-body">
                             <ul class="media-list feeds_widget m-0">
                                 <li class="media">
                                     <div class="media-img"><i class="fa fa-user-circle"></i></div>
                                     <div class="media-body">
-                                        <div class="media-heading">Студент</div>
+                                        <div class="media-heading">{{__("admin.user.student")}}</div>
                                     </div>
                                 </li>
                                 <li class="media">
@@ -130,7 +131,7 @@
                                 <li class="media">
                                     <div class="media-img"><i class="{{$user->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
                                     <div class="media-body">
-                                        <div class="media-heading">{{$user->status == 1 ? "Активный" : "В заявке"}}</div>
+                                        <div class="media-heading">{{$user->status == 1 ? __("admin.active") : __("admin.request")}}</div>
                                     </div>
                                 </li>
 
@@ -143,7 +144,7 @@
                     <section class="boxs boxs-simple">
                         <div class="boxs-header">
                             <h3 class="custom-font hb-green">
-                                <strong>О себе</strong></h3>
+                                <strong>{{__("admin.main.about")}}</strong></h3>
                         </div>
                         <div class="boxs-body p-10">
                             {!! $user->description !!}

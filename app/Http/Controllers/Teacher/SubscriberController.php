@@ -17,29 +17,17 @@ use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
 
 class SubscriberController extends Controller
 {
-    public function confirmed(){
-
+    //Подтвержденные слушатели
+    public function confirmed()
+    {
         $subscribers = Subscriber::with(['user',"author","course"])->where(["status" => 1, 'author_id' => Auth::id()])->paginate(15);
-        if(!$subscribers->isEmpty()){
-            return view("teacher.user.subscriber.index",compact("subscribers"));
-        }
-        else{
-            Toastr::warning("Ничего не найдено","Упс...");
-            return  redirect()->back();
-        }
-
+        return view("teacher.user.subscriber.index",compact("subscribers"));
     }
 
-
+    //Неподтвержденные слушатели
     public function unconfirmed(){
         $subscribers = Subscriber::with(['user',"author","course"])->where(["status" => 0, 'author_id' => Auth::id()])->paginate(15);
-        if(!$subscribers->isEmpty()){
-            return view("teacher.user.subscriber.index",compact("subscribers"));
-        }
-        else{
-
-            return  redirect(route('confirmed_subscribers'));
-        }
+        return view("teacher.user.subscriber.index",compact("subscribers"));
     }
 
     public function listRequestVideo(){
@@ -103,6 +91,8 @@ class SubscriberController extends Controller
 
     }
 
+
+    //Страница подписчика
     public function subscriber($id)
     {
         $subscriber = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id()])->first();
@@ -111,17 +101,17 @@ class SubscriberController extends Controller
             return view("teacher.user.subscriber.show",compact("user"));
         }
         else{
-            return redirect()->back();
+            return redirect(route("teacher-users"));
         }
     }
-
+    //Курсы у подписчика
     public function course($id){
         $subscribers = Subscriber::where(["user_id"=>$id,"author_id"=>Auth::id()])->pluck("course_id")->toArray();
         $courses = Course::whereIn("id",$subscribers)->with(["author","language","videos","subscribers"])->paginate(12);
         return view("teacher.user.subscriber.course",compact("courses"));
 
     }
-
+    //Видео у подписчика
     public function video($id){
         $user_video = UserVideo::where("student_id",$id)->pluck("video_id")->toArray();
         $course = Auth::user()->videos->pluck("id")->toArray();

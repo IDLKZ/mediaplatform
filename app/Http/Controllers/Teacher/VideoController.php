@@ -97,7 +97,7 @@ class VideoController extends Controller
      */
     public function edit($alias)
     {
-        $video = Video::where("alias",$alias)->first();
+        $video = Video::where("alias",$alias)->with("course")->first();
         if($video){
             $validator = JsValidator::make( [
                 'title'=> 'required|max:255',
@@ -105,7 +105,7 @@ class VideoController extends Controller
                 "course_id"=>"required",
                 "description"=>"required",
             ]);
-            $courses = Course::where(["author_id"=>Auth::user()->id])->get();
+            $courses = Course::where(["author_id"=>Auth::id()])->get();
             return  view("teacher.media.video.edit",compact("video","courses","validator"));
         }
         else{
@@ -137,7 +137,7 @@ class VideoController extends Controller
             ]);
             if(Video::updateData($request,$video)){
                 Toastr::success("Успешно обновлено видео","Ура!");
-                return redirect()->back();
+                return  redirect(route("video.index"));
             }
             else{
                 Toastr::success("Кажись, что-то пошло не так","Упс...");

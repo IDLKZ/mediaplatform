@@ -1,21 +1,22 @@
 @extends('teacher.layout')
 @section('content')
+    <a href="{{route("review.index")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <div class="page static-page-tables">
         <div class="row">
             <div class="col-md-12">
                 <section class="boxs">
                     <div class="boxs-header">
                         <h3 class="custom-font hb-green">
-                            <strong>Мои вопросы к опросам</strong></h3>
+                            <strong> {{__("admin.review_questions")}}</strong></h3>
                     </div>
                     <div class="boxs-body p-0">
                         <div class="table-responsive">
                             <table class="table table-middle">
                                 <thead>
                                 <tr>
-                                    <th>Опрос</th>
-                                    <th>Вопрос</th>
-                                    <th>Действия</th>
+                                    <th>{{__("admin.review")}}</th>
+                                    <th>{{__("admin.questions")}}</th>
+                                    <th>{{__("admin.action")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +35,7 @@
 
                                                     <li>
                                                         <a  href="{{route("review-question.edit",$review->id)}}">
-                                                            Редактировать
+                                                            {{__("admin.edit")}}
                                                         </a>
                                                     </li>
 
@@ -43,7 +44,7 @@
                                                         <form action="{{route('review-question.destroy',$review->id)}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">Удалить</button>
+                                                            <button onclick="return confirm('Вы уверены?')" type="submit" class="btn btn-danger">{{__("admin.delete")}}</button>
                                                         </form>
                                                     </li>
                                                 </ul>

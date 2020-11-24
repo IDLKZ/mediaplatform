@@ -1,7 +1,7 @@
 @extends('teacher.layout')
 @section('content')
     <!-- row -->
-    <a href="" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+    <a href="" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <div class="row">
         @foreach($uservideos as $uservideo)
             <div class="col-md-6 col-sm-12 p-10">
@@ -26,7 +26,7 @@
 
                     <div class="col-md-8">
                         <h4 class="text-blush">{{$uservideo->student->name}}</h4>
-                        <p>{{$uservideo->video->title}}    <span class="{{$uservideo->status == 1 ? "label label-success" : "label label-warning"}}">{{$uservideo->status == 1 ? "Одобрен" : "Заявка"}}</span></p>
+                        <p>{{$uservideo->video->title}}    <span class="{{$uservideo->status == 1 ? "label label-success" : "label label-warning"}}">{{$uservideo->status == 1 ? __('admin.active') : __('admin.request')}}</span></p>
                     </div>
 
                 </div>

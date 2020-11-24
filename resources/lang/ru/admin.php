@@ -8,13 +8,14 @@ return [
     "save"=>"Сохранить",
     "download"=>"Скачать",
     "back"=>"Назад",
+    "cancel"=>"Отменить",
     "main.info"=>"Основная информация",
     "title"=>"Наименование",
     "active"=>"Активные",
     "request"=>"В заявке",
     "no_admin"=>"Нет администраторов",
     "no_teacher"=>"Нет тьюторов",
-    "no_student"=>"Нет студентов",
+    "no_student"=>"Нет слушателей",
     "no_img"=>"Нет изображения",
     "no_results"=>"Нет результатов",
     "no_materials"=>"Нет материалов",
@@ -66,7 +67,9 @@ return [
     //For Layout Part - Для Layout
     //Left SideBar (Левое меню)
     "sidebar.index"=>"Главная",
+    "sidebar.tasks"=>"Мои Задачи",
     "sidebar.users"=>"Пользователи",
+    "sidebar.subscribers"=>"Слушатели",
     "sidebar.media"=>"Медиа",
     "sidebar.news"=>"Новости",
     "sidebar.examination"=>"Экзамены",
@@ -88,6 +91,7 @@ return [
     //Header Profile - Профиль админа
     "profile.my_profile"=>"Мой профиль",
     "profile.settings"=>"Настройки",
+    "profile.request"=>"Мои заявки",
     "profile.logout"=>"Выход",
 
     //Main page (admin.main.blade)

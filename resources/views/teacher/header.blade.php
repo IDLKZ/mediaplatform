@@ -45,7 +45,7 @@
                                             <i class="fa fa-video-camera"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("content.header.new_course")}}</span>
+                                    <span class="block">{{__("admin.header.new_course")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -55,7 +55,7 @@
                                             <i class="fa fa-vimeo"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("content.header.new_video")}}</span>
+                                    <span class="block">{{__("admin.header.new_video")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -66,7 +66,7 @@
                                             <i class="fa fa-book"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("content.header.new_material")}}</span>
+                                    <span class="block">{{__("admin.header.new_material")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -76,7 +76,7 @@
                                             <i class="fa fa-question-circle-o"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("content.header.new_examination")}}</span>
+                                    <span class="block">{{__("admin.header.new_examination")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -86,7 +86,7 @@
                                             <i class="fa fa-question-circle-o"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("content.header.new_question")}}</span>
+                                    <span class="block">{{__("admin.header.new_question")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -96,7 +96,7 @@
                                             <i class="fa fa-question-circle-o"></i>
                                         </span>
                                 <div class="media-body">
-                                    <span class="block">{{__("content.header.new_reviewquestion")}}</span>
+                                    <span class="block">{{__("admin.header.new_reviewquestion")}}</span>
                                 </div>
                             </a>
                         </li>
@@ -117,27 +117,27 @@
                     <li>
                         <div class="user-info">
                             <div class="user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</div>
-                            <div class="user-position online">Спикер</div>
+                            <div class="user-position online">{{__("content.user.teacher")}}</div>
                         </div>
                     </li>
                     <li>
                         <a href="{{route('home')}}" role="button" tabindex="0">
                             {{--                                <span class="label label-success pull-right">80%</span>--}}
-                            <i class="fa fa-user"></i>Мой профиль</a>
+                            <i class="fa fa-user"></i>{{__("content.profile.my_profile")}}</a>
                     </li>
                     <li>
                         <a role="button" tabindex="0" href="{{route('teacherSubscribers')}}">
                             <span class="label label-info pull-right">{{$subscribers}}</span>
-                            <i class="fa fa-check"></i>Заявки</a>
+                            <i class="fa fa-check"></i>{{__("content.profile.request")}}</a>
                     </li>
                     <li>
                         <a href="{{route('teacherProfileSettings')}}" role="button" tabindex="0">
-                            <i class="fa fa-cog"></i>Настройки</a>
+                            <i class="fa fa-cog"></i>{{__("admin.profile.settings")}}</a>
                     </li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{route('logout')}}" role="button" tabindex="0">
-                            <i class="fa fa-sign-out"></i>Выход</a>
+                            <i class="fa fa-sign-out"></i>{{__("admin.profile.logout")}}</a>
                     </li>
                 </ul>
             </li>

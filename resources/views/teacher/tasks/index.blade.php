@@ -4,7 +4,7 @@
         <section class="boxs">
             <div class="boxs-header">
                 <h3 class="custom-font hb-cyan">
-                    <strong>Ваши текущие задачи</strong></h3>
+                    <strong>{{__("admin.tasks")}}</strong></h3>
             </div>
             <!-- /boxs header -->
 
@@ -13,14 +13,14 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <h4 class="custom-font hb-cyan">
-                            <strong>Пользователи, задачи, запрос к видео</strong></h4>
+                            <strong>{{__("admin.all_requests")}}</strong></h4>
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <span class="badge bg-red">{{$count["users"]}}</span> Заявка пользователей</li>
+                                <span class="badge bg-red">{{$count["users"]}}</span> {{__("admin.subscribers")}}</li>
                             <li class="list-group-item">
-                                <span class="badge bg-cyan">{{$count["results"]}}</span> Непроверенные задачи</li>
+                                <span class="badge bg-cyan">{{$count["results"]}}</span> {{__("admin.unchecked_result")}}</li>
                             <li class="list-group-item">
-                                <span class="badge bg-greensea">{{$count["userrequest"]}}</span> Заявок на открытие доступа к видео</li>
+                                <span class="badge bg-greensea">{{$count["userrequest"]}}</span> {{__("admin.open_access")}}</li>
                         </ul>
                     </div>
                 </div>
