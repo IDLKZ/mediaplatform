@@ -33,7 +33,7 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $this->validate($request, ['name' => 'required', 'phone' => 'sometimes|numeric', 'description' => 'sometimes|max:30', ]);
+        $this->validate($request, ['name' => 'required', 'phone' => 'sometimes', 'description' => 'sometimes|max:30', ]);
         User::updateUser($request, Auth::id());
         Toastr::success('Ваши личные данные обновлены!','Успешно!');
         return redirect()->back();

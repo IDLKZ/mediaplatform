@@ -55,7 +55,7 @@
             <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">{{__('student.name')}}</label>
                 <div class="col-sm-10 mb-4">
-                    <input type="text" name="name" class="form-control" id="inputName">
+                    <input type="text" name="name" class="form-control" id="inputName" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
                 </div>
                 <label for="inputPhone" class="col-sm-2 col-form-label">{{__('student.phone_number')}}</label>
                 <div class="col-sm-10 mb-4">

@@ -18,7 +18,7 @@
                             <section class="boxs">
                                 <div class="boxs-header">
                                     <h3 class="custom-font hb-blue">
-                                        <strong>Материалы и описание </strong></h3>
+                                        <strong>{{__('content.video_materials')}} </strong></h3>
 
                                 </div>
                                 <div class="accordion mb-3" id="accordionExample">
@@ -61,7 +61,7 @@
                                                                 <div class="media-heading">{{$material->title}} <small class="pull-right text-muted">{{$material->type}}</small></div>
                                                                 @if ($material->links)
                                                                     @foreach($material->links as $link)
-                                                                        <a href="{{$link}}" target="_blank">Ссылка</a>
+                                                                        <a href="{{$link}}" target="_blank">{{__('content.links')}}</a>
                                                                     @endforeach
                                                                 @endif
 
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="boxs-footer text-right bg-tr-black lter dvd dvd-top">
-                                    <a href="{{route("student.course.show", $video->course->alias)}}" class="btn btn-raised btn-info">Назад</a>
+                                    <a href="{{route("student.course.show", $video->course->alias)}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
                                     @csrf
                                     @if ($result)
                                         <a href="javascript:void (0)" class="btn btn-raised btn-warning">Вы уже прошли!</a>
