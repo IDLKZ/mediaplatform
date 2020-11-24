@@ -1,7 +1,7 @@
 @extends('teacher.layout')
 @section('content')
     <!-- bradcome -->
-    <a href="{{route("teacher-exam")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
+    <a href="{{route("teacher-exams")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
     <div class="row">
         <div class="col-md-12">
             <section class="boxs">
