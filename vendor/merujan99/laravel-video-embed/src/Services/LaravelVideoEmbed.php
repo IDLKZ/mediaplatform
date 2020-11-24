@@ -47,7 +47,7 @@ class LaravelVideoEmbed
 
   }
 
-  public function getYoutubeThumbnail($url = null)
+  public static function getYoutubeThumbnail($url = null)
   {
       $MediaEmbed = new MediaEmbed();
 
