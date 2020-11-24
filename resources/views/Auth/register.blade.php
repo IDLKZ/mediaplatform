@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center mt-20">
-                    <a href="login.html" class="text-uppercase text-white">На главную</a>
+                    <a href="/" class="text-uppercase text-white">На главную</a>
                 </div>
             </div>
         </div>
