@@ -53,9 +53,9 @@
             </div>
             <div class="col-md-10 col-sm-12">
                 <div class="row justify-content-end">
-                    <a href="#" class="footer-info">Договор оферты</a>
-                    <a href="#" class="footer-info">Оплата</a>
-                    <a href="#" class="footer-info">Политика конфиденциальности</a>
+                    <a href="#" class="footer-info">{{__('front.contract')}}</a>
+                    <a href="#" class="footer-info">{{__('front.payment')}}</a>
+                    <a href="#" class="footer-info">{{__('front.privacy_policy')}}</a>
                 </div>
             </div>
         </div>

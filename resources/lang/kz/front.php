@@ -51,7 +51,9 @@ return [
     //Main_six
 
     //Footer
-
+    'contract' => 'Оферта шарты',
+    'payment' => 'Төлем',
+    'privacy_policy' => 'Құпиялылық саясаты',
     //Footer
 
     //other

@@ -51,7 +51,9 @@ return [
     //Main_six
 
     //Footer
-
+    'contract' => 'Договор оферты',
+    'payment' => 'Оплата',
+    'privacy_policy' => 'Политика конфиденциальности',
     //Footer
 
     //other
