@@ -1,0 +1,5 @@
+@media only screen and (min-width: 1900px) and (min-height: 1075px){
+    .pw_img .img-responsive {
+        height: 300px!important;
+    }
+}

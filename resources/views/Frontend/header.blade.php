@@ -41,6 +41,29 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="ml-auto desk-none desk-none-header" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                        <button id="auth" type="button" class="btn mr-2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Кабинет
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="auth">
+                            <a class="dropdown-item" href="{{route('userProfile')}}"><i class="far fa-user mr-2"></i>{{__('front.my_profile')}}</a>
+                            <a class="dropdown-item" href="{{route('userProfileSettings')}}"><i class="fas fa-cog mr-2"></i>{{__('front.settings')}}</a>
+                            <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>{{__('admin.profile.logout')}}</a>
+                        </div>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{App::isLocale('ru') ? 'Рус' : 'Қаз'}}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'kz'])}}">Қаз</a>
+                            <a class="dropdown-item" href="{{route('setlocale', ['lang' => 'ru'])}}">Рус</a>
+                        </div>
+                    </div>
+                </div>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('front')}}">{{__('front.main')}}</a>
@@ -58,7 +81,7 @@
                         <a class="nav-link" href="{{route('front')}}">{{__('front.contact')}}</a>
                     </li>
                 </ul>
-                <div class="ml-auto" role="group" aria-label="Button group with nested dropdown">
+                <div class="ml-auto mob-none" role="group" aria-label="Button group with nested dropdown">
 
                     @if (\Illuminate\Support\Facades\Auth::check())
 

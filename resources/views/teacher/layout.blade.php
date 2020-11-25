@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/svvg-styles.css">
     <link rel="stylesheet" href="/css/backend.css">
+    <link rel="stylesheet" href="/css/teacher_media.css">
 </head>
 <style>
     .progress { position:relative; width:100%; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
