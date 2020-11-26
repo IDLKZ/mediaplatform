@@ -295,38 +295,39 @@
             <small><i>{{__('front.five_text')}}</i></small><br><br>
             <b>{{__('front.five_news')}}</b><br>
             <div class="row">
+                @foreach($news as $new)
                 <div class="col-md-4 col-sm-12">
                     <div class="blog">
                         <div class="col-8">
-                            <div class="small">Новости от Jas Qalam</div>
-                            <h5>Новые перспективы с
-                                Jas Qalam</h5>
+                            <div class="small">{{$new->category->title}}</div>
+                            <h5><a class="text-white" href="{{route('frontSinglePost', $new->alias)}}">{{$new->title}}</a></h5>
                         </div>
                         <div class="col-4"></div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="blog" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-2.png')">
-                        <div class="col-8">
-                            <div class="small">Подборка от Jas Qalam</div>
-                            <h5>Главные тренды
-                                Казахстана
-                                2020 года</h5>
-                        </div>
-                        <div class="col-4"></div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="blog" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-3.png')">
-                        <div class="col-8">
-                            <div class="small">Прямая речь</div>
-                            <h5>Прямая речь
-                                от основателя
-                                Jas Qalam</h5>
-                        </div>
-                        <div class="col-8"></div>
-                    </div>
-                </div>
+                @endforeach
+{{--                <div class="col-md-4 col-sm-12">--}}
+{{--                    <div class="blog" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-2.png')">--}}
+{{--                        <div class="col-8">--}}
+{{--                            <div class="small">Подборка от Jas Qalam</div>--}}
+{{--                            <h5>Главные тренды--}}
+{{--                                Казахстана--}}
+{{--                                2020 года</h5>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-4"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-4 col-sm-12">--}}
+{{--                    <div class="blog" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/frontend/images/blog-3.png')">--}}
+{{--                        <div class="col-8">--}}
+{{--                            <div class="small">Прямая речь</div>--}}
+{{--                            <h5>Прямая речь--}}
+{{--                                от основателя--}}
+{{--                                Jas Qalam</h5>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-8"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
 {{--            <div class="text-center">--}}
 {{--                <button class="btn btn-outline-info mt-4">{{__('front.all_news')}}</button>--}}

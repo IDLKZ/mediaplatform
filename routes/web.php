@@ -61,7 +61,7 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
     Route::get('/exam', [FrontController::class, 'exam'])->name('frontExam');
     Route::get('/discussion', [FrontController::class, 'discussion'])->name('frontDiscussion');
     Route::get('/certificates', [FrontController::class, 'certificate'])->name('frontCertificate');
-
+    Route::get('/single-new/{alias}', [FrontController::class, 'singlePost'])->name('frontSinglePost');
 
     Route::get('/logout', function () {
         \Illuminate\Support\Facades\Auth::logout();

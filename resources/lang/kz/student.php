@@ -25,6 +25,7 @@ return [
     'continue' => 'Жалғастыру',
     'page_of_course' => 'Курстың парақшасына өту',
     'get_certificate' => 'Сертификатты алу',
+    'no_certificates' => 'Әзірге сізде сертификат жоқ',
     'main_lang' => 'Негізгі тіл',
     'all_courses' => 'Барлық курстар',
     //courses

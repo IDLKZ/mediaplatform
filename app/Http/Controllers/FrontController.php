@@ -3,13 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        return view('Frontend.index');
+        $news = News::with('category')->take(3)->get();
+        return view('Frontend.index', compact('news'));
+    }
+
+    public function singlePost($alias)
+    {
+        $post = News::where('alias', $alias)->with(['author', 'category'])->first();
+        if ($post) {
+            return view('Frontend.single-post', compact('post'));
+        }
+        abort(404);
     }
 
     public function about()

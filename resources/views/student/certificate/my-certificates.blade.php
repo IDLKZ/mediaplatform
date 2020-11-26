@@ -16,7 +16,7 @@
                     </div>
                 @endforeach
             @else
-                Сертификатов нет
+            {{__('student.no_certificates')}}
             @endif
 
         </div>
