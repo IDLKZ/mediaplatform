@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{route('front')}}">
                 <svg width="147" height="47" viewBox="0 0 147 47" fill="none" xmlns="http://www.w3.org/2000/svg">

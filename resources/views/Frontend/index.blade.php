@@ -81,11 +81,9 @@
                     <div class="skill-blocks">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ БЛОГОВ <br>
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h5>{{__('front.blog_1')}}</h5>
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -99,10 +97,9 @@
                     <div class="skill-blocks" style="background: #D6F0C9!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h5>КОПИРАЙТИНГ/
-                                    СТОРИТЕЛИНГ</h5><br>
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h5>{{__('front.blog_2')}}</h5><br>
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -116,11 +113,9 @@
                     <div class="skill-blocks" style="background-color: #FBBFD0!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h5>ТРЕНДЫ
-                                    В СОЦИАЛЬНЫХ
-                                    МЕДИА</h5>
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h5>{{__('front.blog_3')}}</h5>
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -134,11 +129,9 @@
                     <div class="skill-blocks" style="background-color: #FFBFBF!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h5>ВЕДЕНИЕ
-                                    ВИДЕО-КОНТЕНТА
-                                    (YOUTUBE)</h5>
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h5>{{__('front.blog_4')}}</h5>
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -152,11 +145,9 @@
                     <div class="skill-blocks" style="background: #C0E6F8!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h5>АВТОРСКИЙ <br>
-                                    БЛОГ <br>
-                                    В ТЕЛЕГРАМ</h5>
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h5>{{__('front.blog_5')}}</h5>
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -174,11 +165,9 @@
                     <div class="skill-blocks" style="background-color: #90CAF9!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h6><strong>ВВЕДЕНИЕ <br>
-                                        В PR И СВЯЗЬ <br>
-                                        С ОБЩЕСТВЕННОСТЬЮ</strong></h6> <br>
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h6><strong>{{__('front.blog_6')}}</strong></h6> <br>
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -192,11 +181,9 @@
                     <div class="skill-blocks" style="background-color: #F9E299!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h6><strong>ЛИЧНЫЙ БРЕНД
-                                        (СОЗДАНИЕ ИМИДЖА <br>
-                                        И РЕПУТАЦИИ)</strong></h6> <br>
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h6><strong>{{__('front.blog_7')}}</strong></h6> <br>
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -210,10 +197,9 @@
                     <div class="skill-blocks" style="background-color: #B4D7F6!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h6><strong>ВЗАИМОДЕЙСТВИЕ <br>
-                                        СО СМИ</strong></h6> <br><br class="mob-none">
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h6><strong>{{__('front.blog_8')}}</strong></h6> <br><br class="mob-none">
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -227,10 +213,9 @@
                     <div class="skill-blocks" style="background-color: #E5C0A8!important;">
                         <div class="row">
                             <div class="col-8">
-                                <small>Блогер</small><br>
-                                <h6><strong>АНТИКРИЗИСНЫЙ <br>
-                                        МЕНЕДЖМЕНТ</strong></h6> <br> <br class="mob-none">
-                                <small>{{__('front.more_details')}}</small>
+                                <small>Блогер</small><br><br>
+                                <h6><strong>{{__('front.blog_9')}}</strong></h6> <br> <br class="mob-none">
+{{--                                <small>{{__('front.more_details')}}</small>--}}
                             </div>
                             <div class="col-4 row align-items-center">
                                 <div class="circle">
@@ -253,47 +238,50 @@
             @endif
 
             <small><i>{{__('front.four_text')}}</i></small><br><br>
-                @if (\Illuminate\Support\Facades\App::getLocale() == 'kz')
-                    <b>Біздің 30 дан 3 пікірлеріміз</b><br>
-                @else
-                    <b>Наши отзывы 3 из 30</b><br>
-                @endif
+{{--                @if (\Illuminate\Support\Facades\App::getLocale() == 'kz')--}}
+{{--                    <b>Біздің 30 дан 3 пікірлеріміз</b><br>--}}
+{{--                @else--}}
+{{--                    <b>Наши отзывы 3 из 30</b><br>--}}
+{{--                @endif--}}
 
             <div class="row">
                 <div class="col-md-4 col-sm-12">
-                    <div class="review">
-                        <div class="col-7">
-                            <small>Блогер</small>
-                            <h5>Ахматова Алина</h5>
-                            <i>@instagram</i>
-                        </div>
-                        <div class="col-5"></div>
-                    </div>
+                    <div class="demo mb-2" data-ytb-video="_IwSJFRnJvM"></div>
+{{--                    <div class="review">--}}
+{{--                        <div class="col-7">--}}
+{{--                            <small>Блогер</small>--}}
+{{--                            <h5>Ахматова Алина</h5>--}}
+{{--                            <i>@instagram</i>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-5"></div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="review">
-                        <div class="col-7">
-                            <small>Блогер</small>
-                            <h5>Ахматова Алина</h5>
-                            <i>@instagram</i>
-                        </div>
-                        <div class="col-5"></div>
-                    </div>
+                    <div class="demo mb-2" data-ytb-video="5V1a3cz8ddA"></div>
+{{--                    <div class="review">--}}
+{{--                        <div class="col-7">--}}
+{{--                            <small>Блогер</small>--}}
+{{--                            <h5>Ахматова Алина</h5>--}}
+{{--                            <i>@instagram</i>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-5"></div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="col-md-4 col-sm-12">
-                    <div class="review">
-                        <div class="col-7">
-                            <small>Блогер</small>
-                            <h5>Ахматова Алина</h5>
-                            <i>@instagram</i>
-                        </div>
-                        <div class="col-5"></div>
-                    </div>
+                    <div class="demo mb-2" data-ytb-video="LDV4PYKtWSM"></div>
+{{--                    <div class="review">--}}
+{{--                        <div class="col-7">--}}
+{{--                            <small>Блогер</small>--}}
+{{--                            <h5>Ахматова Алина</h5>--}}
+{{--                            <i>@instagram</i>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-5"></div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
-            <div class="text-center">
-                <button class="btn btn-outline-info mt-4">{{__('front.all_reviews')}}</button>
-            </div>
+{{--            <div class="text-center">--}}
+{{--                <button class="btn btn-outline-info mt-4">{{__('front.all_reviews')}}</button>--}}
+{{--            </div>--}}
         </div>
     </section>
     <section id="main-five">
@@ -340,9 +328,9 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <button class="btn btn-outline-info mt-4">{{__('front.all_news')}}</button>
-            </div>
+{{--            <div class="text-center">--}}
+{{--                <button class="btn btn-outline-info mt-4">{{__('front.all_news')}}</button>--}}
+{{--            </div>--}}
         </div>
     </section>
     <section id="main-six">

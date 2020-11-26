@@ -31,9 +31,10 @@
 @include('student.header')
 <div class="container">
     <div class="row">
-        <div class="margin-75"></div>
+{{--        <div class="margin-75 mob-none"></div>--}}
         <div class="margin-25"></div>
         @yield('content')
+        <div class="margin-75 desk-none"></div>
         <div class="margin-25"></div>
     </div>
 </div>

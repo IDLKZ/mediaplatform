@@ -44,6 +44,7 @@
         <div class="menu-btn close-btn">&#10005;</div>
         <ul>
             <a href="{{route('userProfile')}}"><li><i class="far fa-user mr-4"></i>{{__('student.my_profile')}}</li></a>
+            <a href="{{route('listCourses')}}"><li><i class="fa fa-video-camera mr-4"></i>{{__('student.all_courses')}}</li></a>
             <a href="{{route('student.course')}}"><li><i class="fas fa-photo-video mr-4"></i>{{__('student.my_courses')}}</li></a>
             {{--            <a href=""><li class="list-group-item"><i class="far fa-bell mr-4"></i>Уведомления</li></a>--}}
             <a href="{{route('student.checkedResult')}}"><li><i class="far fa-check-square mr-4"></i>{{__('student.my_exam')}}</li></a>

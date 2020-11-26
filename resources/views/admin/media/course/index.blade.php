@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
     <!--  CONTENT  -->
-    <a href="{{route("admin-course.index")}}" class="btn btn-raised btn-info">{{__("admin.back")}}</a>
+    <a href="{{route("admin-media")}}" class="btn btn-raised btn-info">{{__("admin.back")}}</a>
 
     <div class="page page-dashboard">
         <div class="row clearfix">
