@@ -41,6 +41,7 @@
             <link rel="stylesheet" href="/frontend/css/style.css">
             <link rel="stylesheet" href="/frontend/css/media.css">
             <link rel="stylesheet" href="/css/front.css">
+            <link rel="stylesheet" href="/frontend/css/jquery.youtubevideo.min.css">
         @endif
     @endif
 
@@ -81,6 +82,7 @@
         <script src="/frontend/js/jquery-color.js"></script>
         <script src="/frontend/js/scripts.js"></script>
         <script src="/frontend/js/media.js"></script>
+        <script src="/frontend/js/jquery.youtubevideo.min.js"></script>
     @endif
 @endif
 

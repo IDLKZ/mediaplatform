@@ -9,12 +9,10 @@
                         <h5>Автор: {{$course->author->name}}</h5>
                     </div>
                     <div class="uw_image"> <img class="img-circle" src="{{$course->img}}" alt="{{$course->title}}" style="width: 100%"></div>
-                    <div class="uw_footer">
-                        <div class="text-center">
-                            <p class="mt-3"><strong>{{$course->title}}</strong></p>
-                            <a href="{{$link['link']}}" class="btn btn-raised btn-{{$link['color']}}">{{$link['text']}}</a>
-                        </div>
-
+                    <div class="text-center">
+                        <p class="mt-3"><strong>{{$course->title}}</strong></p>
+                    </div>
+                    <div class="uw_footer text-center">
                         <div class="row mt-3 mb-3">
                             <div class="col-sm-6 col-xs-6 border-right">
                                 <div class="uw_description">
@@ -28,6 +26,11 @@
                                     <span>Уроков</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="text-center">
+
+                            <a href="{{$link['link']}}" class="btn btn-raised btn-{{$link['color']}}">{{$link['text']}}</a>
                         </div>
                     </div>
                 </section>

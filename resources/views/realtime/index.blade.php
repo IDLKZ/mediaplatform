@@ -1,6 +1,6 @@
 @extends('Frontend.layout')
 @section('content')
-    <section class="section lb">
+    <section class="section lb desk-none-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">

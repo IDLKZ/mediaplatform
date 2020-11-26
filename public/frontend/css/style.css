@@ -183,7 +183,7 @@ h1, h2, h5 {
 /*End Main-six*/
 /*Start Footer*/
 footer {
-    height: calc(100vh * 0.31);
+    height: calc(100vh * 0.40);
     background: #1D1F28;
     color: white!important;
 }

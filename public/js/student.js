@@ -9,12 +9,12 @@ $(document).ready(function () {
         //     console.log(e.keyCode)
         // });
         $('input:radio:checked').prop('checked', false);
-        if($('input:radio:checked').length < 10){
+        if($('input:radio:checked').length < 5){
             $("#checkResult").fadeOut();
         }
         $(".questionCheck").on("change",function () {
             console.log($('input:radio:checked').length)
-            if($('input:radio:checked').length==10){
+            if($('input:radio:checked').length==5){
                $("#checkResult").fadeIn();
            }
             else{
@@ -22,7 +22,7 @@ $(document).ready(function () {
             }
         })
         $("#checkResult").click(function () {
-            if($('input:radio:checked').length<10){
+            if($('input:radio:checked').length<5){
                 alert("Завершите тест, ответив на все вопросы!")
                 return false
             }

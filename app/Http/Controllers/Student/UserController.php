@@ -213,7 +213,7 @@ class UserController extends Controller
        if($video && !$result){
           if($video->examination){
               if($video->examination->quiz_id){
-                  $data = Examination::getQuestions($video->examination->quiz_id,10);
+                  $data = Examination::getQuestions($video->examination->quiz_id,5);
 
                   $quiz['user'] = Auth::user()->name;
                   foreach ($data as $k => $datum) {
@@ -257,7 +257,7 @@ class UserController extends Controller
             ]
         );
             $data = Result::prepareData($request->all());
-            if($data['result']>8){
+            if($data['result']>4){
                 if(Result::saveQuizResult($data)){
                     Toastr::success("Вы успешно сдали тест, следующее видео успешно открыто","Отлично!");
                     $course = Course::find($request->get("course_id"));
