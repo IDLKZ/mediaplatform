@@ -5,10 +5,10 @@
         <div class="row clearfix">
             @if ($news->isNotEmpty())
                 @foreach($news as $item)
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="boxs project_widget">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="boxs project_widget" style="min-height: 550px">
                         <div class="pw_img">
-                            <img class="img-responsive" style="width: 100%; height: auto" src="{{$item->thumbnail}}" alt="About the image">
+                            <img class="img-responsive" style="width: 100%;" src="{{$item->thumbnail}}" alt="About the image">
                         </div>
                         <div class="pw_content">
                             <div class="pw_header">

@@ -14,7 +14,7 @@ return [
     "active"=>"Белсенді",
     "request"=>"Өтінімде",
     "no_admin"=>"Әкімшілер жоқ",
-    "no_teacher"=>"Тьюторлар жоқ",
+    "no_teacher"=>"Спикерлер жоқ",
     "no_student"=>"Студенттер жоқ",
     "no_img"=>"Сурет жоқ",
     "no_results"=>"Нәтижелер жоқ",
@@ -107,11 +107,11 @@ return [
     "user.admin_description"=>"Мұнда сіз платформаны қолдайтын әкімшілердің тізімін көре аласыз",
     "user.all_admins"=>"Барлық әкімшілер",
 
-    "user.teachers"=>"Тьюторлар",
-    "user.teacher"=>"Тьютор",
-    "user.about_teacher"=>"тьютор Туралы",
-    "user.teacher_description"=>"Мұнда сіз бейне сабақтарын жүргізетін тьюторлардың тізімін көре аласыз",
-    "user.all_teachers"=>"Барлық тьюторлар",
+    "user.teachers"=>"Спикерлер",
+    "user.teacher"=>"Спикер",
+    "user.about_teacher"=>"Спикер Туралы",
+    "user.teacher_description"=>"Мұнда сіз бейне сабақтарын жүргізетін Спикерлердың тізімін көре аласыз",
+    "user.all_teachers"=>"Барлық Спикерлер",
 
     "user.students"=>"Тыңдаушылар",
     "user.student"=>"Тыңдаушы",
@@ -178,7 +178,7 @@ return [
     "course_skills"=>"Дағдылар",
     "course_what_will_you_learn"=>"Сіз не үйренесіз",
     "comments_student"=>"Тыңдаушының пікірлері",
-    "comments_teacher"=>"Тьютордың пікірлері",
+    "comments_teacher"=>"Спикердың пікірлері",
 
 
     //video CRUD
