@@ -8,7 +8,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="boxs project_widget">
                         <div class="pw_img">
-                            <img class="img-responsive" style="width: 100%; height: 150px" src="{{$item->thumbnail}}" alt="About the image">
+                            <img class="img-responsive" style="width: 100%; height: auto" src="{{$item->thumbnail}}" alt="About the image">
                         </div>
                         <div class="pw_content">
                             <div class="pw_header">
