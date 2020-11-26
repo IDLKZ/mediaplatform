@@ -257,7 +257,7 @@ class UserController extends Controller
             ]
         );
             $data = Result::prepareData($request->all());
-            if($data['result']>4){
+            if($data['result']>=4){
                 if(Result::saveQuizResult($data)){
                     Toastr::success("Вы успешно сдали тест, следующее видео успешно открыто","Отлично!");
                     $course = Course::find($request->get("course_id"));

@@ -9,8 +9,10 @@
             @if (count($certificates) > 0)
                 @foreach($certificates as $certificate)
                     <div class="col-md-6 text-center">
-                        <img src="{{$certificate->course->img}}" alt="{{$certificate->course->title}}" style="width: 85%; height: 85%">
-                        <a href="{{route('getCertificate', $certificate->course->id)}}" class="btn btn-raised btn-info">Получить сертификат</a>
+                        <img src="{{$certificate->course->img}}" alt="{{$certificate->course->title}}" style="width: 85%;">
+                        <small>{{$certificate->course->title}}</small>
+                        <hr>
+                        <a href="{{route('getCertificate', $certificate->course->id)}}" class="btn btn-raised btn-info">{{__('student.get_certificate')}}</a>
                     </div>
                 @endforeach
             @else
