@@ -20,10 +20,7 @@ class AdminExaminationController extends Controller
     public function index()
     {
         $examinations = Examination::with(["course","video","quiz","review","author"])->paginate(12);
-            return view("admin.exams.examination.index",compact("examinations"));
-
-
-
+        return view("admin.exams.examination.index",compact("examinations"));
 
     }
 
@@ -89,7 +86,7 @@ class AdminExaminationController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -100,7 +97,7 @@ class AdminExaminationController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort(404);
     }
 
     /**

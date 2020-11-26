@@ -5,10 +5,10 @@
         <div class="row">
             @if($videos->isNotEmpty())
             @foreach($videos as $video)
-            <div class="col-md-3 col-sm-6 col-xs-12 mh-250">
+            <div class="col-md-4 col-sm-6 col-xs-12 mh-250">
                 <div class="boxs project_widget">
-                    <div class="pw_img">
-                        <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getYoutubeThumbnail($video->video_url)}}" style="width: 100%" alt="About the image">
+                    <div class="pw_img ">
+                        <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getYoutubeThumbnail($video->video_url)}}" style="width: 100%; height: auto" alt="About the image">
                     </div>
                     <div class="pw_content">
 

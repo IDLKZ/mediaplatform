@@ -19,7 +19,7 @@ class AdminReviewQuestionController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -69,7 +69,7 @@ class AdminReviewQuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**

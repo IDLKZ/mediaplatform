@@ -51,12 +51,12 @@ class AdminQuizController extends Controller
         ]);
         if(Quiz::saveData($request->all())){
             Toastr::success("Успешно создан тест","Отлично!");
-            return redirect()->back();
         }
         else{
             Toastr::warning("Что-то пошло не так","Упс...");
-            return redirect()->back();
         }
+        return redirect(route("admin-quiz.index"));
+
     }
 
     /**
@@ -68,14 +68,8 @@ class AdminQuizController extends Controller
     public function show($id)
     {
         $questions = Question::where("quiz_id",$id)->paginate(60);
-        if($questions->isNotEmpty()){
-            return view("admin.exams.quiz.show",compact("questions"));
-        }
-        else
-        {
-            Toastr::warning("Вопросы к данному тесту еще не созданы","Упс....");
-            return  redirect()->back();
-        }
+        return view("admin.exams.quiz.show",compact("questions"));
+
     }
 
     /**
@@ -95,7 +89,8 @@ class AdminQuizController extends Controller
             return view("admin.exams.quiz.edit",compact("quiz","validator"));
         }
         else{
-            return  redirect()->back();
+            return redirect(route("admin-quiz.index"));
+
         }
 
     }
@@ -117,15 +112,18 @@ class AdminQuizController extends Controller
         if($quiz){
             if(Quiz::updateData($request->all(),$quiz)){
                 Toastr::success("Успешно обновлен тест","Отлично!");
-                return redirect()->back();
+                return redirect(route("admin-quiz.index"));
+
             }
             else{
                 Toastr::warning("Что-то пошло не так","Упс...");
-                return redirect()->back();
+                return redirect(route("admin-quiz.index"));
+
             }
         }
         else{
-            return  redirect()->back();
+            return redirect(route("admin-quiz.index"));
+
         }
     }
 
@@ -142,7 +140,8 @@ class AdminQuizController extends Controller
             Toastr::success("Успешно удалено");
             $quiz->delete();
         }
-        return  redirect()->back();
+        return redirect(route("admin-quiz.index"));
+
 
     }
 }

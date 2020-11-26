@@ -8,7 +8,7 @@
                         <ul id="navigation">
                             {{--                            Главная--}}
                             <li>
-                                <a href="/admin">
+                                <a href="{{route("main")}}">
                                     <i class="fa fa-dashboard"></i>
                                     <span>{{__('admin.sidebar.index')}}</span>
                                 </a>

@@ -19,7 +19,7 @@ class AdminQuestionController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -85,7 +85,7 @@ class AdminQuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -149,7 +149,7 @@ class AdminQuestionController extends Controller
         }
         else{
             Toastr::warning("Вопрос не найден","Упс...");
-            return  redirect(route("question.index"));
+            return  redirect(route("admin-quiz.index"));
         }
     }
 
@@ -161,6 +161,7 @@ class AdminQuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Question::find($id)->delete();
+        return  redirect()->back();
     }
 }

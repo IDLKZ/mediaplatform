@@ -102,15 +102,26 @@
                                                     <p>{{$result->answer}}</p>
                                                 </td>
                                                 <td>
-                                                    <ul class="controls">
+                                                    <ul class="controls" style="list-style: none">
                                                         <li class="dropdown">
-                                                            <ul class="controls list-group-flush">
+                                                            <ul class="controls list-group-flush" >
                                                                 <li class="dropdown list-group-item">
                                                                     <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown" aria-expanded="false">
                                                                         <i class="fa fa-cog"></i>
                                                                     </a>
                                                                     <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp list-unstyled">
-
+                                                                        <li>
+                                                                            <a href="{{route("question.edit",$result->id)}}" role="button" tabindex="0" >
+                                                                                <i class="fa fa-pencil-square-o"></i> {{__("admin.change")}} </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <form  method="post" action="{{route('question.destroy',$result->id)}}">
+                                                                                @method("DELETE")
+                                                                                @csrf
+                                                                                <button onclick="return confirm('Вы уверены, удаление курса приведет к удалению видео!')" role="button" tabindex="0" class="btn btn-a">
+                                                                                    <i class="fa fa-bitbucket"></i> {{__("admin.delete")}} </button>
+                                                                            </form>
+                                                                        </li>
 
                                                                     </ul>
                                                                 </li>

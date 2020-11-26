@@ -11,7 +11,7 @@
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <section class="boxs user_widget">
                         <div class="uw_header l-blush">
-                            <h5>{{$course->title}}</h5>
+                            <h5 title="{{$course->title}}">{{strlen($course->title) >40 ? mb_substr($course->title,0,45). "..." : $course->title}}</h5>
                             <small>{{\Illuminate\Support\Carbon::parse($course->created_at)->diffForHumans()}}</small>
                         </div>
                         <div class="uw_image"> <img class="img-circle" src="{{$course->img}}" style="min-height: 120px" alt="{{$course->title}}"></div>

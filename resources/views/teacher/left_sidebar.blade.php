@@ -8,7 +8,7 @@
                         <ul id="navigation">
                             {{--Главная--}}
                             <li>
-                                <a href="/teacher">
+                                <a href="{{route("home")}}">
                                     <i class="fa fa-dashboard"></i>
                                     <span>{{__('admin.sidebar.index')}}</span>
                                 </a>

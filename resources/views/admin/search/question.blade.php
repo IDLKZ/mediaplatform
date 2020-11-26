@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-    <a href="" class="btn btn-raised btn-info">{{__('content.back')}}</a>
+    <a href="{{route("admin-search")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">
@@ -22,7 +22,7 @@
                     <form id="my-form" action="{{route("admin-search-question-result")}}" method="get" class="form-horizontal" name="form4" role="form" id="form4" data-parsley-validate>
                         @csrf
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{"admin.search_in"}}</label>
+                            <label class="col-sm-3 control-label">{{__("admin.search_in")}}</label>
                             <div class="col-sm-9">
                                 <select name="type" class="select-multi form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
                                     <option value="quiz">{{__("admin.quiz")}}</option>
@@ -33,7 +33,7 @@
                         <div class="boxs-body">
                             <div class="input-group search-bar">
                                 <div class="form-group is-empty">
-                                    <input type="text" class="form-control " name="query" placeholder="Введите наименование вопроса или ответа..."><span class="material-input"></span></div>
+                                    <input type="text" class="form-control " name="query" placeholder="{{__("admin.search_key")}}..."><span class="material-input"></span></div>
                                 <span class="input-group-btn">
 										<button type="submit" class="btn btn-raised btn-default" type="button">
 											<i class="fa fa-search"></i> {{__("admin.search")}}!</button>
@@ -102,13 +102,12 @@
                                                     <p>{{$result->answer}}</p>
                                                 </td>
                                                 <td>
-                                                    <ul class="controls">
+                                                    <ul class="controls" style="list-style: none">
                                                         <li class="dropdown">
                                                             <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown" aria-expanded="true">
                                                                 <i class="fa fa-cog"></i>
-                                                                <i class="fa fa-spinner fa-spin"></i>
                                                             </a>
-                                                            <ul class="dropdown-menu ">
+                                                            <ul class="dropdown-menu " >
                                                                 <li>
                                                                     <a href="{{route("admin-question.edit",$result->id)}}">
                                                                         <i class="fa fa-pencil"></i> {{__("admin.change")}}

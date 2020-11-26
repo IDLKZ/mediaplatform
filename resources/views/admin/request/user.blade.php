@@ -2,6 +2,8 @@
 @section('content')
 
     <div class="page dashboard-page">
+        <a href="{{route("admin-request")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
+
         <!-- bradcome -->
         <div class="b-b mb-20">
             <div class="row">

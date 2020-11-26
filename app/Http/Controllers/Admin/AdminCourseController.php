@@ -24,14 +24,9 @@ class AdminCourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::with(["author","language","videos","subscribers"])->paginate(12);
-        if($courses->isNotEmpty()){
-            return view("admin.media.course.index",compact("courses"));
-        }
-        else{
-            Toastr::warning("Пока курсов нет",'Упс');
-            return  redirect()->route("admin-course.create");
-        }
+        $courses = Course::with(["author","language","videos","subscribers"])->orderBy("created_at","desc")->paginate(12);
+        return view("admin.media.course.index",compact("courses"));
+
     }
 
     /**
@@ -55,7 +50,7 @@ class AdminCourseController extends Controller
         }
         else{
             Toastr::warning("Создайте преподавателя!","Упс");
-            return  redirect()->back();
+            return  redirect(route("admin-course.index"));
         }
 
     }
@@ -78,12 +73,11 @@ class AdminCourseController extends Controller
         ]);
         if(Course::saveData($request)){
             Toastr::success('Курс был успешно создан','Успешно создан курс!');
-            return redirect()->back();
         }
         else{
             Toastr::warning('Произошла ошибка, попробуйте позже!','Упс!');
-            return redirect()->back();
         }
+        return redirect(route("admin-course.index"));
     }
 
     /**
@@ -100,7 +94,7 @@ class AdminCourseController extends Controller
         }
         else{
             Toastr::warning('Курс не найденн!','Упс!');
-            return redirect()->back();
+            return redirect(route("admin-course.index"));
         }
     }
 
@@ -126,7 +120,7 @@ class AdminCourseController extends Controller
         }
         else{
             Toastr::warning('Курс не найденн!','Упс!');
-            return redirect()->back();
+            return redirect(route("admin-course.index"));
         }
 
 
@@ -180,7 +174,7 @@ class AdminCourseController extends Controller
             Storage::delete($course->img);
             $course->delete();
             Toastr::success('Курс был успешно удален','Успешно удален курс!');
-            return redirect()->back();
+            return  redirect(route("admin-course.index"));
 
         }
         else{
@@ -212,7 +206,7 @@ class AdminCourseController extends Controller
             }
             else{
                 Toastr::warning("Подписчиков данного видеокурса не найдено","Упс!");
-                return redirect()->back();
+                return redirect(route("admin-course.index"));
             }
     }
 

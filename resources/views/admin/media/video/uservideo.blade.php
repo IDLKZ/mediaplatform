@@ -3,7 +3,8 @@
     <!-- row -->
     <a href="{{route("admin-video.index")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <div class="row">
-        @foreach($uservideos as $uservideo)
+        @if ($uservideos->isNotEmpty())
+            @foreach($uservideos as $uservideo)
             <div class="col-md-6 col-sm-12 p-10">
                 <div class="col-md-12 subscriber-card bg-white p-sm-10">
                     <div class="dropdown absolute-right">
@@ -31,7 +32,13 @@
 
                 </div>
             </div>
-        @endforeach
+                {{$uservideos->links()}}
+            @endforeach
+        @else
+            {{__("admin.not_found")}}
+
+        @endif
+
     </div>
     <!--/ CONTENT -->
 

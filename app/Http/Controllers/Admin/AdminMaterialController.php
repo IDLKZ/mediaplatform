@@ -20,14 +20,10 @@ class AdminMaterialController extends Controller
      */
     public function index()
     {
-        $materials = Materials::orderBy("created_at","desc")->paginate(15);
-        if (!$materials->isEmpty()) {
-            return  view("admin.media.material.index",compact("materials"));
-        }
-        else{
-            Toastr::warning("Материалов еще нет!","Упс....");
-           return redirect()->back();
-        }
+        $materials = Materials::orderBy("created_at","desc")->with("video")->paginate(15);
+        return  view("admin.media.material.index",compact("materials"));
+
+
 
 
 
@@ -72,11 +68,11 @@ class AdminMaterialController extends Controller
         ]);
         if(Materials::saveMaterial($request)){
             Toastr::success("Успешно добавлены материалы","Ура!");
-            return redirect()->back();
+            return redirect(route("admin-material.index"));
         }
         else{
             Toastr::warning("Кажись, что-то пошло не так","Упс...");
-            return redirect(route("material.create"));
+            return redirect(route("admin-material.index"));
         }
     }
 
@@ -88,7 +84,7 @@ class AdminMaterialController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -111,7 +107,7 @@ class AdminMaterialController extends Controller
         }
         else{
             Toastr::warning('Материал не найден!','Упс!');
-            return  redirect(route("material.create"));
+            return  redirect(route("admin-material.index"));
         }
     }
 
@@ -134,17 +130,15 @@ class AdminMaterialController extends Controller
             ]);
             if(Materials::updateMaterial($request,$material)){
                 Toastr::success("Успешно изменены материалы","Ура!");
-                return redirect()->back();
             }
             else{
                 Toastr::warning("Кажись, что-то пошло не так","Упс...");
-                return redirect()->back();
             }
         }
         else{
             Toastr::warning('Материал не найден!','Упс!');
-            return  redirect()->back();
         }
+        return  redirect(route("admin-material.index"));
     }
 
     /**
@@ -162,11 +156,11 @@ class AdminMaterialController extends Controller
             }
             $material->delete();
             Toastr::success("Успешно удалены материалы","Ура!");
-            return redirect()->back();
         }
         else{
             Toastr::warning('Материал не найден!','Упс!');
-            return  redirect()->back();
         }
+        return  redirect(route("admin-material.index"));
+
     }
 }

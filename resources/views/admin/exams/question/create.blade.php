@@ -1,5 +1,6 @@
 @extends('admin.layout')
 @section('content')
+
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">

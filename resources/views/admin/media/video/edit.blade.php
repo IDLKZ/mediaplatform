@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-
+    <a href="{{route("admin-video.index")}}" class="btn btn-raised btn-info">{{__('content.back')}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">

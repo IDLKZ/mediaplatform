@@ -24,13 +24,10 @@ class AdminVideoController extends Controller
      */
     public function index()
     {
-        $videos = Video::with("course")->paginate(12);
-        if(!$videos->isEmpty()){
-            return view("admin.media.video.index",compact("videos"));
-        }
-        else{
-            return  redirect()->back();
-        }
+        $videos = Video::with("course")->orderBy("created_at","desc")->paginate(12);
+        return view("admin.media.video.index",compact("videos"));
+
+
 
 
     }
@@ -67,14 +64,6 @@ class AdminVideoController extends Controller
             'video_url'=> 'required',
             "description"=>"required",
         ]);
-
-//        $client = Vimeo::connection('main');
-//        $file_name = $request->file('video_url');
-//        $uri = $client->upload($file_name, [
-//            "name" => $request->get('title').'-'.Str::random(7),
-//            "description" => $request->get('description')
-//        ]);
-//        $response = $client->request($uri . '?fields=link');
         Video::saveData($request);
         Toastr::success('Видео успешно создано!', 'Ураа ...!');
         return redirect(route('admin-video.index'));
@@ -97,7 +86,7 @@ class AdminVideoController extends Controller
         }
         else{
             Toastr::warning('Видео не найден!','Упс!');
-            return  redirect()->back();
+            return redirect(route('admin-video.index'));
         }
     }
 
@@ -145,17 +134,16 @@ class AdminVideoController extends Controller
             ]);
             if(Video::updateData($request,$video)){
                 Toastr::success("Успешно обновлено видео","Ура!");
-                return redirect()->back();
             }
             else{
                 Toastr::success("Кажись, что-то пошло не так","Упс...");
-                return redirect()->back();
             }
         }
         else{
             Toastr::warning('Видео не найдено!','Упс!');
-            return  redirect(route("admin-video.index"));
         }
+        return redirect(route('admin-video.index'));
+
     }
 
     /**
@@ -168,16 +156,11 @@ class AdminVideoController extends Controller
     {
         $video = Video::where(["alias"=>$alias])->first();
         if($video){
-//            $client = Vimeo::connection('main');
-//            $TIMA = Str::of($video->video_url)->ltrim('https://vimeo.com/');
-//            $uri = "/videos/$TIMA";
-//            $client->request($uri, [], 'DELETE');
             $course_id = $video->course_id;
             $video->delete();
             Video::recountNumber($course_id);
-
             Toastr::success('Видео было успешно удалено','Успешно удалено видео!');
-            return redirect()->back();
+            return redirect(route('admin-video.index'));
         }
         else{
             Toastr::warning('Видео не найдено!','Упс!');
@@ -203,7 +186,7 @@ class AdminVideoController extends Controller
             return view("admin.result.index",compact("results"));
         }
         else{
-            return redirect()->back();
+            return redirect(route('admin-video.index'));
         }
     }
     public function unchecked($alias){
@@ -213,7 +196,7 @@ class AdminVideoController extends Controller
             return view("admin.result.index",compact("results"));
         }
         else{
-            return redirect()->back();
+            return redirect(route('admin-video.index'));
         }
     }
 
@@ -224,7 +207,7 @@ class AdminVideoController extends Controller
             return view("admin.media.material.index",compact("materials"));
         }
         else{
-            return redirect()->back();
+            return redirect(route('admin-video.index'));
         }
     }
 }

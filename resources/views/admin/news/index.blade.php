@@ -14,7 +14,7 @@
 
         <div class="row clearfix">
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-violet-blush">
                         <h3>{{__("admin.categories")}}</h3>
                         <i class="fa fa-paragraph users-icon"></i>
@@ -36,7 +36,7 @@
                 </section>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-dark-blue-blush">
                         <h3>{{__("admin.news")}}</h3>
                         <i class="fa fa-header users-icon"></i>

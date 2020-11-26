@@ -15,7 +15,7 @@
 
         <div class="row clearfix">
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-dark-violet-blush">
                         <h3>{{__("admin.exams")}}</h3>
                         <i class="icon-note users-icon"></i>
@@ -36,7 +36,7 @@
                 </section>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-light-blue-blush">
                         <h3>{{__("admin.quizzes")}}</h3>
                         <i class="fa fa-list-ol users-icon"></i>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-dark-salad-blush">
                         <h3>{{__("admin.reviews")}}</h3>
                         <i class="fa fa-question-circle users-icon"></i>

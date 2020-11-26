@@ -73,7 +73,7 @@
                             </div>
                             {{$materials->links()}}
                         @else
-                            <h3>{{__("admin.no-materials")}}</h3>
+                            <h3>{{__("admin.no_materials")}}</h3>
                         @endif
                     </div>
                 </section>

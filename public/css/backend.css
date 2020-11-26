@@ -335,6 +335,15 @@ Admin Users Start
 
 
 @media screen and (min-width: 768px) {
+
+    .md-mh-350{
+        min-height: 350px;
+        height: auto;
+    }
+    .md-mh-400{
+        min-height: 400px;
+        height: auto;
+    }
     /*Admin - Teacher - Course*/
     .course-item {
         height: auto;
@@ -349,13 +358,12 @@ Admin Users Start
 
     .course-item-image {
         padding: 20px;
-        border-radius: 50%;
+
         display: table-cell;
         text-align: center;
         vertical-align: middle;
     }
     .course-item-image > img {
-        border-radius: 50%;
         width: 90%;
         height: 190px;
     }

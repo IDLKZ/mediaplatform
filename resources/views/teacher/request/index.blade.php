@@ -15,7 +15,7 @@
 
         <div class="row clearfix">
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-light-orange-blush">
                         <h3>{{__("admin.requests")}}</h3>
                         <i class="icon-question  users-icon"></i>
@@ -36,7 +36,7 @@
                 </section>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-dark-blue-blush">
                         <h3>{{__("admin.tasks")}}</h3>
                         <i class="icon-note users-icon"></i>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-350">
                     <div class="uw_header l-dark-violet-blush">
                         <h3>{{__("admin.access")}}</h3>
                         <i class="fa fa-unlock users-icon"></i>

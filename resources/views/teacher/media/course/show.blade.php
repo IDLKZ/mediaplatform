@@ -9,7 +9,7 @@
         <div class="col-md-4 col-sm-12 col-xs-12" >
             <section class="boxs user_widget" style="height: 470px">
                 <div class="uw_header l-blush">
-                    <h3>{{$course->title}}</h3>
+                    <h5>{{strlen($course->title) >40 ? mb_substr($course->title,0,45). "..." : $course->title}}</h5>
                     <h5>{{\Illuminate\Support\Carbon::parse($course->created_at)->diffForHumans()}}</h5>
                 </div>
                 <div class="uw_image"> <img class="img-circle" src="{{$course->img}}" style="min-height: 120px" alt="{{$course->title}}"></div>
@@ -97,12 +97,77 @@
                 </div>
 
                 @if (!empty($course->videos->toArray()))
-                <ul id="svList">
-                        @foreach($course->videos as $video)
-                            <li class="svThumb vimeoVideo" data-videoID="{{Str::of($video->video_url)->ltrim('https://vimeo.com/')}}">
-                                {{$video->title}}</li>
-                        @endforeach
-                </ul>
+               <div class="row">
+                   @foreach($course->videos as $video)
+                       <div class="col-md-3 col-sm-6 col-xs-12 mh-350">
+                           <div class="boxs project_widget">
+                               <div class="pw_img">
+                                   <img class="img-responsive" src="{{\Merujan99\LaravelVideoEmbed\Services\LaravelVideoEmbed::getYoutubeThumbnail($video->video_url)}}" style="width: 100%; height: auto" alt="About the image">
+                               </div>
+                               <div class="pw_content">
+
+                                   <div class="pw_header">
+                                       <h6>
+                                           {{strlen($video->title) >20 ? mb_substr($video->title,0,20).".." : $video->title}}
+                                       </h6>
+                                       <small class="text-muted">{{strlen($video->course->title) > 20 ? mb_substr($video->course->title,0,12)."..." : $video->course->title }}  |  {{$video->created_at->diffForHumans()}}</small>
+                                   </div>
+                                   <div class="uw_footer pt-20">
+                                       <div class="text-center">
+                                           <ul class="controls list-group-flush p-0">
+                                               <li class="dropdown list-group-item">
+                                                   <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown" aria-expanded="false">
+                                                       <i class="fa fa-cog"></i>
+                                                   </a>
+                                                   <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+
+                                                       <li>
+                                                           <a href="{{route("video.show",$video->alias)}}" role="button" tabindex="0" >
+                                                               <i class="fa fa-eye"></i> {{__('admin.watch')}} </a>
+                                                       </li>
+                                                       <li>
+                                                           <a href="{{route("video.edit",$video->alias)}}" role="button" tabindex="0" >
+                                                               <i class="fa fa-pencil"></i> {{__('admin.edit')}} </a>
+                                                       </li>
+                                                       <li>
+                                                           <a href="{{route("video-subscriber",$video->alias)}}" role="button" tabindex="0" >
+                                                               <i class="fa fa-group"></i> {{__('admin.subscribers')}} </a>
+                                                       </li>
+                                                       <li>
+                                                           <a href="{{route("video-result-checked",$video->alias)}}" role="button" tabindex="0" >
+                                                               <i class="fa fa-check-circle-o"></i> {{__('admin.checked_result')}} </a>
+                                                       </li>
+                                                       <li>
+                                                           <a href="{{route("video-result-unchecked",$video->alias)}}" role="button" tabindex="0" >
+                                                               <i class="fa fa-warning"></i>{{__('admin.unchecked_result')}} </a>
+                                                       </li>
+
+                                                       <li>
+                                                           <a href="{{route("video-material",$video->alias)}}" role="button" tabindex="0" >
+                                                               <i class="fa fa-bookmark-o"></i> {{__('admin.material')}} </a>
+                                                       </li>
+                                                       <li>
+                                                           <form  method="post" action="{{route('video.destroy',$video->alias)}}">
+                                                               @method("DELETE")
+                                                               @csrf
+                                                               <button onclick="return confirm({{__('admin.question')}})" role="button" tabindex="0" class="btn btn-a">
+                                                                   <i class="fa fa-bitbucket"></i> {{__('admin.delete')}} </button>
+                                                           </form>
+                                                       </li>
+
+                                                   </ul>
+                                               </li>
+                                           </ul>
+                                       </div>
+
+
+                                   </div>
+
+                               </div>
+                           </div>
+                       </div>
+                   @endforeach
+               </div>
                 @else
                     <div class="boxs-body">
                         {{__('content.notVideoCourse')}}

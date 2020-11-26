@@ -34,13 +34,13 @@
                         </div>
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('admin.course_title')}}</label>
+                            <label class="col-sm-3 control-label">{{__('admin.video_title')}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="{{__('admin.course_title')}}" maxlength="255" data-parsley-trigger="change" required>
+                                <input name="title" type="text" class="form-control" placeholder="{{__('admin.video_title')}}" maxlength="255" data-parsley-trigger="change" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">{{__('admin.course_description')}}</label>
+                            <label class="col-sm-3 control-label">{{__('admin.video_descriptions')}}</label>
                             <div class="col-sm-9">
                                 <textarea name="description" id="editor"></textarea>
                             </div>

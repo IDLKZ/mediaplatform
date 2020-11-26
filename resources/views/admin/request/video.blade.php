@@ -1,6 +1,8 @@
 @extends('admin.layout')
 @section('content')
     <div class="page static-page-tables">
+        <a href="{{route("admin-request")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
+
         <div class="row">
             <div class="col-md-12">
                 <section class="boxs">

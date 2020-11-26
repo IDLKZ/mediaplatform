@@ -54,7 +54,7 @@
                 {{$news->links()}}
 
             @else
-                <h2>Новостей нет</h2>
+                <h2>{{__("admin.not_found")}}</h2>
             @endif
         </div>
     </div>

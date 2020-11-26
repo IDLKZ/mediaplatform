@@ -20,7 +20,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**

@@ -92,16 +92,7 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        $question = Question::find($id);
-        if($question){
-            $user = Auth::user();
-            $quizzes = $user->quiz;
-            return view("teacher.exams.question.show",compact("question","quizzes"));
-        }
-        else{
-            Toastr::warning("Вопрос не найден","Упс...");
-            return  redirect(route("question.index"));
-        }
+        abort(404);
     }
 
     /**

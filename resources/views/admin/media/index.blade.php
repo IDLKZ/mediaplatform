@@ -15,7 +15,7 @@
 
         <div class="row clearfix">
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-400">
                     <div class="uw_header l-violet-blush">
                         <h3>{{__("admin.courses")}}</h3>
                         <i class="fa fa-video-camera users-icon"></i>
@@ -37,7 +37,7 @@
                 </section>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-400">
                     <div class="uw_header l-dark-blue-blush">
                         <h3>{{__("admin.videos")}}</h3>
                         <i class="fa fa-graduation-cap users-icon"></i>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <section class="boxs user_widget">
+                <section class="boxs user_widget md-mh-400">
                     <div class="uw_header l-dark-green-blush">
                         <h3>{{__("admin.materials")}}</h3>
                         <i class="fa fa-book users-icon"></i>

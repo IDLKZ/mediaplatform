@@ -14,7 +14,7 @@ return [
     "active"=>"Активные",
     "request"=>"В заявке",
     "no_admin"=>"Нет администраторов",
-    "no_teacher"=>"Нет тьюторов",
+    "no_teacher"=>"Нет Спикеров",
     "no_student"=>"Нет слушателей",
     "no_img"=>"Нет изображения",
     "no_results"=>"Нет результатов",
@@ -107,11 +107,11 @@ return [
     "user.admin_description"=>"Здесь вы можете видеть список администраторов, которые занимаются поддержкой платформы",
     "user.all_admins"=>"Все админы",
 
-    "user.teachers"=>"Тьюторы",
-    "user.teacher"=>"Тьютор",
-    "user.about_teacher"=>"О тьюторе",
-    "user.teacher_description"=>"Здесь вы можете видеть список тьюторов, которые ведут свои видеоуроки",
-    "user.all_teachers"=>"Все тьюторы",
+    "user.teachers"=>"Спикеры",
+    "user.teacher"=>"Спикер",
+    "user.about_teacher"=>"О Спикере",
+    "user.teacher_description"=>"Здесь вы можете видеть список Спикеров, которые ведут свои видеоуроки",
+    "user.all_teachers"=>"Все Спикеры",
 
     "user.students"=>"Слушатели",
     "user.student"=>"Слушатель",
@@ -178,7 +178,7 @@ return [
     "course_skills"=>"Навыки",
     "course_what_will_you_learn"=>"Чему Вы научитесь",
     "comments_student"=>"Коментарии от слушателя",
-    "comments_teacher"=>"Коментарии от тьютора",
+    "comments_teacher"=>"Коментарии от Спикера",
 
 
     //video CRUD

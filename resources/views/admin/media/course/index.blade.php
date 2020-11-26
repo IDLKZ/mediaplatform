@@ -13,11 +13,11 @@
                     </div>
                 </div>
             </div>
-            @if(count($courses)>0)
+            @if($courses->isNotEmpty())
                 @foreach($courses as $course)
                     <div class="col-md-12 col-sm-12  course-item mt-20">
                         <div class="row">
-                            <div class="col-md-3 bg-slategray course-item-header p-lg-40">
+                            <div class="col-md-3 course-item-header ">
                                 <div class="course-item-image p-sm-10">
                                     <img src="{{$img = $course->img !=null ? $course->img :"/images/no-image.png" }}" alt="">
                                 </div>
@@ -108,8 +108,8 @@
 
                         </div>
                     </div>
-                    {{$courses->links()}}
                 @endforeach
+                {{$courses->links()}}
             @else
                 <h1>{{__('admin.no_courses')}}</h1>
             @endif

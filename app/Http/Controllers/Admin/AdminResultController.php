@@ -16,7 +16,7 @@ class AdminResultController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -26,7 +26,7 @@ class AdminResultController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -37,7 +37,7 @@ class AdminResultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -48,7 +48,7 @@ class AdminResultController extends Controller
      */
     public function show($id)
     {
-
+        abort(404);
     }
 
     /**

@@ -1,5 +1,6 @@
 @extends('admin.layout')
 @section('content')
+    <a href="{{route("admin-category.index")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
 
     <!-- bradcome -->
     <div class="row">
@@ -25,7 +26,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">{{__("admin.category_title")}}</label>
                             <div class="col-sm-9">
-                                <input name="title" type="text" class="form-control" placeholder="{{__("admin.category_title")}}" maxlength="255" data-parsley-trigger="change" required>
+                                <input name="title" type="text" class="form-control" placeholder="{{__("admin.category_title")}}" maxlength="255" data-parsley-trigger="change" required >
                             </div>
                         </div>
 

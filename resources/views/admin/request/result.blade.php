@@ -2,7 +2,7 @@
 @section('content')
     <!-- row -->
     <div class="page page-content">
-        <a href="" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
+        <a href="{{route("admin-request")}}" class="btn btn-raised btn-info">{{__('admin.back')}}</a>
         <div class="row">
             @foreach($results as $result)
                 <div class="col-md-4 mh-350 p-10">

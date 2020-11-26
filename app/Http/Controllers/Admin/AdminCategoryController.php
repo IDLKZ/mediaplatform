@@ -61,7 +61,7 @@ class AdminCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -78,6 +78,7 @@ class AdminCategoryController extends Controller
             return  view("admin.news.category.edit",compact("validator","category"));
         }
         else{
+            Toastr::warning("Категория не найдена","Упс");
             return redirect(route("admin-category.index"));
         }
     }

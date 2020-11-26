@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-    <a href="/" class="btn btn-raised btn-info">{{__("admin.back")}}</a>
+    <a href="{{route("admin-request")}}" class="btn btn-raised btn-info">{{__("admin.back")}}</a>
     <!-- bradcome -->
     <div class="row">
         <div class="col-md-12">

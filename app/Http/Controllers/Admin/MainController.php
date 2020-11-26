@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\LocaleMiddleware;
 use App\Models\Course;
 use App\Models\Examination;
 use App\Models\Materials;
@@ -16,6 +17,7 @@ use App\Models\UserVideo;
 use App\Models\Video;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class MainController extends Controller
 {

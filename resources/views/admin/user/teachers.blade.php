@@ -53,43 +53,33 @@
                                     </div>
                                     <div class="boxs-body">
                                         <div class="panel panel-default">
-                                            <div class="panel-heading boxs-header bg-green" role="tab" id="headingOne">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-parent="#accordion" href="{{"#information".$teacher->id}}" aria-expanded="true" aria-controls="collapseOne" class="">
-                                                        <i class="fa fa-bars"></i>
-                                                        {{__("admin.main.info")}}
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="{{"information".$teacher->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" style="">
-                                                <ul class="media-list feeds_widget m-0">
-                                                    <li class="media">
-                                                        <div class="media-img"><i class="fa fa-user-circle"></i></div>
-                                                        <div class="media-body">
-                                                            <div class="media-heading">{{__("admin.user.teacher")}}</div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media">
-                                                        <div class="media-img"><i class="icon-envelope"></i></div>
-                                                        <div class="media-body">
-                                                            <div class="media-heading">{{$teacher->email}}</div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media">
-                                                        <div class="media-img"><i class="fa fa-phone"></i></div>
-                                                        <div class="media-body">
-                                                            <div class="media-heading">{{$teacher->phone}}</div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media">
-                                                        <div class="media-img"><i class="{{$teacher->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
-                                                        <div class="media-body">
-                                                            <div class="media-heading">{{$teacher->status == 1 ? __("admin.active") : __("admin.request")}}</div>
-                                                        </div>
-                                                    </li>
+                                            <ul class="media-list feeds_widget m-0">
+                                                <li class="media">
+                                                    <div class="media-img"><i class="fa fa-user-circle"></i></div>
+                                                    <div class="media-body">
+                                                        <div class="media-heading">{{__("admin.user.teacher")}}</div>
+                                                    </div>
+                                                </li>
+                                                <li class="media">
+                                                    <div class="media-img"><i class="icon-envelope"></i></div>
+                                                    <div class="media-body">
+                                                        <div class="media-heading">{{$teacher->email}}</div>
+                                                    </div>
+                                                </li>
+                                                <li class="media">
+                                                    <div class="media-img"><i class="fa fa-phone"></i></div>
+                                                    <div class="media-body">
+                                                        <div class="media-heading">{{$teacher->phone}}</div>
+                                                    </div>
+                                                </li>
+                                                <li class="media">
+                                                    <div class="media-img"><i class="{{$teacher->status == 1 ? "icon-check" : "icon-close"}}"></i></div>
+                                                    <div class="media-body">
+                                                        <div class="media-heading">{{$teacher->status == 1 ? __("admin.active") : __("admin.request")}}</div>
+                                                    </div>
+                                                </li>
 
-                                                </ul>
-                                            </div>
+                                            </ul>
                                         </div>
 
 
