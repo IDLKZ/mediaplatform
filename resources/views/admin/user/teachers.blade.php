@@ -19,7 +19,7 @@
                     <div class="col-md-4 col-sm-12 col-xs-12">
                         <section class="boxs user_widget">
                             <div class="uw_header l-blue-blush">
-                                <h5>{{$teacher->name}}</h5>
+                                <h4>{{$teacher->name}}</h4>
                                 <div class="uw_image">
                                     <img class="img-circle" src="{{$img = $teacher->img !=null ? $teacher->img :"/images/no-image.png" }}" alt="User Avatar">
                                 </div>
