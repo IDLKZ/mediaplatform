@@ -297,10 +297,10 @@
             <div class="row">
                 @foreach($news as $new)
                 <div class="col-md-4 col-sm-12">
-                    <div class="blog">
+                    <div class="blog" style="background-image: url({{$new->thumbnail}})">
                         <div class="col-8">
                             <div class="small">{{$new->category->title}}</div>
-                            <h5><a class="text-white" href="{{route('frontSinglePost', $new->alias)}}">{{Str::substr($new->title, 0, 70)}}...</a></h5>
+                            <h5><a class="text-white" href="{{route('frontSinglePost', $new->alias)}}">{{Str::substr($new->title, 0, 25)}}...</a></h5>
                         </div>
                         <div class="col-4"></div>
                     </div>
