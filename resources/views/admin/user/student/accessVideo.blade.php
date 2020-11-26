@@ -34,7 +34,7 @@
 
 
                                 <div id="{{$subscriber->course->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">
+                                    <div class="panel-body table-responsive">
                                         <table class="table table-hover">
                                             <thead>
                                             <tr>

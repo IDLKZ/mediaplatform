@@ -19,7 +19,7 @@
                                         <hr class="mt-0">
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <ul class="controls list-group-flush">
+                                        <ul class="controls list-group-flush p-0">
                                             <li class="dropdown list-group-item">
                                                 <a role="button" tabindex="0" class="dropdown-toggle settings" data-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa fa-cog"></i>
