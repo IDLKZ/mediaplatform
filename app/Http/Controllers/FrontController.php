@@ -16,9 +16,9 @@ class FrontController extends Controller
 
     public function singlePost($alias)
     {
-        $post = News::where('alias', $alias)->with(['author', 'category'])->first();
-        if ($post) {
-            return view('Frontend.single-post', compact('post'));
+        $news = News::where('alias', $alias)->with(['author', 'category'])->first();
+        if ($news) {
+            return view('Frontend.single-post', compact('news'));
         }
         abort(404);
     }
