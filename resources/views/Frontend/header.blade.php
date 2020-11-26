@@ -42,17 +42,30 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="ml-auto desk-none desk-none-header" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
-                        <button id="auth" type="button" class="btn mr-2"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Кабинет
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="auth">
-                            <a class="dropdown-item" href="{{route('userProfile')}}"><i class="far fa-user mr-2"></i>{{__('front.my_profile')}}</a>
-                            <a class="dropdown-item" href="{{route('userProfileSettings')}}"><i class="fas fa-cog mr-2"></i>{{__('front.settings')}}</a>
-                            <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt mr-2"></i>{{__('admin.profile.logout')}}</a>
+                    @if (\Illuminate\Support\Facades\Auth::check())
+                        <div class="btn-group" role="group">
+                            <button id="auth" type="button" class="btn mr-2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Кабинет
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="auth">
+                                @if (\Illuminate\Support\Facades\Auth::user()->role_id == 1)
+                                    <a class="dropdown-item" href="{{route('main')}}">{{__('front.my_profile')}}</a>
+                                @endif
+                                @if (\Illuminate\Support\Facades\Auth::user()->role_id == 2)
+                                    <a class="dropdown-item" href="{{route('home')}}">{{__('front.my_profile')}}</a>
+                                    <a class="dropdown-item" href="{{route('teacherProfileSettings')}}">{{__('front.settings')}}</a>
+                                @endif
+                                @if (\Illuminate\Support\Facades\Auth::user()->role_id == 3)
+                                    <a class="dropdown-item" href="{{route('userProfile')}}">{{__('front.my_profile')}}</a>
+                                    <a class="dropdown-item" href="{{route('userProfileSettings')}}">{{__('front.settings')}}</a>
+                                @endif
+                                <a class="dropdown-item" href="{{route('logout')}}">{{__('admin.profile.logout')}}</a>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <a href="{{route('login')}}"><button type="button" class="btn mr-4" id="auth">Авторизация</button></a>
+                    @endif
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
