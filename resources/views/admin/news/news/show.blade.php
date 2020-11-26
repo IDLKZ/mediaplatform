@@ -8,7 +8,7 @@
                     <h3 class="custom-font hb-green">
                         <strong>{{$news->title}}</strong> </h3>
                     <p>{{__("admin.author")}}: {{$news->author->name}}</p>
-                    <p>{{__("admin.update")}}: {{$news->updated_at->diffForHumans()}}</p>
+                    <p>{{__("admin.updated")}}: {{$news->updated_at->diffForHumans()}}</p>
                 </div>
                 <div class="post-box">																														<div class="post-img">
                         <img src="{{$news->img}}" class="img-responsive m-auto" alt="">
