@@ -300,7 +300,7 @@
                     <div class="blog">
                         <div class="col-8">
                             <div class="small">{{$new->category->title}}</div>
-                            <h5><a class="text-white" href="{{route('frontSinglePost', $new->alias)}}">{{$new->title}}</a></h5>
+                            <h5><a class="text-white" href="{{route('frontSinglePost', $new->alias)}}">{{Str::substr($new->title, 0, 70)}}...</a></h5>
                         </div>
                         <div class="col-4"></div>
                     </div>
