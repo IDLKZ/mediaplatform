@@ -72,9 +72,12 @@
                             <label class="col-sm-3 control-label">{{__("admin.links")}}</label>
                             <div class="col-sm-9">
                                 <select name="links[]" multiple class="select2 form-control mb-10" data-parsley-trigger="change" required="" style="width: 100%!important;">
-                                    @foreach($news->links as $link)
-                                        <option value="{{$link}}">{{$link}}</option>
-                                    @endforeach
+                                    @if (count($news->links)>0)
+                                        @foreach($news->links as $link)
+                                            <option value="{{$link}}">{{$link}}</option>
+                                        @endforeach
+                                    @endif
+
 
                                 </select>
                             </div>
