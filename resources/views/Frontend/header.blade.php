@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{route('login')}}"><button type="button" class="btn mr-4" id="auth">Авторизация</button></a>
+                        <a href="{{route('login')}}"><button type="button" class="btn mr-4" id="auth">Регистрация</button></a>
                     @endif
                     <div class="btn-group" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     @else
-                        <a href="{{route('login')}}"><button type="button" class="btn mr-4" id="auth">Авторизация</button></a>
+                        <a href="{{route('login')}}"><button type="button" class="btn mr-4" id="auth">Регистрация</button></a>
                     @endif
 
                     <div class="btn-group" role="group">

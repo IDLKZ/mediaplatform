@@ -25,7 +25,7 @@ return [
     'continue' => 'Продолжить',
     'page_of_course' => 'Страница курса',
     'get_certificate' => 'Получить сертификат',
-    'no_certificates' => 'Сертификатов нет',
+    'no_certificates' => 'Для получения сертификата, пожалуйста, завершите курс',
     'main_lang' => 'Основной язык',
     'all_courses' => 'Все курсы',
     //courses

@@ -51,6 +51,9 @@
                             <button type="submit" class="btn btn-info btn-raised">Отправить</button>
                         </div>
                     </form>
+                    <div class="footer text-center mb-20">
+                        <a href="{{route("login")}}" class="btn btn-info btn-raised">Вход</a>
+                    </div>
                 </div>
             </div>
         </div>

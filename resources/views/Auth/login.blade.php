@@ -31,7 +31,7 @@
                         <div class="footer text-center">
                             <button type="submit" class="btn btn-info btn-raised">Вход</button>
                         </div>
-                        <a href="" class="btn btn-wd">Забыли пароль?</a>
+{{--                        <a href="" class="btn btn-wd">Забыли пароль?</a>--}}
                         <a href="{{route("register")}}" class="btn btn-wd">Зарегистрироваться</a>
                     </form>
                 </div>

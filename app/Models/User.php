@@ -122,6 +122,10 @@ class User extends Authenticatable
         return $this->hasManyThrough(ReviewQuestion::class,Review::class,"author_id","review_id","id");
     }
 
+    public function certificate(){
+        return $this->hasMany(Certificate::class,"user_id","id");
+    }
+
 
 
 

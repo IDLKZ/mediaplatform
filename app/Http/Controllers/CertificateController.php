@@ -42,7 +42,7 @@ class CertificateController extends Controller
 
     public function certificates()
     {
-        $certificates = Certificate::with('course')->paginate(10);
+        $certificates = Certificate::where("user_id",Auth::id())->with('course')->paginate(10);
         return view('student.certificate.my-certificates', compact('certificates'));
     }
 }
