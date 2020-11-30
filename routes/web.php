@@ -357,6 +357,10 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
 
         //    Start Forums
         Route::get('/realtime-forums', [RealtimeController::class, 'index'])->name('forums');
+        Route::post('/add-forum-category', [RealtimeController::class, 'addCategoryForum']);
+        Route::get('/delete-forum-category/{id}', [RealtimeController::class, 'deleteCategoryForum'])->name('deleteForumCategory');
+        Route::get('/delete-forum-post/{id}', [RealtimeController::class, 'deletePostForum'])->name('deleteForumPost');
+        Route::get('/delete-forum-comment/{id}', [RealtimeController::class, 'deleteCommentForum'])->name('deleteForumComment');
         Route::post('/add-discussion', [RealtimeController::class, 'addDiscussion']);
         Route::get('/single-categories/{slug}', [RealtimeController::class, 'singleCategory'])->name('singleCategory');
         Route::get('/single-post/{alias}', [RealtimeController::class, 'singlePost'])->name('singlePost');

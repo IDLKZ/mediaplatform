@@ -17,6 +17,11 @@ class ForumPost extends Model
         return $this->belongsTo(ForumDiscussion::class, 'id', 'chatter_discussion_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(ForumComment::class, 'chatter_post_id', 'id');
+    }
+
     public static function add($topic, $body)
     {
         $post = new self();

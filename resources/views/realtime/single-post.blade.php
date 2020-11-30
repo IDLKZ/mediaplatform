@@ -37,7 +37,12 @@
                                 <div class="col-sm-10">
 
                                     <div class="blog-meta clearfix">
-                                        <small>{{$comment->created_at->diffForHumans()}}</small>
+                                        <small>
+                                            {{$comment->created_at->diffForHumans()}}
+                                            @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1 )
+                                                <a href="{{route('deleteForumComment', $comment->id)}}"><span class="badge badge-danger">&times;</span></a>
+                                            @endif
+                                        </small>
                                     </div>
                                     {!! $comment->comment !!}
                                 </div>

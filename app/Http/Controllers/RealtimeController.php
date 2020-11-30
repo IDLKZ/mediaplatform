@@ -68,6 +68,51 @@ class RealtimeController extends Controller
         $this->validate($request, ['description' => 'required']);
         ForumComment::add($request);
         return redirect()->back();
+    }
 
+    public function addCategoryForum(Request $request)
+    {
+        $this->validate($request, ['name' => 'required']);
+        ForumCategory::create([
+            'name' => $request->get('name'),
+            'color' => 'blue'
+        ]);
+        Toastr::success('Категория успешно создана!', 'Браво!');
+        return redirect()->back();
+    }
+
+    public function deleteCategoryForum($id)
+    {
+        $category = ForumCategory::find($id);
+        foreach ($category->discussion as $item) {
+            foreach ($item->post->comments as $comment) {
+                $comment->delete();
+            }
+            $item->post->delete();
+            $item->delete();
+        }
+        $category->delete();
+        Toastr::error('Категория успешно удалена!', 'Браво!');
+        return redirect()->back();
+    }
+
+    public function deletePostForum($id)
+    {
+        $disc = ForumDiscussion::find($id);
+        foreach ($disc->post->comments as $comment) {
+            $comment->delete();
+        }
+        $disc->post->delete();
+        $disc->delete();
+        Toastr::error('Пост успешно удален!', 'Браво!');
+        return redirect()->back();
+    }
+
+    public function deleteCommentForum($id)
+    {
+        $comment = ForumComment::find($id);
+        $comment->delete();
+        Toastr::error('Коммент успешно удален!', 'Браво!');
+        return redirect()->back();
     }
 }

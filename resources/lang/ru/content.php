@@ -125,7 +125,18 @@ return [
     "user_img"=>"Изображение пользователя",
     "user_description"=>"Информация пользователя",
 
+//    Forum
+    'ask' => 'Задать вопрос',
+    'select_category' => 'Выберите категорию',
+    'title_category' => 'Заголовок темы',
+    'description_category' => 'Описание',
+    'name_category' => 'наименование',
+
+
     //buttons
+    'create' => 'Новая категория',
+    'send' => 'Отправить',
+    'close' => 'Закрыть',
     'save' => 'Сохранить',
     'change'=>"Изменить",
     'back' => 'Назад',

@@ -111,9 +111,28 @@ return [
     "examination_description"=>"Емтиханға сипаттама",
     "examination_material"=>"Емтиханға арналған материалдар",
 
+    //user
+    "new_user"=>"Жаңа қолданушы",
+    "user_name"=>"пайдаланушының аты-жөні",
+    "user_role"=>"пайдаланушының рөлі",
+    "user_email"=>"пайдаланушының почтасы",
+    "user_password"=>"пайдаланушының паролі",
+    "user_phone"=>"пайдаланушының байланыс нөмері",
+    "user_status"=>"пайдаланушы мақұлданды",
+    "user_img"=>"пайдаланушының бейнесі",
+    "user_description"=>"пайдаланушының ақпараты",
 
+//    Forum
+    'ask' => 'Сұрақ қою',
+    'select_category' => 'Категория таңдаңыз',
+    'title_category' => 'Тақырыпша',
+    'description_category' => 'Сипаттамасы',
+    'name_category' => 'атауы',
 
     //buttons
+    'create' => 'Жаңадан қосу',
+    'send' => 'Жіберу',
+    'close' => 'Жабу',
     'save' => 'Сақтау',
     'change'=>"Өзгерту",
     'back' => 'Артқа',
