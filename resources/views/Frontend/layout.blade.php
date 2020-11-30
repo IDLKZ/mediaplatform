@@ -46,6 +46,8 @@
     @endif
 
     <title>Jas Qalam</title>
+    <link rel="icon" type="image/ico" href="/images/favicon.ico" />
+
 </head>
 <body>
 @include('Frontend.header')
