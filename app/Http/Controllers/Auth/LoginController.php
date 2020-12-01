@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\ForgetPassword;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -90,6 +92,66 @@ class LoginController extends Controller
             return redirect(route("register"));
         }
 
+    }
+
+    public function forget(){
+        $validator = JsValidator::make( [
+            'email' => 'required|email',
+        ]);
+        return view("Auth.forget",compact("validator"));
+    }
+
+    public function getResetKey(Request $request){
+        $this->validate($request,["email"=>"required|email"]);
+        ForgetPassword::saveData($request);
+        Toastr::success("На вашу почту отправлена ссылка для восстановления","Отлично");
+        return redirect()->back();
+    }
+
+    public function resetPassword($alias){
+        if($alias){
+            $forget = ForgetPassword::where("token",$alias)->with("user")->first();
+            if($forget){
+                if($forget->expiration_date < Carbon::now()){
+                    $validator = JsValidator::make( [
+                        "password"=>"required|min:6",
+                        "password_confirmation"=>"required|same:password"
+                    ]);
+                    return view("Auth.reset",compact("validator","forget"));
+                }
+                else{
+                    $forget->delete();
+                    abort(404);
+                }
+            }
+            else{
+                abort(404);
+            }
+
+
+        }
+        abort(404);
+    }
+    public function newPassword(Request $request){
+        $this->validate($request,[
+            "id"=>"required",
+            "password"=>"required|min:6",
+            "password_confirmation"=>"required|same:password"
+        ]);
+        $forget = ForgetPassword::find($request->get("id"));
+        if($forget){
+            $user = User::find($forget->user_id);
+            if($user){
+                $user->password = bcrypt($request->get("password"));
+                $user->save();
+                $forget->delete();
+                Toastr::success("Пароль успешно изменен","Отлично!");
+            }
+            return redirect(route("login"));
+        }
+        else{
+            abort(404);
+        }
     }
 
 }

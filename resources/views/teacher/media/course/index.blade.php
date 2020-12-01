@@ -16,7 +16,7 @@
                     <div class="col-md-12 col-sm-12  course-item mt-20">
                         <div class="row">
                             <div class="col-md-3 course-item-header">
-                                <div class="course-item-image p-sm-10">
+                                <div class="course-item-image p-sm-10 p-0">
                                     <img src="{{$img = $course->img !=null ? $course->img :"/images/no-image.png" }}" alt="">
                                 </div>
                             </div>

@@ -227,6 +227,12 @@
     }
 }
 
+@media only screen and (min-width: 768px) {
+    .p-400{
+        padding-top: 400px;
+    }
+}
+
 
 
 

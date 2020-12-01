@@ -15,7 +15,7 @@
 
             <div class="row clearfix">
                 <div class="col-md-4 col-sm-12 col-xs-12">
-                    <section class="boxs user_widget">
+                    <section class="boxs user_widget mh-450">
                         <div class="uw_header l-green-blush">
                             <h3>{{__("admin.user.admins")}}</h3>
                             <i class="fa fa-user-circle users-icon"></i>
@@ -54,7 +54,7 @@
                     </section>
                 </div>
                 <div class="col-md-4 col-sm-12 col-xs-12">
-                    <section class="boxs user_widget">
+                    <section class="boxs user_widget mh-450">
                         <div class="uw_header l-blue-blush">
                             <h3>{{__("admin.user.teachers")}}</h3>
                             <i class="fa fa-graduation-cap users-icon"></i>
@@ -93,7 +93,7 @@
                     </section>
                 </div>
                 <div class="col-md-4 col-sm-12 col-xs-12">
-                    <section class="boxs user_widget">
+                    <section class="boxs user_widget mh-450">
                         <div class="uw_header l-blush">
                             <h3>{{__("admin.user.students")}}</h3>
                             <i class="fa fa-group users-icon"></i>

@@ -3,7 +3,7 @@
     <section id="main">
         <div class="container">
             <div class="row">
-                <div class="col-md-9 col-sm-12">
+                <div class="col-md-9 col-sm-12 p-400">
                     <h1>{{__('front.title_1')}} <span>{{__('front.title_2_span')}}</span>
                         {{__('front.title_3')}} <span>{{__('front.title_4_span')}}</span>
                     </h1>
@@ -54,8 +54,10 @@
                         </h2>
                     @else
                         <h2>Обращение <br>
+                            Директора Фонда Нурсултана Назарбаева, Председателя Совета Конгресса молодежи Казахстана
+                            <br>
                             Назарбаевой Д.Н. <br>
-                            на форуме <span>«Jas Qalam»</span></h2>
+                            </h2>
                     @endif
 
                     <div class="jumbotron">

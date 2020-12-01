@@ -76,6 +76,13 @@ Route::group(['prefix' => LocaleMiddleware::getLocale()], function(){
         Route::get('/login', [LoginController::class,"login"])->name("login");
         Route::post('/sign-in', [LoginController::class,"signIn"])->name("sign-in");
 
+        //Forget password
+        Route::get("/forget",[LoginController::class,"forget"])->name("forget");
+        Route::post("/getResetKey",[LoginController::class,"getResetKey"])->name("getResetKey");
+
+        Route::get("/reset-password/{alias}",[LoginController::class,"resetPassword"])->name("reset-password");
+        Route::post("/new-password/",[LoginController::class,"newPassword"])->name("new-password");
+
         //Google Login
         Route::get('/sign-in-google', [LoginController::class,"googleLogin"])->name("sign-in-google");
         Route::get('/google-callback', [LoginController::class,"googleCallback"])->name("callback-google");
