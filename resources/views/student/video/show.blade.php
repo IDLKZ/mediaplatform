@@ -1,6 +1,6 @@
 @extends('student.layout')
 @section('content')
-    <div class="page dashboard-page">
+    <div class="container">
 
         <!-- bradcome -->
         <div class="row">
