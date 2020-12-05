@@ -10,7 +10,7 @@
                         <h3 class="custom-font hb-blush">
                             <strong>{{$video->count . "." .$video->title}}({{$video->course->title}})</strong></h3>
                     </div>
-                    <div class="row">
+                    <div>
                         <div class="col-md-12 mb-5">
                             {!! $file !!}
                         </div>
