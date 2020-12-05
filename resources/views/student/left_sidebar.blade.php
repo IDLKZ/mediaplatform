@@ -49,7 +49,7 @@
             {{--            <a href=""><li class="list-group-item"><i class="far fa-bell mr-4"></i>Уведомления</li></a>--}}
             <a href="{{route('student.checkedResult')}}"><li><i class="far fa-check-square mr-4"></i>{{__('student.my_exam')}}</li></a>
             <a href="{{route('forums')}}"><li><i class="far fa-comments mr-4"></i>{{__('student.my_discuss')}}</li></a>
-            <a href=""><li><i class="fas fa-award mr-4"></i>{{__('student.my_certificate')}}</li></a>
+            <a href="{{route('myCertificates')}}"><li><i class="fas fa-award mr-4"></i>{{__('student.my_certificate')}}</li></a>
             <a href="{{route('userProfileSettings')}}"><li><i class="fas fa-cog mr-4"></i>{{__('student.my_settings')}}</li></a>
         </ul>
     </nav>

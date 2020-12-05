@@ -4,10 +4,10 @@
     <div class="container">
         {{Diglactic\Breadcrumbs\Breadcrumbs::render('show', $result)}}
         <div class="row">
-            <div class="col-4">
+            <div class="col-md-12 col-sm-12 col-lg-4 mb-3">
                 @include('student.left_sidebar')
             </div>
-            <div class="col-8">
+            <div class="col-md-12 col-sm-12 col-lg-8">
                 <div class="row">
                     <div class="col-md-12">
                         <section class="boxs">
